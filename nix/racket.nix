@@ -3,6 +3,8 @@
   racket-minimal,
   callPackage,
   stdenvNoCC,
+  symlinkJoin,
+  fetchzip,
   lib,
 }: let
   collectDeps = deps: let
@@ -15,7 +17,32 @@
     depsRecur' = lib.unique depsRecur;
   in
     lib.unique ((map (dep: dep.name) (deps ++ depsDeps')) ++ depsRecur');
-  pkgs = callPackage ../racket-pkgs.nix {};
+  fetchzip' = args:
+    fetchzip
+    (args
+      // {
+        stripRoot = false;
+        # At unpack time decide whether to stripRoot or not
+        postFetch = ''
+          shopt -s nullglob
+          ALL_FILES=( "$out"/* )
+          if [[ "''${#ALL_FILES[@]}" == 1 ]]; then
+            mv "$out" "$unpackDir"
+            MAIN_PATH=$(basename "''${ALL_FILES[0]}")
+            mv "$unpackDir/$MAIN_PATH" "$out"
+            rm -rf "$unpackDir"
+          fi
+        '';
+      });
+  pkgs = callPackage ../racket-pkgs.nix {
+    fetchzip = fetchzip';
+    mkRacketPackage = callPackage ./mk-racket-package.nix {};
+  };
+  createCatalog = pkgNames:
+    symlinkJoin {
+      name = "racket-catalog";
+      paths = map (name: pkgs.${name}) pkgNames;
+    };
   newLayer = prevLayer: defaultLookupLib: {
     allowUser ? null,
     lookupLibEnv ? defaultLookupLib,
@@ -28,7 +55,7 @@
       deps = racketInputs ++ (withRacketPackages pkgs);
       filteredDeps = lib.filter (dep: ! lib.elem dep prevDeps) deps;
       allDeps = collectDeps filteredDeps;
-      installDeps = lib.optionalString (allDeps != []) ''
+      installDeps = lib.optionalString (filteredDeps != []) ''
         "$out/bin/raco" pkg install \
           --installation \
           --copy \
@@ -36,8 +63,10 @@
           --no-cache \
           -j $NIX_BUILD_CORES \
           --deps search-auto \
+          --catalog "file://$racketCatalog" \
+          --skip-installed \
           -D \
-          ${lib.escapeShellArgs allDeps}
+          ${lib.escapeShellArgs (map (dep: dep.name) filteredDeps)}
       '';
     in {
       name = "${prevLayer.name or prevLayer.pname}-layered";
@@ -60,6 +89,7 @@
         then "--no-lookup-lib-env"
         else null;
       extraLibs = lib.makeLibraryPath buildInputs;
+      racketCatalog = createCatalog allDeps;
 
       installPhase = ''
         runHook preInstall
@@ -69,6 +99,8 @@
         "${prevLayer}/bin/racket" -- ${../src/generate-config.rkt} \
           ''${userLayer:+"$userLayer"} \
           ''${lookupLib:+"$lookupLib"} \
+          --extra-lib-paths "$extraLibs" \
+          --catalog-path "file://$racketCatalog" \
           "${prevLayer}/etc/racket/config.rktd" \
           "$out" > "$out/etc/racket/config.rktd"
         "${prevLayer}/bin/racket" -G "$out/etc/racket" -l- \

@@ -10,7 +10,7 @@
 
 (define ((make-path root) path) (format "~a/~a" root path))
 
-(define (make-config prev layer-path user-layer extra-lib-dirs)
+(define (make-config prev layer-path user-layer catalogs extra-lib-dirs)
   (define out (make-path layer-path))
   ; Gets a value from the previous config. Errors if it wasn't present
   (define (get-prev sym) (hash-ref prev sym))
@@ -30,6 +30,9 @@
   (define prev-compiled-file-roots
     (filter (lambda (val) (not (equal? 'same val)))
             (get-prev-list 'compiled-file-roots)))
+  (define prev-catalogs
+    (filter (lambda (catalog) (not (string-prefix? catalog "http")))
+            (get-prev-list 'catalogs)))
   ; New layer's values
   (define new-layer-config (hash
     'doc-dir (out "share/doc/racket")
@@ -88,13 +91,14 @@
     ; Constant values
     'absolute-installation? #t
     'build-stamp ""
-    'catalogs (get-prev 'catalogs)))
+    'catalogs `(,@catalogs ,@prev-catalogs #f)))
   (hash-union new-layer-config config-rest))
 
 (module+ main
   (define user-layer (make-parameter #f))
   (define lookup-lib-env (make-parameter #f))
   (define extra-lib-paths (make-parameter '()))
+  (define catalogs (make-parameter '()))
   (match-define (cons prev curr)
     (command-line
      #:program "generate-config"
@@ -112,11 +116,20 @@
      [("--no-lookup-lib-env")
       "Don't query (DY)LD_LIBRARY_PATH (default)"
       (lookup-lib-env #f)]
+     #:once-each
+     [("--default-catalog")
+      "The default online catalog should be included"
+      (catalogs (append (catalogs)
+                        '("https://download.racket-lang.org/releases/8.9/catalog/")))]
      #:multi
      [("--extra-lib-paths")
       libs
       "Extra native library lookup paths (separated with :)"
       (extra-lib-paths (append (extra-lib-paths) (string-split libs ":")))]
+     [("--catalog-path")
+      catalog
+      "Package catalog path"
+      (catalogs (cons catalog (catalogs)))]
      #:args (prev-layer curr-layer)
      (cons prev-layer curr-layer)))
   (define (p path) (format "~a/~a" prev path))
@@ -138,4 +151,5 @@
     (make-config (call-with-input-file* prev read)
                  curr
                  (user-layer)
+                 (catalogs)
                  (append (extra-lib-paths) (library-env)))))

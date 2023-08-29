@@ -5,6 +5,9 @@ Making Racket usable within the Nix ecosystem.
 Currently it's very impure and very unstable.
 The plan is to not change the `newLayer` API much, but there's also no commitment at this point.
 
+Dependency resolution doesn't fully work yet so if you get an error about a package not being available,
+just add it to the list of packages. (For now, obviously)
+
 ## Example usage
 ```nix
 {
@@ -41,3 +44,7 @@ The plan is to not change the `newLayer` API much, but there's also no commitmen
   };
 }
 ```
+
+## Acknowledgements
+@LiberalArtist and their [https://gitlab.com/philip1/guix-racket-experiment](guix-racket-experiment) project
+who has been a huge inspiration and who's approach I've basically copied verbatim.

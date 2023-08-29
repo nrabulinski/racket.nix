@@ -35,7 +35,8 @@
             mkdir -p "$out/etc/racket"
             racket -- "${src/generate-config.rkt}" \
               --allow-user \
-              --lookup-lib-env \
+              --extra-lib-paths ${lib.makeLibraryPath racket.buildInputs} \
+              --default-catalog \
               "${racket}/etc/racket/config.rktd" \
               "$out" > "$out/etc/racket/config.rktd"
             racket -G "$out/etc/racket" -l- \
