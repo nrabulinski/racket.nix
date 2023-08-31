@@ -16,7 +16,7 @@
       else collectDeps depsDeps';
     depsRecur' = lib.unique depsRecur;
   in
-    lib.unique ((map (dep: dep.name) (deps ++ depsDeps')) ++ depsRecur');
+    lib.unique (deps ++ depsDeps' ++ depsRecur');
   fetchzip' = args:
     fetchzip
     (args
@@ -38,10 +38,10 @@
     fetchzip = fetchzip';
     mkRacketPackage = callPackage ./mk-racket-package.nix {};
   };
-  createCatalog = pkgNames:
+  createCatalog = paths:
     symlinkJoin {
       name = "racket-catalog";
-      paths = map (name: pkgs.${name}) pkgNames;
+      inherit paths;
     };
   newLayer = prevLayer: defaultLookupLib: {
     allowUser ? null,
@@ -52,10 +52,9 @@
   }:
     stdenvNoCC.mkDerivation (final: let
       prevDeps = prevLayer.racketInputs or [];
-      deps = racketInputs ++ (withRacketPackages pkgs);
-      filteredDeps = lib.filter (dep: ! lib.elem dep prevDeps) deps;
-      allDeps = collectDeps filteredDeps;
-      installDeps = lib.optionalString (filteredDeps != []) ''
+      deps = (withRacketPackages pkgs) ++ racketInputs;
+      allDeps = collectDeps deps;
+      installDeps = lib.optionalString (deps != []) ''
         "$out/bin/raco" pkg install \
           --installation \
           --copy \
@@ -66,7 +65,7 @@
           --catalog "file://$racketCatalog" \
           --skip-installed \
           -D \
-          ${lib.escapeShellArgs (map (dep: dep.name) filteredDeps)}
+          ${lib.escapeShellArgs (map (dep: dep.name) deps)}
       '';
     in {
       name = "${prevLayer.name or prevLayer.pname}-layered";
