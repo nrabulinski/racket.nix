@@ -1,14 +1,14 @@
 {
+  mkRacketPackage,
   fetchFromGitHub,
   fetchFromGitLab,
   fetchzip,
-  mkRacketPackage,
 }: let
   self = {
     "peg-gen" = mkRacketPackage {
       name = "peg-gen";
       src = sources."https://github.com/lives-group/pegwfgen.git";
-      checksum = "a27f3189af880e463b0dbb2bab2b1786fcd62dcc";
+      checksum = "347d393e5ebf554bf8a022414388a32e301b4a65";
       racketDeps = [self."scribble-lib" self."algorithms" self."cover-lib" self."racket-doc" self."rackunit-lib" self."rackunit" self."rackcheck" self."cover"];
       cyclicDeps = [];
     };
@@ -50,7 +50,7 @@
     "srfi-doc-nonfree" = mkRacketPackage {
       name = "srfi-doc-nonfree";
       src = "${sources."git://github.com/racket/srfi/"}/srfi-doc-nonfree";
-      checksum = "25eb1c0e1ab8a1fa227750aa7f0689a2c531f8c8";
+      checksum = "cab009da67adf40737ae7ff02cd7c8bd6316d61d";
       racketDeps = [self."scribble-lib" self."racket-index" self."scheme-lib" self."srfi-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -78,7 +78,7 @@
     "drracket-tool-lib" = mkRacketPackage {
       name = "drracket-tool-lib";
       src = "${sources."git://github.com/racket/drracket/"}/drracket-tool-lib";
-      checksum = "2657eafdcfb5e4ccef19405492244f679b9234ef";
+      checksum = "7899052c860f3549b54b753144cd2c2519562012";
       racketDeps = [self."string-constants-lib" self."scribble-lib" self."racket-index" self."drracket-tool-text-lib" self."gui-lib" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -106,8 +106,15 @@
     "lathe-comforts-lib" = mkRacketPackage {
       name = "lathe-comforts-lib";
       src = "${sources."https://github.com/lathe/lathe-comforts-for-racket.git"}/lathe-comforts-lib";
-      checksum = "43829a1613140d6b12ee1d078ea1d08f9f0c1827";
+      checksum = "3ad28a38f202603a33b67a7a74a6f8d2e80f7ba5";
       racketDeps = [self."parendown-lib" self."reprovide-lang-lib"];
+      cyclicDeps = [];
+    };
+    "let-expander" = mkRacketPackage {
+      name = "let-expander";
+      src = sources."https://github.com/Jython1415/let-expander.git";
+      checksum = "5e4f4446731af772c97b0c27c546e8c053a519ce";
+      racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "vdb-test" = mkRacketPackage {
@@ -197,7 +204,7 @@
     "scribble-code-examples" = mkRacketPackage {
       name = "scribble-code-examples";
       src = "${sources."git://github.com/AlexKnauth/scribble-code-examples"}/scribble-code-examples";
-      checksum = "56f3ce6752fdec6240130fb37bda29288b9091aa";
+      checksum = "b2c128b0f60230ba0e539d3790faf70ba2c1f5fa";
       racketDeps = [self."scribble-code-examples-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib"];
       cyclicDeps = [];
     };
@@ -246,7 +253,7 @@
     "sew-doc" = mkRacketPackage {
       name = "sew-doc";
       src = "${sources."https://github.com/lathe/sew-for-racket.git"}/sew-doc";
-      checksum = "9daf6ccc1188fe6ef92a5caab83451ac7dc57fc0";
+      checksum = "8758c3792adb413af2b822e54d3e8f5e8d3f55db";
       racketDeps = [self."sew-lib" self."parendown-lib" self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -288,7 +295,7 @@
     "simple-barcode" = mkRacketPackage {
       name = "simple-barcode";
       src = sources."https://github.com/simmone/racket-simple-barcode.git";
-      checksum = "34e82eda9b3235d31e9e88abaa823330bc62f9d7";
+      checksum = "455ca5c7cdf7747eb42d7c8e90ddff48fa4ec2c7";
       racketDeps = [self."draw-lib" self."simple-svg" self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -323,7 +330,7 @@
     "ebuild-doc" = mkRacketPackage {
       name = "ebuild-doc";
       src = "${sources."https://gitlab.com/gentoo-racket/racket-ebuild.git"}/src/ebuild-doc";
-      checksum = "6d23de624c9087e03f9407379160821e5e00c4f0";
+      checksum = "f546f1c86a834a04520d0817407141d376572c86";
       racketDeps = [self."ebuild-tools" self."ebuild-transformers" self."ziptie-git" self."scribble-lib" self."ebuild-lib" self."ebuild-templates" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -345,7 +352,7 @@
     "htdp" = mkRacketPackage {
       name = "htdp";
       src = "${sources."git://github.com/racket/htdp/"}/htdp";
-      checksum = "73ec2b90055f3ab66d30e54dc3463506b25e50b4";
+      checksum = "8037f1cc620ed91fe68362ce5ad3d887269eb725";
       racketDeps = [self."htdp-lib" self."htdp-doc"];
       cyclicDeps = [];
     };
@@ -366,7 +373,7 @@
     "new" = mkRacketPackage {
       name = "new";
       src = sources."https://github.com/racket-templates/new.git";
-      checksum = "d5338b95c9d6ed73847e16317cf4f67375e3cd40";
+      checksum = "b350356803f0f5dfbd5f651da8de607b37c0758b";
       racketDeps = [self."http-easy" self."readline" self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -387,7 +394,7 @@
     "plai-lib" = mkRacketPackage {
       name = "plai-lib";
       src = "${sources."git://github.com/racket/plai"}/plai-lib";
-      checksum = "ae42bcb581ab02dcb9ddaea98d5ecded589c8d47";
+      checksum = "96c8807a2acde9249f124498e46650223a47e24a";
       racketDeps = [self."drracket-tool-lib" self."draw-lib" self."sandbox-lib" self."scheme-lib" self."eli-tester" self."gui-lib" self."srfi-lite-lib" self."rackunit-lib" self."at-exp-lib" self."web-server-lib" self."pconvert-lib"];
       cyclicDeps = [];
     };
@@ -415,14 +422,14 @@
     "zuo-doc" = mkRacketPackage {
       name = "zuo-doc";
       src = "${sources."https://github.com/racket/racket.git"}/racket/src/zuo/zuo-doc";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."scribble-lib" self."racket-doc" self."at-exp-lib"];
       cyclicDeps = [];
     };
     "resource-pool" = mkRacketPackage {
       name = "resource-pool";
       src = "${sources."https://github.com/Bogdanp/racket-resource-pool.git"}/resource-pool";
-      checksum = "e5063198cd4c293d8e99c1f445f8acda2d8d7f4f";
+      checksum = "019ee1c17e5596d2e2e8cd1387811440da2dc95a";
       racketDeps = [self."scribble-lib" self."rackcheck-lib" self."racket-doc" self."rackunit-lib" self."resource-pool-lib"];
       cyclicDeps = [];
     };
@@ -478,7 +485,7 @@
     "net" = mkRacketPackage {
       name = "net";
       src = "${sources."git://github.com/racket/racket"}/pkgs/net";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."net-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -492,7 +499,7 @@
     "sew-lib" = mkRacketPackage {
       name = "sew-lib";
       src = "${sources."https://github.com/lathe/sew-for-racket.git"}/sew-lib";
-      checksum = "9daf6ccc1188fe6ef92a5caab83451ac7dc57fc0";
+      checksum = "8758c3792adb413af2b822e54d3e8f5e8d3f55db";
       racketDeps = [self."parendown-lib"];
       cyclicDeps = [];
     };
@@ -506,7 +513,7 @@
     "gregor-test" = mkRacketPackage {
       name = "gregor-test";
       src = "${sources."https://github.com/97jaz/gregor.git"}/gregor-test";
-      checksum = "2d20192e8795e01a1671869dddaf1984f0cbafee";
+      checksum = "f56215db229ef2e33670f55d08c0330d8f85de23";
       racketDeps = [self."rackunit-lib" self."gregor-lib"];
       cyclicDeps = [];
     };
@@ -521,7 +528,7 @@
     "xrepl-test" = mkRacketPackage {
       name = "xrepl-test";
       src = "${sources."git://github.com/racket/xrepl/"}/xrepl-test";
-      checksum = "b1399e0fcfd8e0af1e4c6528dd6d513b20fc1698";
+      checksum = "3240161a25073e204cb7618deac5a632f6477aa5";
       racketDeps = [self."eli-tester" self."xrepl-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -530,6 +537,13 @@
       src = "${sources."https://github.com/nuty/vela.git"}/vela-lib";
       checksum = "ba00692452020136b4f629e729a7e58855db630a";
       racketDeps = [self."web-server"];
+      cyclicDeps = [];
+    };
+    "http-proxy-test" = mkRacketPackage {
+      name = "http-proxy-test";
+      src = "${sources."https://github.com/Bogdanp/racket-http-proxy.git"}/http-proxy-test";
+      checksum = "94db8bcccd06da5b072b78bc8a553c6ddb9993eb";
+      racketDeps = [self."http-easy-lib" self."http-proxy-lib" self."rackunit"];
       cyclicDeps = [];
     };
     "gui-pkg-manager-lib" = mkRacketPackage {
@@ -563,7 +577,7 @@
     "preserves" = mkRacketPackage {
       name = "preserves";
       src = "${sources."https://gitlab.com/preserves/preserves.git"}/implementations/racket/preserves";
-      checksum = "930964ca055f84d3cd1b520204a296f53b611907";
+      checksum = "685302f5478b0cde01b8d827341ed9ee56c5d39e";
       racketDeps = [self."data-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -595,6 +609,13 @@
       racketDeps = [self."rackunit-lib"];
       cyclicDeps = [];
     };
+    "amb-parser" = mkRacketPackage {
+      name = "amb-parser";
+      src = sources."https://github.com/InAnYan/amb-parser.git";
+      checksum = "59f3197125e1ec0d1fa62632be75dc260bacf341";
+      racketDeps = [self."racket-doc" self."brag-lib" self."scribble-lib" self."brag" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "portaudio-x86_64-macosx" = mkRacketPackage {
       name = "portaudio-x86_64-macosx";
       src = sources."https://github.com/jbclements/portaudio-x86_64-macosx.git";
@@ -619,7 +640,7 @@
     "shplait" = mkRacketPackage {
       name = "shplait";
       src = sources."https://github.com/mflatt/shplait.git";
-      checksum = "489e471c287360c5892858de2d31686d07f2c296";
+      checksum = "61e4ad78e5c34e53d9f626a51089a1740d481b4b";
       racketDeps = [self."sandbox-lib" self."scribble-lib" self."racket-doc" self."rhombus-prototype"];
       cyclicDeps = [];
     };
@@ -682,7 +703,7 @@
     "racket-test-core" = mkRacketPackage {
       name = "racket-test-core";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/racket-test-core";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."dynext-lib" self."sandbox-lib" self."zo-lib" self."serialize-cstruct-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -731,7 +752,7 @@
     "keyring" = mkRacketPackage {
       name = "keyring";
       src = "${sources."https://github.com/samdphillips/racket-keyring.git"}/keyring";
-      checksum = "97c77e9f57b6c334e3ee512953c70c5261e0041f";
+      checksum = "5233dface521aa8dfa341466f67d791dd20a352a";
       racketDeps = [self."scribble-lib" self."keyring-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -740,29 +761,29 @@
     "qi-test" = mkRacketPackage {
       name = "qi-test";
       src = "${sources."https://github.com/drym-org/qi.git"}/qi-test";
-      checksum = "c3cec5a9fd98ca19bbc336ee7371be5a2c1f34c6";
+      checksum = "070ffc5e0d2e3a581a1bc11acd391e980dbdd328";
       racketDeps = [self."adjutor" self."math-lib" self."qi-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "htdp-examplar" = mkRacketPackage {
       name = "htdp-examplar";
       src = sources."https://github.com/dbp/htdp-examplar.git";
-      checksum = "395ee0dea6dde8721b6b3bcbe476121bfde5ce57";
+      checksum = "f180ef537e3401c064e54e99e1551d92428cc725";
       racketDeps = [self."htdp-lib" self."rackunit"];
       cyclicDeps = [];
     };
     "racket-lang-org" = mkRacketPackage {
       name = "racket-lang-org";
       src = sources."git://github.com/racket/racket-lang-org";
-      checksum = "eb201ef8746dbb5467b9dcd8dacf3ae6219244aa";
+      checksum = "c190cb1131d9ddc7c8cf7b6f637ef4e60ecc698a";
       racketDeps = [self."draw-lib" self."pict-lib" self."ppict" self."net-lib" self."txexpr" self."plot-gui-lib" self."s3-sync" self."pollen" self."scribble-lib" self."racket-index" self."plt-web-lib" self."slideshow-lib" self."frog" self."math-lib" self."graph" self."csv-reading" self."rackunit-lib" self."gregor-lib" self."at-exp-lib" self."syntax-color-lib" self."datalog" self."gui-lib" self."css-tools" self."sugar" self."plot-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
     "htdf" = mkRacketPackage {
       name = "htdf";
       src = sources."https://github.com/jackfirth/htdf.git";
-      checksum = "fc3b082c439e7d073c9656e6a878513a057845c6";
-      racketDeps = [self."scribble-lib" self."racket-doc"];
+      checksum = "a65a9ff49685dc2183e6334cba8d6acfdb644d2f";
+      racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "x11" = mkRacketPackage {
@@ -845,7 +866,7 @@
     "nlopt" = mkRacketPackage {
       name = "nlopt";
       src = sources."https://github.com/jkominek/nlopt.git";
-      checksum = "164381c8c94066e5b2a2b57a81f2a96694d6bca2";
+      checksum = "05e4c0333c405cc64757930965b320220ee3a62c";
       racketDeps = [self."scribble-lib" self."math-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -908,7 +929,7 @@
     "xrepl" = mkRacketPackage {
       name = "xrepl";
       src = "${sources."git://github.com/racket/xrepl/"}/xrepl";
-      checksum = "b1399e0fcfd8e0af1e4c6528dd6d513b20fc1698";
+      checksum = "3240161a25073e204cb7618deac5a632f6477aa5";
       racketDeps = [self."xrepl-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -1010,6 +1031,20 @@
       racketDeps = [self."typed-racket-lib" self."macrotypes-lib" self."turnstile-lib"];
       cyclicDeps = [];
     };
+    "SMathML" = mkRacketPackage {
+      name = "SMathML";
+      src = sources."https://github.com/alpha-beta-eta/SMathML.git";
+      checksum = "84b9c98b1cd009f604f0f791f405683d426405fb";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
+    "sexp-diff-lib" = mkRacketPackage {
+      name = "sexp-diff-lib";
+      src = "${sources."https://github.com/stamourv/sexp-diff.git"}/sexp-diff-lib";
+      checksum = "5791264cb7031308b81c8c91df457cd51888210f";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
     "plait" = mkRacketPackage {
       name = "plait";
       src = sources."https://github.com/mflatt/plait.git";
@@ -1033,22 +1068,15 @@
     };
     "egg-herbie-linux" = mkRacketPackage {
       name = "egg-herbie-linux";
-      src = sources."https://github.com/uwplse/herbie/releases/download/v1.6/egg-herbie-ubuntu.zip";
-      checksum = "e917135b76109f01b4ba07485256eed1b319e935";
+      src = sources."https://github.com/uwplse/herbie/releases/download/v2.0.2/egg-herbie-ubuntu.zip";
+      checksum = "ab437f0661f9c78346a95b2ba3f63171f609351a";
       racketDeps = [self."rackunit-lib"];
-      cyclicDeps = [];
-    };
-    "sexp-diff-lib" = mkRacketPackage {
-      name = "sexp-diff-lib";
-      src = "${sources."https://github.com/stamourv/sexp-diff.git"}/sexp-diff-lib";
-      checksum = "5791264cb7031308b81c8c91df457cd51888210f";
-      racketDeps = [];
       cyclicDeps = [];
     };
     "expeditor" = mkRacketPackage {
       name = "expeditor";
       src = "${sources."https://github.com/racket/expeditor.git"}/expeditor";
-      checksum = "9b2d54a97a4f17a75d3198630a978b3eb2b4d1af";
+      checksum = "189a3ddf312cfc9ab0b93f54e096fdd2267cc113";
       racketDeps = [self."expeditor-doc" self."expeditor-lib"];
       cyclicDeps = [];
     };
@@ -1069,8 +1097,15 @@
     "http-easy" = mkRacketPackage {
       name = "http-easy";
       src = "${sources."https://github.com/Bogdanp/racket-http-easy.git"}/http-easy";
-      checksum = "4a037d5430ae892249d01567d1b8623bcb421cc5";
+      checksum = "1f79be1e420b111f17fac2b27573d2411c7445a2";
       racketDeps = [self."net-cookies-lib" self."http-easy-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib"];
+      cyclicDeps = [];
+    };
+    "mqtt-client" = mkRacketPackage {
+      name = "mqtt-client";
+      src = sources."https://github.com/joergen7/mqtt-client.git";
+      checksum = "fe1d72c3eb7b6901c82db84048001534a7bf4df3";
+      racketDeps = [self."libpaho-mqtt3-x86_64-linux-natipkg" self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "pmsf-manifest" = mkRacketPackage {
@@ -1202,8 +1237,8 @@
     "sirmail" = mkRacketPackage {
       name = "sirmail";
       src = sources."git+https://github.com/mflatt/sirmail";
-      checksum = "30c9bd6c6993ddd432d50a7ab705afa22ec34891";
-      racketDeps = [self."pict-lib" self."sandbox-lib" self."scheme-lib" self."parser-tools-lib" self."net-lib" self."compatibility-lib" self."gui-lib" self."syntax-color-lib" self."drracket" self."pict-snip-lib"];
+      checksum = "b1b9bc9b40aec1a8cf62cd2374b28550af04371a";
+      racketDeps = [self."pict-lib" self."sandbox-lib" self."scheme-lib" self."parser-tools-lib" self."web-server-lib" self."net-lib" self."compatibility-lib" self."gui-lib" self."syntax-color-lib" self."drracket" self."pict-snip-lib"];
       cyclicDeps = [];
     };
     "png-image" = mkRacketPackage {
@@ -1241,6 +1276,27 @@
       racketDeps = [self."beautiful-racket-lib" self."json-pointer" self."net-cookies-lib" self."misc1" self."web-server-lib" self."argo" self."http" self."br-parser-tools-lib" self."dotenv" self."racket-doc" self."brag-lib" self."scribble-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
+    "math-quiz" = mkRacketPackage {
+      name = "math-quiz";
+      src = sources."https://github.com/hrvoje064/math-quiz-jasna.git";
+      checksum = "4391026db5614a621f75c18d6b7f61a7f487e27b";
+      racketDeps = [self."gui-pkg-manager-lib" self."pict-lib" self."scribble-lib" self."htdp-lib" self."net-lib" self."gui-lib" self."rackunit-lib" self."drracket" self."racket-doc"];
+      cyclicDeps = [];
+    };
+    "option-contract-test" = mkRacketPackage {
+      name = "option-contract-test";
+      src = "${sources."git://github.com/racket/option-contract"}/option-contract-test";
+      checksum = "50d72f706ef944689e21b65a6c94b3c819989c59";
+      racketDeps = [self."option-contract-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "presentation-big-bang" = mkRacketPackage {
+      name = "presentation-big-bang";
+      src = sources."https://github.com/maueroats/presentation-big-bang.git";
+      checksum = "2490a76a04db30d41d87588b0fc7b6dbc71d17b2";
+      racketDeps = [self."scribble-lib" self."htdp-lib" self."racket-doc"];
+      cyclicDeps = [];
+    };
     "drracket-cmdline-args" = mkRacketPackage {
       name = "drracket-cmdline-args";
       src = sources."https://github.com/sorawee/drracket-cmdline-args.git";
@@ -1251,7 +1307,7 @@
     "web-server" = mkRacketPackage {
       name = "web-server";
       src = "${sources."git://github.com/racket/web-server/"}/web-server";
-      checksum = "e321f8425e539d22412d4f7763532b3f3a65c95e";
+      checksum = "87a1e58a9b92c621f7d96c76de1da39587f04140";
       racketDeps = [self."web-server-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -1262,11 +1318,11 @@
       racketDeps = [self."txexpr" self."rackunit-lib"];
       cyclicDeps = [];
     };
-    "option-contract-test" = mkRacketPackage {
-      name = "option-contract-test";
-      src = "${sources."git://github.com/racket/option-contract"}/option-contract-test";
-      checksum = "42d22d5d01b7717911af1bde4baaa570ae3df516";
-      racketDeps = [self."option-contract-lib" self."rackunit-lib"];
+    "rdf-core" = mkRacketPackage {
+      name = "rdf-core";
+      src = sources."https://github.com/johnstonskj/racket-rdf-core.git";
+      checksum = "78c5c2182727830233abe758808b783758b57bad";
+      racketDeps = [self."rx" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."uuid" self."langtag"];
       cyclicDeps = [];
     };
     "drracket-wakatime" = mkRacketPackage {
@@ -1286,7 +1342,7 @@
     "snip-lib" = mkRacketPackage {
       name = "snip-lib";
       src = "${sources."git://github.com/racket/snip/"}/snip-lib";
-      checksum = "863b13662b5e6ae6271c33a41969cac4f57a4ef6";
+      checksum = "8209ef8e50fdb81788253846b259a72f06d16019";
       racketDeps = [self."draw-lib"];
       cyclicDeps = [];
     };
@@ -1350,7 +1406,7 @@
     "fexpress-doc" = mkRacketPackage {
       name = "fexpress-doc";
       src = "${sources."https://github.com/rocketnia/fexpress.git"}/fexpress-doc";
-      checksum = "1fa067d6b943c1217c0061dfed8d4457fc454d6f";
+      checksum = "b5c951fddebc3e4d3463cdf78dc9d417de97d50f";
       racketDeps = [self."scribble-lib" self."fexpress-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -1364,7 +1420,7 @@
     "ebuild-modify-lang" = mkRacketPackage {
       name = "ebuild-modify-lang";
       src = "${sources."https://gitlab.com/gentoo-racket/racket-ebuild.git"}/src/ebuild-modify-lang";
-      checksum = "6d23de624c9087e03f9407379160821e5e00c4f0";
+      checksum = "f546f1c86a834a04520d0817407141d376572c86";
       racketDeps = [self."ebuild-lib"];
       cyclicDeps = [];
     };
@@ -1385,7 +1441,7 @@
     "trivial" = mkRacketPackage {
       name = "trivial";
       src = "${sources."https://github.com/bennn/trivial.git"}/trivial";
-      checksum = "c8fb9dcc377d1bf40ca167e34072bec90d2651e1";
+      checksum = "6da6a2edea1912c7b28d0bcaca5ffe09bf247ca5";
       racketDeps = [self."scribble-lib" self."reprovide-lang" self."db-lib" self."racket-doc" self."rackunit-abbrevs" self."typed-racket-more" self."rackunit-lib" self."at-exp-lib" self."plot-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -1434,7 +1490,7 @@
     "string-searchers" = mkRacketPackage {
       name = "string-searchers";
       src = sources."https://github.com/shawnw/racket-string-searchers.git";
-      checksum = "46e466009ff2c5b83980c5dc2f78542f9aeb6775";
+      checksum = "6e7a5f030621ced7f84addd49169a2b22016c6aa";
       racketDeps = [self."scribble-lib" self."rackunit-typed" self."typed-racket-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -1490,7 +1546,7 @@
     "plot-gui-lib" = mkRacketPackage {
       name = "plot-gui-lib";
       src = "${sources."git://github.com/racket/plot/"}/plot-gui-lib";
-      checksum = "b0da52632c0369058887439345eb90cbf8e99dae";
+      checksum = "a14222e19736f75bdb9c660ca9c3b78c6e2ee9b3";
       racketDeps = [self."snip-lib" self."typed-racket-more" self."math-lib" self."gui-lib" self."plot-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -1525,8 +1581,15 @@
     "pollen-citations-mcgill" = mkRacketPackage {
       name = "pollen-citations-mcgill";
       src = sources."https://github.com/sanchom/pollen-citations-mcgill.git";
-      checksum = "4d510c4098e00e97257b50b6a9189d7e660c3c8c";
+      checksum = "63bcef990cf549d5863a7d6117a1c3475ab53286";
       racketDeps = [self."txexpr" self."racket-doc" self."pollen" self."scribble-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "wsync" = mkRacketPackage {
+      name = "wsync";
+      src = sources."https://gitlab.com/oquijano/wsync.git";
+      checksum = "75f31d734365a332bcf959c174396f68b336618e";
+      racketDeps = [self."web-server-lib" self."racket-doc" self."rfc6455" self."scribble-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "towers" = mkRacketPackage {
@@ -1560,14 +1623,14 @@
     "string-constants" = mkRacketPackage {
       name = "string-constants";
       src = "${sources."git://github.com/racket/string-constants/"}/string-constants";
-      checksum = "0eba894bc607edcdfb45e97568e66ce0a2faf1a7";
+      checksum = "fe3c2b4252cc6d6b8b2fc3ebeafe4a4a62beeeff";
       racketDeps = [self."string-constants-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "memoize" = mkRacketPackage {
       name = "memoize";
       src = "${sources."https://github.com/jbclements/memoize.git"}/memoize";
-      checksum = "911a0d3abe44fca1203425f6ff5767a9796f0c1f";
+      checksum = "f373706824145ce2a8247edb76278d6df139333c";
       racketDeps = [self."memoize-test" self."memoize-doc" self."memoize-lib"];
       cyclicDeps = [];
     };
@@ -1609,7 +1672,7 @@
     "plt-service-monitor" = mkRacketPackage {
       name = "plt-service-monitor";
       src = sources."git://github.com/racket/plt-service-monitor";
-      checksum = "7a5bceb4aa223e75c9a6a4cc55ff913b9b70b584";
+      checksum = "2c4714b35e408d80ea3ffa3d27b20df5f3763ea3";
       racketDeps = [self."scribble-lib" self."net-lib" self."http" self."racket-doc" self."aws"];
       cyclicDeps = [];
     };
@@ -1623,14 +1686,14 @@
     "lua-lang" = mkRacketPackage {
       name = "lua-lang";
       src = "${sources."https://github.com/Bogdanp/racket-lua.git"}/lua";
-      checksum = "00ff5a503dd8fc1031b0929d91a9e07186e29437";
+      checksum = "7551d2efbc1187ab91afb61ef6b291b382e1edce";
       racketDeps = [self."lua-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib"];
       cyclicDeps = [];
     };
     "terminal-phase" = mkRacketPackage {
       name = "terminal-phase";
       src = sources."https://gitlab.com/dustyweb/terminal-phase.git";
-      checksum = "3a67e738793c6db951ee919e15ac6397c63d0791";
+      checksum = "4faff186c5bfbfbb50d6ee554068d9d4861bbe6f";
       racketDeps = [self."ansi" self."raart" self."goblins" self."pk" self."lux"];
       cyclicDeps = [];
     };
@@ -1651,7 +1714,7 @@
     "mintexpp-tex-lib" = mkRacketPackage {
       name = "mintexpp-tex-lib";
       src = "${sources."https://github.com/shhyou/mintexpp.git"}/mintexpp-tex-lib";
-      checksum = "4bce044d57b58fb390df1eacdf5787ebdb52ffa6";
+      checksum = "2d457fa70581b45871833405182a84f7de236b47";
       racketDeps = [self."scribble-lib" self."mintexpp-lib" self."mintexpp-reader-lib" self."commonmark-lib" self."syntax-color-lib"];
       cyclicDeps = [];
     };
@@ -1679,14 +1742,14 @@
     "simple-qr" = mkRacketPackage {
       name = "simple-qr";
       src = sources."https://github.com/simmone/racket-simple-qr.git";
-      checksum = "62f253a33334ccf9333792309336d451da479c84";
+      checksum = "7837f5a9a6115915a816c5eef4b10cd8111fec13";
       racketDeps = [self."draw-lib" self."simple-svg" self."scribble-lib" self."reed-solomon" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "levintreesearch_cm" = mkRacketPackage {
       name = "levintreesearch_cm";
       src = sources."https://github.com/deepmind/levintreesearch_cm.git";
-      checksum = "78b4f1519cb1d2bf7d679c8dca1797ca3cda7e15";
+      checksum = "82c8b4ed63bde1978b153a060095cddf000dd217";
       racketDeps = [self."plot-gui-lib" self."pict-lib" self."scribble-lib" self."math-lib" self."text-block" self."global" self."safe-case" self."racket-doc" self."rackunit-lib" self."define2" self."gui-lib" self."text-table" self."plot-lib" self."data-lib"];
       cyclicDeps = [];
     };
@@ -1718,6 +1781,13 @@
       racketDeps = [];
       cyclicDeps = [];
     };
+    "poppler-aarch64-macosx" = mkRacketPackage {
+      name = "poppler-aarch64-macosx";
+      src = "${sources."https://github.com/soegaard/poppler-libs.git"}/poppler-aarch64-macosx";
+      checksum = "029c07225d55593ee38c1bc3fcce2a8a1dd6cdc6";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
     "opengl" = mkRacketPackage {
       name = "opengl";
       src = sources."github://github.com/stephanh42/RacketGL/master";
@@ -1728,7 +1798,7 @@
     "gui-easy-lib" = mkRacketPackage {
       name = "gui-easy-lib";
       src = "${sources."https://github.com/Bogdanp/racket-gui-easy.git"}/gui-easy-lib";
-      checksum = "ddba619ff590f5f1ef981d56ea745506dec56a53";
+      checksum = "d0c760f74ca6bc5bd027ec1b6749fa81ef84e02e";
       racketDeps = [self."draw-lib" self."pict-lib" self."box-extra-lib" self."gui-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -1749,7 +1819,7 @@
     "mintexpp" = mkRacketPackage {
       name = "mintexpp";
       src = "${sources."https://github.com/shhyou/mintexpp.git"}/mintexpp";
-      checksum = "4bce044d57b58fb390df1eacdf5787ebdb52ffa6";
+      checksum = "2d457fa70581b45871833405182a84f7de236b47";
       racketDeps = [self."mintexpp-tex-lib" self."mintexpp-lib" self."mintexpp-reader-lib"];
       cyclicDeps = [];
     };
@@ -1813,7 +1883,7 @@
     "expander" = mkRacketPackage {
       name = "expander";
       src = "${sources."git://github.com/racket/racket/"}/racket/src/expander";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."zo-lib" self."compiler-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -1876,21 +1946,21 @@
     "slide-easy" = mkRacketPackage {
       name = "slide-easy";
       src = sources."https://github.com/Antigen-1/slide-easy.git";
-      checksum = "aee8d974a75eb4eee43587cbc8ae916146e7cdd1";
+      checksum = "d87bb9150033c7061fb83968c785b7896f51c70d";
       racketDeps = [self."pict-lib" self."scribble-lib" self."slideshow-lib" self."sugar" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "fexpress" = mkRacketPackage {
       name = "fexpress";
       src = "${sources."https://github.com/rocketnia/fexpress.git"}/fexpress";
-      checksum = "1fa067d6b943c1217c0061dfed8d4457fc454d6f";
+      checksum = "b5c951fddebc3e4d3463cdf78dc9d417de97d50f";
       racketDeps = [self."fexpress-doc" self."fexpress-lib"];
       cyclicDeps = [];
     };
     "typed-racket-compatibility" = mkRacketPackage {
       name = "typed-racket-compatibility";
       src = "${sources."git://github.com/racket/typed-racket/"}/typed-racket-compatibility";
-      checksum = "f3e42b3aba6ef84b01fc25d0a9ef48cd9d16a554";
+      checksum = "c3702d6ee849182ab4cf7fd9d2a8f6135fd7aaa0";
       racketDeps = [self."scheme-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -1925,7 +1995,7 @@
     "rash" = mkRacketPackage {
       name = "rash";
       src = "${sources."https://github.com/willghatch/racket-rash.git"}/rash";
-      checksum = "42460a283ce2d7296257b068505cd4649052f67c";
+      checksum = "feb3ad16deb0b372a05f5d522f71e1746a3f96fd";
       racketDeps = [self."scribble-lib" self."readline-lib" self."linea" self."udelim" self."shell-pipeline" self."racket-doc" self."basedir" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -1953,15 +2023,15 @@
     "russian-lang" = mkRacketPackage {
       name = "russian-lang";
       src = sources."https://github.com/Kalimehtar/russian-lang.git";
-      checksum = "02d06c63eede00c314147b91f1643a24a023c964";
+      checksum = "c3b7166fe617a7ba7af2e1e49f33addb38351376";
       racketDeps = [self."scribble-lib" self."parser-tools-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "keyring-keychain-lib" = mkRacketPackage {
       name = "keyring-keychain-lib";
       src = "${sources."https://github.com/samdphillips/racket-keyring.git"}/keyring-keychain-lib";
-      checksum = "97c77e9f57b6c334e3ee512953c70c5261e0041f";
-      racketDeps = [self."keyring-lib" self."rackunit-lib"];
+      checksum = "5233dface521aa8dfa341466f67d791dd20a352a";
+      racketDeps = [self."keyring-lib"];
       cyclicDeps = [];
     };
     "racket-predicates" = mkRacketPackage {
@@ -2002,14 +2072,14 @@
     "cs-bootstrap" = mkRacketPackage {
       name = "cs-bootstrap";
       src = "${sources."https://github.com/racket/racket.git"}/racket/src/rktboot";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [];
       cyclicDeps = [];
     };
     "country" = mkRacketPackage {
       name = "country";
       src = "${sources."https://github.com/Bogdanp/racket-country.git"}/country";
-      checksum = "e433bcdb710718f3b46470fc2cf6f210c98998e1";
+      checksum = "9420c2b7e32acbdf125e7adbe1870668484bb493";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -2139,10 +2209,17 @@
       racketDeps = [];
       cyclicDeps = [];
     };
+    "libpaho-mqtt3-x86_64-linux-natipkg" = mkRacketPackage {
+      name = "libpaho-mqtt3-x86_64-linux-natipkg";
+      src = sources."https://github.com/joergen7/libpaho-mqtt3-x86_64-linux-natipkg.git";
+      checksum = "200ef60a9ce1e0aae49f8b365b12f0a5cb8dccd2";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
     "xsmith" = mkRacketPackage {
       name = "xsmith";
       src = "${sources."https://gitlab.flux.utah.edu/xsmith/xsmith.git"}/xsmith";
-      checksum = "505bd6af3c3b7b5bc0a1790b8bbc88331ff7c77f";
+      checksum = "de6ace161b0a09a8137c38a181a66c1403f5698a";
       racketDeps = [self."memoize" self."clotho" self."scribble-lib" self."math-lib" self."quickcheck" self."racr" self."racket-doc" self."rackunit-lib" self."at-exp-lib" self."unix-socket-lib" self."pprint" self."version-string-with-git-hash"];
       cyclicDeps = [];
     };
@@ -2157,7 +2234,7 @@
     "distro-build-lib" = mkRacketPackage {
       name = "distro-build-lib";
       src = "${sources."git://github.com/racket/distro-build/"}/distro-build-lib";
-      checksum = "70b8f8e89bed429fe70e43952bc02aaf6c08b388";
+      checksum = "11190e45761a7933c19cf1b1170c7efeebe2c517";
       racketDeps = [self."distro-build-client" self."distro-build-server"];
       cyclicDeps = [];
     };
@@ -2185,14 +2262,14 @@
     "unicode-breaks" = mkRacketPackage {
       name = "unicode-breaks";
       src = sources."https://github.com/shawnw/racket-unicode-breaks.git";
-      checksum = "e4367e6608d6f138081d1230374e6ba334604540";
+      checksum = "20c30a4a0d8991c9af078e92856590e09af190e0";
       racketDeps = [self."scribble-lib" self."rackunit-lib" self."srfi-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "typed-racket-stream" = mkRacketPackage {
       name = "typed-racket-stream";
-      src = sources."git://github.com/AlexKnauth/typed-racket-stream";
-      checksum = "ab5481df26289a47545101aeb1b74a0e7f02887f";
+      src = sources."https://github.com/AlexKnauth/typed-racket-stream.git";
+      checksum = "6aa63a3a1580236a7ae1c8df2256a3df7abc37dc";
       racketDeps = [self."typed-racket-more" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -2234,7 +2311,7 @@
     "rml-knn" = mkRacketPackage {
       name = "rml-knn";
       src = sources."https://github.com/johnstonskj/rml-knn.git";
-      checksum = "55a55d0e55d8363afafea7dd59b6dda37e77d4b0";
+      checksum = "f141107bd733d6c1a6dc163ca44e86c1378fc361";
       racketDeps = [self."cover-coveralls" self."rml-core" self."racket-index" self."math-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -2248,8 +2325,8 @@
     "pict-utils" = mkRacketPackage {
       name = "pict-utils";
       src = sources."https://github.com/samth/pict-utils.git";
-      checksum = "e621d145b5c0e270f208fec30f7f69ada6888bf0";
-      racketDeps = [];
+      checksum = "fd71fd9aa0a9266ae4f1340b10f5183ef4ecad35";
+      racketDeps = [self."plot-gui-lib" self."draw-lib" self."scribble-lib" self."slideshow-lib" self."plot-lib" self."racket-doc" self."unstable-contract-lib" self."unstable-lib" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
     "extensible-parser-specifications" = mkRacketPackage {
@@ -2346,7 +2423,7 @@
     "string-constants-lib" = mkRacketPackage {
       name = "string-constants-lib";
       src = "${sources."git://github.com/racket/string-constants/"}/string-constants-lib";
-      checksum = "0eba894bc607edcdfb45e97568e66ce0a2faf1a7";
+      checksum = "fe3c2b4252cc6d6b8b2fc3ebeafe4a4a62beeeff";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -2367,7 +2444,7 @@
     "fixcopyright" = mkRacketPackage {
       name = "fixcopyright";
       src = sources."https://github.com/tonyg/fixcopyright.git";
-      checksum = "2791267ab57826b6cbcd7e9af3fcb8925e652e75";
+      checksum = "b1d690ef590cee820e6b20b6633ba1c8731597b8";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -2409,7 +2486,7 @@
     "tzgeolookup" = mkRacketPackage {
       name = "tzgeolookup";
       src = sources."https://github.com/alex-hhh/tzgeolookup.git";
-      checksum = "add21f8d3446fec46d1355edb13c00458891f2c3";
+      checksum = "d10c7d86a072ed7cb46b950361151753a0ae9d11";
       racketDeps = [self."geoid" self."scribble-lib" self."math-lib" self."db-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -2500,7 +2577,7 @@
     "tex-table" = mkRacketPackage {
       name = "tex-table";
       src = "${sources."git://github.com/racket/gui/"}/tex-table";
-      checksum = "d01d166149787e2d94176d3046764b35c7c0a876";
+      checksum = "3a800c8f36f082300009500cf8aac204aa6afd19";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -2542,14 +2619,14 @@
     "rackunit-gui" = mkRacketPackage {
       name = "rackunit-gui";
       src = "${sources."git://github.com/racket/rackunit/"}/rackunit-gui";
-      checksum = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
+      checksum = "41c64557f209c6a440c6595f29c1d6e7a7958917";
       racketDeps = [self."gui-lib" self."data-lib" self."class-iop-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "draw-lib" = mkRacketPackage {
       name = "draw-lib";
       src = "${sources."git://github.com/racket/draw/"}/draw-lib";
-      checksum = "76a1acc368f585b0f77f0b5377dcf66f835371e5";
+      checksum = "57b2e050a287e4f0c7e26662d4850c6ac62935c3";
       racketDeps = [self."draw-x11-x86_64-linux-natipkg" self."draw-aarch64-macosx-3" self."draw-ppc-macosx-3" self."draw-i386-macosx-3" self."draw-x86_64-macosx-3" self."draw-ttf-x86_64-linux-natipkg" self."draw-x86_64-linux-natipkg-3" self."draw-win32-i386-3" self."draw-win32-x86_64-3" self."draw-win32-arm64-3"];
       cyclicDeps = [];
     };
@@ -2563,8 +2640,8 @@
     "libzstd" = mkRacketPackage {
       name = "libzstd";
       src = "${sources."https://github.com/Bogdanp/racket-libzstd.git"}/libzstd";
-      checksum = "0a767be1883b8c54d9250cb725a73608ad7ffc2d";
-      racketDeps = [self."libzstd-x86_64-linux" self."libzstd-x86_64-macosx" self."libzstd-aarch64-macosx"];
+      checksum = "070bfc717aa71ca4b35d3636e9680cbff8133a68";
+      racketDeps = [self."libzstd-aarch64-macosx" self."libzstd-i386-win32" self."libzstd-x86_64-win32" self."libzstd-x86_64-linux" self."libzstd-aarch64-linux" self."libzstd-x86_64-macosx"];
       cyclicDeps = [];
     };
     "org-mode" = mkRacketPackage {
@@ -2605,21 +2682,21 @@
     "keyring-get-pass-lib" = mkRacketPackage {
       name = "keyring-get-pass-lib";
       src = "${sources."https://github.com/samdphillips/racket-keyring.git"}/keyring-get-pass-lib";
-      checksum = "97c77e9f57b6c334e3ee512953c70c5261e0041f";
+      checksum = "5233dface521aa8dfa341466f67d791dd20a352a";
       racketDeps = [self."keyring-lib" self."get-pass" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "splitflap-doc" = mkRacketPackage {
       name = "splitflap-doc";
       src = "${sources."https://github.com/otherjoel/splitflap.git"}/splitflap-doc";
-      checksum = "3256498f963b5b697185efbc920f1c28723d49fb";
+      checksum = "d184fedce6c50c8f1a059929e304c63d0df1b47b";
       racketDeps = [self."txexpr" self."scribble-lib" self."gregor-doc" self."gregor-lib" self."at-exp-lib" self."splitflap-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "egg-herbie-windows" = mkRacketPackage {
       name = "egg-herbie-windows";
-      src = sources."https://github.com/uwplse/herbie/releases/download/v1.6/egg-herbie-windows.zip";
-      checksum = "c3f81247708978db7114223eb617d35fec8c61fc";
+      src = sources."https://github.com/uwplse/herbie/releases/download/v2.0.2/egg-herbie-windows.zip";
+      checksum = "bbf0f6cdc817eddfab62d4f7da35ffd549b27c8c";
       racketDeps = [self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -2640,9 +2717,9 @@
     };
     "contract-etc" = mkRacketPackage {
       name = "contract-etc";
-      src = sources."https://github.com/camoy/contract-etc.git";
-      checksum = "507495a8d3f1251efb7f09f4e930451a14d4212a";
-      racketDeps = [self."sandbox-lib" self."scribble-lib" self."chk-lib" self."option-contract-lib" self."rackunit-lib" self."racket-doc" self."option-contract-doc"];
+      src = "${sources."https://github.com/camoy/contract-etc.git"}/contract-etc";
+      checksum = "ece7eb2c7341b011a43739b08229a53664be6241";
+      racketDeps = [self."sandbox-lib" self."scribble-lib" self."chk-lib" self."option-contract-lib" self."rackunit-lib" self."contract-etc-lib" self."racket-doc" self."option-contract-doc"];
       cyclicDeps = [];
     };
     "data-red-black" = mkRacketPackage {
@@ -2652,18 +2729,18 @@
       racketDeps = [self."scribble-lib" self."data-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
-    "kitt" = mkRacketPackage {
-      name = "kitt";
-      src = throw "Invalid url: https://github.com/.git";
-      checksum = "";
-      racketDeps = [];
-      cyclicDeps = [];
-    };
     "mox" = mkRacketPackage {
       name = "mox";
       src = sources."https://github.com/wargrey/mox.git";
-      checksum = "6612630c618ad2992fea6adb76bddb727d7c02ab";
+      checksum = "1f5543592f4cd65809e00c52bad8592f8ad20201";
       racketDeps = [self."typed-racket-more" self."w3s" self."typed-racket-lib" self."racket-doc" self."digimon" self."scribble-lib"];
+      cyclicDeps = [];
+    };
+    "effect-racket-test" = mkRacketPackage {
+      name = "effect-racket-test";
+      src = "${sources."https://github.com/camoy/effect-racket.git"}/effect-racket-test";
+      checksum = "e8b8247c2339a89da8c0d8dad58bf13eda21eed2";
+      racketDeps = [self."chk-lib" self."effect-racket-lib" self."contract-etc-lib"];
       cyclicDeps = [];
     };
     "sawzall-lib" = mkRacketPackage {
@@ -2697,7 +2774,7 @@
     "gradual-typing-bib" = mkRacketPackage {
       name = "gradual-typing-bib";
       src = sources."https://github.com/samth/gradual-typing-bib.git";
-      checksum = "044828e011c1e5efaf6ba74ee1541a978393ad24";
+      checksum = "aededbfc9a51ab33448deb73d7ee225f50b4ce00";
       racketDeps = [self."scribble-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -2753,7 +2830,7 @@
     "redis-lib" = mkRacketPackage {
       name = "redis-lib";
       src = "${sources."https://github.com/Bogdanp/racket-redis.git"}/redis-lib";
-      checksum = "df397e05f6e65e3d12c2f1040bd716089644302c";
+      checksum = "f1203d9213de9f10968b229350a9b35e27de84b9";
       racketDeps = [self."unix-socket-lib" self."resource-pool-lib"];
       cyclicDeps = [];
     };
@@ -2767,7 +2844,7 @@
     "laramie-lib" = mkRacketPackage {
       name = "laramie-lib";
       src = "${sources."https://github.com/jessealama/laramie.git"}/laramie-lib";
-      checksum = "d8caea23136ad4112bdde663f38da830a3264838";
+      checksum = "f9c9150e9afe8aadfa9251972ecc915f867657f3";
       racketDeps = [self."typed-racket-more" self."rackunit-typed" self."typed-racket-lib" self."http-easy" self."txexpr" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -2781,8 +2858,8 @@
     "scribble-frog-helper" = mkRacketPackage {
       name = "scribble-frog-helper";
       src = sources."https://github.com/yanyingwang/scribble-frog-helper.git";
-      checksum = "bc9f6579c6cdbd02e9bf6561bf7839df8124097b";
-      racketDeps = [self."gregor" self."scribble-lib" self."racket-doc" self."timable" self."frog" self."rackunit-lib" self."at-exp-lib"];
+      checksum = "b3594c373f50e8640381b479a79b474efab28966";
+      racketDeps = [self."gregor" self."scribble-lib" self."timable" self."racket-doc" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
     "scribble-bettergrammar-lib" = mkRacketPackage {
@@ -2823,7 +2900,7 @@
     "nsf-scribble" = mkRacketPackage {
       name = "nsf-scribble";
       src = sources."https://github.com/chrdimo/nsf-scribble.git";
-      checksum = "423b71207609359634345971f3760f4a3c8222da";
+      checksum = "0552f396375894cd9df7be7fb1f314df70be4462";
       racketDeps = [self."scribble-lib" self."racket-doc" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -2886,7 +2963,7 @@
     "rival" = mkRacketPackage {
       name = "rival";
       src = sources."https://github.com/herbie-fp/rival.git";
-      checksum = "b7eb8579492350e0f4442f14993a325f8e92d0c8";
+      checksum = "381a258efd40fadd2db919105e7a4d42f6a655ab";
       racketDeps = [self."math-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -2895,6 +2972,13 @@
       src = sources."git://github.com/LeifAndersen/racket-compiler-goodies";
       checksum = "4378d1039bd958ee4bfddafc5ec4dd8ef15bd5bb";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib" self."compiler-lib"];
+      cyclicDeps = [];
+    };
+    "binfmt-lib" = mkRacketPackage {
+      name = "binfmt-lib";
+      src = "${sources."https://github.com/Bogdanp/racket-binfmt.git"}/binfmt-lib";
+      checksum = "dbd7bbe72ad734687bd72241e4528d934ae3f4aa";
+      racketDeps = [];
       cyclicDeps = [];
     };
     "racket-win32-arm64-3" = self."base";
@@ -2922,7 +3006,7 @@
     "SSE" = mkRacketPackage {
       name = "SSE";
       src = sources."https://gitlab.com/oquijano/sse.git";
-      checksum = "a6858b7ca41a6ab482c170e6223dc8ac4c7f4eb2";
+      checksum = "bd73412619dcfab18b5abacf1a7e8749fe864bbd";
       racketDeps = [self."scribble-lib" self."web-server-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -3034,7 +3118,7 @@
     "expeditor-test" = mkRacketPackage {
       name = "expeditor-test";
       src = "${sources."https://github.com/racket/expeditor.git"}/expeditor-test";
-      checksum = "9b2d54a97a4f17a75d3198630a978b3eb2b4d1af";
+      checksum = "189a3ddf312cfc9ab0b93f54e096fdd2267cc113";
       racketDeps = [self."expeditor-lib" self."gui-lib" self."syntax-color-lib"];
       cyclicDeps = [];
     };
@@ -3071,6 +3155,13 @@
       src = sources."https://github.com/rogerkeays/racket-dollar.git";
       checksum = "16fa7aec4e1cef43a7b678dc798b1a9c20a87bb6";
       racketDeps = [self."rackunit"];
+      cyclicDeps = [];
+    };
+    "chat" = mkRacketPackage {
+      name = "chat";
+      src = sources."https://github.com/Antigen-1/chat.git";
+      checksum = "41895f56a51b4afbbab5cda894407530c805500a";
+      racketDeps = [self."scribble-lib" self."http-easy-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "scratchy" = mkRacketPackage {
@@ -3118,7 +3209,7 @@
     "mutt" = mkRacketPackage {
       name = "mutt";
       src = sources."https://github.com/bennn/racket-mutt.git";
-      checksum = "1ad8e7c45f93f51f7778efaf3b487f19dd18588c";
+      checksum = "d758476c3e2aeb22e9131dd295cbfcc752c02bf0";
       racketDeps = [self."scribble-lib" self."typed-racket-lib" self."racket-doc" self."rackunit-abbrevs" self."typed-racket-more" self."rackunit-lib" self."make-log-interceptor"];
       cyclicDeps = [];
     };
@@ -3139,8 +3230,8 @@
     "net-cookies-lib" = mkRacketPackage {
       name = "net-cookies-lib";
       src = "${sources."git://github.com/RenaissanceBug/racket-cookies"}/net-cookies-lib";
-      checksum = "c4ce9abc8f9de9270bd2655aafaa711b992dbe0e";
-      racketDeps = [self."srfi-lite-lib"];
+      checksum = "01bad8ad41f212bebc0d2019b3fc383faaaf7bef";
+      racketDeps = [];
       cyclicDeps = [];
     };
     "chief" = mkRacketPackage {
@@ -3279,14 +3370,14 @@
     "relation-lib" = mkRacketPackage {
       name = "relation-lib";
       src = "${sources."https://github.com/countvajhula/relation.git"}/relation-lib";
-      checksum = "5022738f69387c5722318717db5c866c9839614e";
+      checksum = "eac44044137131349e8139500fd15428baf17527";
       racketDeps = [self."point-free" self."version-case" self."collections-lib" self."describe" self."arguments" self."qi-lib" self."at-exp-lib" self."kw-utils" self."social-contract"];
       cyclicDeps = [];
     };
     "sentry-doc" = mkRacketPackage {
       name = "sentry-doc";
       src = "${sources."https://github.com/Bogdanp/racket-sentry.git"}/sentry-doc";
-      checksum = "8cc862858376ed2e80c70e8c25ae88d3f3953906";
+      checksum = "720daa812297328cd8d50852865b514143dad12d";
       racketDeps = [self."sentry-lib" self."scribble-lib" self."web-server-lib" self."gregor-doc" self."racket-doc" self."gregor-lib"];
       cyclicDeps = [];
     };
@@ -3314,7 +3405,7 @@
     "redis-test" = mkRacketPackage {
       name = "redis-test";
       src = "${sources."https://github.com/Bogdanp/racket-redis.git"}/redis-test";
-      checksum = "df397e05f6e65e3d12c2f1040bd716089644302c";
+      checksum = "f1203d9213de9f10968b229350a9b35e27de84b9";
       racketDeps = [self."redis-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -3335,7 +3426,7 @@
     "magnolisp" = mkRacketPackage {
       name = "magnolisp";
       src = sources."git://github.com/bldl/magnolisp";
-      checksum = "191d529486e688e5dda2be677ad8fe3b654e0d4f";
+      checksum = "2a3487cf743d61b7f5c6bcb8656a312e70c1b6dc";
       racketDeps = [self."scribble-lib" self."unstable-debug-lib" self."data-lib" self."racket-doc" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -3367,6 +3458,13 @@
       racketDeps = [self."scribble-lib" self."mordae" self."libserialport" self."typed-racket-lib" self."racket-doc"];
       cyclicDeps = [];
     };
+    "buid-lib" = mkRacketPackage {
+      name = "buid-lib";
+      src = "${sources."https://github.com/Bogdanp/racket-buid.git"}/buid-lib";
+      checksum = "9a82a3e5e31e393fbf5a010f4016153a651f0c22";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
     "canvas-list" = mkRacketPackage {
       name = "canvas-list";
       src = sources."https://github.com/massung/racket-canvas-list.git";
@@ -3377,14 +3475,14 @@
     "racket-glossary" = mkRacketPackage {
       name = "racket-glossary";
       src = sources."git+https://git.sr.ht/~sschwarzer/racket-glossary";
-      checksum = "e771edcde0a8524bcbd6dfcdfa4c11c5e687c9d3";
+      checksum = "66c2d3c17e9d1f9988277fbb907cb65a65497d4f";
       racketDeps = [self."scribble-lib" self."gui-lib" self."data-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "koyo-test" = mkRacketPackage {
       name = "koyo-test";
       src = "${sources."https://github.com/Bogdanp/koyo.git"}/koyo-test";
-      checksum = "a4dc1455fb1e62984e5d52635176a1464b8753d8";
+      checksum = "78ada818d9e86869aed126759e7d945a91084771";
       racketDeps = [self."web-server-lib" self."db-lib" self."koyo-lib" self."component-lib" self."srfi-lite-lib" self."rackunit-lib" self."gregor-lib" self."libargon2" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -3515,17 +3613,10 @@
       racketDeps = [self."math-lib" self."racket-doc" self."scribble-lib" self."binaryio-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
-    "mini" = mkRacketPackage {
-      name = "mini";
-      src = throw "Invalid url: https://github.com/.git";
-      checksum = "";
-      racketDeps = [];
-      cyclicDeps = [];
-    };
     "lua-lib" = mkRacketPackage {
       name = "lua-lib";
       src = "${sources."https://github.com/Bogdanp/racket-lua.git"}/lua-lib";
-      checksum = "00ff5a503dd8fc1031b0929d91a9e07186e29437";
+      checksum = "7551d2efbc1187ab91afb61ef6b291b382e1edce";
       racketDeps = [self."iso-printf-lib" self."sandbox-lib"];
       cyclicDeps = [];
     };
@@ -3536,11 +3627,11 @@
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
-    "typed-map-doc" = mkRacketPackage {
-      name = "typed-map-doc";
-      src = "${sources."https://github.com/jsmaniac/typed-map.git"}/typed-map-doc";
-      checksum = "7a70650b6f8e1222fe1e4ebd2fb6b9b2489301e2";
-      racketDeps = [self."typed-map-lib" self."racket-doc" self."aful" self."scribble-lib"];
+    "circular-layout" = mkRacketPackage {
+      name = "circular-layout";
+      src = sources."https://github.com/HouptLab/circular-layout.git";
+      checksum = "5776fa13358f9f9bde35aa407767b57247015487";
+      racketDeps = [self."scribble-lib" self."gui-lib" self."racket-doc" self."at-exp-lib"];
       cyclicDeps = [];
     };
     "planet-lib" = mkRacketPackage {
@@ -3548,6 +3639,13 @@
       src = "${sources."git://github.com/racket/planet/"}/planet-lib";
       checksum = "350f5da48d98303fe6ee510892c958ed46766154";
       racketDeps = [self."srfi-lite-lib"];
+      cyclicDeps = [];
+    };
+    "typed-map-doc" = mkRacketPackage {
+      name = "typed-map-doc";
+      src = "${sources."https://github.com/jsmaniac/typed-map.git"}/typed-map-doc";
+      checksum = "7a70650b6f8e1222fe1e4ebd2fb6b9b2489301e2";
+      racketDeps = [self."typed-map-lib" self."racket-doc" self."aful" self."scribble-lib"];
       cyclicDeps = [];
     };
     "box-extra" = mkRacketPackage {
@@ -3567,7 +3665,7 @@
     "ming" = mkRacketPackage {
       name = "ming";
       src = sources."https://github.com/yanyingwang/ming.git";
-      checksum = "5eacd5db31e6c5981749484bdaf9559e431b06be";
+      checksum = "99e6c6bfecd84b84f62b4c4c0421d11faf1cee0b";
       racketDeps = [self."scribble-rainbow-delimiters" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -3595,7 +3693,7 @@
     "simple-svg" = mkRacketPackage {
       name = "simple-svg";
       src = sources."https://github.com/simmone/racket-simple-svg.git";
-      checksum = "12f9da58ad5a64d70ce910ac4bce39f957ea7d33";
+      checksum = "8fd07a7ac091b95e3c7161043a9ebcdeed5dd516";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -3613,10 +3711,17 @@
       racketDeps = [self."draw-lib" self."typed-racket-more" self."scribble-lib" self."unstable-contract-lib" self."htdp-lib" self."htdp-doc" self."unstable-list-lib" self."typed-racket-lib" self."racket-doc"];
       cyclicDeps = [];
     };
+    "keyring-test" = mkRacketPackage {
+      name = "keyring-test";
+      src = "${sources."https://github.com/samdphillips/racket-keyring.git"}/keyring-test";
+      checksum = "5233dface521aa8dfa341466f67d791dd20a352a";
+      racketDeps = [self."keyring-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "redex-etc" = mkRacketPackage {
       name = "redex-etc";
       src = sources."https://github.com/camoy/redex-etc.git";
-      checksum = "d2b5d89d2dc64757e73fff9ed4a10285ea57f8a0";
+      checksum = "d2d9363ff9b0a77133552a5066dd008deddbdeef";
       racketDeps = [self."pict-lib" self."chk-lib" self."redex-lib" self."redex-pict-lib" self."racket-doc" self."draw-lib" self."private-in" self."latex-utils" self."scribble-lib" self."redex-doc" self."typed-racket-lib" self."unstable-redex"];
       cyclicDeps = [];
     };
@@ -3638,7 +3743,7 @@
     "relation-doc" = mkRacketPackage {
       name = "relation-doc";
       src = "${sources."https://github.com/countvajhula/relation.git"}/relation-doc";
-      checksum = "5022738f69387c5722318717db5c866c9839614e";
+      checksum = "eac44044137131349e8139500fd15428baf17527";
       racketDeps = [self."threading-doc" self."sugar" self."racket-doc" self."scribble-abbrevs" self."relation-lib" self."sandbox-lib" self."scribble-lib" self."collections-lib" self."collections-doc" self."rackjure" self."algebraic" self."arguments" self."fancy-app"];
       cyclicDeps = [];
     };
@@ -3652,7 +3757,7 @@
     "plot-compat" = mkRacketPackage {
       name = "plot-compat";
       src = "${sources."git://github.com/racket/plot/"}/plot-compat";
-      checksum = "b0da52632c0369058887439345eb90cbf8e99dae";
+      checksum = "a14222e19736f75bdb9c660ca9c3b78c6e2ee9b3";
       racketDeps = [self."draw-lib" self."plot-lib" self."snip-lib" self."plot-gui-lib"];
       cyclicDeps = [];
     };
@@ -3680,7 +3785,7 @@
     "typed-racket-more" = mkRacketPackage {
       name = "typed-racket-more";
       src = "${sources."git://github.com/racket/typed-racket/"}/typed-racket-more";
-      checksum = "f3e42b3aba6ef84b01fc25d0a9ef48cd9d16a554";
+      checksum = "c3702d6ee849182ab4cf7fd9d2a8f6135fd7aaa0";
       racketDeps = [self."snip-lib" self."sandbox-lib" self."racket-index" self."net-lib" self."db-lib" self."gui-lib" self."typed-racket-lib" self."images-lib" self."rackunit-gui" self."draw-lib" self."net-cookies-lib" self."pict-lib" self."srfi-lite-lib" self."rackunit-lib" self."rackunit-typed" self."web-server-lib" self."pconvert-lib"];
       cyclicDeps = [];
     };
@@ -3730,7 +3835,7 @@
     "pict-lib" = mkRacketPackage {
       name = "pict-lib";
       src = "${sources."git://github.com/racket/pict/"}/pict-lib";
-      checksum = "29e89754c2d6a59fe56027772e7b5113e8560cef";
+      checksum = "8f49787727aeb1a93ffcf333d92ab2bad579d5bc";
       racketDeps = [self."draw-lib" self."scheme-lib" self."compatibility-lib" self."rackunit-lib" self."syntax-color-lib"];
       cyclicDeps = [];
     };
@@ -3835,7 +3940,7 @@
     "rackterm" = mkRacketPackage {
       name = "rackterm";
       src = sources."https://github.com/willghatch/rackterm.git";
-      checksum = "1c784f1b6958f479bc5913c632b3f2d5fa6a5204";
+      checksum = "32d04212d09c31d780e16bd1528325ba04920a47";
       racketDeps = [self."draw-lib" self."scheme-lib" self."gui-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -3849,14 +3954,14 @@
     "4chdl" = mkRacketPackage {
       name = "4chdl";
       src = sources."https://github.com/winny-/4chdl.git";
-      checksum = "9b0fe3b0e3ac69755cac70d583e80ffb19b1ff2f";
+      checksum = "dea347b50609b0458debe01504012a9c2eb6d39d";
       racketDeps = [self."http-easy"];
       cyclicDeps = [];
     };
     "gregor" = mkRacketPackage {
       name = "gregor";
       src = "${sources."https://github.com/97jaz/gregor.git"}/gregor";
-      checksum = "2d20192e8795e01a1671869dddaf1984f0cbafee";
+      checksum = "f56215db229ef2e33670f55d08c0330d8f85de23";
       racketDeps = [self."gregor-doc" self."gregor-lib"];
       cyclicDeps = [];
     };
@@ -3955,8 +4060,15 @@
     "drracket-test" = mkRacketPackage {
       name = "drracket-test";
       src = "${sources."git://github.com/racket/drracket/"}/drracket-test";
-      checksum = "2657eafdcfb5e4ccef19405492244f679b9234ef";
+      checksum = "7899052c860f3549b54b753144cd2c2519562012";
       racketDeps = [self."string-constants-lib" self."compatibility-lib" self."gui-lib" self."drracket" self."cext-lib" self."htdp" self."racket-index" self."scheme-lib" self."rackunit-lib" self."compiler-lib" self."at-exp-lib"];
+      cyclicDeps = [];
+    };
+    "infix-prefix" = mkRacketPackage {
+      name = "infix-prefix";
+      src = sources."https://github.com/InAnYan/infix-prefix.git";
+      checksum = "f0dea3dd5d03f202f3b937b8b01afb8f84607cc7";
+      racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "quickscript" = self."drracket";
@@ -3984,7 +4096,7 @@
     "ebuild-tools" = mkRacketPackage {
       name = "ebuild-tools";
       src = "${sources."https://gitlab.com/gentoo-racket/racket-ebuild.git"}/src/ebuild-tools";
-      checksum = "6d23de624c9087e03f9407379160821e5e00c4f0";
+      checksum = "f546f1c86a834a04520d0817407141d376572c86";
       racketDeps = [self."ebuild-transformers" self."ebuild-templates" self."ebuild-lib" self."ziptie-git" self."threading-lib" self."upi-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -4019,7 +4131,7 @@
     "sentry-lib" = mkRacketPackage {
       name = "sentry-lib";
       src = "${sources."https://github.com/Bogdanp/racket-sentry.git"}/sentry-lib";
-      checksum = "8cc862858376ed2e80c70e8c25ae88d3f3953906";
+      checksum = "720daa812297328cd8d50852865b514143dad12d";
       racketDeps = [self."web-server-lib" self."http-easy-lib" self."compatibility-lib" self."gregor-lib"];
       cyclicDeps = [];
     };
@@ -4047,7 +4159,7 @@
     "memoize-test" = mkRacketPackage {
       name = "memoize-test";
       src = "${sources."https://github.com/jbclements/memoize.git"}/memoize-test";
-      checksum = "911a0d3abe44fca1203425f6ff5767a9796f0c1f";
+      checksum = "f373706824145ce2a8247edb76278d6df139333c";
       racketDeps = [self."memoize-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -4082,14 +4194,14 @@
     "digimon" = mkRacketPackage {
       name = "digimon";
       src = sources."git://github.com/wargrey/digimon.git";
-      checksum = "f2d9be583b2f31cd00b9b84ad88b14600f3d8f3b";
+      checksum = "6977be22927a0cd46a46bcd1961e38e99bfab7e0";
       racketDeps = [self."typed-racket-more" self."racket-index" self."math-lib" self."gui-lib" self."typed-racket-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib"];
       cyclicDeps = [];
     };
     "math-aarch64-macosx" = mkRacketPackage {
       name = "math-aarch64-macosx";
-      src = sources."https://pkg-sources.racket-lang.org/pkgs/ecefad1c885031d9b0ef4fff9efa5db1ae7fca60/math-aarch64-macosx.zip";
-      checksum = "ecefad1c885031d9b0ef4fff9efa5db1ae7fca60";
+      src = sources."https://pkg-sources.racket-lang.org/pkgs/30990a7d356654f8ddc849a6662b6aa937e47f3a/math-aarch64-macosx.zip";
+      checksum = "30990a7d356654f8ddc849a6662b6aa937e47f3a";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -4110,8 +4222,8 @@
     "gui-test" = mkRacketPackage {
       name = "gui-test";
       src = "${sources."git://github.com/racket/gui/"}/gui-test";
-      checksum = "d01d166149787e2d94176d3046764b35c7c0a876";
-      racketDeps = [self."snip-lib" self."pict-lib" self."sandbox-lib" self."simple-tree-text-markup-lib" self."pconvert-lib" self."racket-test" self."compatibility-lib" self."gui-lib" self."string-constants-lib" self."draw-lib" self."racket-index" self."scheme-lib" self."rackunit-lib" self."syntax-color-lib" self."sgl" self."wxme-lib" self."pict-snip-lib"];
+      checksum = "3a800c8f36f082300009500cf8aac204aa6afd19";
+      racketDeps = [self."snip-lib" self."pict-lib" self."sandbox-lib" self."simple-tree-text-markup-lib" self."pconvert-lib" self."racket-test" self."compatibility-lib" self."gui-lib" self."data-lib" self."string-constants-lib" self."draw-lib" self."racket-index" self."scheme-lib" self."rackunit-lib" self."syntax-color-lib" self."sgl" self."wxme-lib" self."pict-snip-lib"];
       cyclicDeps = [];
     };
     "ftree" = mkRacketPackage {
@@ -4160,8 +4272,8 @@
     "toml" = mkRacketPackage {
       name = "toml";
       src = "${sources."https://github.com/toml-racket/toml-racket.git"}/toml";
-      checksum = "fd7420779c050b8bbd8b4c49076ef321795afa40";
-      racketDeps = [self."toml-lib" self."toml-compliance"];
+      checksum = "fe46aa2c75939997dc21a2faaa79ea51304c4d15";
+      racketDeps = [self."toml-doc" self."toml-lib" self."toml-compliance"];
       cyclicDeps = [];
     };
     "xenomorph" = mkRacketPackage {
@@ -4181,7 +4293,7 @@
     "fmt" = mkRacketPackage {
       name = "fmt";
       src = sources."https://github.com/sorawee/fmt.git";
-      checksum = "840dc17e77945221c4317b9f2c193f66569dd02c";
+      checksum = "7d0a3dfff3a6cacfb59972a56d476556f89a0b1b";
       racketDeps = [self."scribble-lib" self."pretty-expressive" self."racket-doc" self."rackunit-lib" self."syntax-color-lib"];
       cyclicDeps = [];
     };
@@ -4197,6 +4309,13 @@
       src = sources."https://github.com/thoughtstem/py-fizz.git";
       checksum = "46047397ab9bbac86ab15a3e6e952777f5754fdf";
       racketDeps = [self."racket-to-python"];
+      cyclicDeps = [];
+    };
+    "taino" = mkRacketPackage {
+      name = "taino";
+      src = sources."https://github.com/juliojimenez/taino.git";
+      checksum = "7405c32aa3a63c56500d64168b76f5ada87c8d2d";
+      racketDeps = [self."web-server" self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "bech32" = mkRacketPackage {
@@ -4237,14 +4356,14 @@
     "gen-queue-lib" = mkRacketPackage {
       name = "gen-queue-lib";
       src = "${sources."https://github.com/stchang/graph.git"}/gen-queue-lib";
-      checksum = "f06848871ed7b4b488341fdd73e9f640b4788733";
+      checksum = "9d77ab184e26f4f3c917c7bd49eda2e980a24fae";
       racketDeps = [self."data-lib"];
       cyclicDeps = [];
     };
     "qi-doc" = mkRacketPackage {
       name = "qi-doc";
       src = "${sources."https://github.com/drym-org/qi.git"}/qi-doc";
-      checksum = "c3cec5a9fd98ca19bbc336ee7371be5a2c1f34c6";
+      checksum = "070ffc5e0d2e3a581a1bc11acd391e980dbdd328";
       racketDeps = [self."scribble-abbrevs" self."qi-probe" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."qi-lib" self."scribble-math" self."metapict"];
       cyclicDeps = [];
     };
@@ -4265,7 +4384,7 @@
     "scribble-cheatsheet" = mkRacketPackage {
       name = "scribble-cheatsheet";
       src = sources."https://github.com/a11ce/scribble-cheatsheet.git";
-      checksum = "e525a6f2856a891223e75fd5ceecbaa3964a34f7";
+      checksum = "18365623aad404b13421c2f653f4223a70fccde0";
       racketDeps = [self."scribble-lib"];
       cyclicDeps = [];
     };
@@ -4286,14 +4405,14 @@
     "struct-defaults" = mkRacketPackage {
       name = "struct-defaults";
       src = sources."git://github.com/tonyg/racket-struct-defaults";
-      checksum = "1b98e4b0384b16c1ff91cad4b04587652e35f436";
+      checksum = "04c5caf0b90b430d378ad9be296e03975f449add";
       racketDeps = [self."rackunit-lib"];
       cyclicDeps = [];
     };
     "gref-test" = mkRacketPackage {
       name = "gref-test";
       src = "${sources."https://github.com/usaoc/gref.git"}/gref-test";
-      checksum = "15e78c4506a43a6702f87915eb94262a8e761b6b";
+      checksum = "4520bf033c74b40c830400b65ac0cbb1d6b8623c";
       racketDeps = [self."doc-coverage" self."rackunit-spec" self."expect" self."gref-doc" self."gref-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -4321,8 +4440,8 @@
     "racket-test-extra" = mkRacketPackage {
       name = "racket-test-extra";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/racket-test-extra";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
-      racketDeps = [self."scheme-lib" self."redex-lib" self."serialize-cstruct-lib" self."rackunit-lib"];
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
+      racketDeps = [self."scheme-lib" self."drracket-tool-text-lib" self."redex-lib" self."serialize-cstruct-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "libsodium" = mkRacketPackage {
@@ -4342,7 +4461,7 @@
     "knox" = mkRacketPackage {
       name = "knox";
       src = sources."https://github.com/anishathalye/knox.git";
-      checksum = "304cebcc4a7dbf33268136e6417cb3feb00b6751";
+      checksum = "4dd42b5c083f8dc6f2facaa47ba69ff922879dcb";
       racketDeps = [self."rackunit-lib" self."rosette" self."data-lib"];
       cyclicDeps = [];
     };
@@ -4356,7 +4475,7 @@
     "pollen" = mkRacketPackage {
       name = "pollen";
       src = sources."https://git.matthewbutterick.com/mbutterick/pollen.git";
-      checksum = "1d1cc0df84c3b906fc6108fab6ee27b8249580c5";
+      checksum = "1fa3f236c232c9bf24fae370bb8f4e88c25391f1";
       racketDeps = [self."htdp" self."string-constants-lib" self."scribble-lib" self."html-lib" self."web-server-lib" self."txexpr" self."plot-gui-lib" self."markdown" self."rackunit-lib" self."at-exp-lib" self."rackjure" self."net-lib" self."gui-lib" self."sugar" self."drracket" self."racket-doc" self."scribble-text-lib"];
       cyclicDeps = [];
     };
@@ -4433,7 +4552,7 @@
     "rfc6455" = mkRacketPackage {
       name = "rfc6455";
       src = sources."git://github.com/tonyg/racket-rfc6455";
-      checksum = "abdf0099c6930986a4ea9f352b9fb34ba73afea5";
+      checksum = "e3a87e914e25841a6e1bb996aa001aeb178284bf";
       racketDeps = [self."scribble-lib" self."web-server-lib" self."net-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -4461,7 +4580,7 @@
     "quickscript-test" = mkRacketPackage {
       name = "quickscript-test";
       src = sources."https://github.com/Metaxal/quickscript-test.git";
-      checksum = "075f28781ba05f493950728cb2b9c24e093295e7";
+      checksum = "8f7f982b77791232274671d0c63c157628e57a31";
       racketDeps = [self."drracket-test" self."scribble-lib" self."gui-lib" self."rackunit-lib" self."drracket" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -4475,7 +4594,7 @@
     "bystroTeX" = mkRacketPackage {
       name = "bystroTeX";
       src = "${sources."git://github.com/amkhlv/amkhlv/"}/bystroTeX";
-      checksum = "5ccf6a608a5b12130b9f4f940d816ec2ec087cc5";
+      checksum = "abb34198c161f433326285c6d46355427f9e84f2";
       racketDeps = [self."scribble-lib" self."scheme-lib" self."racket-doc" self."rackunit-lib" self."at-exp-lib" self."db-lib" self."compatibility-lib"];
       cyclicDeps = [];
     };
@@ -4496,7 +4615,7 @@
     "softposit-herbie" = mkRacketPackage {
       name = "softposit-herbie";
       src = sources."https://github.com/herbie-fp/softposit-herbie.git";
-      checksum = "20ef612dbd9e3413302d156d6325e1956ea0788d";
+      checksum = "ba5c0286aa33ce5a16e8867859faeac25c1ddf43";
       racketDeps = [self."rival" self."math-lib" self."herbie" self."softposit-rkt"];
       cyclicDeps = [];
     };
@@ -4530,29 +4649,29 @@
     };
     "libsqlite3-x86_64-macosx" = mkRacketPackage {
       name = "libsqlite3-x86_64-macosx";
-      src = sources."https://racket.defn.io/libsqlite3-x86_64-macosx-3.39.2.tar.gz";
-      checksum = "8e2f22e621a44ef7d5d5c661c65bf5913be420f1";
+      src = sources."https://racket.defn.io/libsqlite3-x86_64-macosx-3.45.3.tar.gz";
+      checksum = "c7ee33202f9620aa7c51bc672b0a37ad3ded160a";
       racketDeps = [];
       cyclicDeps = [];
     };
     "binfmt" = mkRacketPackage {
       name = "binfmt";
       src = "${sources."https://github.com/Bogdanp/racket-binfmt.git"}/binfmt";
-      checksum = "76e6da2d6d1fe98cdf2b8fd12abf8529956fdacb";
-      racketDeps = [self."scribble-lib" self."racket-doc"];
+      checksum = "dbd7bbe72ad734687bd72241e4528d934ae3f4aa";
+      racketDeps = [self."binfmt-lib" self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "play" = mkRacketPackage {
       name = "play";
       src = sources."https://github.com/pleiad/play.git";
-      checksum = "34a145ffb815110bec33a48004e8897e48d11f51";
+      checksum = "4ab35fa8ffbeb3a074af3c59e4accba9b762234f";
       racketDeps = [self."parser-tools-lib" self."redex" self."racket-doc" self."plai" self."scribble-lib" self."rackunit"];
       cyclicDeps = [];
     };
     "plai-doc" = mkRacketPackage {
       name = "plai-doc";
       src = "${sources."git://github.com/racket/plai"}/plai-doc";
-      checksum = "ae42bcb581ab02dcb9ddaea98d5ecded589c8d47";
+      checksum = "96c8807a2acde9249f124498e46650223a47e24a";
       racketDeps = [self."scheme-lib" self."eli-tester" self."gui-lib" self."racket-doc" self."drracket-tool-lib" self."plai-lib" self."sandbox-lib" self."scribble-lib" self."srfi-lite-lib" self."rackunit-lib" self."at-exp-lib" self."web-server-lib" self."pconvert-lib"];
       cyclicDeps = [];
     };
@@ -4567,7 +4686,7 @@
     "sandbox-lib" = mkRacketPackage {
       name = "sandbox-lib";
       src = "${sources."https://github.com/racket/racket.git"}/pkgs/sandbox-lib";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."scheme-lib" self."errortrace-lib"];
       cyclicDeps = [];
     };
@@ -4588,7 +4707,7 @@
     "plai" = mkRacketPackage {
       name = "plai";
       src = "${sources."git://github.com/racket/plai"}/plai";
-      checksum = "ae42bcb581ab02dcb9ddaea98d5ecded589c8d47";
+      checksum = "96c8807a2acde9249f124498e46650223a47e24a";
       racketDeps = [self."plai-lib" self."plai-doc"];
       cyclicDeps = [];
     };
@@ -4616,14 +4735,14 @@
     "scribble-lib" = mkRacketPackage {
       name = "scribble-lib";
       src = "${sources."git://github.com/racket/scribble/"}/scribble-lib";
-      checksum = "faf92fa8638acfb193f0a14953b9779a31f2cdcd";
+      checksum = "b899cc74df03b0d8567f67160be2b307cdf3bc9a";
       racketDeps = [self."draw-lib" self."planet-lib" self."sandbox-lib" self."scheme-lib" self."scribble-html-lib" self."net-lib" self."compatibility-lib" self."typed-racket-lib" self."scribble-text-lib" self."rackunit-lib" self."at-exp-lib" self."syntax-color-lib"];
       cyclicDeps = [];
     };
     "koyo-north" = mkRacketPackage {
       name = "koyo-north";
       src = sources."https://github.com/Bogdanp/koyo-north.git";
-      checksum = "713c4c4068e9a5a8d5e56cb6b419f348d08a5e2d";
+      checksum = "ec92ebc0b7cf35045ff0c43090cd73f0db78d9f9";
       racketDeps = [self."north" self."db-lib" self."koyo-lib" self."component-lib"];
       cyclicDeps = [];
     };
@@ -4651,7 +4770,7 @@
     "ebuild-lib" = mkRacketPackage {
       name = "ebuild-lib";
       src = "${sources."https://gitlab.com/gentoo-racket/racket-ebuild.git"}/src/ebuild-lib";
-      checksum = "6d23de624c9087e03f9407379160821e5e00c4f0";
+      checksum = "f546f1c86a834a04520d0817407141d376572c86";
       racketDeps = [self."reprovide-lang-lib" self."typed-racket-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -4672,14 +4791,14 @@
     "poppler-i386-macosx" = mkRacketPackage {
       name = "poppler-i386-macosx";
       src = "${sources."git://github.com/soegaard/poppler-libs"}/poppler-i386-macosx";
-      checksum = "f39e31f2b561b457fdbda50117f6bc4802ef14b6";
+      checksum = "029c07225d55593ee38c1bc3fcce2a8a1dd6cdc6";
       racketDeps = [];
       cyclicDeps = [];
     };
     "compatibility" = mkRacketPackage {
       name = "compatibility";
       src = "${sources."git://github.com/racket/compatibility/"}/compatibility";
-      checksum = "5b2509e30e3b93ca9d6c9d6d8286af93c662d9a8";
+      checksum = "8d0b435cf0cc46476b7bafe2a507817c26058d0f";
       racketDeps = [self."compatibility-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -4799,7 +4918,7 @@
     "drracket-tool-test" = mkRacketPackage {
       name = "drracket-tool-test";
       src = "${sources."git://github.com/racket/drracket/"}/drracket-tool-test";
-      checksum = "2657eafdcfb5e4ccef19405492244f679b9234ef";
+      checksum = "7899052c860f3549b54b753144cd2c2519562012";
       racketDeps = [self."drracket-tool-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -4897,7 +5016,7 @@
     "plot-test" = mkRacketPackage {
       name = "plot-test";
       src = "${sources."git://github.com/racket/plot/"}/plot-test";
-      checksum = "b0da52632c0369058887439345eb90cbf8e99dae";
+      checksum = "a14222e19736f75bdb9c660ca9c3b78c6e2ee9b3";
       racketDeps = [self."plot-gui-lib" self."draw-lib" self."contract-profile" self."slideshow-lib" self."racket-doc" self."plot-compat" self."typed-racket-more" self."pict-lib" self."rackunit-lib" self."plot-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -4953,7 +5072,7 @@
     "laramie" = mkRacketPackage {
       name = "laramie";
       src = "${sources."https://github.com/jessealama/laramie.git"}/laramie";
-      checksum = "d8caea23136ad4112bdde663f38da830a3264838";
+      checksum = "f9c9150e9afe8aadfa9251972ecc915f867657f3";
       racketDeps = [self."laramie-lib" self."laramie-doc"];
       cyclicDeps = [];
     };
@@ -5044,7 +5163,7 @@
     "forms-doc" = mkRacketPackage {
       name = "forms-doc";
       src = "${sources."https://github.com/Bogdanp/racket-forms.git"}/forms-doc";
-      checksum = "8fca1d8533cd2d36978bdb411e7d9843c681b5c5";
+      checksum = "e6ba9fa4a4e17d744760193dc7b8a4b399e9db71";
       racketDeps = [self."web-server-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."forms-lib"];
       cyclicDeps = [];
     };
@@ -5065,7 +5184,7 @@
     "egg-herbie" = mkRacketPackage {
       name = "egg-herbie";
       src = sources."https://github.com/herbie-fp/egg-herbie.git";
-      checksum = "6f0730c6a12571f04d5087d4011426cdad132543";
+      checksum = "76608424055c5664e6b11d0f8d55be4337b73964";
       racketDeps = [self."egg-herbie-linux" self."egg-herbie-windows" self."egg-herbie-osx"];
       cyclicDeps = [];
     };
@@ -5100,8 +5219,8 @@
     "tabtree" = mkRacketPackage {
       name = "tabtree";
       src = sources."https://github.com/prozion/tabtree-racket.git";
-      checksum = "9ba5cea1923704da15f8452e2a2d1046487a3a3d";
-      racketDeps = [self."scribble-lib" self."compatibility-lib" self."odysseus" self."racket-doc"];
+      checksum = "5e0b58532c16cabb8a6b8270f79dd06d384efabe";
+      racketDeps = [self."scribble-lib" self."compatibility-lib" self."odysseus" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "fuse" = mkRacketPackage {
@@ -5142,8 +5261,8 @@
     "extra-srfi-libs" = mkRacketPackage {
       name = "extra-srfi-libs";
       src = sources."https://github.com/shawnw/racket-extra-srfi-libs.git";
-      checksum = "a3198b7ed35d88a0a144f18c6d981541f9b7e54a";
-      racketDeps = [self."scribble-lib" self."math-lib" self."rackunit-typed" self."typed-racket-more" self."rackunit-lib" self."data-lib" self."typed-racket-lib" self."srfi-lib" self."racket-doc"];
+      checksum = "13eeee6756fa2690f75e963c34b7e30fd249ee3c";
+      racketDeps = [self."scribble-lib" self."math-lib" self."rackunit-typed" self."compatibility-lib" self."typed-racket-more" self."rackunit-lib" self."data-lib" self."typed-racket-lib" self."srfi-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "wort" = mkRacketPackage {
@@ -5177,7 +5296,7 @@
     "data-test" = mkRacketPackage {
       name = "data-test";
       src = "${sources."git://github.com/racket/data/"}/data-test";
-      checksum = "0b23dd66639ffd1d62cf690c26cbd58b508da609";
+      checksum = "0f85d3ced88a1e39c08153ffae5951f32b43cd81";
       racketDeps = [self."math-lib" self."data-lib" self."racket-index" self."data-enumerate-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -5186,6 +5305,13 @@
       src = sources."https://gitlab.com/RayRacine/word.git";
       checksum = "280659a27d2e3581fe64e8d406435cbcbadf3182";
       racketDeps = [self."typed-racket-more" self."scribble-lib" self."typed-racket-lib" self."racket-doc" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "rdf-io" = mkRacketPackage {
+      name = "rdf-io";
+      src = sources."https://github.com/johnstonskj/racket-rdf-io.git";
+      checksum = "051c3a0ef6b3c9a8df18be24fe10b959e2da1c31";
+      racketDeps = [self."rdf-core" self."media-type" self."langtag" self."text-table" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."xmlns" self."rx"];
       cyclicDeps = [];
     };
     "restore" = mkRacketPackage {
@@ -5247,8 +5373,15 @@
     "libnotify" = mkRacketPackage {
       name = "libnotify";
       src = sources."git://github.com/takikawa/racket-libnotify";
-      checksum = "c1112e8095f53dde26da994c5d2025871cec9d12";
+      checksum = "ce8e66c20206f6949488e95e5faf50c4c0fce1c6";
       racketDeps = [self."draw-lib" self."scribble-lib" self."racket-doc"];
+      cyclicDeps = [];
+    };
+    "art-doc" = mkRacketPackage {
+      name = "art-doc";
+      src = "${sources."https://github.com/jagen31/art3.git"}/art-doc";
+      checksum = "b362dc67e37526e15233411adba77fe4f59bc002";
+      racketDeps = [self."scribble-abbrevs" self."scribble-lib" self."scribble-math" self."art-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "ffi-definer-convention" = mkRacketPackage {
@@ -5282,7 +5415,7 @@
     "schemeunit" = mkRacketPackage {
       name = "schemeunit";
       src = "${sources."git://github.com/racket/rackunit/"}/schemeunit";
-      checksum = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
+      checksum = "41c64557f209c6a440c6595f29c1d6e7a7958917";
       racketDeps = [self."rackunit-gui" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -5297,7 +5430,7 @@
     "redex-examples" = mkRacketPackage {
       name = "redex-examples";
       src = "${sources."git://github.com/racket/redex/"}/redex-examples";
-      checksum = "8df08b313cff72d56d3c67366065c19ec0c3f7d0";
+      checksum = "a2bbb6edf2374bfddfd516ca75e0e173e662fb40";
       racketDeps = [self."slideshow-lib" self."math-lib" self."rackunit-lib" self."compiler-lib" self."plot-lib" self."redex-gui-lib"];
       cyclicDeps = [];
     };
@@ -5360,8 +5493,8 @@
     "map-widget" = mkRacketPackage {
       name = "map-widget";
       src = sources."https://github.com/alex-hhh/map-widget.git";
-      checksum = "6bf0345a9b9418021c17efaba27cb8651e636836";
-      racketDeps = [self."draw-lib" self."scribble-lib" self."math-lib" self."errortrace-lib" self."gui-lib" self."racket-doc" self."http-easy" self."geoid" self."rackunit-lib" self."db-lib" self."al2-test-runner"];
+      checksum = "2a0846244bb1450c029fdb853678f9b77794a184";
+      racketDeps = [self."draw-lib" self."pict-lib" self."scribble-lib" self."math-lib" self."errortrace-lib" self."gui-lib" self."racket-doc" self."http-easy" self."geoid" self."rackunit-lib" self."db-lib" self."al2-test-runner"];
       cyclicDeps = [];
     };
     "portaudio-aarch64-macosx" = mkRacketPackage {
@@ -5381,7 +5514,7 @@
     "qi-probe" = mkRacketPackage {
       name = "qi-probe";
       src = "${sources."https://github.com/drym-org/qi.git"}/qi-probe";
-      checksum = "c3cec5a9fd98ca19bbc336ee7371be5a2c1f34c6";
+      checksum = "070ffc5e0d2e3a581a1bc11acd391e980dbdd328";
       racketDeps = [self."qi-lib"];
       cyclicDeps = [];
     };
@@ -5424,14 +5557,14 @@
     "json-lexer" = mkRacketPackage {
       name = "json-lexer";
       src = "${sources."https://github.com/Bogdanp/racket-json-lexer.git"}/json-lexer";
-      checksum = "8ea11955549259ea76c62177e9e2bce836acc7fb";
+      checksum = "d3b61463971d495d3b7ae834f2c3256faf2ed593";
       racketDeps = [self."scribble-lib" self."json-lexer-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "racket-index" = mkRacketPackage {
       name = "racket-index";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/racket-index";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."scribble-lib" self."scheme-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -5445,7 +5578,7 @@
     "typed-racket-test" = mkRacketPackage {
       name = "typed-racket-test";
       src = "${sources."git://github.com/racket/typed-racket/"}/typed-racket-test";
-      checksum = "f3e42b3aba6ef84b01fc25d0a9ef48cd9d16a554";
+      checksum = "c3702d6ee849182ab4cf7fd9d2a8f6135fd7aaa0";
       racketDeps = [self."racket-test-core" self."typed-racket-compatibility" self."typed-racket-more" self."sandbox-lib" self."compatibility-lib" self."typed-racket-lib" self."racket-index" self."scheme-lib" self."htdp-lib" self."racket-benchmarks" self."rackunit-lib" self."compiler-lib" self."2d" self."redex-lib"];
       cyclicDeps = [];
     };
@@ -5466,7 +5599,7 @@
     "mintexpp-lib" = mkRacketPackage {
       name = "mintexpp-lib";
       src = "${sources."https://github.com/shhyou/mintexpp.git"}/mintexpp-lib";
-      checksum = "4bce044d57b58fb390df1eacdf5787ebdb52ffa6";
+      checksum = "2d457fa70581b45871833405182a84f7de236b47";
       racketDeps = [self."scribble-lib" self."mintexpp-reader-lib" self."syntax-color-lib"];
       cyclicDeps = [];
     };
@@ -5508,7 +5641,7 @@
     "ee-lib" = mkRacketPackage {
       name = "ee-lib";
       src = sources."https://github.com/michaelballantyne/ee-lib.git";
-      checksum = "104af4c1daf5e61ac79593d76c9df6ea80b34ebe";
+      checksum = "eca597bc5792ebe2343a8e71568da9c5e6ec02c7";
       racketDeps = [self."scribble-lib" self."rackunit-lib" self."drracket" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -5516,7 +5649,7 @@
     "racket-spider" = mkRacketPackage {
       name = "racket-spider";
       src = sources."https://github.com/Syntacticlosure/racket-spider.git";
-      checksum = "1ed8e8996d296021a1adf7acb30190db301055f7";
+      checksum = "791c99a666bf8e7204dc6a7c96604cc6b82930aa";
       racketDeps = [self."typed-racket-more" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -5551,7 +5684,7 @@
     "web-server-test" = mkRacketPackage {
       name = "web-server-test";
       src = "${sources."git://github.com/racket/web-server/"}/web-server-test";
-      checksum = "e321f8425e539d22412d4f7763532b3f3a65c95e";
+      checksum = "87a1e58a9b92c621f7d96c76de1da39587f04140";
       racketDeps = [self."htdp-lib" self."web-server-lib" self."net-cookies" self."rackunit-lib" self."eli-tester" self."compatibility-lib"];
       cyclicDeps = [];
     };
@@ -5572,7 +5705,7 @@
     "generic-flonum" = mkRacketPackage {
       name = "generic-flonum";
       src = sources."https://github.com/bksaiki/generic-flonum.git";
-      checksum = "490cd103437876ff98413f34f2b8c845f89fa2ea";
+      checksum = "903b2492a84b0596e2ef067f07b17567c65b048b";
       racketDeps = [self."scribble-lib" self."math-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -5684,7 +5817,7 @@
     "data-enumerate-lib" = mkRacketPackage {
       name = "data-enumerate-lib";
       src = "${sources."git://github.com/racket/data/"}/data-enumerate-lib";
-      checksum = "0b23dd66639ffd1d62cf690c26cbd58b508da609";
+      checksum = "0f85d3ced88a1e39c08153ffae5951f32b43cd81";
       racketDeps = [self."math-lib" self."data-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -5707,6 +5840,13 @@
       src = "${sources."https://github.com/rmculpepper/asn1.git"}/asn1-doc";
       checksum = "3cd32b61a68b40ec03bed98cd0c4d4d4f72cacf2";
       racketDeps = [self."scribble-lib" self."asn1-lib" self."racket-doc"];
+      cyclicDeps = [];
+    };
+    "vlibench" = mkRacketPackage {
+      name = "vlibench";
+      src = sources."https://gitlab.com/racketeer/vlibench.git";
+      checksum = "8b05b0ec451192abef88ae6a8dee13428a41775e";
+      racketDeps = [self."simple-polynomial" self."colorblind-palette" self."plot" self."scribble-math"];
       cyclicDeps = [];
     };
     "syntax-classes" = mkRacketPackage {
@@ -5851,7 +5991,7 @@
     "srfi" = mkRacketPackage {
       name = "srfi";
       src = "${sources."git://github.com/racket/srfi/"}/srfi";
-      checksum = "25eb1c0e1ab8a1fa227750aa7f0689a2c531f8c8";
+      checksum = "cab009da67adf40737ae7ff02cd7c8bd6316d61d";
       racketDeps = [self."srfi-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -5914,7 +6054,7 @@
     "pict-abbrevs" = mkRacketPackage {
       name = "pict-abbrevs";
       src = sources."https://gitlab.com/bengreenman/pict-abbrevs.git";
-      checksum = "24300ec9ebd20de3213d9442911bcd0a7f264645";
+      checksum = "484729a93684a0210f73c6439ecf93629df2cf79";
       racketDeps = [self."draw-lib" self."pict-lib" self."scribble-lib" self."slideshow-lib" self."lang-file" self."ppict" self."plot-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -5935,7 +6075,7 @@
     "libsqlite3" = mkRacketPackage {
       name = "libsqlite3";
       src = "${sources."https://github.com/Bogdanp/racket-libsqlite3.git"}/libsqlite3";
-      checksum = "4ec6a35752c96c5e392288359b6005a00f00c046";
+      checksum = "1d65c5c47e0816ec397b9624b7b9ad28e1978a72";
       racketDeps = [self."libsqlite3-x86_64-macosx" self."libsqlite3-x86_64-win32" self."libsqlite3-x86_64-linux" self."libsqlite3-i386-win32" self."libsqlite3-aarch64-linux" self."libsqlite3-aarch64-macosx"];
       cyclicDeps = [];
     };
@@ -5956,7 +6096,7 @@
     "racket-build-guide" = mkRacketPackage {
       name = "racket-build-guide";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/racket-build-guide";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."scribble-lib" self."distro-build-doc" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -6037,6 +6177,13 @@
       racketDeps = [self."scribble-lib" self."rebellion" self."fancy-app" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
+    "monadicrkt" = mkRacketPackage {
+      name = "monadicrkt";
+      src = sources."https://github.com/dbian/monadicrkt.git";
+      checksum = "676cf8c1c3a818fada498bf084a23aa28e90d9a8";
+      racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "simply-scheme" = mkRacketPackage {
       name = "simply-scheme";
       src = sources."git://github.com/jbclements/simply-scheme";
@@ -6104,7 +6251,7 @@
     "parser-tools-lib" = mkRacketPackage {
       name = "parser-tools-lib";
       src = "${sources."git://github.com/racket/parser-tools/"}/parser-tools-lib";
-      checksum = "b08f6137a3c067720c4b4723dd726652af288e97";
+      checksum = "1fe9d2d3f30302a744914d14f33683d9f8fd41bc";
       racketDeps = [self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -6132,7 +6279,7 @@
     "parser-tools-doc" = mkRacketPackage {
       name = "parser-tools-doc";
       src = "${sources."git://github.com/racket/parser-tools/"}/parser-tools-doc";
-      checksum = "b08f6137a3c067720c4b4723dd726652af288e97";
+      checksum = "1fe9d2d3f30302a744914d14f33683d9f8fd41bc";
       racketDeps = [self."scribble-lib" self."scheme-lib" self."parser-tools-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -6167,14 +6314,14 @@
     "maelstrom" = mkRacketPackage {
       name = "maelstrom";
       src = "${sources."https://github.com/nikhilm/gossip-glommers.git"}/maelstrom";
-      checksum = "922970c34e1bd3ba696909d9fc269847049b7c87";
+      checksum = "150c33901ca1f0b123911508a24c3ed091f8f9e5";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "fixw" = mkRacketPackage {
       name = "fixw";
       src = sources."git+https://github.com/6cdh/racket-fixw";
-      checksum = "2c7b2bd1e973491b6d0021264185aac8440fe3a8";
+      checksum = "4a3d437619dec69a6d6c59d382f4997f07d0edfa";
       racketDeps = [self."scribble-lib" self."rackunit-lib" self."syntax-color" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -6265,14 +6412,14 @@
     "marionette-test" = mkRacketPackage {
       name = "marionette-test";
       src = "${sources."https://github.com/Bogdanp/marionette.git"}/marionette-test";
-      checksum = "daac17634775dc516611de6ea1e4c43776d64405";
+      checksum = "c4a42965205c91a273259353a7f9fd6d4def1107";
       racketDeps = [self."marionette-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "sdl2" = mkRacketPackage {
       name = "sdl2";
       src = sources."https://github.com/lockie/racket-sdl2.git";
-      checksum = "52ce746829fe9130db64e52208c10830650a5ca5";
+      checksum = "2ebce85d89be781056af7fc99a61805507a56155";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -6293,7 +6440,7 @@
     "deinprogramm" = mkRacketPackage {
       name = "deinprogramm";
       src = "${sources."git://github.com/racket/deinprogramm"}/deinprogramm";
-      checksum = "fecdee4ba12a0f425d3ef9e0c316747f33378e81";
+      checksum = "edf22598881aac7c6acc0d86d521731111e38f8a";
       racketDeps = [self."snip-lib" self."scribble-lib" self."compatibility-lib" self."gui-lib" self."string-constants-lib" self."draw-lib" self."racket-index" self."scheme-lib" self."htdp-lib" self."simple-tree-text-markup-lib" self."rackunit-lib" self."drracket-plugin-lib" self."at-exp-lib" self."trace" self."pconvert-lib" self."htdp-doc" self."errortrace-lib" self."drracket" self."wxme-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -6307,13 +6454,13 @@
     "htdp-lib" = mkRacketPackage {
       name = "htdp-lib";
       src = "${sources."git://github.com/racket/htdp/"}/htdp-lib";
-      checksum = "73ec2b90055f3ab66d30e54dc3463506b25e50b4";
+      checksum = "8037f1cc620ed91fe68362ce5ad3d887269eb725";
       racketDeps = [self."snip-lib" self."net-lib" self."errortrace-lib" self."compatibility-lib" self."gui-lib" self."typed-racket-lib" self."wxme-lib" self."plai-lib" self."images-gui-lib" self."images-lib" self."string-constants-lib" self."draw-lib" self."typed-racket-more" self."pict-lib" self."sandbox-lib" self."scribble-lib" self."html-lib" self."racket-index" self."scheme-lib" self."slideshow-lib" self."r5rs-lib" self."simple-tree-text-markup-lib" self."srfi-lite-lib" self."rackunit-lib" self."drracket-plugin-lib" self."at-exp-lib" self."web-server-lib" self."pconvert-lib"];
       cyclicDeps = [
         {
           name = "deinprogramm-signature";
           src = "${sources."git://github.com/racket/deinprogramm"}/deinprogramm-signature";
-          checksum = "fecdee4ba12a0f425d3ef9e0c316747f33378e81";
+          checksum = "edf22598881aac7c6acc0d86d521731111e38f8a";
         }
       ];
     };
@@ -6324,10 +6471,17 @@
       racketDeps = [self."html-writing" self."scribble-lib" self."web-server-lib" self."magenc" self."rackunit-lib" self."crypto-lib" self."csexp"];
       cyclicDeps = [];
     };
+    "art" = mkRacketPackage {
+      name = "art";
+      src = "${sources."https://github.com/jagen31/art3.git"}/art";
+      checksum = "b362dc67e37526e15233411adba77fe4f59bc002";
+      racketDeps = [self."art-doc" self."art-lib"];
+      cyclicDeps = [];
+    };
     "anarki" = mkRacketPackage {
       name = "anarki";
       src = sources."git://github.com/arclanguage/anarki";
-      checksum = "e49b1bfe1f7bf0e682d360eb677947264000de82";
+      checksum = "50c87166388f3227078c77a403d70a528f80f23d";
       racketDeps = [self."scribble-lib" self."sha" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -6425,7 +6579,7 @@
     "http-easy-test" = mkRacketPackage {
       name = "http-easy-test";
       src = "${sources."https://github.com/Bogdanp/racket-http-easy.git"}/http-easy-test";
-      checksum = "4a037d5430ae892249d01567d1b8623bcb421cc5";
+      checksum = "1f79be1e420b111f17fac2b27573d2411c7445a2";
       racketDeps = [self."http-easy" self."net-cookies-lib" self."web-server-lib" self."rackunit-lib" self."resource-pool-lib"];
       cyclicDeps = [];
     };
@@ -6446,8 +6600,8 @@
     "racket-benchmarks" = mkRacketPackage {
       name = "racket-benchmarks";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/racket-benchmarks";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
-      racketDeps = [self."draw-lib" self."pict-lib" self."scheme-lib" self."r5rs-lib" self."plot" self."racket-test" self."compatibility-lib" self."gui-lib" self."typed-racket-lib"];
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
+      racketDeps = [self."draw-lib" self."pict-lib" self."scheme-lib" self."r5rs-lib" self."plot" self."racket-test" self."compatibility-lib" self."gui-lib" self."data-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
     "extenor" = mkRacketPackage {
@@ -6471,10 +6625,17 @@
       racketDeps = [self."testing-util-lib"];
       cyclicDeps = [];
     };
+    "media-type" = mkRacketPackage {
+      name = "media-type";
+      src = sources."https://github.com/johnstonskj/racket-media-type.git";
+      checksum = "b75883f819a310696d78896fe13d7540db2b2905";
+      racketDeps = [self."rx" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "kafka" = mkRacketPackage {
       name = "kafka";
       src = "${sources."https://github.com/Bogdanp/racket-kafka.git"}/kafka";
-      checksum = "f9f0e6e16fe6c9a7efed0c547100db37fccc2ff3";
+      checksum = "1ac07163404b7ff2dbdc69a545a88dbb0bbd09ea";
       racketDeps = [self."scribble-lib" self."sasl-doc" self."sasl-lib" self."racket-doc" self."kafka-lib"];
       cyclicDeps = [];
     };
@@ -6488,7 +6649,7 @@
     "option-contract-lib" = mkRacketPackage {
       name = "option-contract-lib";
       src = "${sources."git://github.com/racket/option-contract"}/option-contract-lib";
-      checksum = "42d22d5d01b7717911af1bde4baaa570ae3df516";
+      checksum = "50d72f706ef944689e21b65a6c94b3c819989c59";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -6509,7 +6670,7 @@
     "deta-test" = mkRacketPackage {
       name = "deta-test";
       src = "${sources."https://github.com/Bogdanp/deta.git"}/deta-test";
-      checksum = "39a10bacf3f25ca607c72053aa75a487cb02543e";
+      checksum = "df9ddc886df098537fa18f1ec775ec591d9a630b";
       racketDeps = [self."libsqlite3-x86_64-linux" self."db-lib" self."rackunit-lib" self."deta-lib" self."gregor-lib" self."at-exp-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -6530,7 +6691,7 @@
     "gref-doc" = mkRacketPackage {
       name = "gref-doc";
       src = "${sources."https://github.com/usaoc/gref.git"}/gref-doc";
-      checksum = "15e78c4506a43a6702f87915eb94262a8e761b6b";
+      checksum = "4520bf033c74b40c830400b65ac0cbb1d6b8623c";
       racketDeps = [self."algol60" self."scribble-lib" self."racket-doc" self."glass" self."gref-lib" self."lens-doc"];
       cyclicDeps = [];
     };
@@ -6544,7 +6705,7 @@
     "drracket-tool-text-lib" = mkRacketPackage {
       name = "drracket-tool-text-lib";
       src = "${sources."git://github.com/racket/drracket/"}/drracket-tool-text-lib";
-      checksum = "2657eafdcfb5e4ccef19405492244f679b9234ef";
+      checksum = "7899052c860f3549b54b753144cd2c2519562012";
       racketDeps = [self."string-constants-lib" self."scribble-lib" self."racket-index" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -6579,14 +6740,14 @@
     "splitflap" = mkRacketPackage {
       name = "splitflap";
       src = "${sources."https://github.com/otherjoel/splitflap.git"}/splitflap";
-      checksum = "3256498f963b5b697185efbc920f1c28723d49fb";
+      checksum = "d184fedce6c50c8f1a059929e304c63d0df1b47b";
       racketDeps = [self."splitflap-doc" self."splitflap-lib"];
       cyclicDeps = [];
     };
     "frog" = mkRacketPackage {
       name = "frog";
       src = sources."https://github.com/greghendershott/frog.git";
-      checksum = "8fc8fc7ae323bdfc3208669c526703c8a0b3e000";
+      checksum = "525c2298f54ffa9fd3b9c44e3a23d4df6aab9278";
       racketDeps = [self."find-parent-dir" self."scribble-lib" self."html-lib" self."racket-index" self."markdown" self."srfi-lite-lib" self."rackunit-lib" self."at-exp-lib" self."threading-lib" self."threading-doc" self."web-server-lib" self."reprovide-lang-lib" self."racket-doc" self."scribble-text-lib"];
       cyclicDeps = [];
     };
@@ -6621,7 +6782,7 @@
     "esterel-rhombus-lib" = mkRacketPackage {
       name = "esterel-rhombus-lib";
       src = "${sources."https://github.com/rfindler/esterel.git"}/esterel-rhombus-lib";
-      checksum = "9ac0749726c3486a2702e9f6ec405256dce178c9";
+      checksum = "ba50fd54dbb24c2ade605b57632520a056a311e9";
       racketDeps = [self."esterel-lib" self."rhombus-prototype"];
       cyclicDeps = [];
     };
@@ -6664,14 +6825,14 @@
     "rebellion" = mkRacketPackage {
       name = "rebellion";
       src = sources."https://github.com/jackfirth/rebellion.git";
-      checksum = "69dce215e231e62889389bc40be11f5b4387b304";
+      checksum = "2404d739fa3e24210c1312109784015b4bb5c55d";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "math-lib" = mkRacketPackage {
       name = "math-lib";
       src = "${sources."git://github.com/racket/math/"}/math-lib";
-      checksum = "b7455f468c63300ccae2e123646504a651bb79db";
+      checksum = "86c2a97edbca22ac182f69c4ed45088733d7b906";
       racketDeps = [self."math-win32-x86_64" self."math-win32-arm64" self."math-aarch64-macosx" self."r6rs-lib" self."math-x86_64-macosx" self."math-win32-i386" self."math-i386-macosx" self."math-x86_64-linux-natipkg" self."math-ppc-macosx" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -6769,7 +6930,7 @@
     "confluent-schema-registry-lib" = mkRacketPackage {
       name = "confluent-schema-registry-lib";
       src = "${sources."https://github.com/Bogdanp/racket-kafka.git"}/confluent-schema-registry-lib";
-      checksum = "f9f0e6e16fe6c9a7efed0c547100db37fccc2ff3";
+      checksum = "1ac07163404b7ff2dbdc69a545a88dbb0bbd09ea";
       racketDeps = [self."http-easy-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -6797,7 +6958,7 @@
     "json-lexer-test" = mkRacketPackage {
       name = "json-lexer-test";
       src = "${sources."https://github.com/Bogdanp/racket-json-lexer.git"}/json-lexer-test";
-      checksum = "8ea11955549259ea76c62177e9e2bce836acc7fb";
+      checksum = "d3b61463971d495d3b7ae834f2c3256faf2ed593";
       racketDeps = [self."json-lexer-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -6818,7 +6979,7 @@
     "gref-lib" = mkRacketPackage {
       name = "gref-lib";
       src = "${sources."https://github.com/usaoc/gref.git"}/gref-lib";
-      checksum = "15e78c4506a43a6702f87915eb94262a8e761b6b";
+      checksum = "4520bf033c74b40c830400b65ac0cbb1d6b8623c";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -6836,11 +6997,46 @@
       racketDeps = [];
       cyclicDeps = [];
     };
+    "toml-doc" = mkRacketPackage {
+      name = "toml-doc";
+      src = "${sources."https://github.com/toml-racket/toml-racket.git"}/toml-doc";
+      checksum = "fe46aa2c75939997dc21a2faaa79ea51304c4d15";
+      racketDeps = [self."scribble-lib" self."racket-doc" self."toml-lib" self."gregor-doc"];
+      cyclicDeps = [];
+    };
+    "libzstd-x86_64-win32" = mkRacketPackage {
+      name = "libzstd-x86_64-win32";
+      src = sources."https://racket.defn.io/libzstd-x86_64-win32-1.5.5.tar.gz";
+      checksum = "64592bf83e21b46943f5c4254d41073c278278f1";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
+    "rdf-dc" = mkRacketPackage {
+      name = "rdf-dc";
+      src = sources."https://github.com/johnstonskj/racket-rdf-dc.git";
+      checksum = "1329ead2a4a072be843f681f4f68480987444e5e";
+      racketDeps = [self."rdf-core" self."racket-doc" self."sandbox-lib" self."scribble-lib"];
+      cyclicDeps = [];
+    };
     "define-assets-from" = mkRacketPackage {
       name = "define-assets-from";
       src = sources."https://github.com/thoughtstem/define-assets-from.git";
       checksum = "f41954f7d955fdabbd697976d73344a5aa733d31";
       racketDeps = [self."scribble-lib" self."htdp-lib" self."racket-doc" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "ebuild" = mkRacketPackage {
+      name = "ebuild";
+      src = "${sources."https://gitlab.com/gentoo-racket/racket-ebuild.git"}/src/ebuild";
+      checksum = "f546f1c86a834a04520d0817407141d376572c86";
+      racketDeps = [self."ebuild-doc" self."ebuild-modify-lang" self."ebuild-tools" self."ebuild-lib" self."ebuild-templates" self."ebuild-test" self."ebuild-transformers"];
+      cyclicDeps = [];
+    };
+    "llm-lang" = mkRacketPackage {
+      name = "llm-lang";
+      src = sources."https://github.com/wilbowma/llm-lang.git";
+      checksum = "8f946304375bfd30da8f226ea0d61266a1d1e93d";
+      racketDeps = [self."scribble-lib" self."http-easy-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "racket-win32-i386" = mkRacketPackage {
@@ -6853,7 +7049,7 @@
     "graph" = mkRacketPackage {
       name = "graph";
       src = "${sources."https://github.com/stchang/graph.git"}/graph";
-      checksum = "f06848871ed7b4b488341fdd73e9f640b4788733";
+      checksum = "9d77ab184e26f4f3c917c7bd49eda2e980a24fae";
       racketDeps = [self."graph-test" self."graph-lib" self."graph-doc"];
       cyclicDeps = [];
     };
@@ -6874,14 +7070,21 @@
     "dbg-ui" = mkRacketPackage {
       name = "dbg-ui";
       src = "${sources."https://github.com/Bogdanp/racket-dbg.git"}/dbg-ui";
-      checksum = "9352ee7884d28312022a8af79889334d12c87541";
+      checksum = "a265f4eeaf0b38fe2cb3196013fa698eb9f7a172";
       racketDeps = [self."dbg" self."profile-lib" self."gui-lib" self."plot-lib" self."plot-gui-lib" self."gui-easy-lib" self."canvas-list" self."pict-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "keyring-secret-service-test" = mkRacketPackage {
+      name = "keyring-secret-service-test";
+      src = "${sources."https://github.com/samdphillips/racket-keyring.git"}/keyring-secret-service-test";
+      checksum = "5233dface521aa8dfa341466f67d791dd20a352a";
+      racketDeps = [self."keyring-secret-service-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "libzstd-x86_64-linux" = mkRacketPackage {
       name = "libzstd-x86_64-linux";
       src = sources."https://racket.defn.io/libzstd-x86_64-linux-1.5.5.tar.gz";
-      checksum = "a96446cfa2fa328c6da0f1a7f35ff771b6b3a75e";
+      checksum = "ec516ad1b1c032e3ca520a5f1698b9c4519250b1";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -6897,13 +7100,6 @@
       src = sources."github://github.com/yjqww6/drracket-paredit/master";
       checksum = "b2272896fcdba7e1f2fae7f0f3ecf0043252a10f";
       racketDeps = [self."gui-lib" self."drracket-plugin-lib" self."drracket" self."srfi-lib"];
-      cyclicDeps = [];
-    };
-    "ebuild" = mkRacketPackage {
-      name = "ebuild";
-      src = "${sources."https://gitlab.com/gentoo-racket/racket-ebuild.git"}/src/ebuild";
-      checksum = "6d23de624c9087e03f9407379160821e5e00c4f0";
-      racketDeps = [self."ebuild-doc" self."ebuild-modify-lang" self."ebuild-tools" self."ebuild-lib" self."ebuild-templates" self."ebuild-test" self."ebuild-transformers"];
       cyclicDeps = [];
     };
     "quickscript-competition-2020" = mkRacketPackage {
@@ -6945,7 +7141,7 @@
     "koyo-sessions-redis" = mkRacketPackage {
       name = "koyo-sessions-redis";
       src = sources."https://github.com/Bogdanp/koyo-sessions-redis.git";
-      checksum = "4fcd1fba181e177ea2958df619e0810bac70d79a";
+      checksum = "ca2cc2aed6e2465275509e57bc086170e2ee4e12";
       racketDeps = [self."redis-lib" self."scribble-lib" self."redis-doc" self."racket-doc" self."rackunit-lib" self."koyo-doc" self."koyo-lib"];
       cyclicDeps = [];
     };
@@ -6959,7 +7155,7 @@
     "markdown" = mkRacketPackage {
       name = "markdown";
       src = sources."git://github.com/greghendershott/markdown";
-      checksum = "34ada7458fad51d3a5e0516352f8bd399c517140";
+      checksum = "599743722c47e1e28af1636e9e676f71ec0277d4";
       racketDeps = [self."sexp-diff-lib" self."html-lib" self."redex-lib" self."parsack" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."srfi-lite-lib" self."rackunit-lib" self."at-exp-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -7036,7 +7232,7 @@
     "memoize-doc" = mkRacketPackage {
       name = "memoize-doc";
       src = "${sources."https://github.com/jbclements/memoize.git"}/memoize-doc";
-      checksum = "911a0d3abe44fca1203425f6ff5767a9796f0c1f";
+      checksum = "f373706824145ce2a8247edb76278d6df139333c";
       racketDeps = [self."scribble-lib" self."rackunit-lib" self."memoize-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -7057,22 +7253,15 @@
     "distro-build" = mkRacketPackage {
       name = "distro-build";
       src = "${sources."git://github.com/racket/distro-build/"}/distro-build";
-      checksum = "70b8f8e89bed429fe70e43952bc02aaf6c08b388";
+      checksum = "11190e45761a7933c19cf1b1170c7efeebe2c517";
       racketDeps = [self."distro-build-lib" self."distro-build-doc"];
       cyclicDeps = [];
     };
     "qi-lib" = mkRacketPackage {
       name = "qi-lib";
       src = "${sources."https://github.com/drym-org/qi.git"}/qi-lib";
-      checksum = "c3cec5a9fd98ca19bbc336ee7371be5a2c1f34c6";
-      racketDeps = [self."fancy-app"];
-      cyclicDeps = [];
-    };
-    "kittle-buffer" = mkRacketPackage {
-      name = "kittle-buffer";
-      src = sources."https://github.com/KDr2/kittle-buffer.git";
-      checksum = "7ab19798d07fde81f3d378867b5ae794821d49aa";
-      racketDeps = [self."srfi" self."draw" self."gui"];
+      checksum = "070ffc5e0d2e3a581a1bc11acd391e980dbdd328";
+      racketDeps = [self."racket-doc" self."syntax-spec-v1" self."fancy-app"];
       cyclicDeps = [];
     };
     "math-x86_64-linux-natipkg" = mkRacketPackage {
@@ -7089,10 +7278,31 @@
       racketDeps = [self."htdp-lib" self."custom-load" self."cover-lib" self."racket-doc" self."rackunit-lib" self."compiler-lib" self."at-exp-lib" self."syntax-color-lib" self."data-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
+    "avro-lib" = mkRacketPackage {
+      name = "avro-lib";
+      src = "${sources."https://github.com/Bogdanp/racket-avro.git"}/avro-lib";
+      checksum = "755babe40c8593c9880a74178e48198af9962bb7";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
+    "peg-parser" = mkRacketPackage {
+      name = "peg-parser";
+      src = sources."https://github.com/lives-group/peg-parser.git";
+      checksum = "50ab2c656f8d102d3c701ee4dba9201a7f5f7a0c";
+      racketDeps = [self."peg-gen" self."scribble-lib" self."parser-tools-lib" self."rackcheck" self."typed-racket-datatype" self."racket-doc" self."rackunit-lib" self."typed-racket-lib" self."rackcheck-lib"];
+      cyclicDeps = [];
+    };
+    "noise-serde-lint-lib" = mkRacketPackage {
+      name = "noise-serde-lint-lib";
+      src = "${sources."https://github.com/Bogdanp/Noise.git"}/Racket/noise-serde-lint-lib";
+      checksum = "35d57a7f13baad8c26819fc21e058198735394f7";
+      racketDeps = [self."review"];
+      cyclicDeps = [];
+    };
     "urlang" = mkRacketPackage {
       name = "urlang";
       src = sources."git://github.com/soegaard/urlang";
-      checksum = "f7ac3390d73d7991bfb956d480042a2efdd68607";
+      checksum = "e9f83509d6f1a7cdc91ba1ad5a0ecaa76e573996";
       racketDeps = [self."html-writing" self."html-parsing" self."net-lib" self."scribble-lib" self."nanopass" self."srfi-lite-lib" self."rackunit-lib" self."at-exp-lib" self."web-server-lib" self."scribble-html-lib" self."racket-doc" self."scribble-text-lib"];
       cyclicDeps = [];
     };
@@ -7122,13 +7332,6 @@
       src = "${sources."https://github.com/jessealama/gillette.git"}/gillette-lib";
       checksum = "0f574df183aa91762697f1bce3961c3d425896ea";
       racketDeps = [self."laramie-lib" self."typed-racket-lib" self."http-easy" self."txexpr" self."rackunit-lib" self."syntax-classes-lib" self."rackunit-typed"];
-      cyclicDeps = [];
-    };
-    "avro-lib" = mkRacketPackage {
-      name = "avro-lib";
-      src = "${sources."https://github.com/Bogdanp/racket-avro.git"}/avro-lib";
-      checksum = "f67bbce0949e0cfed17b4d60d89b9c6cbb419f44";
-      racketDeps = [];
       cyclicDeps = [];
     };
     "profile" = mkRacketPackage {
@@ -7183,7 +7386,7 @@
     "srfi-lite-lib" = mkRacketPackage {
       name = "srfi-lite-lib";
       src = "${sources."git://github.com/racket/srfi/"}/srfi-lite-lib";
-      checksum = "25eb1c0e1ab8a1fa227750aa7f0689a2c531f8c8";
+      checksum = "cab009da67adf40737ae7ff02cd7c8bd6316d61d";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -7232,14 +7435,14 @@
     "generator-util" = mkRacketPackage {
       name = "generator-util";
       src = sources."https://github.com/countvajhula/generator-util.git";
-      checksum = "2de885130984bd6880a5e1017d0b3783e64b3877";
-      racketDeps = [self."cover-coveralls" self."scribble-abbrevs" self."social-contract" self."cover" self."relation" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."collections-lib" self."collections-doc"];
+      checksum = "f332f07f540575ec39f8664480ba8d4f80e73fbe";
+      racketDeps = [self."cover-coveralls" self."social-contract" self."cover" self."racket-doc" self."relation-doc" self."scribble-abbrevs" self."relation-lib" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."collections-lib" self."collections-doc"];
       cyclicDeps = [];
     };
     "rackunit-lib" = mkRacketPackage {
       name = "rackunit-lib";
       src = "${sources."git://github.com/racket/rackunit/"}/rackunit-lib";
-      checksum = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
+      checksum = "41c64557f209c6a440c6595f29c1d6e7a7958917";
       racketDeps = [self."testing-util-lib"];
       cyclicDeps = [];
     };
@@ -7287,9 +7490,9 @@
     };
     "buid" = mkRacketPackage {
       name = "buid";
-      src = sources."https://github.com/Bogdanp/racket-buid.git";
-      checksum = "2349931cd105fc40212ed63bc34d7e451f4ad7c1";
-      racketDeps = [self."scribble-lib" self."rackcheck-lib" self."racket-doc" self."rackunit-lib"];
+      src = "${sources."https://github.com/Bogdanp/racket-buid.git"}/buid";
+      checksum = "9a82a3e5e31e393fbf5a010f4016153a651f0c22";
+      racketDeps = [self."buid-lib" self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "roman-numeral" = mkRacketPackage {
@@ -7323,7 +7526,7 @@
     "rackunit" = mkRacketPackage {
       name = "rackunit";
       src = "${sources."git://github.com/racket/rackunit/"}/rackunit";
-      checksum = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
+      checksum = "41c64557f209c6a440c6595f29c1d6e7a7958917";
       racketDeps = [self."rackunit-gui" self."rackunit-lib" self."rackunit-plugin-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -7338,7 +7541,7 @@
     "deta-lib" = mkRacketPackage {
       name = "deta-lib";
       src = "${sources."https://github.com/Bogdanp/deta.git"}/deta-lib";
-      checksum = "39a10bacf3f25ca607c72053aa75a487cb02543e";
+      checksum = "df9ddc886df098537fa18f1ec775ec591d9a630b";
       racketDeps = [self."db-lib" self."gregor-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -7352,7 +7555,7 @@
     "compiler-test" = mkRacketPackage {
       name = "compiler-test";
       src = "${sources."git://github.com/racket/racket"}/pkgs/compiler-test";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."scheme-lib" self."mzscheme-lib" self."net-lib" self."gui-lib" self."plai-lib" self."dynext-lib" self."htdp-lib" self."icons" self."rackunit-lib" self."compiler-lib" self."eli-tester" self."compatibility-lib"];
       cyclicDeps = [];
     };
@@ -7394,7 +7597,7 @@
     "forms-lib" = mkRacketPackage {
       name = "forms-lib";
       src = "${sources."https://github.com/Bogdanp/racket-forms.git"}/forms-lib";
-      checksum = "8fca1d8533cd2d36978bdb411e7d9843c681b5c5";
+      checksum = "e6ba9fa4a4e17d744760193dc7b8a4b399e9db71";
       racketDeps = [self."web-server-lib" self."srfi-lite-lib"];
       cyclicDeps = [];
     };
@@ -7416,7 +7619,7 @@
     "toml-compliance" = mkRacketPackage {
       name = "toml-compliance";
       src = "${sources."https://github.com/toml-racket/toml-racket.git"}/toml-compliance";
-      checksum = "fd7420779c050b8bbd8b4c49076ef321795afa40";
+      checksum = "fe46aa2c75939997dc21a2faaa79ea51304c4d15";
       racketDeps = [self."toml-lib" self."gregor-lib"];
       cyclicDeps = [];
     };
@@ -7431,7 +7634,7 @@
     "gregor-lib" = mkRacketPackage {
       name = "gregor-lib";
       src = "${sources."https://github.com/97jaz/gregor.git"}/gregor-lib";
-      checksum = "2d20192e8795e01a1671869dddaf1984f0cbafee";
+      checksum = "f56215db229ef2e33670f55d08c0330d8f85de23";
       racketDeps = [self."cldr-core" self."cldr-localenames-modern" self."parser-tools-lib" self."cldr-numbers-modern" self."data-lib" self."memoize-lib" self."cldr-dates-modern" self."tzinfo" self."cldr-bcp47"];
       cyclicDeps = [];
     };
@@ -7456,6 +7659,20 @@
       racketDeps = [self."http-easy" self."gregor-doc" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."gregor-lib"];
       cyclicDeps = [];
     };
+    "seq-test" = mkRacketPackage {
+      name = "seq-test";
+      src = "${sources."https://github.com/countvajhula/seq.git"}/seq-test";
+      checksum = "46f35570e9194caa89152ea5f3811ae1f66602df";
+      racketDeps = [self."relation-lib" self."seq-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "fig" = mkRacketPackage {
+      name = "fig";
+      src = sources."https://github.com/micahcantor/fig.git";
+      checksum = "46f85ffeb9ee5b295fd08f64a543967e81a99d01";
+      racketDeps = [self."scribble-lib" self."brag"];
+      cyclicDeps = [];
+    };
     "regraph" = mkRacketPackage {
       name = "regraph";
       src = sources."https://github.com/herbie-fp/regraph.git";
@@ -7473,8 +7690,8 @@
     "testing-util-lib" = mkRacketPackage {
       name = "testing-util-lib";
       src = "${sources."git://github.com/racket/rackunit/"}/testing-util-lib";
-      checksum = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
-      racketDeps = [];
+      checksum = "41c64557f209c6a440c6595f29c1d6e7a7958917";
+      racketDeps = [self."compiler-lib"];
       cyclicDeps = [];
     };
     "recaptcha" = mkRacketPackage {
@@ -7487,15 +7704,8 @@
     "resyntax" = mkRacketPackage {
       name = "resyntax";
       src = sources."https://github.com/jackfirth/resyntax.git";
-      checksum = "e3b6b6a51cc3c01640fc5aaf40090f2466d00722";
+      checksum = "76949ae1d5422bc0ce9390b775a8bdab54cb1852";
       racketDeps = [self."uri-old" self."rebellion" self."fancy-app" self."racket-doc" self."brag-lib" self."scribble-lib" self."rackunit-lib" self."gui-lib" self."br-parser-tools-lib"];
-      cyclicDeps = [];
-    };
-    "seq-test" = mkRacketPackage {
-      name = "seq-test";
-      src = "${sources."https://github.com/countvajhula/seq.git"}/seq-test";
-      checksum = "0ff053ae869cbeebc13c6573fda28d4e9242b134";
-      racketDeps = [self."relation-lib" self."rackunit-lib" self."collections-lib" self."seq-lib"];
       cyclicDeps = [];
     };
     "slideshow-exe" = mkRacketPackage {
@@ -7508,7 +7718,7 @@
     "libargon2" = mkRacketPackage {
       name = "libargon2";
       src = "${sources."https://github.com/Bogdanp/racket-libargon2.git"}/libargon2";
-      checksum = "a4bd607e5835ff4a6d304d9a6d4adc58f66eddb5";
+      checksum = "51dd41b7ee3fd33a66e025e71378cdd56df54125";
       racketDeps = [self."libargon2-aarch64-macosx" self."libargon2-x86_64-macosx" self."libargon2-x86_64-linux" self."libargon2-x86_64-win32" self."libargon2-i386-win32"];
       cyclicDeps = [];
     };
@@ -7529,8 +7739,8 @@
     "compiler-lib" = mkRacketPackage {
       name = "compiler-lib";
       src = "${sources."git://github.com/racket/racket"}/pkgs/compiler-lib";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
-      racketDeps = [self."scheme-lib" self."zo-lib" self."rackunit-lib"];
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
+      racketDeps = [self."scheme-lib" self."zo-lib"];
       cyclicDeps = [];
     };
     "zeromq-win32-i386" = mkRacketPackage {
@@ -7543,14 +7753,14 @@
     "acmart" = mkRacketPackage {
       name = "acmart";
       src = "${sources."git://github.com/racket/scribble"}/scribble-lib";
-      checksum = "faf92fa8638acfb193f0a14953b9779a31f2cdcd";
+      checksum = "b899cc74df03b0d8567f67160be2b307cdf3bc9a";
       racketDeps = [self."draw-lib" self."planet-lib" self."sandbox-lib" self."scheme-lib" self."scribble-html-lib" self."net-lib" self."compatibility-lib" self."typed-racket-lib" self."scribble-text-lib" self."rackunit-lib" self."at-exp-lib" self."syntax-color-lib"];
       cyclicDeps = [];
     };
     "drracket-plugin-lib" = mkRacketPackage {
       name = "drracket-plugin-lib";
       src = "${sources."git://github.com/racket/drracket/"}/drracket-plugin-lib";
-      checksum = "2657eafdcfb5e4ccef19405492244f679b9234ef";
+      checksum = "7899052c860f3549b54b753144cd2c2519562012";
       racketDeps = [self."compatibility-lib"];
       cyclicDeps = [];
     };
@@ -7600,7 +7810,7 @@
     "at-exp-lib" = mkRacketPackage {
       name = "at-exp-lib";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/at-exp-lib";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -7621,7 +7831,7 @@
     "binfmt-test" = mkRacketPackage {
       name = "binfmt-test";
       src = "${sources."https://github.com/Bogdanp/racket-binfmt.git"}/binfmt-test";
-      checksum = "76e6da2d6d1fe98cdf2b8fd12abf8529956fdacb";
+      checksum = "dbd7bbe72ad734687bd72241e4528d934ae3f4aa";
       racketDeps = [self."binfmt" self."rackcheck-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -7629,7 +7839,7 @@
     "resource-pool-lib" = mkRacketPackage {
       name = "resource-pool-lib";
       src = "${sources."https://github.com/Bogdanp/racket-resource-pool.git"}/resource-pool-lib";
-      checksum = "e5063198cd4c293d8e99c1f445f8acda2d8d7f4f";
+      checksum = "019ee1c17e5596d2e2e8cd1387811440da2dc95a";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -7664,8 +7874,8 @@
     "kafka-lib" = mkRacketPackage {
       name = "kafka-lib";
       src = "${sources."https://github.com/Bogdanp/racket-kafka.git"}/kafka-lib";
-      checksum = "f9f0e6e16fe6c9a7efed0c547100db37fccc2ff3";
-      racketDeps = [self."libzstd" self."binfmt" self."snappy-lib" self."sasl-lib" self."rackunit-lib" self."lz4-lib"];
+      checksum = "1ac07163404b7ff2dbdc69a545a88dbb0bbd09ea";
+      racketDeps = [self."snappy-lib" self."net-lib" self."sasl-lib" self."libzstd" self."binfmt-lib" self."rackunit-lib" self."lz4-lib"];
       cyclicDeps = [];
     };
     "define2" = mkRacketPackage {
@@ -7678,7 +7888,7 @@
     "base" = mkRacketPackage {
       name = "base";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/base";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [];
       cyclicDeps = [
         {
@@ -7759,7 +7969,7 @@
         {
           name = "racket-lib";
           src = "${sources."git://github.com/racket/racket/"}/pkgs/racket-lib";
-          checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+          checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
         }
       ];
     };
@@ -7795,14 +8005,14 @@
     "drracket-tool" = mkRacketPackage {
       name = "drracket-tool";
       src = "${sources."git://github.com/racket/drracket/"}/drracket-tool";
-      checksum = "2657eafdcfb5e4ccef19405492244f679b9234ef";
+      checksum = "7899052c860f3549b54b753144cd2c2519562012";
       racketDeps = [self."drracket-tool-lib" self."drracket"];
       cyclicDeps = [];
     };
     "deta-doc" = mkRacketPackage {
       name = "deta-doc";
       src = "${sources."https://github.com/Bogdanp/deta.git"}/deta-doc";
-      checksum = "39a10bacf3f25ca607c72053aa75a487cb02543e";
+      checksum = "df9ddc886df098537fa18f1ec775ec591d9a630b";
       racketDeps = [self."threading-doc" self."gregor-doc" self."db-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."deta-lib" self."gregor-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -7844,7 +8054,7 @@
     "gtp-benchmarks" = mkRacketPackage {
       name = "gtp-benchmarks";
       src = sources."https://github.com/utahplt/gtp-benchmarks.git";
-      checksum = "81a8ef8c5e9cb407adbea17cadc693242eccd213";
+      checksum = "9b451b60b59208e8c46969705f4e5bda238b620e";
       racketDeps = [self."scribble-lib" self."syntax-sloc" self."with-cache" self."require-typed-check" self."gtp-util" self."typed-racket-lib" self."racket-doc" self."scribble-abbrevs" self."typed-racket-more" self."pict-lib" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -7893,7 +8103,7 @@
     "threading-lib" = mkRacketPackage {
       name = "threading-lib";
       src = "${sources."git://github.com/lexi-lambda/threading"}/threading-lib";
-      checksum = "1f3b630d3ed78edc6d883f9d99305158d6b67623";
+      checksum = "aedb198261cf73b3f9b282566e7e7dd9b9be63a6";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -7956,7 +8166,7 @@
     "aws" = mkRacketPackage {
       name = "aws";
       src = sources."github://github.com/greghendershott/aws/master";
-      checksum = "ddeee9c2152f6aabaa55753fe8f4872088db060d";
+      checksum = "99c2831efd87858633748f8dc3c4e7b96e428579";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib" self."at-exp-lib" self."sha" self."http"];
       cyclicDeps = [];
     };
@@ -7990,7 +8200,7 @@
     };
     "sexp-enforest" = mkRacketPackage {
       name = "sexp-enforest";
-      src = sources."https://github.com/syntacticlosure/sexp-enforest.git";
+      src = throw "Invalid url: https://github.com/syntacticlosure/sexp-enforest.git#main";
       checksum = "00888fd0bba81472c5dc775bcb966612fdf4d5e8";
       racketDeps = [];
       cyclicDeps = [];
@@ -8020,14 +8230,14 @@
     "uu-cs3520" = mkRacketPackage {
       name = "uu-cs3520";
       src = sources."https://github.com/mflatt/uu-cs3520.git";
-      checksum = "e14721a922894c22cbec199d46d87ec852f96142";
-      racketDeps = [self."shplait" self."net-lib" self."gui-lib" self."drracket" self."drracket-plugin-lib"];
+      checksum = "9c7899c2de0e59f77d8a5489bc0608c6d1004729";
+      racketDeps = [self."shplait" self."net-lib" self."gui-lib" self."drracket-plugin-lib" self."drracket" self."rhombus-prototype"];
       cyclicDeps = [];
     };
     "libsqlite3-x86_64-win32" = mkRacketPackage {
       name = "libsqlite3-x86_64-win32";
-      src = sources."https://racket.defn.io/libsqlite3-x86_64-win32-3.39.2.tar.gz";
-      checksum = "c2c34c28a6f95330b8417fe410dd83a3dbe9a093";
+      src = sources."https://racket.defn.io/libsqlite3-x86_64-win32-3.45.3.tar.gz";
+      checksum = "a017c9e0d1c97f176787fb6b8ebfd58108141849";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -8049,7 +8259,7 @@
     "parse-qif" = mkRacketPackage {
       name = "parse-qif";
       src = sources."https://github.com/jbclements/parse-qif.git";
-      checksum = "c6646b6f8c4577412189a912b10d40c1222a24d1";
+      checksum = "ddb371e5aca548a3f6dfee136bf7acd644c923bd";
       racketDeps = [self."rackunit-typed" self."typed-racket-lib" self."srfi-lite-lib"];
       cyclicDeps = [];
     };
@@ -8085,7 +8295,7 @@
     "racketscript-compiler" = mkRacketPackage {
       name = "racketscript-compiler";
       src = "${sources."https://github.com/racketscript/racketscript.git"}/racketscript-compiler";
-      checksum = "cb1a83e2205cb0e4942ae909d80047014073c473";
+      checksum = "bff853c802b0073d08043f850108a57981d9f826";
       racketDeps = [self."anaphoric" self."graph-lib" self."typed-racket-lib" self."typed-racket-more" self."rackunit-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -8120,7 +8330,7 @@
     "marionette-lib" = mkRacketPackage {
       name = "marionette-lib";
       src = "${sources."https://github.com/Bogdanp/marionette.git"}/marionette-lib";
-      checksum = "daac17634775dc516611de6ea1e4c43776d64405";
+      checksum = "c4a42965205c91a273259353a7f9fd6d4def1107";
       racketDeps = [self."scribble-text-lib"];
       cyclicDeps = [];
     };
@@ -8155,7 +8365,7 @@
     "req-test" = mkRacketPackage {
       name = "req-test";
       src = "${sources."https://gitlab.com/xgqt/racket-req.git"}/src/req-test";
-      checksum = "67289afb31e06a0a611b60f18c6ac9ee32789268";
+      checksum = "4826c86164a2713be161a7e9a8e952c042ef5f75";
       racketDeps = [self."req-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -8171,6 +8381,20 @@
       src = "${sources."https://github.com/lexi-lambda/syntax-classes.git"}/syntax-classes-lib";
       checksum = "4d64d35259d69ee8d5c90f475fe777c66d54c8fd";
       racketDeps = [];
+      cyclicDeps = [];
+    };
+    "effect-racket-doc" = mkRacketPackage {
+      name = "effect-racket-doc";
+      src = "${sources."https://github.com/camoy/effect-racket.git"}/effect-racket-doc";
+      checksum = "e8b8247c2339a89da8c0d8dad58bf13eda21eed2";
+      racketDeps = [self."sandbox-lib" self."scribble-lib" self."effect-racket-lib" self."racket-doc"];
+      cyclicDeps = [];
+    };
+    "noise-serde-doc" = mkRacketPackage {
+      name = "noise-serde-doc";
+      src = "${sources."https://github.com/Bogdanp/Noise.git"}/Racket/noise-serde-doc";
+      checksum = "35d57a7f13baad8c26819fc21e058198735394f7";
+      racketDeps = [self."scribble-lib" self."noise-serde-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "turn-based-game" = mkRacketPackage {
@@ -8197,7 +8421,7 @@
     "rackunit-typed" = mkRacketPackage {
       name = "rackunit-typed";
       src = "${sources."https://github.com/racket/rackunit.git"}/rackunit-typed";
-      checksum = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
+      checksum = "41c64557f209c6a440c6595f29c1d6e7a7958917";
       racketDeps = [self."rackunit-gui" self."racket-index" self."typed-racket-lib" self."rackunit-lib" self."testing-util-lib"];
       cyclicDeps = [];
     };
@@ -8219,7 +8443,7 @@
     "threading-doc" = mkRacketPackage {
       name = "threading-doc";
       src = "${sources."git://github.com/lexi-lambda/threading"}/threading-doc";
-      checksum = "1f3b630d3ed78edc6d883f9d99305158d6b67623";
+      checksum = "aedb198261cf73b3f9b282566e7e7dd9b9be63a6";
       racketDeps = [self."scribble-lib" self."racket-doc" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -8260,9 +8484,9 @@
     };
     "herbie" = mkRacketPackage {
       name = "herbie";
-      src = throw "Invalid url: https://github.com/uwplse/herbie.git?path=src#v2.0";
-      checksum = "600fd02dd9057ff758c4c73f806e323470f72a02";
-      racketDeps = [self."egg-herbie" self."math-lib" self."web-server-lib" self."profile-lib" self."draw-lib" self."rival" self."rackunit-lib" self."fpbench" self."plot-lib"];
+      src = "${sources."https://github.com/uwplse/herbie.git"}/src";
+      checksum = "4fb7f3e0fb78c49170187b9d865b935bf274cad9";
+      racketDeps = [self."rival" self."egg-herbie" self."math-lib" self."web-server-lib" self."profile-lib" self."fpbench" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "javascript" = mkRacketPackage {
@@ -8293,6 +8517,20 @@
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
+    "infix" = mkRacketPackage {
+      name = "infix";
+      src = sources."git://github.com/soegaard/infix";
+      checksum = "3f7998e509f201f78eb986de0f09e0542a429ad0";
+      racketDeps = [self."scribble-lib" self."scheme-lib" self."parser-tools-lib" self."racket-doc" self."rackunit-lib" self."at-exp-lib"];
+      cyclicDeps = [];
+    };
+    "namecaser" = mkRacketPackage {
+      name = "namecaser";
+      src = sources."https://github.com/jackfirth/namecaser.git";
+      checksum = "8e46fa624f3ee9d9607159a9a4becd3067fec4ec";
+      racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "cairo" = mkRacketPackage {
       name = "cairo";
       src = "${sources."https://github.com/soegaard/cairo.git"}/cairo";
@@ -8303,15 +8541,8 @@
     "web-server-lib" = mkRacketPackage {
       name = "web-server-lib";
       src = "${sources."git://github.com/racket/web-server/"}/web-server-lib";
-      checksum = "e321f8425e539d22412d4f7763532b3f3a65c95e";
+      checksum = "87a1e58a9b92c621f7d96c76de1da39587f04140";
       racketDeps = [self."net-cookies-lib" self."parser-tools-lib" self."net-lib" self."scribble-text-lib" self."srfi-lite-lib" self."rackunit-lib"];
-      cyclicDeps = [];
-    };
-    "infix" = mkRacketPackage {
-      name = "infix";
-      src = sources."git://github.com/soegaard/infix";
-      checksum = "3f7998e509f201f78eb986de0f09e0542a429ad0";
-      racketDeps = [self."scribble-lib" self."scheme-lib" self."parser-tools-lib" self."racket-doc" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
     "r6rs" = mkRacketPackage {
@@ -8373,7 +8604,7 @@
     "req-lib" = mkRacketPackage {
       name = "req-lib";
       src = "${sources."https://gitlab.com/xgqt/racket-req.git"}/src/req-lib";
-      checksum = "67289afb31e06a0a611b60f18c6ac9ee32789268";
+      checksum = "4826c86164a2713be161a7e9a8e952c042ef5f75";
       racketDeps = [self."colorize" self."upi-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -8386,7 +8617,7 @@
     };
     "RacketFrames" = mkRacketPackage {
       name = "RacketFrames";
-      src = sources."https://github.com/bommysk/RacketFrames.git";
+      src = throw "Invalid url: https://github.com/bommysk/RacketFrames.git";
       checksum = "7ba9ef5051a1c9fd1aa2d8a5672ae0c78e974773";
       racketDeps = [self."plot-gui-lib" self."typed-racket-more" self."scribble-lib" self."math-lib" self."rackunit-typed" self."racket-doc" self."plot-lib" self."typed-racket-lib"];
       cyclicDeps = [];
@@ -8394,7 +8625,7 @@
     "scribble-html-lib" = mkRacketPackage {
       name = "scribble-html-lib";
       src = "${sources."git://github.com/racket/scribble/"}/scribble-html-lib";
-      checksum = "faf92fa8638acfb193f0a14953b9779a31f2cdcd";
+      checksum = "b899cc74df03b0d8567f67160be2b307cdf3bc9a";
       racketDeps = [self."scheme-lib" self."scribble-text-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -8465,7 +8696,7 @@
     "data-frame" = mkRacketPackage {
       name = "data-frame";
       src = sources."https://github.com/alex-hhh/data-frame.git";
-      checksum = "3c77217501d6943111e4696c5e35c2f72b7267ba";
+      checksum = "aff4bbc301323d159f4af580a947e7d38200b367";
       racketDeps = [self."plot-gui-lib" self."draw-lib" self."scribble-lib" self."math-lib" self."racket-doc" self."srfi-lite-lib" self."rackunit-lib" self."db-lib" self."al2-test-runner" self."plot-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -8500,7 +8731,7 @@
     "orthauth" = mkRacketPackage {
       name = "orthauth";
       src = "${sources."https://github.com/tgbugs/orthauth.git"}/racket/orthauth";
-      checksum = "0062461e29850b818807c75e2c2a88dbcdb756a6";
+      checksum = "53b4729f294f7b40ecedd747a4dfc20138a4ef2b";
       racketDeps = [self."python" self."yaml"];
       cyclicDeps = [];
     };
@@ -8514,7 +8745,7 @@
     "pict-test" = mkRacketPackage {
       name = "pict-test";
       src = "${sources."git://github.com/racket/pict/"}/pict-test";
-      checksum = "29e89754c2d6a59fe56027772e7b5113e8560cef";
+      checksum = "8f49787727aeb1a93ffcf333d92ab2bad579d5bc";
       racketDeps = [self."draw-lib" self."pict-lib" self."htdp-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -8535,15 +8766,15 @@
     "lua-test" = mkRacketPackage {
       name = "lua-test";
       src = "${sources."https://github.com/Bogdanp/racket-lua.git"}/lua-test";
-      checksum = "00ff5a503dd8fc1031b0929d91a9e07186e29437";
-      racketDeps = [self."lua-lib" self."rackunit-lib"];
+      checksum = "7551d2efbc1187ab91afb61ef6b291b382e1edce";
+      racketDeps = [self."lua-lib" self."rackcheck-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "keyring-secret-service-lib" = mkRacketPackage {
       name = "keyring-secret-service-lib";
       src = "${sources."https://github.com/samdphillips/racket-keyring.git"}/keyring-secret-service-lib";
-      checksum = "97c77e9f57b6c334e3ee512953c70c5261e0041f";
-      racketDeps = [self."keyring-lib" self."dbus" self."rackunit-lib"];
+      checksum = "5233dface521aa8dfa341466f67d791dd20a352a";
+      racketDeps = [self."keyring-lib" self."dbus"];
       cyclicDeps = [];
     };
     "dherman-struct" = mkRacketPackage {
@@ -8584,14 +8815,14 @@
     "redex-test" = mkRacketPackage {
       name = "redex-test";
       src = "${sources."git://github.com/racket/redex/"}/redex-test";
-      checksum = "8df08b313cff72d56d3c67366065c19ec0c3f7d0";
+      checksum = "a2bbb6edf2374bfddfd516ca75e0e173e662fb40";
       racketDeps = [self."pict-lib" self."slideshow-lib" self."compatibility-lib" self."gui-lib" self."drracket" self."redex-examples" self."racket-index" self."data-enumerate-lib" self."scheme-lib" self."rackunit-lib" self."at-exp-lib" self."redex-gui-lib" self."data-lib"];
       cyclicDeps = [];
     };
     "struct-plus-plus" = mkRacketPackage {
       name = "struct-plus-plus";
       src = sources."https://github.com/dstorrs/struct-plus-plus.git";
-      checksum = "42e4272ab7b8fc31a53a8fc8d7b6988f5542d4f7";
+      checksum = "d39cb339186efe4578e034c9db7482860048d8e4";
       racketDeps = [self."syntax-classes-lib" self."try-catch" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."handy" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -8640,14 +8871,28 @@
     "redis-rkt" = mkRacketPackage {
       name = "redis-rkt";
       src = "${sources."https://github.com/Bogdanp/racket-redis.git"}/redis";
-      checksum = "df397e05f6e65e3d12c2f1040bd716089644302c";
+      checksum = "f1203d9213de9f10968b229350a9b35e27de84b9";
       racketDeps = [self."redis-lib" self."redis-doc"];
+      cyclicDeps = [];
+    };
+    "double-linked-ring" = mkRacketPackage {
+      name = "double-linked-ring";
+      src = sources."https://github.com/matteo-daddio/double-linked-ring.git";
+      checksum = "8f5b7a21c761c0c6ef331165feeb7771ae536a82";
+      racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "non-det" = mkRacketPackage {
+      name = "non-det";
+      src = sources."https://github.com/jeapostrophe/non-det.git";
+      checksum = "4b6d4aec79680b362efcc32a0589e85e97d868c9";
+      racketDeps = [self."chk-lib" self."text-table"];
       cyclicDeps = [];
     };
     "elapsed-nanoseconds" = mkRacketPackage {
       name = "elapsed-nanoseconds";
       src = sources."https://gitlab.com/bhrgunatha/elapsed-nanoseconds.git";
-      checksum = "362e733892499490e7b80ce729a7565c2858af7f";
+      checksum = "27a5ed5bee3cab57a17fc98f5da9d3a6f1e2e3d9";
       racketDeps = [self."math-lib"];
       cyclicDeps = [];
     };
@@ -8668,7 +8913,7 @@
     "gls" = mkRacketPackage {
       name = "gls";
       src = sources."github://github.com/Kalimehtar/gls/master";
-      checksum = "82f2f504a3ccf534126020baedb406f813863143";
+      checksum = "a27e5b3044dd12bbbab05793df76d3c83d7777bd";
       racketDeps = [self."scribble-lib" self."racket-doc" self."srfi-lite-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -8677,13 +8922,6 @@
       src = "${sources."git://github.com/lexi-lambda/struct-update.git"}/struct-update-test";
       checksum = "8ce456cde8764ae27c348123ec9e01e76826d536";
       racketDeps = [self."rackunit-spec" self."struct-update-lib" self."rackunit-lib"];
-      cyclicDeps = [];
-    };
-    "non-det" = mkRacketPackage {
-      name = "non-det";
-      src = sources."https://github.com/jeapostrophe/non-det.git";
-      checksum = "4b6d4aec79680b362efcc32a0589e85e97d868c9";
-      racketDeps = [self."chk-lib" self."text-table"];
       cyclicDeps = [];
     };
     "glc" = mkRacketPackage {
@@ -8707,6 +8945,20 @@
       racketDeps = [self."beautiful-racket-lib" self."draw-lib" self."csp" self."racket-doc" self."debug" self."gregor" self."brag-lib" self."scribble-lib" self."math-lib" self."graph" self."srfi-lite-lib" self."rackunit-lib" self."at-exp-lib" self."gui-lib" self."sugar"];
       cyclicDeps = [];
     };
+    "r-cade" = mkRacketPackage {
+      name = "r-cade";
+      src = sources."https://github.com/massung/r-cade.git";
+      checksum = "0cce22885aad28234d3f6e1d88568cdc16daf3e6";
+      racketDeps = [self."scribble-lib" self."csfml" self."racket-doc"];
+      cyclicDeps = [];
+    };
+    "mathoak" = mkRacketPackage {
+      name = "mathoak";
+      src = sources."https://github.com/symbolistics-com/mathoak.git";
+      checksum = "b51b1d43a24383e8f95650ddf10e8b7f8ab4b8bc";
+      racketDeps = [self."srfi"];
+      cyclicDeps = [];
+    };
     "component-doc" = mkRacketPackage {
       name = "component-doc";
       src = "${sources."https://github.com/Bogdanp/racket-component.git"}/component-doc";
@@ -8717,7 +8969,7 @@
     "amazon-msk-sasl-lib" = mkRacketPackage {
       name = "amazon-msk-sasl-lib";
       src = "${sources."https://github.com/Bogdanp/racket-kafka.git"}/amazon-msk-sasl-lib";
-      checksum = "f9f0e6e16fe6c9a7efed0c547100db37fccc2ff3";
+      checksum = "1ac07163404b7ff2dbdc69a545a88dbb0bbd09ea";
       racketDeps = [self."crypto-lib" self."sasl-lib" self."rackunit-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -8756,13 +9008,6 @@
       racketDeps = [self."scribble-lib" self."scribble-math" self."racket-doc" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
-    "r-cade" = mkRacketPackage {
-      name = "r-cade";
-      src = sources."https://github.com/massung/r-cade.git";
-      checksum = "0cce22885aad28234d3f6e1d88568cdc16daf3e6";
-      racketDeps = [self."scribble-lib" self."csfml" self."racket-doc"];
-      cyclicDeps = [];
-    };
     "lex-yacc-example" = mkRacketPackage {
       name = "lex-yacc-example";
       src = sources."https://github.com/petterpripp/lex-yacc-example.git";
@@ -8773,7 +9018,7 @@
     "distro-build-client" = mkRacketPackage {
       name = "distro-build-client";
       src = "${sources."git://github.com/racket/distro-build/"}/distro-build-client";
-      checksum = "70b8f8e89bed429fe70e43952bc02aaf6c08b388";
+      checksum = "11190e45761a7933c19cf1b1170c7efeebe2c517";
       racketDeps = [self."ds-store-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -8830,14 +9075,14 @@
     "messagepack-lib" = mkRacketPackage {
       name = "messagepack-lib";
       src = "${sources."https://github.com/Bogdanp/racket-messagepack.git"}/messagepack-lib";
-      checksum = "a0b317e8c1f6c1764ad4bdf86968c4d52cddfb9b";
+      checksum = "53074c338fa99102ac9c036311fba5c04f7e9049";
       racketDeps = [];
       cyclicDeps = [];
     };
     "scribble-test" = mkRacketPackage {
       name = "scribble-test";
       src = "${sources."git://github.com/racket/scribble/"}/scribble-test";
-      checksum = "faf92fa8638acfb193f0a14953b9779a31f2cdcd";
+      checksum = "b899cc74df03b0d8567f67160be2b307cdf3bc9a";
       racketDeps = [self."racket-index" self."eli-tester" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."at-exp-lib" self."racket-doc" self."scribble-text-lib"];
       cyclicDeps = [];
     };
@@ -8914,7 +9159,7 @@
     "queue" = mkRacketPackage {
       name = "queue";
       src = sources."https://github.com/dstorrs/racket-queue.git";
-      checksum = "98ebd99a4d3d849aef90c31ed9e874126aedde84";
+      checksum = "cb8926bcaec6f6c9daf4450a27184df2f82f599e";
       racketDeps = [self."test-more" self."scribble-lib" self."struct-plus-plus" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -8928,7 +9173,7 @@
     "json-lexer-lib" = mkRacketPackage {
       name = "json-lexer-lib";
       src = "${sources."https://github.com/Bogdanp/racket-json-lexer.git"}/json-lexer-lib";
-      checksum = "8ea11955549259ea76c62177e9e2bce836acc7fb";
+      checksum = "d3b61463971d495d3b7ae834f2c3256faf2ed593";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -9040,7 +9285,7 @@
     "graph-test" = mkRacketPackage {
       name = "graph-test";
       src = "${sources."https://github.com/stchang/graph.git"}/graph-test";
-      checksum = "f06848871ed7b4b488341fdd73e9f640b4788733";
+      checksum = "9d77ab184e26f4f3c917c7bd49eda2e980a24fae";
       racketDeps = [self."graph-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -9082,14 +9327,14 @@
     "racketscript-doc" = mkRacketPackage {
       name = "racketscript-doc";
       src = "${sources."https://github.com/racketscript/racketscript.git"}/racketscript-doc";
-      checksum = "cb1a83e2205cb0e4942ae909d80047014073c473";
+      checksum = "bff853c802b0073d08043f850108a57981d9f826";
       racketDeps = [self."scribble-lib" self."scribble-enhanced" self."racketscript-compiler" self."racket-doc"];
       cyclicDeps = [];
     };
     "xe" = mkRacketPackage {
       name = "xe";
       src = sources."https://github.com/tonyg/racket-xe.git";
-      checksum = "84e5cf72c34e6b3778c9353c22a3ebb0bb943d20";
+      checksum = "ce113def8ce67651d0c6135afd5e0b506aeaca8e";
       racketDeps = [self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -9131,7 +9376,7 @@
     "snip" = mkRacketPackage {
       name = "snip";
       src = "${sources."git://github.com/racket/snip/"}/snip";
-      checksum = "863b13662b5e6ae6271c33a41969cac4f57a4ef6";
+      checksum = "8209ef8e50fdb81788253846b259a72f06d16019";
       racketDeps = [self."snip-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -9159,7 +9404,7 @@
     "the-unicoder" = mkRacketPackage {
       name = "the-unicoder";
       src = sources."https://github.com/willghatch/the-unicoder.git";
-      checksum = "5803dbaaa455b400d881e2409d642f956cc139c1";
+      checksum = "42ef149ab3daf0e6219d37c07499f1db9309c15c";
       racketDeps = [self."tex-table" self."scribble-lib" self."gui-lib" self."racket-doc" self."basedir" self."unix-socket-lib"];
       cyclicDeps = [];
     };
@@ -9194,14 +9439,14 @@
     "deta" = mkRacketPackage {
       name = "deta";
       src = "${sources."https://github.com/Bogdanp/deta.git"}/deta";
-      checksum = "39a10bacf3f25ca607c72053aa75a487cb02543e";
+      checksum = "df9ddc886df098537fa18f1ec775ec591d9a630b";
       racketDeps = [self."deta-lib" self."deta-doc"];
       cyclicDeps = [];
     };
     "poppler-x86-64-macosx" = mkRacketPackage {
       name = "poppler-x86-64-macosx";
       src = "${sources."git://github.com/soegaard/poppler-libs"}/poppler-x86_64-macosx";
-      checksum = "f39e31f2b561b457fdbda50117f6bc4802ef14b6";
+      checksum = "029c07225d55593ee38c1bc3fcce2a8a1dd6cdc6";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -9223,35 +9468,35 @@
     "tmux-vim-demo" = mkRacketPackage {
       name = "tmux-vim-demo";
       src = sources."https://github.com/benknoble/tmux-vim-demo.git";
-      checksum = "fafa5d0cb02154159f0565a338fe69c99f1013cd";
+      checksum = "b0fb15b5284ef0129138acd61ee15818950313da";
       racketDeps = [self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "avro-test" = mkRacketPackage {
       name = "avro-test";
       src = "${sources."https://github.com/Bogdanp/racket-avro.git"}/avro-test";
-      checksum = "f67bbce0949e0cfed17b4d60d89b9c6cbb419f44";
+      checksum = "755babe40c8593c9880a74178e48198af9962bb7";
       racketDeps = [self."avro-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "compiler" = mkRacketPackage {
       name = "compiler";
       src = "${sources."git://github.com/racket/racket"}/pkgs/compiler";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."compiler-lib"];
       cyclicDeps = [];
     };
     "zo-lib" = mkRacketPackage {
       name = "zo-lib";
       src = "${sources."git://github.com/racket/racket"}/pkgs/zo-lib";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [];
       cyclicDeps = [];
     };
     "gui-easy" = mkRacketPackage {
       name = "gui-easy";
       src = "${sources."https://github.com/Bogdanp/racket-gui-easy.git"}/gui-easy";
-      checksum = "ddba619ff590f5f1ef981d56ea745506dec56a53";
+      checksum = "d0c760f74ca6bc5bd027ec1b6749fa81ef84e02e";
       racketDeps = [self."gui-easy-lib" self."pict-lib" self."scribble-lib" self."gui-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -9320,7 +9565,7 @@
     "goblins" = mkRacketPackage {
       name = "goblins";
       src = "${sources."https://gitlab.com/spritely/goblins.git"}/goblins";
-      checksum = "0d322f267a15e74f0421332a8516dca18921d6f6";
+      checksum = "d578c94401f8bf6b816798b24935a9bfd71f4b37";
       racketDeps = [self."pk" self."syrup" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."crypto"];
       cyclicDeps = [];
     };
@@ -9353,6 +9598,13 @@
       cyclicDeps = [];
     };
     "mzscheme-doc" = self."racket-doc";
+    "mvar" = mkRacketPackage {
+      name = "mvar";
+      src = "${sources."https://github.com/lexi-lambda/racket-mvar.git"}/mvar";
+      checksum = "aac2876805fd79257b4076b750f5b8a16667f595";
+      racketDeps = [self."mvar-lib" self."mvar-doc"];
+      cyclicDeps = [];
+    };
     "fontconfig" = mkRacketPackage {
       name = "fontconfig";
       src = sources."https://github.com/takikawa/racket-fontconfig.git";
@@ -9426,7 +9678,7 @@
     "mintexpp-reader-lib" = mkRacketPackage {
       name = "mintexpp-reader-lib";
       src = "${sources."https://github.com/shhyou/mintexpp.git"}/mintexpp-reader-lib";
-      checksum = "4bce044d57b58fb390df1eacdf5787ebdb52ffa6";
+      checksum = "2d457fa70581b45871833405182a84f7de236b47";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -9440,7 +9692,7 @@
     "marionette-doc" = mkRacketPackage {
       name = "marionette-doc";
       src = "${sources."https://github.com/Bogdanp/marionette.git"}/marionette-doc";
-      checksum = "daac17634775dc516611de6ea1e4c43776d64405";
+      checksum = "c4a42965205c91a273259353a7f9fd6d4def1107";
       racketDeps = [self."marionette-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib"];
       cyclicDeps = [];
     };
@@ -9482,21 +9734,21 @@
     "lazytree" = mkRacketPackage {
       name = "lazytree";
       src = sources."https://github.com/countvajhula/lazytree.git";
-      checksum = "96fde82bd59b60f8c1e006669efdb733168da7e4";
-      racketDeps = [self."cover-coveralls" self."social-contract" self."cover" self."relation" self."racket-doc" self."scribble-abbrevs" self."pict-lib" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."collections-lib" self."collections-doc"];
+      checksum = "44663f087064b34900ee8d8e4c66c32288923e0c";
+      racketDeps = [self."cover-coveralls" self."social-contract" self."cover" self."racket-doc" self."relation-doc" self."pict-lib" self."scribble-abbrevs" self."relation-lib" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."collections-lib" self."collections-doc"];
       cyclicDeps = [];
     };
     "sentry-test" = mkRacketPackage {
       name = "sentry-test";
       src = "${sources."https://github.com/Bogdanp/racket-sentry.git"}/sentry-test";
-      checksum = "8cc862858376ed2e80c70e8c25ae88d3f3953906";
+      checksum = "720daa812297328cd8d50852865b514143dad12d";
       racketDeps = [self."sentry-lib" self."web-server-lib" self."rackunit-lib" self."gregor-lib" self."threading-lib"];
       cyclicDeps = [];
     };
     "dbg" = mkRacketPackage {
       name = "dbg";
       src = "${sources."https://github.com/Bogdanp/racket-dbg.git"}/dbg";
-      checksum = "9352ee7884d28312022a8af79889334d12c87541";
+      checksum = "a265f4eeaf0b38fe2cb3196013fa698eb9f7a172";
       racketDeps = [self."profile-lib"];
       cyclicDeps = [];
     };
@@ -9516,8 +9768,8 @@
     };
     "libsqlite3-x86_64-linux" = mkRacketPackage {
       name = "libsqlite3-x86_64-linux";
-      src = sources."https://racket.defn.io/libsqlite3-x86_64-linux-3.39.2.tar.gz";
-      checksum = "61b69ac26b09dd4d47a8609ecd201cb98656e187";
+      src = sources."https://racket.defn.io/libsqlite3-x86_64-linux-3.45.3.tar.gz";
+      checksum = "745a8550ec91ed691ca2d566f40311392c250b48";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -9531,14 +9783,14 @@
     "tinybasic" = mkRacketPackage {
       name = "tinybasic";
       src = "${sources."https://github.com/winny-/tinybasic.rkt.git"}/tinybasic";
-      checksum = "65ab18b420fb76c7858806fe6618a99292212f10";
+      checksum = "bc8967bb2758eb464dd858de80ac6708d6a57805";
       racketDeps = [self."tinybasic-lib" self."tinybasic-doc" self."tinybasic-examples"];
       cyclicDeps = [];
     };
     "plot" = mkRacketPackage {
       name = "plot";
       src = "${sources."git://github.com/racket/plot/"}/plot";
-      checksum = "b0da52632c0369058887439345eb90cbf8e99dae";
+      checksum = "a14222e19736f75bdb9c660ca9c3b78c6e2ee9b3";
       racketDeps = [self."plot-gui-lib" self."plot-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -9573,7 +9825,7 @@
     "scribble-code-examples-lib" = mkRacketPackage {
       name = "scribble-code-examples-lib";
       src = "${sources."https://github.com/AlexKnauth/scribble-code-examples.git"}/scribble-code-examples-lib";
-      checksum = "56f3ce6752fdec6240130fb37bda29288b9091aa";
+      checksum = "b2c128b0f60230ba0e539d3790faf70ba2c1f5fa";
       racketDeps = [self."sandbox-lib" self."scribble-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -9587,7 +9839,7 @@
     "pretty-expressive" = mkRacketPackage {
       name = "pretty-expressive";
       src = sources."https://github.com/sorawee/pretty-expressive.git";
-      checksum = "dca2c7042550a1bf437d5e43fabe5326296da5b1";
+      checksum = "0984931c6f8ff32921dd477c875127de7600dfd5";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -9601,8 +9853,8 @@
     "racket-poppler" = mkRacketPackage {
       name = "racket-poppler";
       src = sources."github://github.com/soegaard/racket-poppler/master";
-      checksum = "12fe23e6f8072766e5e7926ebef8eaf6097cd26e";
-      racketDeps = [self."draw-lib" self."slideshow-lib" self."web-server-lib" self."poppler-win32-x86-64" self."scribble-lib" self."poppler-i386-macosx" self."rackunit-lib" self."at-exp-lib" self."poppler-x86-64-macosx" self."poppler-win32-i386" self."pict" self."racket-doc"];
+      checksum = "2baf47614f081362504f589a8c8496f1041924dc";
+      racketDeps = [self."poppler-aarch64-macosx" self."draw-lib" self."slideshow-lib" self."web-server-lib" self."poppler-win32-x86-64" self."scribble-lib" self."poppler-i386-macosx" self."rackunit-lib" self."at-exp-lib" self."poppler-x86-64-macosx" self."poppler-win32-i386" self."pict" self."racket-doc"];
       cyclicDeps = [];
     };
     "html-parsing" = mkRacketPackage {
@@ -9610,6 +9862,20 @@
       src = sources."https://www.neilvandyke.org/racket/html-parsing.zip";
       checksum = "8b469e50b1629c3f694a458fc9f797258b362adb";
       racketDeps = [self."overeasy" self."racket-doc" self."mcfly" self."scribble-lib"];
+      cyclicDeps = [];
+    };
+    "lathe-comforts-test" = mkRacketPackage {
+      name = "lathe-comforts-test";
+      src = "${sources."https://github.com/lathe/lathe-comforts-for-racket.git"}/lathe-comforts-test";
+      checksum = "3ad28a38f202603a33b67a7a74a6f8d2e80f7ba5";
+      racketDeps = [self."lathe-comforts-lib" self."parendown-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "deta-lint-lib" = mkRacketPackage {
+      name = "deta-lint-lib";
+      src = "${sources."https://github.com/Bogdanp/deta.git"}/deta-lint-lib";
+      checksum = "df9ddc886df098537fa18f1ec775ec591d9a630b";
+      racketDeps = [self."review"];
       cyclicDeps = [];
     };
     "typed-map-test" = mkRacketPackage {
@@ -9633,18 +9899,18 @@
       racketDeps = [self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
+    "keyring-keychain-test" = mkRacketPackage {
+      name = "keyring-keychain-test";
+      src = "${sources."https://github.com/samdphillips/racket-keyring.git"}/keyring-keychain-test";
+      checksum = "5233dface521aa8dfa341466f67d791dd20a352a";
+      racketDeps = [self."keyring-keychain-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "http-easy-lib" = mkRacketPackage {
       name = "http-easy-lib";
       src = "${sources."https://github.com/Bogdanp/racket-http-easy.git"}/http-easy-lib";
-      checksum = "4a037d5430ae892249d01567d1b8623bcb421cc5";
+      checksum = "1f79be1e420b111f17fac2b27573d2411c7445a2";
       racketDeps = [self."net-cookies-lib" self."unix-socket-lib" self."resource-pool-lib"];
-      cyclicDeps = [];
-    };
-    "lathe-comforts-test" = mkRacketPackage {
-      name = "lathe-comforts-test";
-      src = "${sources."https://github.com/lathe/lathe-comforts-for-racket.git"}/lathe-comforts-test";
-      checksum = "43829a1613140d6b12ee1d078ea1d08f9f0c1827";
-      racketDeps = [self."lathe-comforts-lib" self."parendown-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "openapidsl" = mkRacketPackage {
@@ -9692,7 +9958,7 @@
     "seq-lib" = mkRacketPackage {
       name = "seq-lib";
       src = "${sources."https://github.com/countvajhula/seq.git"}/seq-lib";
-      checksum = "0ff053ae869cbeebc13c6573fda28d4e9242b134";
+      checksum = "46f35570e9194caa89152ea5f3811ae1f66602df";
       racketDeps = [self."relation-lib" self."version-case" self."collections-lib" self."social-contract"];
       cyclicDeps = [];
     };
@@ -9706,7 +9972,7 @@
     "softposit-rkt" = mkRacketPackage {
       name = "softposit-rkt";
       src = sources."https://github.com/DavidThien/softposit-rkt.git";
-      checksum = "364469d5a219e61b29ed0d2d5048ed1ba29c66ba";
+      checksum = "0bb608b83306899abb145d64106fe7beca1c733c";
       racketDeps = [self."scribble-lib" self."math-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -9734,7 +10000,7 @@
     "poppler-win32-i386" = mkRacketPackage {
       name = "poppler-win32-i386";
       src = "${sources."git://github.com/soegaard/poppler-libs"}/poppler-win32-i386";
-      checksum = "f39e31f2b561b457fdbda50117f6bc4802ef14b6";
+      checksum = "029c07225d55593ee38c1bc3fcce2a8a1dd6cdc6";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -9768,7 +10034,7 @@
     "avro" = mkRacketPackage {
       name = "avro";
       src = "${sources."https://github.com/Bogdanp/racket-avro.git"}/avro";
-      checksum = "f67bbce0949e0cfed17b4d60d89b9c6cbb419f44";
+      checksum = "755babe40c8593c9880a74178e48198af9962bb7";
       racketDeps = [self."scribble-lib" self."racket-doc" self."avro-lib"];
       cyclicDeps = [];
     };
@@ -9784,6 +10050,13 @@
       src = "${sources."git://github.com/racket/mzscheme/"}/mzscheme-lib";
       checksum = "64d63a78795b4bf3f9ac451ff727ae45183d4cb5";
       racketDeps = [self."scheme-lib"];
+      cyclicDeps = [];
+    };
+    "simplelog" = mkRacketPackage {
+      name = "simplelog";
+      src = "${sources."https://gitlab.com/xgqt/xgqt-lang-lib-simplelog4all.git"}/Source/v1/simplelog-racket-lib/src/simplelog";
+      checksum = "98fc9ed36461e86bc7a543b4ae5824a41361361e";
+      racketDeps = [];
       cyclicDeps = [];
     };
     "delay-pure" = mkRacketPackage {
@@ -9838,7 +10111,7 @@
     "Stacker" = mkRacketPackage {
       name = "Stacker";
       src = sources."https://github.com/LuKC1024/stacker.git";
-      checksum = "36cc457194d29e75ce8be0750301c20d500c7a1f";
+      checksum = "c7451b54ed95f6f3da88baa0800e2c7b630d747d";
       racketDeps = [self."plait" self."draw-lib" self."pict-lib" self."pprint" self."gui-lib" self."redex-gui-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."testing-util-lib"];
       cyclicDeps = [];
     };
@@ -9982,6 +10255,13 @@
       racketDeps = [];
       cyclicDeps = [];
     };
+    "buid-test" = mkRacketPackage {
+      name = "buid-test";
+      src = "${sources."https://github.com/Bogdanp/racket-buid.git"}/buid-test";
+      checksum = "9a82a3e5e31e393fbf5a010f4016153a651f0c22";
+      racketDeps = [self."buid-lib" self."rackcheck-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "kw-utils" = mkRacketPackage {
       name = "kw-utils";
       src = sources."git://github.com/AlexKnauth/kw-utils";
@@ -10000,7 +10280,7 @@
     "koyo-sentry" = mkRacketPackage {
       name = "koyo-sentry";
       src = sources."https://github.com/Bogdanp/koyo-sentry.git";
-      checksum = "0c589eb238ecf990f1896e6111339950987800cf";
+      checksum = "9eba1b94c07440b5fcca8f4c5ab25c7c4f2518c6";
       racketDeps = [self."scribble-lib" self."web-server-lib" self."koyo-lib" self."racket-doc" self."sentry-doc" self."sentry-lib"];
       cyclicDeps = [];
     };
@@ -10021,7 +10301,7 @@
     "toml-lib" = mkRacketPackage {
       name = "toml-lib";
       src = "${sources."https://github.com/toml-racket/toml-racket.git"}/toml-lib";
-      checksum = "fd7420779c050b8bbd8b4c49076ef321795afa40";
+      checksum = "fe46aa2c75939997dc21a2faaa79ea51304c4d15";
       racketDeps = [self."parsack-lib" self."rackunit-lib" self."gregor-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -10049,7 +10329,7 @@
     "syndicate" = mkRacketPackage {
       name = "syndicate";
       src = "${sources."https://git.syndicate-lang.org/syndicate-lang/syndicate-rkt.git"}/syndicate";
-      checksum = "51db5f92474e476349887a3c05d90e48c7a2c2a8";
+      checksum = "4ba9eee1c704d4d20e1baa91a4ecd2c1f4d9bf8f";
       racketDeps = [self."preserves" self."libb2" self."web-server-lib" self."auxiliary-macro-context" self."data-lib" self."struct-defaults" self."libsodium" self."noise-protocol" self."rackunit-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -10084,7 +10364,7 @@
     "option-contract" = mkRacketPackage {
       name = "option-contract";
       src = "${sources."git://github.com/racket/option-contract"}/option-contract";
-      checksum = "42d22d5d01b7717911af1bde4baaa570ae3df516";
+      checksum = "50d72f706ef944689e21b65a6c94b3c819989c59";
       racketDeps = [self."option-contract-lib" self."option-contract-doc"];
       cyclicDeps = [];
     };
@@ -10098,7 +10378,7 @@
     "seq-doc" = mkRacketPackage {
       name = "seq-doc";
       src = "${sources."https://github.com/countvajhula/seq.git"}/seq-doc";
-      checksum = "0ff053ae869cbeebc13c6573fda28d4e9242b134";
+      checksum = "46f35570e9194caa89152ea5f3811ae1f66602df";
       racketDeps = [self."racket-doc" self."relation-doc" self."scribble-abbrevs" self."relation-lib" self."sandbox-lib" self."scribble-lib" self."collections-lib" self."seq-lib" self."collections-doc"];
       cyclicDeps = [];
     };
@@ -10112,7 +10392,7 @@
     "eopl" = mkRacketPackage {
       name = "eopl";
       src = sources."git://github.com/racket/eopl";
-      checksum = "2e7d541a61b9c3f8111ad809e5c0535962f07f42";
+      checksum = "d313612cd68709eb43b753941b550a2d4b18b516";
       racketDeps = [self."scribble-lib" self."compatibility-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -10126,7 +10406,7 @@
     "koyo" = mkRacketPackage {
       name = "koyo";
       src = "${sources."https://github.com/Bogdanp/koyo.git"}/koyo";
-      checksum = "a4dc1455fb1e62984e5d52635176a1464b8753d8";
+      checksum = "78ada818d9e86869aed126759e7d945a91084771";
       racketDeps = [self."koyo-doc" self."koyo-lib"];
       cyclicDeps = [];
     };
@@ -10168,7 +10448,7 @@
     "linea" = mkRacketPackage {
       name = "linea";
       src = "${sources."https://github.com/willghatch/racket-rash.git"}/linea";
-      checksum = "42460a283ce2d7296257b068505cd4649052f67c";
+      checksum = "feb3ad16deb0b372a05f5d522f71e1746a3f96fd";
       racketDeps = [self."scribble-lib" self."udelim" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -10196,7 +10476,7 @@
     "rackunit-plugin-lib" = mkRacketPackage {
       name = "rackunit-plugin-lib";
       src = "${sources."git://github.com/racket/rackunit/"}/rackunit-plugin-lib";
-      checksum = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
+      checksum = "41c64557f209c6a440c6595f29c1d6e7a7958917";
       racketDeps = [self."rackunit-gui" self."gui-lib" self."rackunit-lib" self."drracket-plugin-lib"];
       cyclicDeps = [];
     };
@@ -10210,7 +10490,7 @@
     "laramie-test" = mkRacketPackage {
       name = "laramie-test";
       src = "${sources."https://github.com/jessealama/laramie.git"}/laramie-test";
-      checksum = "d8caea23136ad4112bdde663f38da830a3264838";
+      checksum = "f9c9150e9afe8aadfa9251972ecc915f867657f3";
       racketDeps = [self."laramie-lib" self."rackunit-typed" self."typed-racket-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -10287,8 +10567,8 @@
     "keyring-lib" = mkRacketPackage {
       name = "keyring-lib";
       src = "${sources."https://github.com/samdphillips/racket-keyring.git"}/keyring-lib";
-      checksum = "97c77e9f57b6c334e3ee512953c70c5261e0041f";
-      racketDeps = [self."rackunit-lib"];
+      checksum = "5233dface521aa8dfa341466f67d791dd20a352a";
+      racketDeps = [];
       cyclicDeps = [];
     };
     "pvector" = mkRacketPackage {
@@ -10301,7 +10581,7 @@
     "distro-build-test" = mkRacketPackage {
       name = "distro-build-test";
       src = "${sources."git://github.com/racket/distro-build/"}/distro-build-test";
-      checksum = "70b8f8e89bed429fe70e43952bc02aaf6c08b388";
+      checksum = "11190e45761a7933c19cf1b1170c7efeebe2c517";
       racketDeps = [self."remote-shell-lib" self."web-server-lib"];
       cyclicDeps = [];
     };
@@ -10336,7 +10616,7 @@
     "raco-run" = mkRacketPackage {
       name = "raco-run";
       src = sources."https://github.com/samdphillips/raco-run.git";
-      checksum = "10d3fe4977a9f835265b5c2d9d08a9ee4cfdd42a";
+      checksum = "266a3280328b420b6e2081ef080146675d050243";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -10357,7 +10637,7 @@
     "ebuild-test" = mkRacketPackage {
       name = "ebuild-test";
       src = "${sources."https://gitlab.com/gentoo-racket/racket-ebuild.git"}/src/ebuild-test";
-      checksum = "6d23de624c9087e03f9407379160821e5e00c4f0";
+      checksum = "f546f1c86a834a04520d0817407141d376572c86";
       racketDeps = [self."ebuild-modify-lang" self."ebuild-tools" self."ebuild-lib" self."ebuild-transformers" self."uuid" self."upi-lib" self."ebuild-templates" self."rackunit-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -10392,7 +10672,7 @@
     "array" = mkRacketPackage {
       name = "array";
       src = sources."https://github.com/rvs314/array.git";
-      checksum = "ea2c8c01a595a42075eecbd4d24fa412fc152467";
+      checksum = "c671a08ba55093a4cf6a869aa0365521637d3e50";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -10476,14 +10756,14 @@
     "slib-format" = mkRacketPackage {
       name = "slib-format";
       src = sources."https://github.com/shawnw/racket-slib-format.git";
-      checksum = "13a5f7b337bfb54e7895d14891044c86e0966702";
+      checksum = "021c8fd24baa4c2f09c5d726cf820f2acf927fae";
       racketDeps = [self."scribble-lib" self."soup-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "string-constants-lib-lgpl" = mkRacketPackage {
       name = "string-constants-lib-lgpl";
       src = "${sources."https://github.com/racket/string-constants.git"}/string-constants-lib-lgpl";
-      checksum = "0eba894bc607edcdfb45e97568e66ce0a2faf1a7";
+      checksum = "fe3c2b4252cc6d6b8b2fc3ebeafe4a4a62beeeff";
       racketDeps = [self."string-constants-lib"];
       cyclicDeps = [];
     };
@@ -10504,7 +10784,7 @@
     "dssl2" = mkRacketPackage {
       name = "dssl2";
       src = sources."https://github.com/tov/dssl2.git";
-      checksum = "e2d03ea0fff61c5e515ecd4bff88608e0439e32a";
+      checksum = "0385bf241e9a65423c965ee5586296eec73cc93e";
       racketDeps = [self."parser-tools-lib" self."gui-lib" self."plot-lib" self."racket-doc" self."snip-lib" self."plot-gui-lib" self."sandbox-lib" self."scribble-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -10546,7 +10826,7 @@
     "draw" = mkRacketPackage {
       name = "draw";
       src = "${sources."git://github.com/racket/draw/"}/draw";
-      checksum = "76a1acc368f585b0f77f0b5377dcf66f835371e5";
+      checksum = "57b2e050a287e4f0c7e26662d4850c6ac62935c3";
       racketDeps = [self."draw-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -10588,7 +10868,7 @@
     "racketscript-extras" = mkRacketPackage {
       name = "racketscript-extras";
       src = "${sources."https://github.com/racketscript/racketscript.git"}/racketscript-extras";
-      checksum = "cb1a83e2205cb0e4942ae909d80047014073c473";
+      checksum = "bff853c802b0073d08043f850108a57981d9f826";
       racketDeps = [self."racketscript-compiler" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -10602,7 +10882,7 @@
     "typed-racket" = mkRacketPackage {
       name = "typed-racket";
       src = "${sources."git://github.com/racket/typed-racket/"}/typed-racket";
-      checksum = "f3e42b3aba6ef84b01fc25d0a9ef48cd9d16a554";
+      checksum = "c3702d6ee849182ab4cf7fd9d2a8f6135fd7aaa0";
       racketDeps = [self."typed-racket-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -10623,7 +10903,7 @@
     "algorithms" = mkRacketPackage {
       name = "algorithms";
       src = sources."https://github.com/codereport/racket-algorithms.git";
-      checksum = "4d2de1bd73a409b25c503b9fb27271f0c9325105";
+      checksum = "198512b58a25b145451e8ba84d476a5c14e8940b";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -10637,14 +10917,14 @@
     "net-lib" = mkRacketPackage {
       name = "net-lib";
       src = "${sources."git://github.com/racket/racket"}/pkgs/net-lib";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."srfi-lite-lib"];
       cyclicDeps = [];
     };
     "protocol-buffers" = mkRacketPackage {
       name = "protocol-buffers";
       src = "${sources."https://github.com/Bogdanp/racket-protocol-buffers.git"}/protocol-buffers";
-      checksum = "f3d6b2d015bdbdb1f3312510f7f030e71adff3b0";
+      checksum = "c4cec28f29b05c7d9875c944429033d29d3fd555";
       racketDeps = [self."scribble-lib" self."protocol-buffers-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -10658,7 +10938,7 @@
     "tinybasic-lib" = mkRacketPackage {
       name = "tinybasic-lib";
       src = "${sources."https://github.com/winny-/tinybasic.rkt.git"}/tinybasic-lib";
-      checksum = "65ab18b420fb76c7858806fe6618a99292212f10";
+      checksum = "bc8967bb2758eb464dd858de80ac6708d6a57805";
       racketDeps = [self."readline-lib" self."parser-tools-lib"];
       cyclicDeps = [];
     };
@@ -10672,7 +10952,7 @@
     "draw-test" = mkRacketPackage {
       name = "draw-test";
       src = "${sources."git://github.com/racket/draw/"}/draw-test";
-      checksum = "76a1acc368f585b0f77f0b5377dcf66f835371e5";
+      checksum = "57b2e050a287e4f0c7e26662d4850c6ac62935c3";
       racketDeps = [self."draw-lib" self."sandbox-lib" self."pconvert-lib" self."racket-test" self."compatibility-lib" self."gui-lib" self."sgl" self."racket-index" self."scheme-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -10736,7 +11016,7 @@
     "esterel-examples" = mkRacketPackage {
       name = "esterel-examples";
       src = "${sources."https://github.com/rfindler/esterel.git"}/esterel-examples";
-      checksum = "9ac0749726c3486a2702e9f6ec405256dce178c9";
+      checksum = "ba50fd54dbb24c2ade605b57632520a056a311e9";
       racketDeps = [self."pict-lib" self."esterel-rhombus-lib" self."gui-lib" self."rackunit" self."esterel-lib" self."rhombus-prototype"];
       cyclicDeps = [];
     };
@@ -10764,7 +11044,7 @@
     "htdp-test" = mkRacketPackage {
       name = "htdp-test";
       src = "${sources."git://github.com/racket/htdp/"}/htdp-test";
-      checksum = "73ec2b90055f3ab66d30e54dc3463506b25e50b4";
+      checksum = "8037f1cc620ed91fe68362ce5ad3d887269eb725";
       racketDeps = [self."drracket-tool-lib" self."pict-lib" self."gui-lib" self."wxme-lib" self."racket-index" self."scheme-lib" self."deinprogramm" self."htdp-lib" self."srfi-lite-lib" self."rackunit-lib" self."at-exp-lib" self."pconvert-lib" self."lazy" self."racket-test" self."redex-lib" self."profile-lib" self."compatibility-lib"];
       cyclicDeps = [];
     };
@@ -10778,14 +11058,14 @@
     "gregor-doc" = mkRacketPackage {
       name = "gregor-doc";
       src = "${sources."https://github.com/97jaz/gregor.git"}/gregor-doc";
-      checksum = "2d20192e8795e01a1671869dddaf1984f0cbafee";
+      checksum = "f56215db229ef2e33670f55d08c0330d8f85de23";
       racketDeps = [self."tzinfo" self."data-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."gregor-lib"];
       cyclicDeps = [];
     };
     "ebuild-transformers" = mkRacketPackage {
       name = "ebuild-transformers";
       src = "${sources."https://gitlab.com/gentoo-racket/racket-ebuild.git"}/src/ebuild-transformers";
-      checksum = "6d23de624c9087e03f9407379160821e5e00c4f0";
+      checksum = "f546f1c86a834a04520d0817407141d376572c86";
       racketDeps = [self."typed-racket-more" self."ebuild-lib" self."threading-lib" self."upi-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -10912,14 +11192,14 @@
     "laramie-doc" = mkRacketPackage {
       name = "laramie-doc";
       src = "${sources."https://github.com/jessealama/laramie.git"}/laramie-doc";
-      checksum = "d8caea23136ad4112bdde663f38da830a3264838";
+      checksum = "f9c9150e9afe8aadfa9251972ecc915f867657f3";
       racketDeps = [self."laramie-lib" self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "expeditor-doc" = mkRacketPackage {
       name = "expeditor-doc";
       src = "${sources."https://github.com/racket/expeditor.git"}/expeditor-doc";
-      checksum = "9b2d54a97a4f17a75d3198630a978b3eb2b4d1af";
+      checksum = "189a3ddf312cfc9ab0b93f54e096fdd2267cc113";
       racketDeps = [self."scribble-lib" self."expeditor-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -10961,7 +11241,7 @@
     "qi" = mkRacketPackage {
       name = "qi";
       src = "${sources."https://github.com/drym-org/qi.git"}/qi";
-      checksum = "c3cec5a9fd98ca19bbc336ee7371be5a2c1f34c6";
+      checksum = "070ffc5e0d2e3a581a1bc11acd391e980dbdd328";
       racketDeps = [self."qi-test" self."qi-doc" self."qi-probe" self."Qi-Quickscripts" self."qi-lib"];
       cyclicDeps = [];
     };
@@ -10981,8 +11261,8 @@
     };
     "simple-xlsx" = mkRacketPackage {
       name = "simple-xlsx";
-      src = sources."https://github.com/simmone/racket-simple-xlsx.git";
-      checksum = "6edc584a6889783fbbe98761eecc6a99b5b2b223";
+      src = sources."git+https://github.com/simmone/racket-simple-xlsx";
+      checksum = "ec6791f7f5c89686e31893838ba00896db68fcab";
       racketDeps = [self."scribble-lib" self."simple-xml" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -11017,7 +11297,7 @@
     "alexis-util" = mkRacketPackage {
       name = "alexis-util";
       src = "${sources."git://github.com/lexi-lambda/racket-alexis.git"}/alexis-util";
-      checksum = "0268afb688231e0d6d76ded3291538dd5d3db37c";
+      checksum = "0c4c03bf089a15347079d29e7910877a6b585f18";
       racketDeps = [self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."at-exp-lib" self."match-plus" self."static-rename" self."threading" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -11031,7 +11311,7 @@
     "net-cookies-test" = mkRacketPackage {
       name = "net-cookies-test";
       src = "${sources."git://github.com/RenaissanceBug/racket-cookies"}/net-cookies-test";
-      checksum = "c4ce9abc8f9de9270bd2655aafaa711b992dbe0e";
+      checksum = "01bad8ad41f212bebc0d2019b3fc383faaaf7bef";
       racketDeps = [self."net-cookies-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -11080,7 +11360,7 @@
     "htdp-doc" = mkRacketPackage {
       name = "htdp-doc";
       src = "${sources."git://github.com/racket/htdp/"}/htdp-doc";
-      checksum = "73ec2b90055f3ab66d30e54dc3463506b25e50b4";
+      checksum = "8037f1cc620ed91fe68362ce5ad3d887269eb725";
       racketDeps = [self."draw-lib" self."pict-lib" self."scheme-lib" self."htdp-lib" self."gui-lib" self."scribble-lib" self."sandbox-lib" self."plai" self."at-exp-lib" self."drracket" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -11149,15 +11429,15 @@
     };
     "egg-herbie-osx" = mkRacketPackage {
       name = "egg-herbie-osx";
-      src = sources."https://github.com/uwplse/herbie/releases/download/v1.6/egg-herbie-macOS.zip";
-      checksum = "2e95b7c2548a8b07daff875a71dce264ccf8b573";
+      src = sources."https://github.com/uwplse/herbie/releases/download/v2.0.2/egg-herbie-macOS.zip";
+      checksum = "ebd0217c3bba02be5ddfe158f09bb29202eaf51e";
       racketDeps = [self."rackunit-lib"];
       cyclicDeps = [];
     };
     "rackcheck" = mkRacketPackage {
       name = "rackcheck";
       src = "${sources."https://github.com/Bogdanp/rackcheck.git"}/rackcheck";
-      checksum = "21dcda3edf86c28d9594887e92c5d7bef589897c";
+      checksum = "ffbddb7a9edef6ce1d9e0930adae1bd7033f1db7";
       racketDeps = [self."scribble-lib" self."rackcheck-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -11234,7 +11514,7 @@
     "expeditor-lib" = mkRacketPackage {
       name = "expeditor-lib";
       src = "${sources."https://github.com/racket/expeditor.git"}/expeditor-lib";
-      checksum = "9b2d54a97a4f17a75d3198630a978b3eb2b4d1af";
+      checksum = "189a3ddf312cfc9ab0b93f54e096fdd2267cc113";
       racketDeps = [self."syntax-color-lib"];
       cyclicDeps = [];
     };
@@ -11269,7 +11549,7 @@
     "gref" = mkRacketPackage {
       name = "gref";
       src = "${sources."https://github.com/usaoc/gref.git"}/gref";
-      checksum = "15e78c4506a43a6702f87915eb94262a8e761b6b";
+      checksum = "4520bf033c74b40c830400b65ac0cbb1d6b8623c";
       racketDeps = [self."gref-doc" self."gref-lib"];
       cyclicDeps = [];
     };
@@ -11283,7 +11563,7 @@
     "tinybasic-doc" = mkRacketPackage {
       name = "tinybasic-doc";
       src = "${sources."https://github.com/winny-/tinybasic.rkt.git"}/tinybasic-doc";
-      checksum = "65ab18b420fb76c7858806fe6618a99292212f10";
+      checksum = "bc8967bb2758eb464dd858de80ac6708d6a57805";
       racketDeps = [self."scribble-lib" self."tinybasic-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -11318,7 +11598,7 @@
     "osc" = mkRacketPackage {
       name = "osc";
       src = sources."github://github.com/jbclements/osc/master";
-      checksum = "18caebb14eefe3482976e738654aee2f18c5f88d";
+      checksum = "ec8293cf0f98d459710d74ecb88c11a6f70f44ef";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -11330,16 +11610,44 @@
       cyclicDeps = [];
     };
     "db-win32-x86_64" = self."base";
+    "effect-racket" = mkRacketPackage {
+      name = "effect-racket";
+      src = "${sources."https://github.com/camoy/effect-racket.git"}/effect-racket";
+      checksum = "e8b8247c2339a89da8c0d8dad58bf13eda21eed2";
+      racketDeps = [self."effect-racket-test" self."effect-racket-doc" self."effect-racket-lib"];
+      cyclicDeps = [];
+    };
+    "sketching-doc" = mkRacketPackage {
+      name = "sketching-doc";
+      src = "${sources."https://github.com/soegaard/sketching.git"}/sketching-doc";
+      checksum = "592c04229395212acc646b1278f14ff7a098c2d7";
+      racketDeps = [self."cairo-lib" self."pict-lib" self."gui-lib" self."sketching-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."at-exp-lib"];
+      cyclicDeps = [];
+    };
+    "mvar-lib" = mkRacketPackage {
+      name = "mvar-lib";
+      src = "${sources."https://github.com/lexi-lambda/racket-mvar.git"}/mvar-lib";
+      checksum = "aac2876805fd79257b4076b750f5b8a16667f595";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
+    "neu-cs2500-handin" = mkRacketPackage {
+      name = "neu-cs2500-handin";
+      src = sources."git://github.com/nuprl/cs2500-client";
+      checksum = "d48c433d69d75ea03c029ec0207faa928796e757";
+      racketDeps = [self."net-lib" self."gui-lib" self."drracket" self."drracket-plugin-lib"];
+      cyclicDeps = [];
+    };
     "racket-test" = mkRacketPackage {
       name = "racket-test";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/racket-test";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."planet-lib" self."option-contract-lib" self."net-lib" self."serialize-cstruct-lib" self."data-lib" self."srfi-lib" self."cext-lib" self."racket-test-core" self."sandbox-lib" self."scribble-lib" self."racket-index" self."scheme-lib" self."rackunit-lib" self."compiler-lib" self."at-exp-lib" self."web-server-lib" self."pconvert-lib" self."eli-tester" self."compatibility-lib"];
       cyclicDeps = [
         {
           name = "net-test";
           src = "${sources."git://github.com/racket/racket"}/pkgs/net-test";
-          checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+          checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
         }
       ];
     };
@@ -11371,20 +11679,6 @@
       racketDeps = [self."unix-signals" self."ansi" self."profile-lib" self."gui-lib" self."rackunit-lib" self."syntax-color-lib" self."diff-merge" self."web-server-lib"];
       cyclicDeps = [];
     };
-    "sketching-doc" = mkRacketPackage {
-      name = "sketching-doc";
-      src = "${sources."https://github.com/soegaard/sketching.git"}/sketching-doc";
-      checksum = "592c04229395212acc646b1278f14ff7a098c2d7";
-      racketDeps = [self."cairo-lib" self."pict-lib" self."gui-lib" self."sketching-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."at-exp-lib"];
-      cyclicDeps = [];
-    };
-    "neu-cs2500-handin" = mkRacketPackage {
-      name = "neu-cs2500-handin";
-      src = sources."git://github.com/nuprl/cs2500-client";
-      checksum = "d48c433d69d75ea03c029ec0207faa928796e757";
-      racketDeps = [self."net-lib" self."gui-lib" self."drracket" self."drracket-plugin-lib"];
-      cyclicDeps = [];
-    };
     "opt" = mkRacketPackage {
       name = "opt";
       src = sources."https://gitlab.com/RayRacine/opt.git";
@@ -11395,7 +11689,7 @@
     "redex-lib" = mkRacketPackage {
       name = "redex-lib";
       src = "${sources."git://github.com/racket/redex/"}/redex-lib";
-      checksum = "8df08b313cff72d56d3c67366065c19ec0c3f7d0";
+      checksum = "a2bbb6edf2374bfddfd516ca75e0e173e662fb40";
       racketDeps = [self."tex-table" self."math-lib" self."2d-lib" self."profile-lib" self."data-enumerate-lib" self."scheme-lib" self."rackunit-lib" self."testing-util-lib" self."data-lib" self."typed-racket-lib"];
       cyclicDeps = [];
     };
@@ -11444,7 +11738,7 @@
     "req" = mkRacketPackage {
       name = "req";
       src = "${sources."https://gitlab.com/xgqt/racket-req.git"}/src/req";
-      checksum = "67289afb31e06a0a611b60f18c6ac9ee32789268";
+      checksum = "4826c86164a2713be161a7e9a8e952c042ef5f75";
       racketDeps = [self."req-doc" self."req-test" self."req-lib"];
       cyclicDeps = [];
     };
@@ -11490,13 +11784,6 @@
       racketDeps = [self."scribble-bettergrammar-lib" self."scribble-lib" self."sexp-diff-doc" self."racket-doc"];
       cyclicDeps = [];
     };
-    "mouz" = mkRacketPackage {
-      name = "mouz";
-      src = throw "Invalid url: https://github.com/.git";
-      checksum = "";
-      racketDeps = [];
-      cyclicDeps = [];
-    };
     "http11-server" = mkRacketPackage {
       name = "http11-server";
       src = sources."https://gitlab.com/RayRacine/http11-server.git";
@@ -11507,7 +11794,7 @@
     "messagepack" = mkRacketPackage {
       name = "messagepack";
       src = "${sources."https://github.com/Bogdanp/racket-messagepack.git"}/messagepack";
-      checksum = "a0b317e8c1f6c1764ad4bdf86968c4d52cddfb9b";
+      checksum = "53074c338fa99102ac9c036311fba5c04f7e9049";
       racketDeps = [self."scribble-lib" self."messagepack-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -11549,7 +11836,7 @@
     "xmlns" = mkRacketPackage {
       name = "xmlns";
       src = sources."git://github.com/lwhjp/racket-xmlns";
-      checksum = "b11d0010ceac1dac55b22d5eab51e24025593638";
+      checksum = "5bc17896898c7116c0581c1aaddcb4c68a563154";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -11558,6 +11845,20 @@
       src = sources."https://gitlab.com/hashimmm/tablesci.git";
       checksum = "43c4544d64e9d218acabe167bfa3c894fa6f5f42";
       racketDeps = [self."beautiful-racket-lib" self."brag-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "rdf" = mkRacketPackage {
+      name = "rdf";
+      src = sources."https://github.com/johnstonskj/racket-rdf.git";
+      checksum = "972eb0785718a7a47a0e092121b609fb0d06bcc6";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
+    "hash-star" = mkRacketPackage {
+      name = "hash-star";
+      src = sources."https://github.com/priime0/hash-star.git";
+      checksum = "fbc634f2a546eddf4a09df0f3bd59ef55448c79e";
+      racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "pk" = mkRacketPackage {
@@ -11574,11 +11875,25 @@
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
+    "mvar-doc" = mkRacketPackage {
+      name = "mvar-doc";
+      src = "${sources."https://github.com/lexi-lambda/racket-mvar.git"}/mvar-doc";
+      checksum = "aac2876805fd79257b4076b750f5b8a16667f595";
+      racketDeps = [self."scribble-lib" self."mvar-lib" self."racket-doc"];
+      cyclicDeps = [];
+    };
     "drbayes" = mkRacketPackage {
       name = "drbayes";
       src = sources."git://github.com/ntoronto/drbayes";
       checksum = "e59eb7c7867118bf4c77ca903e133c7530e612a3";
       racketDeps = [self."plot-gui-lib" self."images-lib" self."typed-racket-more" self."math-lib" self."profile-lib" self."plot-lib" self."typed-racket-lib"];
+      cyclicDeps = [];
+    };
+    "rx" = mkRacketPackage {
+      name = "rx";
+      src = sources."https://github.com/johnstonskj/racket-rx.git";
+      checksum = "470f6ad02d717bf2abf3a68d385b17331d9bb1d2";
+      racketDeps = [self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "noise" = mkRacketPackage {
@@ -11605,14 +11920,22 @@
     "portaudio-x86_64-win32" = mkRacketPackage {
       name = "portaudio-x86_64-win32";
       src = sources."https://github.com/jbclements/portaudio-x86_64-win32.git";
-      checksum = "8db0fd218e72b583ca6657c6bb6e2512128b2485";
+      checksum = "9c30ff74dd26275b9e99776d1fcda09cc714c123";
       racketDeps = [];
       cyclicDeps = [];
     };
+    "yaml-exp" = mkRacketPackage {
+      name = "yaml-exp";
+      src = sources."https://github.com/eutro/yaml-exp.git";
+      checksum = "3f4d7bc1c3fb6c674d5be219223e4cab96879cf5";
+      racketDeps = [self."scribble-lib" self."yaml" self."racket-doc" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "typed-racket-doc" = self."racket-doc";
     "pl" = mkRacketPackage {
       name = "pl";
       src = sources."https://pl.barzilay.org/pl.zip";
-      checksum = "8c5abe60f3b93a9957520ca422756cdad00fee45";
+      checksum = "67fda33e3e6f0fce748e434d9ad34096380e5d9f";
       racketDeps = [self."string-constants-lib" self."scribble-lib" self."lazy" self."net-lib" self."gui-lib" self."typed-racket-lib" self."drracket-plugin-lib" self."at-exp-lib" self."eli-tester" self."compatibility-lib" self."drracket" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -11659,7 +11982,6 @@
       racketDeps = [self."scribble-lib" self."text-table" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
-    "typed-racket-doc" = self."racket-doc";
     "racket-processing" = mkRacketPackage {
       name = "racket-processing";
       src = sources."https://github.com/thoughtstem/racket-processing.git";
@@ -11690,8 +12012,8 @@
     };
     "libsqlite3-i386-win32" = mkRacketPackage {
       name = "libsqlite3-i386-win32";
-      src = sources."https://racket.defn.io/libsqlite3-i386-win32-3.39.2.tar.gz";
-      checksum = "f57bb195f8ff0a1ac47acbf9d0578a16ac6a9b6c";
+      src = sources."https://racket.defn.io/libsqlite3-i386-win32-3.45.3.tar.gz";
+      checksum = "1f7d6f7ffd4598e6420a9b39b8fa48500f526e6b";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -11762,14 +12084,14 @@
     "tinybasic-examples" = mkRacketPackage {
       name = "tinybasic-examples";
       src = "${sources."https://github.com/winny-/tinybasic.rkt.git"}/tinybasic-examples";
-      checksum = "65ab18b420fb76c7858806fe6618a99292212f10";
+      checksum = "bc8967bb2758eb464dd858de80ac6708d6a57805";
       racketDeps = [self."tinybasic-lib"];
       cyclicDeps = [];
     };
     "req-doc" = mkRacketPackage {
       name = "req-doc";
       src = "${sources."https://gitlab.com/xgqt/racket-req.git"}/src/req-doc";
-      checksum = "67289afb31e06a0a611b60f18c6ac9ee32789268";
+      checksum = "4826c86164a2713be161a7e9a8e952c042ef5f75";
       racketDeps = [self."req-lib" self."racket-doc" self."scribble-lib" self."ziptie-git"];
       cyclicDeps = [];
     };
@@ -11783,13 +12105,13 @@
     "froglet" = mkRacketPackage {
       name = "froglet";
       src = "${sources."https://github.com/tnelson/forge.git"}/froglet";
-      checksum = "aa2e8a67a8ff38db145dcb1a1aa5c02d0b851235";
+      checksum = "37e1f4dcf447e8e3e877d2d2cec7bb9908e925dd";
       racketDeps = [self."rackunit-lib"];
       cyclicDeps = [
         {
           name = "forge";
           src = "${sources."https://github.com/tnelson/Forge.git"}/forge";
-          checksum = "aa2e8a67a8ff38db145dcb1a1aa5c02d0b851235";
+          checksum = "37e1f4dcf447e8e3e877d2d2cec7bb9908e925dd";
         }
       ];
     };
@@ -11817,14 +12139,14 @@
     "gsl-integration" = mkRacketPackage {
       name = "gsl-integration";
       src = sources."https://github.com/petterpripp/gsl-integration.git";
-      checksum = "09a045e3bb451c82a52b3a155a07d112fcb6b688";
+      checksum = "53a68b178f8dba1c90b76b174e9f110e886db3ae";
       racketDeps = [self."scribble-lib" self."scribble-math" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "relation" = mkRacketPackage {
       name = "relation";
       src = "${sources."https://github.com/countvajhula/relation.git"}/relation";
-      checksum = "5022738f69387c5722318717db5c866c9839614e";
+      checksum = "eac44044137131349e8139500fd15428baf17527";
       racketDeps = [self."relation-test" self."relation-lib" self."relation-doc"];
       cyclicDeps = [];
     };
@@ -11908,7 +12230,7 @@
     "redex-pict-lib" = mkRacketPackage {
       name = "redex-pict-lib";
       src = "${sources."git://github.com/racket/redex/"}/redex-pict-lib";
-      checksum = "8df08b313cff72d56d3c67366065c19ec0c3f7d0";
+      checksum = "a2bbb6edf2374bfddfd516ca75e0e173e662fb40";
       racketDeps = [self."draw-lib" self."pict-lib" self."scheme-lib" self."redex-lib" self."profile-lib" self."data-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -11943,14 +12265,14 @@
     "Karp" = mkRacketPackage {
       name = "Karp";
       src = sources."https://github.com/REA1/karp.git";
-      checksum = "37d5afaaf550c1419f03054c9415285727b6ffb5";
-      racketDeps = [self."scribble-lib" self."scribble-math" self."rosette" self."racket-doc" self."rackunit-lib"];
+      checksum = "cd8ff66ab6b7c5fd45a968cfbec70ac3a5ac4021";
+      racketDeps = [self."draw-lib" self."pict-lib" self."scribble-lib" self."scribble-math" self."gui-lib" self."rosette" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "handin" = mkRacketPackage {
       name = "handin";
       src = sources."github://github.com/plt/handin/master";
-      checksum = "d5a3defd20243f81eeec17103742810584049eca";
+      checksum = "5caa19c3352bd4b9b2fc784ba442b8f605ac1648";
       racketDeps = [self."htdp-lib" self."net-lib" self."compatibility-lib" self."gui-lib" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."drracket-plugin-lib" self."web-server-lib" self."pconvert-lib" self."drracket" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -11968,17 +12290,24 @@
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
+    "http-proxy-lib" = mkRacketPackage {
+      name = "http-proxy-lib";
+      src = "${sources."https://github.com/Bogdanp/racket-http-proxy.git"}/http-proxy-lib";
+      checksum = "94db8bcccd06da5b072b78bc8a553c6ddb9993eb";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
     "alexis-multicast" = mkRacketPackage {
       name = "alexis-multicast";
       src = "${sources."git://github.com/lexi-lambda/racket-alexis.git"}/alexis-multicast";
-      checksum = "0268afb688231e0d6d76ded3291538dd5d3db37c";
+      checksum = "0c4c03bf089a15347079d29e7910877a6b585f18";
       racketDeps = [self."cover-coveralls" self."scribble-lib" self."racket-doc" self."rackunit-lib" self."alexis-util" self."cover"];
       cyclicDeps = [];
     };
     "protocol-buffers-test" = mkRacketPackage {
       name = "protocol-buffers-test";
       src = "${sources."https://github.com/Bogdanp/racket-protocol-buffers.git"}/protocol-buffers-test";
-      checksum = "f3d6b2d015bdbdb1f3312510f7f030e71adff3b0";
+      checksum = "c4cec28f29b05c7d9875c944429033d29d3fd555";
       racketDeps = [self."protocol-buffers-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -12020,7 +12349,7 @@
     "http" = mkRacketPackage {
       name = "http";
       src = sources."git://github.com/greghendershott/http";
-      checksum = "a9b9c6aef1a26c70680c35c84a7ab4583ea089cf";
+      checksum = "afa88e1add9b668781d8f8b3c699cf14e1c83e34";
       racketDeps = [self."scribble-lib" self."html-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -12033,8 +12362,8 @@
     };
     "libsqlite3-aarch64-linux" = mkRacketPackage {
       name = "libsqlite3-aarch64-linux";
-      src = sources."https://racket.defn.io/libsqlite3-aarch64-linux-3.39.2.tar.gz";
-      checksum = "5d79a95adf78c1f13e7164d2a566087c53de8466";
+      src = sources."https://racket.defn.io/libsqlite3-aarch64-linux-3.45.3.tar.gz";
+      checksum = "ff0a29a6f55522fad8d8589aae7d1a594ef2d401";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -12104,7 +12433,7 @@
     "rsvg" = mkRacketPackage {
       name = "rsvg";
       src = sources."github://github.com/takikawa/racket-rsvg/master";
-      checksum = "e9714609126782b17d46eec489e7783fd8045963";
+      checksum = "0945d7ae08880996a3409e2e7143273b06345c93";
       racketDeps = [self."draw-lib" self."pict-lib" self."scribble-lib" self."gui-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -12139,7 +12468,7 @@
     "racket-langserver" = mkRacketPackage {
       name = "racket-langserver";
       src = sources."https://github.com/jeapostrophe/racket-langserver.git";
-      checksum = "3447fe6b5091c78f9807bcaf6ee7640c862a9484";
+      checksum = "140d94e7d64dd861bb2bfccc989d91382c4c8d8e";
       racketDeps = [self."drracket-tool-lib" self."racket-index" self."chk-lib" self."html-parsing" self."compatibility-lib" self."gui-lib" self."data-lib" self."sandbox-lib" self."scribble-lib" self."syntax-color-lib"];
       cyclicDeps = [];
     };
@@ -12170,6 +12499,13 @@
       src = "${sources."git://github.com/racket/db/"}/db-lib";
       checksum = "bcf2fe2e2c42ede54c0eea616334e432de1a4fa4";
       racketDeps = [self."sasl-lib" self."srfi-lite-lib" self."unix-socket-lib"];
+      cyclicDeps = [];
+    };
+    "libzstd-aarch64-linux" = mkRacketPackage {
+      name = "libzstd-aarch64-linux";
+      src = sources."https://racket.defn.io/libzstd-aarch64-linux-1.5.5.tar.gz";
+      checksum = "1d63f01944cc808f00e946f092dfba93cff95877";
+      racketDeps = [];
       cyclicDeps = [];
     };
     "mk" = mkRacketPackage {
@@ -12217,7 +12553,7 @@
     "graph-lib" = mkRacketPackage {
       name = "graph-lib";
       src = "${sources."https://github.com/stchang/graph.git"}/graph-lib";
-      checksum = "f06848871ed7b4b488341fdd73e9f640b4788733";
+      checksum = "9d77ab184e26f4f3c917c7bd49eda2e980a24fae";
       racketDeps = [self."gen-queue-lib" self."math-lib" self."data-lib"];
       cyclicDeps = [];
     };
@@ -12238,7 +12574,7 @@
     "yaragg" = mkRacketPackage {
       name = "yaragg";
       src = sources."https://github.com/jackfirth/yaragg.git";
-      checksum = "8f2fdbf4c3faabec576b54ce6b08100be3fc2da2";
+      checksum = "937d86c9c52b38381cbb72521dfa50cee00ebbf9";
       racketDeps = [self."scribble-lib" self."rebellion" self."racket-doc" self."rackunit-lib" self."at-exp-lib" self."syntax-color-lib"];
       cyclicDeps = [];
     };
@@ -12266,7 +12602,7 @@
     "graph-doc" = mkRacketPackage {
       name = "graph-doc";
       src = "${sources."https://github.com/stchang/graph.git"}/graph-doc";
-      checksum = "f06848871ed7b4b488341fdd73e9f640b4788733";
+      checksum = "9d77ab184e26f4f3c917c7bd49eda2e980a24fae";
       racketDeps = [self."scribble-lib" self."math-lib" self."graph-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -12280,7 +12616,7 @@
     "plot-container" = mkRacketPackage {
       name = "plot-container";
       src = sources."https://github.com/alex-hhh/plot-container.git";
-      checksum = "affdbaeec086a0b639a952368fa85c3b90d05c2d";
+      checksum = "331645ebe66ac5d20cb9b817403eeb727a808c6d";
       racketDeps = [self."draw-lib" self."pict-lib" self."scribble-lib" self."gui-lib" self."snip-lib" self."plot-gui-lib" self."rackunit-lib" self."pict-snip-doc" self."plot-lib" self."pict-snip-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -12350,7 +12686,7 @@
     "require-typed-check" = mkRacketPackage {
       name = "require-typed-check";
       src = sources."git://github.com/bennn/require-typed-check";
-      checksum = "5a22965f395d61b3b58b0181e1929e8e25f4f5d1";
+      checksum = "ca92eca4d09cc8b9919de13438059faee70d76f0";
       racketDeps = [self."typed-racket-more" self."scribble-lib" self."typed-racket-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -12364,7 +12700,7 @@
     "compatibility-lib" = mkRacketPackage {
       name = "compatibility-lib";
       src = "${sources."git://github.com/racket/compatibility/"}/compatibility-lib";
-      checksum = "5b2509e30e3b93ca9d6c9d6d8286af93c662d9a8";
+      checksum = "8d0b435cf0cc46476b7bafe2a507817c26058d0f";
       racketDeps = [self."sandbox-lib" self."scheme-lib" self."net-lib"];
       cyclicDeps = [];
     };
@@ -12385,7 +12721,7 @@
     "dbg-doc" = mkRacketPackage {
       name = "dbg-doc";
       src = "${sources."https://github.com/Bogdanp/racket-dbg.git"}/dbg-doc";
-      checksum = "9352ee7884d28312022a8af79889334d12c87541";
+      checksum = "a265f4eeaf0b38fe2cb3196013fa698eb9f7a172";
       racketDeps = [self."scribble-lib" self."dbg" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -12401,6 +12737,13 @@
       src = "${sources."https://github.com/rmculpepper/asn1.git"}/asn1";
       checksum = "3cd32b61a68b40ec03bed98cd0c4d4d4f72cacf2";
       racketDeps = [self."asn1-doc" self."asn1-lib"];
+      cyclicDeps = [];
+    };
+    "langtag" = mkRacketPackage {
+      name = "langtag";
+      src = sources."https://github.com/johnstonskj/racket-langtag.git";
+      checksum = "c592a39243b3966fc74ceecd052e1db0578b5728";
+      racketDeps = [self."rx" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "typed-racket-datatype" = mkRacketPackage {
@@ -12477,7 +12820,7 @@
     "simple-xml" = mkRacketPackage {
       name = "simple-xml";
       src = sources."https://github.com/simmone/racket-simple-xml.git";
-      checksum = "3387afdc54271bbfacfc90ddca01a704342fa0bb";
+      checksum = "8b3b8b4ad70687d8c4e8db24872512369a0d5f40";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -12512,7 +12855,7 @@
     "metapict" = mkRacketPackage {
       name = "metapict";
       src = sources."https://github.com/soegaard/metapict.git";
-      checksum = "d29c45cf32872f8607fca3c58272749c28fb8751";
+      checksum = "119b2b37c52c1a6718304c6e8fc309ff9df94db5";
       racketDeps = [self."draw-lib" self."pict-lib" self."scribble-lib" self."unstable-latent-contract-lib" self."gui-lib" self."plot-lib" self."racket-doc" self."plot-gui-lib" self."unstable-parameter-group-lib" self."parser-tools-lib" self."htdp-lib" self."slideshow-lib" self."math-lib" self."srfi-lite-lib" self."rackunit-lib" self."at-exp-lib" self."racket-poppler" self."ppict" self."graph-lib" self."compatibility-lib"];
       cyclicDeps = [];
     };
@@ -12530,13 +12873,6 @@
       racketDeps = [];
       cyclicDeps = [];
     };
-    "unb-cs4613" = mkRacketPackage {
-      name = "unb-cs4613";
-      src = sources."https://pivot.cs.unb.ca/git/unb-cs4613.git";
-      checksum = "ab62147b21e936ac246038dec2cfaab1cc08b840";
-      racketDeps = [self."plait" self."brag" self."net-lib" self."gui-lib" self."drracket-plugin-lib" self."drracket" self."plai-dynamic"];
-      cyclicDeps = [];
-    };
     "codepoint" = mkRacketPackage {
       name = "codepoint";
       src = sources."https://github.com/johnstonskj/racket-codepoint.git";
@@ -12547,7 +12883,7 @@
     "libzstd-x86_64-macosx" = mkRacketPackage {
       name = "libzstd-x86_64-macosx";
       src = sources."https://racket.defn.io/libzstd-x86_64-macosx-1.5.5.tar.gz";
-      checksum = "9c464a8e1145e6352c7442725345bbcb65a5ef3a";
+      checksum = "bedaed955ba18be2e40c6172512e74cde5c843c2";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -12581,8 +12917,8 @@
     };
     "libsqlite3-aarch64-macosx" = mkRacketPackage {
       name = "libsqlite3-aarch64-macosx";
-      src = sources."https://racket.defn.io/libsqlite3-aarch64-macosx-3.39.2.tar.gz";
-      checksum = "638547b0f5c884711ca7cfe074b089fb7a7d6edd";
+      src = sources."https://racket.defn.io/libsqlite3-aarch64-macosx-3.45.3.tar.gz";
+      checksum = "81f491a3f770fd23370b8db332c8b63e0161ae0f";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -12624,7 +12960,7 @@
     "tabular-asa" = mkRacketPackage {
       name = "tabular-asa";
       src = sources."https://github.com/massung/tabular-asa.git";
-      checksum = "90365df6b81f827a1d5663627e136dc835ff61fc";
+      checksum = "4cefe17a3f0cd16e719d2cdf2de63b255070c91f";
       racketDeps = [self."scribble-lib" self."racket-doc" self."csv-reading" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -12652,7 +12988,7 @@
     "srfi-test" = mkRacketPackage {
       name = "srfi-test";
       src = "${sources."git://github.com/racket/srfi/"}/srfi-test";
-      checksum = "25eb1c0e1ab8a1fa227750aa7f0689a2c531f8c8";
+      checksum = "cab009da67adf40737ae7ff02cd7c8bd6316d61d";
       racketDeps = [self."scheme-lib" self."compatibility-lib" self."srfi-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -12743,7 +13079,7 @@
     "malt" = mkRacketPackage {
       name = "malt";
       src = sources."https://github.com/themetaschemer/malt.git";
-      checksum = "e1cf64db8122db0fcd8b9509c306dab98c0f60f9";
+      checksum = "4fee9a6b70146058bf253dbadaae1eff3681ccbe";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -12778,7 +13114,7 @@
     "lathe-comforts-doc" = mkRacketPackage {
       name = "lathe-comforts-doc";
       src = "${sources."https://github.com/lathe/lathe-comforts-for-racket.git"}/lathe-comforts-doc";
-      checksum = "43829a1613140d6b12ee1d078ea1d08f9f0c1827";
+      checksum = "3ad28a38f202603a33b67a7a74a6f8d2e80f7ba5";
       racketDeps = [self."lathe-comforts-lib" self."scribble-lib" self."reprovide-lang-lib" self."racket-doc" self."parendown-lib" self."parendown-doc"];
       cyclicDeps = [];
     };
@@ -12820,7 +13156,7 @@
     "string-interpolation" = mkRacketPackage {
       name = "string-interpolation";
       src = sources."https://github.com/Grafcube/racket-string-interpolation.git";
-      checksum = "a361c36048dddea6b9a510f586c4494e5fb387c5";
+      checksum = "0e2e46b4d6df5a19fb725fa2a80c4991697cec24";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -12855,7 +13191,7 @@
     "srfi-lib-nonfree" = mkRacketPackage {
       name = "srfi-lib-nonfree";
       src = "${sources."https://github.com/racket/srfi.git"}/srfi-lib-nonfree";
-      checksum = "25eb1c0e1ab8a1fa227750aa7f0689a2c531f8c8";
+      checksum = "cab009da67adf40737ae7ff02cd7c8bd6316d61d";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -12869,14 +13205,14 @@
     "soup-lib" = mkRacketPackage {
       name = "soup-lib";
       src = sources."https://github.com/shawnw/racket-soup-lib.git";
-      checksum = "8eed3da8094d168e66490abd07b5ddd8358f5169";
+      checksum = "73838a67079283bec090b89592b105f29a75470c";
       racketDeps = [self."scribble-lib" self."extra-srfi-libs" self."typed-racket-lib" self."racket-doc" self."srfi-lite-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "koyo-doc" = mkRacketPackage {
       name = "koyo-doc";
       src = "${sources."https://github.com/Bogdanp/koyo.git"}/koyo-doc";
-      checksum = "a4dc1455fb1e62984e5d52635176a1464b8753d8";
+      checksum = "78ada818d9e86869aed126759e7d945a91084771";
       racketDeps = [self."mime-type-lib" self."mime-type" self."gregor-doc" self."db-lib" self."koyo-lib" self."sandbox-lib" self."scribble-lib" self."component-lib" self."srfi-lite-lib" self."gregor-lib" self."libargon2" self."web-server-lib" self."component-doc" self."crontab" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -12974,7 +13310,7 @@
     "gui-lib" = mkRacketPackage {
       name = "gui-lib";
       src = "${sources."git://github.com/racket/gui/"}/gui-lib";
-      checksum = "d01d166149787e2d94176d3046764b35c7c0a876";
+      checksum = "3a800c8f36f082300009500cf8aac204aa6afd19";
       racketDeps = [self."snip-lib" self."scribble-lib" self."2d-lib" self."compatibility-lib" self."gui-win32-x86_64" self."gui-ppc-macosx" self."string-constants-lib" self."tex-table" self."draw-lib" self."gui-x86_64-macosx" self."pict-lib" self."gui-x86_64-linux-natipkg" self."scheme-lib" self."option-contract-lib" self."simple-tree-text-markup-lib" self."icons" self."srfi-lite-lib" self."rackunit-lib" self."at-exp-lib" self."syntax-color-lib" self."gui-win32-i386" self."gui-win32-arm64" self."data-lib" self."gui-aarch64-macosx" self."gui-i386-macosx" self."wxme-lib"];
       cyclicDeps = [];
     };
@@ -12995,14 +13331,14 @@
     "syrup" = mkRacketPackage {
       name = "syrup";
       src = "${sources."https://github.com/ocapn/syrup.git"}/impls/racket/syrup";
-      checksum = "89c7a1d43a9962a81f2a23f6dc6798958adb472a";
+      checksum = "2214cbb7c0ee081699fdef64edbc2444af2bb1d2";
       racketDeps = [];
       cyclicDeps = [];
     };
     "scribble" = mkRacketPackage {
       name = "scribble";
       src = "${sources."git://github.com/racket/scribble/"}/scribble";
-      checksum = "faf92fa8638acfb193f0a14953b9779a31f2cdcd";
+      checksum = "b899cc74df03b0d8567f67160be2b307cdf3bc9a";
       racketDeps = [self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -13016,7 +13352,7 @@
     "rsound" = mkRacketPackage {
       name = "rsound";
       src = sources."github://github.com/jbclements/RSound/master/";
-      checksum = "7ae726778e9501a17bd01a46cc02f33c43c69439";
+      checksum = "ec9bbcf9120aa4678b36126fba119ae8433d78c3";
       racketDeps = [self."pict-lib" self."scribble-lib" self."gui-lib" self."snip-lib" self."plot-gui-lib" self."memoize" self."htdp-lib" self."math-lib" self."rackunit-lib" self."portaudio" self."drracket-plugin-lib" self."plot-lib" self."data-lib" self."typed-racket-lib" self."wxme-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -13072,8 +13408,8 @@
     "sew-test" = mkRacketPackage {
       name = "sew-test";
       src = "${sources."https://github.com/lathe/sew-for-racket.git"}/sew-test";
-      checksum = "9daf6ccc1188fe6ef92a5caab83451ac7dc57fc0";
-      racketDeps = [self."sew-lib" self."parendown-lib" self."rackunit-lib"];
+      checksum = "8758c3792adb413af2b822e54d3e8f5e8d3f55db";
+      racketDeps = [self."sew-lib" self."parendown-lib" self."scribble-text-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "zKanren" = mkRacketPackage {
@@ -13149,7 +13485,7 @@
     "plt-services" = mkRacketPackage {
       name = "plt-services";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/plt-services";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -13251,6 +13587,20 @@
       racketDeps = [self."scribble-lib" self."gui-lib" self."data-lib" self."racket-doc" self."drracket-plugin-lib"];
       cyclicDeps = [];
     };
+    "libvid-x86_64-linux" = mkRacketPackage {
+      name = "libvid-x86_64-linux";
+      src = "${sources."https://github.com/videolang/native-pkgs.git"}/libvid-x86_64-linux";
+      checksum = "dfe1d5cb7271b1657bbde9c8f67ee9c5a513a9c7";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
+    "lsl-lib" = mkRacketPackage {
+      name = "lsl-lib";
+      src = "${sources."https://github.com/logiccomp/lsl.git"}/lsl-lib";
+      checksum = "9190a1dff7267e9d86a80e52a2393b2d98afbfe9";
+      racketDeps = [self."mischief" self."http-easy-lib" self."errortrace-lib" self."automata-lib" self."plot-gui-lib" self."gui-easy-lib" self."ee-lib" self."syntax-classes" self."rackunit-lib" self."threading-lib" self."struct-set" self."metapict" self."threading" self."rosette" self."plot-lib"];
+      cyclicDeps = [];
+    };
     "punctaffy-lib" = mkRacketPackage {
       name = "punctaffy-lib";
       src = "${sources."https://github.com/lathe/punctaffy-for-racket.git"}/punctaffy-lib";
@@ -13277,13 +13627,6 @@
       src = throw "Invalid url: https://github.com/zaoqil/zaoqil.git?path=racket";
       checksum = "804a7f5c96d173928205693f244578a19e3cebc5";
       racketDeps = [self."scribble-lib" self."rackunit-lib" self."racket-doc"];
-      cyclicDeps = [];
-    };
-    "libvid-x86_64-linux" = mkRacketPackage {
-      name = "libvid-x86_64-linux";
-      src = "${sources."https://github.com/videolang/native-pkgs.git"}/libvid-x86_64-linux";
-      checksum = "dfe1d5cb7271b1657bbde9c8f67ee9c5a513a9c7";
-      racketDeps = [];
       cyclicDeps = [];
     };
     "lang-slide" = mkRacketPackage {
@@ -13346,7 +13689,7 @@
     "review" = mkRacketPackage {
       name = "review";
       src = sources."https://github.com/Bogdanp/racket-review.git";
-      checksum = "bc7b614e3b6ab11a9f569d254aaba7f2d2074354";
+      checksum = "ff455cb9cc2c9e880f56ed19255e44bbcbf0c923";
       racketDeps = [self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -13395,7 +13738,7 @@
     "shell-pipeline" = mkRacketPackage {
       name = "shell-pipeline";
       src = "${sources."https://github.com/willghatch/racket-rash.git"}/shell-pipeline";
-      checksum = "42460a283ce2d7296257b068505cd4649052f67c";
+      checksum = "feb3ad16deb0b372a05f5d522f71e1746a3f96fd";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -13451,13 +13794,13 @@
     "w3s" = mkRacketPackage {
       name = "w3s";
       src = sources."https://github.com/wargrey/w3s.git";
-      checksum = "e5622ad2ca6ec675fa324d22dd61b7242767fb53";
+      checksum = "abd97a6d09167be4faab2845bd03d057ac570458";
       racketDeps = [self."typed-racket-more" self."typed-racket-lib" self."racket-doc" self."digimon" self."scribble-lib"];
       cyclicDeps = [
         {
           name = "graphics";
           src = sources."git://github.com/wargrey/graphics";
-          checksum = "ba858504ff361f7beba221455304eadf7c01edf0";
+          checksum = "d60f65d9819fa1309395f8f62575d46e979d4a79";
         }
       ];
     };
@@ -13471,14 +13814,14 @@
     "marionette" = mkRacketPackage {
       name = "marionette";
       src = "${sources."https://github.com/Bogdanp/marionette.git"}/marionette";
-      checksum = "daac17634775dc516611de6ea1e4c43776d64405";
+      checksum = "c4a42965205c91a273259353a7f9fd6d4def1107";
       racketDeps = [self."marionette-lib" self."marionette-doc"];
       cyclicDeps = [];
     };
     "sauron" = mkRacketPackage {
       name = "sauron";
       src = sources."https://github.com/dannypsnl/sauron.git";
-      checksum = "73bfde806617a643ffe7801804239f0d82e696bf";
+      checksum = "9a2692e5e788e7457e55bf186fa9c185ec4eae96";
       racketDeps = [self."drracket-tool-lib" self."scribble-lib" self."net-lib" self."file-watchers" self."drcomplete" self."gui-lib" self."raco-invoke" self."curly-fn-lib" self."rackunit-lib" self."drracket-plugin-lib" self."from-template" self."data-lib" self."try-catch-finally-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -13532,10 +13875,24 @@
       racketDeps = [self."scribble-lib" self."math-lib" self."racket-doc" self."rackunit-abbrevs" self."pict-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
+    "libgit2-x86_64-linux" = mkRacketPackage {
+      name = "libgit2-x86_64-linux";
+      src = sources."https://github.com/libgit2-racket/native-libs.git";
+      checksum = "50f560a717baafe18cf69575f1f523ae917d1a73";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
+    "art-lib" = mkRacketPackage {
+      name = "art-lib";
+      src = "${sources."https://github.com/jagen31/art3.git"}/art-lib";
+      checksum = "b362dc67e37526e15233411adba77fe4f59bc002";
+      racketDeps = [self."fmt" self."htdp-lib" self."collections-lib" self."data-lib" self."rackunit"];
+      cyclicDeps = [];
+    };
     "koyo-lib" = mkRacketPackage {
       name = "koyo-lib";
       src = "${sources."https://github.com/Bogdanp/koyo.git"}/koyo-lib";
-      checksum = "a4dc1455fb1e62984e5d52635176a1464b8753d8";
+      checksum = "78ada818d9e86869aed126759e7d945a91084771";
       racketDeps = [self."mime-type-lib" self."raco-invoke" self."html-lib" self."web-server-lib" self."net-lib" self."errortrace-lib" self."crypto-lib" self."crontab-lib" self."component-lib" self."srfi-lite-lib" self."gregor-lib" self."at-exp-lib" self."unix-socket-lib" self."db-lib" self."compatibility-lib"];
       cyclicDeps = [];
     };
@@ -13572,13 +13929,6 @@
       src = "${sources."git://github.com/racket/pict-snip/"}/pict-snip-test";
       checksum = "cd389ba6471a045c791e2dd6e483e356017499d8";
       racketDeps = [self."draw-lib" self."pict-lib" self."pict-snip-lib" self."rackunit-lib"];
-      cyclicDeps = [];
-    };
-    "libgit2-x86_64-linux" = mkRacketPackage {
-      name = "libgit2-x86_64-linux";
-      src = sources."https://github.com/libgit2-racket/native-libs.git";
-      checksum = "50f560a717baafe18cf69575f1f523ae917d1a73";
-      racketDeps = [];
       cyclicDeps = [];
     };
     "natural-cli" = mkRacketPackage {
@@ -13626,14 +13976,14 @@
     "agile" = mkRacketPackage {
       name = "agile";
       src = sources."https://github.com/bennn/agile.git";
-      checksum = "18c2c50e96ead195190c26dab8b79f7fecbc72ea";
+      checksum = "4c9dba023f506f9eaccc97c525525a3ae67c300d";
       racketDeps = [self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "net-cookies" = mkRacketPackage {
       name = "net-cookies";
       src = "${sources."git://github.com/RenaissanceBug/racket-cookies"}/net-cookies";
-      checksum = "c4ce9abc8f9de9270bd2655aafaa711b992dbe0e";
+      checksum = "01bad8ad41f212bebc0d2019b3fc383faaaf7bef";
       racketDeps = [self."net-cookies-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -13676,8 +14026,8 @@
     "rackunit-test" = mkRacketPackage {
       name = "rackunit-test";
       src = "${sources."git://github.com/racket/rackunit/"}/rackunit-test";
-      checksum = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
-      racketDeps = [self."rackunit-typed" self."eli-tester" self."typed-racket-lib" self."rackunit-lib"];
+      checksum = "41c64557f209c6a440c6595f29c1d6e7a7958917";
+      racketDeps = [self."rackunit-typed" self."eli-tester" self."typed-racket-lib" self."rackunit-lib" self."compiler-lib"];
       cyclicDeps = [];
     };
     "future-visualizer-typed" = mkRacketPackage {
@@ -13711,7 +14061,7 @@
     "clang" = mkRacketPackage {
       name = "clang";
       src = sources."https://github.com/wargrey/clang.git";
-      checksum = "ad4ac0ffd16ce65f90e4f1bcfa5f9816892109d8";
+      checksum = "0b9729845378ae6f318234835eb249d8eeae65e3";
       racketDeps = [self."typed-racket-more" self."typed-racket-lib" self."racket-doc" self."digimon" self."scribble-lib"];
       cyclicDeps = [];
     };
@@ -13818,7 +14168,7 @@
     "distro-build-server" = mkRacketPackage {
       name = "distro-build-server";
       src = "${sources."git://github.com/racket/distro-build/"}/distro-build-server";
-      checksum = "70b8f8e89bed429fe70e43952bc02aaf6c08b388";
+      checksum = "11190e45761a7933c19cf1b1170c7efeebe2c517";
       racketDeps = [self."plt-web-lib" self."net-lib" self."ds-store-lib" self."remote-shell-lib" self."rackunit-lib" self."at-exp-lib" self."web-server-lib" self."scribble-html-lib" self."distro-build-client"];
       cyclicDeps = [];
     };
@@ -13839,7 +14189,7 @@
     "fexpress-lib" = mkRacketPackage {
       name = "fexpress-lib";
       src = "${sources."https://github.com/rocketnia/fexpress.git"}/fexpress-lib";
-      checksum = "1fa067d6b943c1217c0061dfed8d4457fc454d6f";
+      checksum = "b5c951fddebc3e4d3463cdf78dc9d417de97d50f";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -13888,7 +14238,7 @@
     "rash-demos" = mkRacketPackage {
       name = "rash-demos";
       src = "${sources."https://github.com/willghatch/racket-rash.git"}/rash-demos";
-      checksum = "42460a283ce2d7296257b068505cd4649052f67c";
+      checksum = "feb3ad16deb0b372a05f5d522f71e1746a3f96fd";
       racketDeps = [self."rash" self."scribble-lib" self."readline-lib" self."linea" self."udelim" self."racket-doc" self."basedir" self."csv-reading" self."rackunit-lib" self."make" self."text-table" self."shell-pipeline"];
       cyclicDeps = [];
     };
@@ -13902,7 +14252,7 @@
     "threading" = mkRacketPackage {
       name = "threading";
       src = "${sources."git://github.com/lexi-lambda/threading"}/threading";
-      checksum = "1f3b630d3ed78edc6d883f9d99305158d6b67623";
+      checksum = "aedb198261cf73b3f9b282566e7e7dd9b9be63a6";
       racketDeps = [self."threading-lib" self."threading-doc"];
       cyclicDeps = [];
     };
@@ -13923,14 +14273,14 @@
     "redis-doc" = mkRacketPackage {
       name = "redis-doc";
       src = "${sources."https://github.com/Bogdanp/racket-redis.git"}/redis-doc";
-      checksum = "df397e05f6e65e3d12c2f1040bd716089644302c";
+      checksum = "f1203d9213de9f10968b229350a9b35e27de84b9";
       racketDeps = [self."redis-lib" self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "redex" = mkRacketPackage {
       name = "redex";
       src = "${sources."git://github.com/racket/redex/"}/redex";
-      checksum = "8df08b313cff72d56d3c67366065c19ec0c3f7d0";
+      checksum = "a2bbb6edf2374bfddfd516ca75e0e173e662fb40";
       racketDeps = [self."redex-examples" self."redex-lib" self."redex-doc" self."redex-gui-lib"];
       cyclicDeps = [];
     };
@@ -14000,7 +14350,7 @@
     "gui" = mkRacketPackage {
       name = "gui";
       src = "${sources."git://github.com/racket/gui/"}/gui";
-      checksum = "d01d166149787e2d94176d3046764b35c7c0a876";
+      checksum = "3a800c8f36f082300009500cf8aac204aa6afd19";
       racketDeps = [self."gui-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -14009,6 +14359,13 @@
       src = sources."https://github.com/alex-hhh/colormaps.git";
       checksum = "f0dc88be58bae0d0331bfa778987460d7d71a08a";
       racketDeps = [self."plot-gui-lib" self."draw-lib" self."pict-lib" self."scribble-lib" self."plot-lib" self."racket-doc" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "syntax-spec-v1" = mkRacketPackage {
+      name = "syntax-spec-v1";
+      src = sources."https://github.com/michaelballantyne/syntax-spec.git";
+      checksum = "6a0e30e621cf3d9cc9c09f43edca419104edfbef";
+      racketDeps = [self."ee-lib" self."syntax-classes-lib" self."scribble-lib" self."version-case" self."rackunit-lib" self."drracket" self."racket-doc"];
       cyclicDeps = [];
     };
     "data-doc" = self."racket-doc";
@@ -14040,10 +14397,17 @@
       racketDeps = [];
       cyclicDeps = [];
     };
+    "mvar-test" = mkRacketPackage {
+      name = "mvar-test";
+      src = "${sources."https://github.com/lexi-lambda/racket-mvar.git"}/mvar-test";
+      checksum = "aac2876805fd79257b4076b750f5b8a16667f595";
+      racketDeps = [self."mvar-lib" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "poppler-win32-x86-64" = mkRacketPackage {
       name = "poppler-win32-x86-64";
       src = "${sources."git://github.com/soegaard/poppler-libs"}/poppler-win32-x86_64";
-      checksum = "f39e31f2b561b457fdbda50117f6bc4802ef14b6";
+      checksum = "029c07225d55593ee38c1bc3fcce2a8a1dd6cdc6";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -14085,7 +14449,7 @@
     "odysseus" = mkRacketPackage {
       name = "odysseus";
       src = sources."https://github.com/prozion/odysseus.git";
-      checksum = "2afc96ba60fd8b50d54ce94eb27dd7ce92525360";
+      checksum = "7323ad088e1b937da060e811de50e15ee28d195e";
       racketDeps = [self."scribble-lib" self."rackunit" self."compatibility-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -14099,7 +14463,7 @@
     "xsmith-examples" = mkRacketPackage {
       name = "xsmith-examples";
       src = "${sources."https://gitlab.flux.utah.edu/xsmith/xsmith.git"}/xsmith-examples";
-      checksum = "505bd6af3c3b7b5bc0a1790b8bbc88331ff7c77f";
+      checksum = "de6ace161b0a09a8137c38a181a66c1403f5698a";
       racketDeps = [self."xsmith" self."clotho" self."scribble-lib" self."math-lib" self."racr" self."rackunit-lib" self."at-exp-lib" self."pprint" self."version-string-with-git-hash"];
       cyclicDeps = [];
     };
@@ -14113,7 +14477,7 @@
     "rosette" = mkRacketPackage {
       name = "rosette";
       src = sources."git://github.com/emina/rosette";
-      checksum = "5dd348906d8bafacef6354c2e5e75a67be0bec66";
+      checksum = "edf682df5e70420fcb31f71a5791c17875655bd2";
       racketDeps = [self."draw-lib" self."slideshow-lib" self."web-server-lib" self."net-lib" self."racket-doc" self."pict-lib" self."rfc6455" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."errortrace-lib" self."custom-load" self."gui-lib" self."r6rs-lib"];
       cyclicDeps = [];
     };
@@ -14141,7 +14505,7 @@
     "fpbench" = mkRacketPackage {
       name = "fpbench";
       src = sources."https://github.com/FPBench/FPBench.git";
-      checksum = "6feb1dd753e465ac8bce7bd19f837749982ffee8";
+      checksum = "ea121ec349a0b2c8bc5349eba1a8e279683c0569";
       racketDeps = [self."generic-flonum" self."math-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -14231,14 +14595,14 @@
     "plot-lib" = mkRacketPackage {
       name = "plot-lib";
       src = "${sources."git://github.com/racket/plot/"}/plot-lib";
-      checksum = "b0da52632c0369058887439345eb90cbf8e99dae";
+      checksum = "a14222e19736f75bdb9c660ca9c3b78c6e2ee9b3";
       racketDeps = [self."draw-lib" self."math-lib" self."typed-racket-lib" self."typed-racket-more" self."pict-lib" self."srfi-lite-lib" self."db-lib" self."compatibility-lib"];
       cyclicDeps = [];
     };
     "binary-class" = mkRacketPackage {
       name = "binary-class";
       src = sources."git://github.com/Kalimehtar/binary-class";
-      checksum = "69705ed306be38c9e4dd67d9075ec160ecdb82a4";
+      checksum = "6eaf37b5de716d377c3c6ab4658addc5ae70bd45";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -14266,7 +14630,7 @@
     "math-test" = mkRacketPackage {
       name = "math-test";
       src = "${sources."git://github.com/racket/math/"}/math-test";
-      checksum = "b7455f468c63300ccae2e123646504a651bb79db";
+      checksum = "86c2a97edbca22ac182f69c4ed45088733d7b906";
       racketDeps = [self."typed-racket-more" self."math-lib" self."racket-test" self."typed-racket-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -14294,7 +14658,7 @@
     "sci" = mkRacketPackage {
       name = "sci";
       src = sources."https://github.com/soegaard/sci.git";
-      checksum = "5d6298d8aca23eedc77ee78b00c22dc46309cf1c";
+      checksum = "3635df4f63c4815870ea307f2cbfe5d77657b971";
       racketDeps = [self."scribble-lib" self."linux-shared-libraries" self."scribble-math" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -14309,7 +14673,7 @@
     "redex-doc" = mkRacketPackage {
       name = "redex-doc";
       src = "${sources."git://github.com/racket/redex/"}/redex-doc";
-      checksum = "8df08b313cff72d56d3c67366065c19ec0c3f7d0";
+      checksum = "a2bbb6edf2374bfddfd516ca75e0e173e662fb40";
       racketDeps = [self."pict-lib" self."data-enumerate-lib" self."htdp-lib" self."htdp-doc" self."gui-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."rackunit-lib" self."at-exp-lib" self."redex-benchmark" self."redex-gui-lib"];
       cyclicDeps = [];
     };
@@ -14323,7 +14687,7 @@
     "messagepack-test" = mkRacketPackage {
       name = "messagepack-test";
       src = "${sources."https://github.com/Bogdanp/racket-messagepack.git"}/messagepack-test";
-      checksum = "a0b317e8c1f6c1764ad4bdf86968c4d52cddfb9b";
+      checksum = "53074c338fa99102ac9c036311fba5c04f7e9049";
       racketDeps = [self."messagepack-lib" self."rackcheck-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -14358,7 +14722,7 @@
     "redex-benchmark" = mkRacketPackage {
       name = "redex-benchmark";
       src = "${sources."git://github.com/racket/redex/"}/redex-benchmark";
-      checksum = "8df08b313cff72d56d3c67366065c19ec0c3f7d0";
+      checksum = "a2bbb6edf2374bfddfd516ca75e0e173e662fb40";
       racketDeps = [self."redex-examples" self."math-lib" self."redex-lib" self."plot-lib" self."rackunit-lib" self."compiler-lib"];
       cyclicDeps = [];
     };
@@ -14379,7 +14743,7 @@
     "libzstd-aarch64-macosx" = mkRacketPackage {
       name = "libzstd-aarch64-macosx";
       src = sources."https://racket.defn.io/libzstd-aarch64-macosx-1.5.5.tar.gz";
-      checksum = "c37562bcf5f6b450358a0e22c20d912435243a8c";
+      checksum = "8f928ac972793d77a6f67cf72e06351693ebdbd0";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -14400,7 +14764,7 @@
     "forms-test" = mkRacketPackage {
       name = "forms-test";
       src = "${sources."https://github.com/Bogdanp/racket-forms.git"}/forms-test";
-      checksum = "8fca1d8533cd2d36978bdb411e7d9843c681b5c5";
+      checksum = "e6ba9fa4a4e17d744760193dc7b8a4b399e9db71";
       racketDeps = [self."web-server-lib" self."srfi-lite-lib" self."rackunit-lib" self."forms-lib"];
       cyclicDeps = [];
     };
@@ -14421,7 +14785,7 @@
     "redex-gui-lib" = mkRacketPackage {
       name = "redex-gui-lib";
       src = "${sources."git://github.com/racket/redex/"}/redex-gui-lib";
-      checksum = "8df08b313cff72d56d3c67366065c19ec0c3f7d0";
+      checksum = "a2bbb6edf2374bfddfd516ca75e0e173e662fb40";
       racketDeps = [self."draw-lib" self."pict-lib" self."scheme-lib" self."redex-lib" self."gui-lib" self."data-lib" self."rackunit-lib" self."redex-pict-lib" self."profile-lib"];
       cyclicDeps = [];
     };
@@ -14491,7 +14855,7 @@
     "data-lib" = mkRacketPackage {
       name = "data-lib";
       src = "${sources."git://github.com/racket/data/"}/data-lib";
-      checksum = "0b23dd66639ffd1d62cf690c26cbd58b508da609";
+      checksum = "0f85d3ced88a1e39c08153ffae5951f32b43cd81";
       racketDeps = [self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -14540,7 +14904,7 @@
     "esterel" = mkRacketPackage {
       name = "esterel";
       src = "${sources."https://github.com/rfindler/esterel.git"}/esterel";
-      checksum = "9ac0749726c3486a2702e9f6ec405256dce178c9";
+      checksum = "ba50fd54dbb24c2ade605b57632520a056a311e9";
       racketDeps = [self."esterel-rhombus-lib" self."esterel-examples" self."esterel-test" self."esterel-lib" self."esterel-doc"];
       cyclicDeps = [];
     };
@@ -14575,7 +14939,7 @@
     "data" = mkRacketPackage {
       name = "data";
       src = "${sources."git://github.com/racket/data/"}/data";
-      checksum = "0b23dd66639ffd1d62cf690c26cbd58b508da609";
+      checksum = "0f85d3ced88a1e39c08153ffae5951f32b43cd81";
       racketDeps = [self."data-enumerate-lib" self."data-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -14584,6 +14948,13 @@
       src = "${sources."https://github.com/llazarek/mutate.git"}/mutate-mutators";
       checksum = "a6932812d991d4dfcac0fb91deb6948ac4597e45";
       racketDeps = [self."mutate-test" self."mutate-lib" self."ruinit" self."at-exp-lib"];
+      cyclicDeps = [];
+    };
+    "Scheme-PLUS-for-Racket" = mkRacketPackage {
+      name = "Scheme-PLUS-for-Racket";
+      src = sources."https://github.com/damien-mattei/Scheme-PLUS-for-Racket.git";
+      checksum = "20c16f2af98bf9e0b46a21721d22b2d55951a043";
+      racketDeps = [self."scribble-code-examples" self."scribble-lib" self."reprovide-lang-lib" self."r6rs-lib" self."sci" self."srfi-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "syncvar" = mkRacketPackage {
@@ -14624,7 +14995,7 @@
     "esterel-test" = mkRacketPackage {
       name = "esterel-test";
       src = "${sources."https://github.com/rfindler/esterel.git"}/esterel-test";
-      checksum = "9ac0749726c3486a2702e9f6ec405256dce178c9";
+      checksum = "ba50fd54dbb24c2ade605b57632520a056a311e9";
       racketDeps = [self."parser-tools-lib" self."html-parsing" self."html-lib" self."racket-index" self."rackunit-lib" self."esterel-lib" self."esterel-doc"];
       cyclicDeps = [];
     };
@@ -14632,14 +15003,14 @@
     "typed-racket-lib" = mkRacketPackage {
       name = "typed-racket-lib";
       src = "${sources."git://github.com/racket/typed-racket/"}/typed-racket-lib";
-      checksum = "f3e42b3aba6ef84b01fc25d0a9ef48cd9d16a554";
+      checksum = "c3702d6ee849182ab4cf7fd9d2a8f6135fd7aaa0";
       racketDeps = [self."string-constants-lib" self."pconvert-lib" self."compatibility-lib" self."source-syntax"];
       cyclicDeps = [];
     };
     "rackcheck-lib" = mkRacketPackage {
       name = "rackcheck-lib";
       src = "${sources."https://github.com/Bogdanp/rackcheck.git"}/rackcheck-lib";
-      checksum = "21dcda3edf86c28d9594887e92c5d7bef589897c";
+      checksum = "ffbddb7a9edef6ce1d9e0930adae1bd7033f1db7";
       racketDeps = [self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -14730,7 +15101,7 @@
     "fexpress-test" = mkRacketPackage {
       name = "fexpress-test";
       src = "${sources."https://github.com/rocketnia/fexpress.git"}/fexpress-test";
-      checksum = "1fa067d6b943c1217c0061dfed8d4457fc454d6f";
+      checksum = "b5c951fddebc3e4d3463cdf78dc9d417de97d50f";
       racketDeps = [self."fexpress-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -14808,7 +15179,7 @@
     "protocol-buffers-lib" = mkRacketPackage {
       name = "protocol-buffers-lib";
       src = "${sources."https://github.com/Bogdanp/racket-protocol-buffers.git"}/protocol-buffers-lib";
-      checksum = "f3d6b2d015bdbdb1f3312510f7f030e71adff3b0";
+      checksum = "c4cec28f29b05c7d9875c944429033d29d3fd555";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -14816,6 +15187,13 @@
       name = "gui-i386-macosx";
       src = sources."https://pkg-sources.racket-lang.org/pkgs/8c576bea6e9917e5d589031290a326fb4277053b/gui-i386-macosx.zip";
       checksum = "8c576bea6e9917e5d589031290a326fb4277053b";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
+    "effect-racket-lib" = mkRacketPackage {
+      name = "effect-racket-lib";
+      src = "${sources."https://github.com/camoy/effect-racket.git"}/effect-racket-lib";
+      checksum = "e8b8247c2339a89da8c0d8dad58bf13eda21eed2";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -14836,14 +15214,35 @@
     "portaudio-x86_64-linux" = mkRacketPackage {
       name = "portaudio-x86_64-linux";
       src = sources."https://github.com/jbclements/portaudio-x86_64-linux.git";
-      checksum = "d0426385b94c2392f78bdeaa9ce50b3439cc2542";
+      checksum = "2398dea77735fd5feddf2ea22cee283ceef5904b";
       racketDeps = [];
+      cyclicDeps = [];
+    };
+    "http-proxy" = mkRacketPackage {
+      name = "http-proxy";
+      src = "${sources."https://github.com/Bogdanp/racket-http-proxy.git"}/http-proxy";
+      checksum = "94db8bcccd06da5b072b78bc8a553c6ddb9993eb";
+      racketDeps = [self."scribble-lib" self."http-proxy-lib" self."racket-doc"];
+      cyclicDeps = [];
+    };
+    "libzstd-i386-win32" = mkRacketPackage {
+      name = "libzstd-i386-win32";
+      src = sources."https://racket.defn.io/libzstd-i386-win32-1.5.5.tar.gz";
+      checksum = "9c54822fd65d7f76287755dc92ee649c840df7b8";
+      racketDeps = [];
+      cyclicDeps = [];
+    };
+    "spmatrix" = mkRacketPackage {
+      name = "spmatrix";
+      src = sources."github://github.com/jeapostrophe/matrix/master";
+      checksum = "15e1c74f8763abbdfb4348702c98ca6043e52a1c";
+      racketDeps = [self."spvector" self."scribble-lib" self."racket-doc" self."eli-tester" self."compatibility-lib"];
       cyclicDeps = [];
     };
     "compatibility-test" = mkRacketPackage {
       name = "compatibility-test";
       src = "${sources."git://github.com/racket/compatibility/"}/compatibility-test";
-      checksum = "5b2509e30e3b93ca9d6c9d6d8286af93c662d9a8";
+      checksum = "8d0b435cf0cc46476b7bafe2a507817c26058d0f";
       racketDeps = [self."drracket-tool-lib" self."pconvert-lib" self."racket-test" self."compatibility-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -14854,18 +15253,19 @@
       racketDeps = [self."racket-doc" self."scribble-lib" self."version-case" self."rackunit-lib"];
       cyclicDeps = [];
     };
+    "noise-serde-lib" = mkRacketPackage {
+      name = "noise-serde-lib";
+      src = "${sources."https://github.com/Bogdanp/Noise.git"}/Racket/noise-serde-lib";
+      checksum = "35d57a7f13baad8c26819fc21e058198735394f7";
+      racketDeps = [self."rackunit-lib" self."threading-lib"];
+      cyclicDeps = [];
+    };
+    "net-test" = self."racket-test";
     "disassemble" = mkRacketPackage {
       name = "disassemble";
       src = sources."github://github.com/samth/disassemble/master";
       checksum = "da196911af96982b4ccbf16e5d5562f3e70885f5";
       racketDeps = [self."r6rs-lib" self."srfi-lib" self."srfi-lite-lib"];
-      cyclicDeps = [];
-    };
-    "spmatrix" = mkRacketPackage {
-      name = "spmatrix";
-      src = sources."github://github.com/jeapostrophe/matrix/master";
-      checksum = "15e1c74f8763abbdfb4348702c98ca6043e52a1c";
-      racketDeps = [self."spvector" self."scribble-lib" self."racket-doc" self."eli-tester" self."compatibility-lib"];
       cyclicDeps = [];
     };
     "parendown" = mkRacketPackage {
@@ -14889,7 +15289,6 @@
       racketDeps = [self."drcomplete-base" self."gui-lib" self."rackunit-lib" self."drracket-plugin-lib" self."drracket" self."srfi-lib"];
       cyclicDeps = [];
     };
-    "net-test" = self."racket-test";
     "s-lib" = mkRacketPackage {
       name = "s-lib";
       src = sources."git://github.com/caisah/s-lib";
@@ -14941,18 +15340,18 @@
     "drracket" = mkRacketPackage {
       name = "drracket";
       src = "${sources."git://github.com/racket/drracket/"}/drracket";
-      checksum = "2657eafdcfb5e4ccef19405492244f679b9234ef";
+      checksum = "7899052c860f3549b54b753144cd2c2519562012";
       racketDeps = [self."snip-lib" self."net-lib" self."errortrace-lib" self."gui-lib" self."drracket-tool-lib" self."gui-pkg-manager-lib" self."images-lib" self."string-constants-lib" self."tex-table" self."draw-lib" self."planet-lib" self."typed-racket-more" self."pict-lib" self."sandbox-lib" self."scribble-lib" self."html-lib" self."racket-index" self."scheme-lib" self."parser-tools-lib" self."htdp-lib" self."option-contract-lib" self."simple-tree-text-markup-lib" self."icons" self."rackunit-lib" self."compiler-lib" self."drracket-plugin-lib" self."at-exp-lib" self."syntax-color-lib" self."macro-debugger-text-lib" self."trace" self."pconvert-lib" self."profile-lib" self."compatibility-lib" self."data-lib" self."typed-racket-lib" self."racket-doc" self."wxme-lib" self."pict-snip-lib"];
       cyclicDeps = [
         {
           name = "quickscript";
           src = sources."https://github.com/Metaxal/quickscript.git";
-          checksum = "31f731a5bc360e734f143fb3db23dab20f5669c0";
+          checksum = "570bc284e29e5b904c58d746ea8646105a81b552";
         }
         {
           name = "drracket-tool-doc";
           src = "${sources."git://github.com/racket/drracket/"}/drracket-tool-doc";
-          checksum = "2657eafdcfb5e4ccef19405492244f679b9234ef";
+          checksum = "7899052c860f3549b54b753144cd2c2519562012";
         }
       ];
     };
@@ -15008,11 +15407,25 @@
     "source-syntax" = mkRacketPackage {
       name = "source-syntax";
       src = "${sources."git://github.com/racket/typed-racket/"}/source-syntax";
-      checksum = "f3e42b3aba6ef84b01fc25d0a9ef48cd9d16a554";
+      checksum = "c3702d6ee849182ab4cf7fd9d2a8f6135fd7aaa0";
       racketDeps = [];
       cyclicDeps = [];
     };
     "graphics" = self."w3s";
+    "logman" = mkRacketPackage {
+      name = "logman";
+      src = sources."https://github.com/priime0/logman.git";
+      checksum = "53887e2093af1b621dd36481cd9c4ca574961e3b";
+      racketDeps = [self."scribble-lib"];
+      cyclicDeps = [];
+    };
+    "chess" = mkRacketPackage {
+      name = "chess";
+      src = sources."https://github.com/jackfirth/chess.git";
+      checksum = "cd7aaa015ddaa87026b11dfe8dbe6778409b5286";
+      racketDeps = [self."pict-lib" self."scribble-lib" self."racket-doc" self."reprovide-lang" self."rebellion" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "syntax-warn-lang" = mkRacketPackage {
       name = "syntax-warn-lang";
       src = "${sources."git://github.com/jackfirth/syntax-warn"}/syntax-warn-lang";
@@ -15062,13 +15475,6 @@
       racketDeps = [self."test-more" self."struct-plus-plus" self."racket-doc" self."sandbox-lib" self."scribble-lib"];
       cyclicDeps = [];
     };
-    "chess" = mkRacketPackage {
-      name = "chess";
-      src = sources."https://github.com/jackfirth/chess.git";
-      checksum = "cd7aaa015ddaa87026b11dfe8dbe6778409b5286";
-      racketDeps = [self."pict-lib" self."scribble-lib" self."racket-doc" self."reprovide-lang" self."rebellion" self."rackunit-lib"];
-      cyclicDeps = [];
-    };
     "wxme-lib" = mkRacketPackage {
       name = "wxme-lib";
       src = "${sources."git://github.com/racket/wxme/"}/wxme-lib";
@@ -15114,7 +15520,7 @@
     "esterel-lib" = mkRacketPackage {
       name = "esterel-lib";
       src = "${sources."https://github.com/rfindler/esterel.git"}/esterel-lib";
-      checksum = "9ac0749726c3486a2702e9f6ec405256dce178c9";
+      checksum = "ba50fd54dbb24c2ade605b57632520a056a311e9";
       racketDeps = [];
       cyclicDeps = [];
     };
@@ -15128,7 +15534,7 @@
     "ebuild-templates" = mkRacketPackage {
       name = "ebuild-templates";
       src = "${sources."https://gitlab.com/gentoo-racket/racket-ebuild.git"}/src/ebuild-templates";
-      checksum = "6d23de624c9087e03f9407379160821e5e00c4f0";
+      checksum = "f546f1c86a834a04520d0817407141d376572c86";
       racketDeps = [self."ebuild-lib" self."threading-lib"];
       cyclicDeps = [];
     };
@@ -15144,6 +15550,20 @@
       src = sources."https://bitbucket.org/Tetsumi/crc32c.git";
       checksum = "20cd115689582b0899147148a59f02fb92cd29e6";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
+      cyclicDeps = [];
+    };
+    "lz4-test" = mkRacketPackage {
+      name = "lz4-test";
+      src = "${sources."https://github.com/Bogdanp/racket-lz4.git"}/lz4-test";
+      checksum = "df811b1166b22221f641b3c78171cd31f4e2ba53";
+      racketDeps = [self."rackunit-lib" self."lz4-lib"];
+      cyclicDeps = [];
+    };
+    "contract-etc-lib" = mkRacketPackage {
+      name = "contract-etc-lib";
+      src = "${sources."https://github.com/camoy/contract-etc.git"}/contract-etc-lib";
+      checksum = "ece7eb2c7341b011a43739b08229a53664be6241";
+      racketDeps = [self."option-contract-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
     "gev-distribution" = mkRacketPackage {
@@ -15167,13 +15587,6 @@
       racketDeps = [self."scribble-lib" self."racket-doc"];
       cyclicDeps = [];
     };
-    "lz4-test" = mkRacketPackage {
-      name = "lz4-test";
-      src = "${sources."https://github.com/Bogdanp/racket-lz4.git"}/lz4-test";
-      checksum = "df811b1166b22221f641b3c78171cd31f4e2ba53";
-      racketDeps = [self."rackunit-lib" self."lz4-lib"];
-      cyclicDeps = [];
-    };
     "plot-bestfit" = mkRacketPackage {
       name = "plot-bestfit";
       src = sources."git://github.com/florence/plot-bestfit";
@@ -15192,7 +15605,7 @@
     "decentralized-internet" = mkRacketPackage {
       name = "decentralized-internet";
       src = sources."https://github.com/Lonero-Team/Racket-Package.git";
-      checksum = "2f12c9a4b0b8c6e4170464bc9feb02b0b732cf4b";
+      checksum = "98589825a4e4ea75f1b895955072f19d9989400f";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -15206,7 +15619,7 @@
     "distro-build-doc" = mkRacketPackage {
       name = "distro-build-doc";
       src = "${sources."git://github.com/racket/distro-build/"}/distro-build-doc";
-      checksum = "70b8f8e89bed429fe70e43952bc02aaf6c08b388";
+      checksum = "11190e45761a7933c19cf1b1170c7efeebe2c517";
       racketDeps = [self."scribble-lib" self."distro-build-server" self."racket-doc" self."at-exp-lib" self."web-server-lib" self."distro-build-client"];
       cyclicDeps = [];
     };
@@ -15220,14 +15633,14 @@
     "memoize-lib" = mkRacketPackage {
       name = "memoize-lib";
       src = "${sources."https://github.com/jbclements/memoize.git"}/memoize-lib";
-      checksum = "911a0d3abe44fca1203425f6ff5767a9796f0c1f";
-      racketDeps = [self."rackunit-lib"];
+      checksum = "f373706824145ce2a8247edb76278d6df139333c";
+      racketDeps = [];
       cyclicDeps = [];
     };
     "splitflap-lib" = mkRacketPackage {
       name = "splitflap-lib";
       src = "${sources."https://github.com/otherjoel/splitflap.git"}/splitflap-lib";
-      checksum = "3256498f963b5b697185efbc920f1c28723d49fb";
+      checksum = "d184fedce6c50c8f1a059929e304c63d0df1b47b";
       racketDeps = [self."gregor-lib"];
       cyclicDeps = [];
     };
@@ -15241,21 +15654,21 @@
     "moonrat" = mkRacketPackage {
       name = "moonrat";
       src = sources."https://github.com/zzkt/moonrat.git";
-      checksum = "c42602d646e08c3779eaf80ae0475c3a8e8a76fc";
+      checksum = "44fbf0c8c5bacc4237bba6f06ad91d352d52fd68";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib" self."parsack" self."english"];
       cyclicDeps = [];
     };
     "seq" = mkRacketPackage {
       name = "seq";
       src = "${sources."https://github.com/countvajhula/seq.git"}/seq";
-      checksum = "0ff053ae869cbeebc13c6573fda28d4e9242b134";
+      checksum = "46f35570e9194caa89152ea5f3811ae1f66602df";
       racketDeps = [self."seq-lib" self."seq-doc" self."seq-test"];
       cyclicDeps = [];
     };
     "pict" = mkRacketPackage {
       name = "pict";
       src = "${sources."git://github.com/racket/pict/"}/pict";
-      checksum = "29e89754c2d6a59fe56027772e7b5113e8560cef";
+      checksum = "8f49787727aeb1a93ffcf333d92ab2bad579d5bc";
       racketDeps = [self."pict-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -15339,7 +15752,7 @@
     "parser-tools" = mkRacketPackage {
       name = "parser-tools";
       src = "${sources."git://github.com/racket/parser-tools/"}/parser-tools";
-      checksum = "b08f6137a3c067720c4b4723dd726652af288e97";
+      checksum = "1fe9d2d3f30302a744914d14f33683d9f8fd41bc";
       racketDeps = [self."parser-tools-lib" self."parser-tools-doc"];
       cyclicDeps = [];
     };
@@ -15357,10 +15770,17 @@
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit-lib"];
       cyclicDeps = [];
     };
+    "lmdb" = mkRacketPackage {
+      name = "lmdb";
+      src = sources."https://github.com/dergemkr/racket-lmdb.git";
+      checksum = "397e3e9f7ee84ef7ca4e46108e59b6f96d3bc3f5";
+      racketDeps = [self."rackunit-lib"];
+      cyclicDeps = [];
+    };
     "sentry" = mkRacketPackage {
       name = "sentry";
       src = "${sources."https://github.com/Bogdanp/racket-sentry.git"}/sentry";
-      checksum = "8cc862858376ed2e80c70e8c25ae88d3f3953906";
+      checksum = "720daa812297328cd8d50852865b514143dad12d";
       racketDeps = [self."sentry-doc" self."sentry-lib"];
       cyclicDeps = [];
     };
@@ -15395,14 +15815,14 @@
     "esterel-doc" = mkRacketPackage {
       name = "esterel-doc";
       src = "${sources."https://github.com/rfindler/esterel.git"}/esterel-doc";
-      checksum = "9ac0749726c3486a2702e9f6ec405256dce178c9";
+      checksum = "ba50fd54dbb24c2ade605b57632520a056a311e9";
       racketDeps = [self."scribble-lib" self."esterel-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "xrepl-lib" = mkRacketPackage {
       name = "xrepl-lib";
       src = "${sources."git://github.com/racket/xrepl/"}/xrepl-lib";
-      checksum = "b1399e0fcfd8e0af1e4c6528dd6d513b20fc1698";
+      checksum = "3240161a25073e204cb7618deac5a632f6477aa5";
       racketDeps = [self."readline-lib" self."scribble-text-lib"];
       cyclicDeps = [];
     };
@@ -15451,35 +15871,35 @@
     "srfi-lib" = mkRacketPackage {
       name = "srfi-lib";
       src = "${sources."git://github.com/racket/srfi/"}/srfi-lib";
-      checksum = "25eb1c0e1ab8a1fa227750aa7f0689a2c531f8c8";
+      checksum = "cab009da67adf40737ae7ff02cd7c8bd6316d61d";
       racketDeps = [self."scheme-lib" self."compatibility-lib" self."r6rs-lib" self."srfi-lite-lib"];
       cyclicDeps = [];
     };
     "racket-doc" = mkRacketPackage {
       name = "racket-doc";
       src = "${sources."git://github.com/racket/racket/"}/pkgs/racket-doc";
-      checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+      checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
       racketDeps = [self."cext-lib" self."draw-lib" self."pict-lib" self."net-lib" self."compatibility-lib" self."sandbox-lib" self."scribble-lib" self."racket-index" self."readline-lib" self."scheme-lib" self."distributed-places-lib" self."rackunit-lib" self."compiler-lib" self."at-exp-lib" self."syntax-color-lib" self."serialize-cstruct-lib" self."gui-lib" self."xrepl-lib"];
       cyclicDeps = [
         {
           name = "compatibility-doc";
           src = "${sources."git://github.com/racket/compatibility/"}/compatibility-doc";
-          checksum = "5b2509e30e3b93ca9d6c9d6d8286af93c662d9a8";
+          checksum = "8d0b435cf0cc46476b7bafe2a507817c26058d0f";
         }
         {
           name = "gui-doc";
           src = "${sources."git://github.com/racket/gui/"}/gui-doc";
-          checksum = "d01d166149787e2d94176d3046764b35c7c0a876";
+          checksum = "3a800c8f36f082300009500cf8aac204aa6afd19";
         }
         {
           name = "net-cookies-doc";
           src = "${sources."git://github.com/RenaissanceBug/racket-cookies"}/net-cookies-doc";
-          checksum = "c4ce9abc8f9de9270bd2655aafaa711b992dbe0e";
+          checksum = "01bad8ad41f212bebc0d2019b3fc383faaaf7bef";
         }
         {
           name = "draw-doc";
           src = "${sources."git://github.com/racket/draw/"}/draw-doc";
-          checksum = "76a1acc368f585b0f77f0b5377dcf66f835371e5";
+          checksum = "57b2e050a287e4f0c7e26662d4850c6ac62935c3";
         }
         {
           name = "syntax-color-doc";
@@ -15494,7 +15914,7 @@
         {
           name = "srfi-doc";
           src = "${sources."git://github.com/racket/srfi/"}/srfi-doc";
-          checksum = "25eb1c0e1ab8a1fa227750aa7f0689a2c531f8c8";
+          checksum = "cab009da67adf40737ae7ff02cd7c8bd6316d61d";
         }
         {
           name = "readline-doc";
@@ -15519,27 +15939,27 @@
         {
           name = "net-doc";
           src = "${sources."git://github.com/racket/racket"}/pkgs/net-doc";
-          checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+          checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
         }
         {
           name = "math-doc";
           src = "${sources."git://github.com/racket/math/"}/math-doc";
-          checksum = "b7455f468c63300ccae2e123646504a651bb79db";
+          checksum = "86c2a97edbca22ac182f69c4ed45088733d7b906";
         }
         {
           name = "web-server-doc";
           src = "${sources."git://github.com/racket/web-server/"}/web-server-doc";
-          checksum = "e321f8425e539d22412d4f7763532b3f3a65c95e";
+          checksum = "87a1e58a9b92c621f7d96c76de1da39587f04140";
         }
         {
           name = "rackunit-doc";
           src = "${sources."git://github.com/racket/rackunit/"}/rackunit-doc";
-          checksum = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
+          checksum = "41c64557f209c6a440c6595f29c1d6e7a7958917";
         }
         {
           name = "scribble-doc";
           src = "${sources."git://github.com/racket/scribble/"}/scribble-doc";
-          checksum = "faf92fa8638acfb193f0a14953b9779a31f2cdcd";
+          checksum = "b899cc74df03b0d8567f67160be2b307cdf3bc9a";
         }
         {
           name = "errortrace-doc";
@@ -15549,12 +15969,12 @@
         {
           name = "string-constants-doc";
           src = "${sources."git://github.com/racket/string-constants/"}/string-constants-doc";
-          checksum = "0eba894bc607edcdfb45e97568e66ce0a2faf1a7";
+          checksum = "fe3c2b4252cc6d6b8b2fc3ebeafe4a4a62beeeff";
         }
         {
           name = "xrepl-doc";
           src = "${sources."git://github.com/racket/xrepl/"}/xrepl-doc";
-          checksum = "b1399e0fcfd8e0af1e4c6528dd6d513b20fc1698";
+          checksum = "3240161a25073e204cb7618deac5a632f6477aa5";
         }
         {
           name = "profile-doc";
@@ -15569,7 +15989,7 @@
         {
           name = "plot-doc";
           src = "${sources."git://github.com/racket/plot/"}/plot-doc";
-          checksum = "b0da52632c0369058887439345eb90cbf8e99dae";
+          checksum = "a14222e19736f75bdb9c660ca9c3b78c6e2ee9b3";
         }
         {
           name = "r5rs-doc";
@@ -15579,12 +15999,12 @@
         {
           name = "typed-racket-doc";
           src = "${sources."git://github.com/racket/typed-racket/"}/typed-racket-doc";
-          checksum = "f3e42b3aba6ef84b01fc25d0a9ef48cd9d16a554";
+          checksum = "c3702d6ee849182ab4cf7fd9d2a8f6135fd7aaa0";
         }
         {
           name = "pict-doc";
           src = "${sources."git://github.com/racket/pict/"}/pict-doc";
-          checksum = "29e89754c2d6a59fe56027772e7b5113e8560cef";
+          checksum = "8f49787727aeb1a93ffcf333d92ab2bad579d5bc";
         }
         {
           name = "slideshow-doc";
@@ -15594,7 +16014,7 @@
         {
           name = "scheme-doc";
           src = "${sources."https://github.com/racket/racket.git"}/pkgs/scheme-doc";
-          checksum = "06f10d51d11ded84df9805578245bfd80391b96a";
+          checksum = "297988494b89aa452d5dea278fc7afbf1f218d29";
         }
         {
           name = "r6rs-doc";
@@ -15604,7 +16024,7 @@
         {
           name = "data-doc";
           src = "${sources."git://github.com/racket/data/"}/data-doc";
-          checksum = "0b23dd66639ffd1d62cf690c26cbd58b508da609";
+          checksum = "0f85d3ced88a1e39c08153ffae5951f32b43cd81";
         }
         {
           name = "planet-doc";
@@ -15630,6 +16050,20 @@
       src = "${sources."git://github.com/videolang/native-pkgs"}/libvid-i386-linux";
       checksum = "dfe1d5cb7271b1657bbde9c8f67ee9c5a513a9c7";
       racketDeps = [];
+      cyclicDeps = [];
+    };
+    "lsl" = mkRacketPackage {
+      name = "lsl";
+      src = "${sources."https://github.com/logiccomp/lsl.git"}/lsl";
+      checksum = "9190a1dff7267e9d86a80e52a2393b2d98afbfe9";
+      racketDeps = [self."automata-doc" self."lsl-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."htdp-lib" self."chk-lib" self."htdp-doc" self."errortrace-lib"];
+      cyclicDeps = [];
+    };
+    "option-contract-doc" = mkRacketPackage {
+      name = "option-contract-doc";
+      src = "${sources."git://github.com/racket/option-contract"}/option-contract-doc";
+      checksum = "50d72f706ef944689e21b65a6c94b3c819989c59";
+      racketDeps = [self."scribble-lib" self."option-contract-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "portage-admin-test" = mkRacketPackage {
@@ -15663,7 +16097,7 @@
     "math" = mkRacketPackage {
       name = "math";
       src = "${sources."git://github.com/racket/math/"}/math";
-      checksum = "b7455f468c63300ccae2e123646504a651bb79db";
+      checksum = "86c2a97edbca22ac182f69c4ed45088733d7b906";
       racketDeps = [self."math-lib" self."racket-doc"];
       cyclicDeps = [];
     };
@@ -15677,7 +16111,7 @@
     "lathe-comforts" = mkRacketPackage {
       name = "lathe-comforts";
       src = "${sources."https://github.com/lathe/lathe-comforts-for-racket.git"}/lathe-comforts";
-      checksum = "43829a1613140d6b12ee1d078ea1d08f9f0c1827";
+      checksum = "3ad28a38f202603a33b67a7a74a6f8d2e80f7ba5";
       racketDeps = [self."lathe-comforts-lib" self."lathe-comforts-doc"];
       cyclicDeps = [];
     };
@@ -15693,13 +16127,6 @@
       src = sources."git://github.com/jbclements/java";
       checksum = "c2d1359b05567fb9352178cedeba2dfc30ddc9ca";
       racketDeps = [self."scribble-lib" self."parser-tools-lib" self."dherman-struct" self."compatibility-lib" self."io" self."racket-doc" self."srfi-lite-lib" self."rackunit-lib"];
-      cyclicDeps = [];
-    };
-    "option-contract-doc" = mkRacketPackage {
-      name = "option-contract-doc";
-      src = "${sources."git://github.com/racket/option-contract"}/option-contract-doc";
-      checksum = "42d22d5d01b7717911af1bde4baaa570ae3df516";
-      racketDeps = [self."scribble-lib" self."option-contract-lib" self."racket-doc"];
       cyclicDeps = [];
     };
     "video-unstable" = mkRacketPackage {
@@ -15726,8 +16153,8 @@
     "lambda-sh" = mkRacketPackage {
       name = "lambda-sh";
       src = sources."https://github.com/wargrey/lambda-shell.git";
-      checksum = "ce1feb24abb102dc74f98154ec2a92a3cd02a17e";
-      racketDeps = [self."math-lib" self."typed-racket-lib" self."racket-doc" self."typed-racket-more" self."pict-lib" self."digimon" self."scribble-lib"];
+      checksum = "6d1c93045887e5fb950f2c64996b1f540d271cf0";
+      racketDeps = [self."typed-racket-more" self."math-lib" self."w3s" self."typed-racket-lib" self."racket-doc" self."digimon" self."scribble-lib"];
       cyclicDeps = [];
     };
     "debug-scopes" = mkRacketPackage {
@@ -15768,8 +16195,8 @@
     "rhombus-prototype" = mkRacketPackage {
       name = "rhombus-prototype";
       src = sources."https://github.com/racket/rhombus-prototype.git";
-      checksum = "4835965cf8d765a1fcc4b0acb48f5121aa27c8e6";
-      racketDeps = [self."gui-easy-lib" self."draw-lib" self."gui-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."parser-tools-lib" self."math-lib" self."rackunit-lib" self."testing-util-lib" self."at-exp-lib" self."syntax-color-lib" self."gui-easy" self."pretty-expressive"];
+      checksum = "3a4afc519892f480a5d74348ed4b18ce743bdfa9";
+      racketDeps = [self."gui-easy-lib" self."draw-lib" self."pict-lib" self."pict-balloon2" self."gui-lib" self."racket-doc" self."sandbox-lib" self."scribble-lib" self."compatibility" self."parser-tools-lib" self."slideshow-lib" self."math-lib" self."rackunit-lib" self."testing-util-lib" self."at-exp-lib" self."syntax-color-lib" self."gui-easy" self."pretty-expressive"];
       cyclicDeps = [];
     };
     "namespaced-transformer" = mkRacketPackage {
@@ -15782,7 +16209,7 @@
     "racketscript" = mkRacketPackage {
       name = "racketscript";
       src = "${sources."https://github.com/racketscript/racketscript.git"}/racketscript";
-      checksum = "cb1a83e2205cb0e4942ae909d80047014073c473";
+      checksum = "bff853c802b0073d08043f850108a57981d9f826";
       racketDeps = [self."racketscript-compiler" self."racketscript-doc" self."racketscript-extras"];
       cyclicDeps = [];
     };
@@ -15810,7 +16237,7 @@
     "relation-test" = mkRacketPackage {
       name = "relation-test";
       src = "${sources."https://github.com/countvajhula/relation.git"}/relation-test";
-      checksum = "5022738f69387c5722318717db5c866c9839614e";
+      checksum = "eac44044137131349e8139500fd15428baf17527";
       racketDeps = [self."relation-lib" self."collections-lib" self."arguments" self."qi-lib" self."rackunit-lib"];
       cyclicDeps = [];
     };
@@ -15824,7 +16251,7 @@
     "forms" = mkRacketPackage {
       name = "forms";
       src = "${sources."https://github.com/Bogdanp/racket-forms.git"}/forms";
-      checksum = "8fca1d8533cd2d36978bdb411e7d9843c681b5c5";
+      checksum = "e6ba9fa4a4e17d744760193dc7b8a4b399e9db71";
       racketDeps = [self."forms-doc" self."forms-lib"];
       cyclicDeps = [];
     };
@@ -15873,7 +16300,7 @@
     "sew" = mkRacketPackage {
       name = "sew";
       src = "${sources."https://github.com/lathe/sew-for-racket.git"}/sew";
-      checksum = "9daf6ccc1188fe6ef92a5caab83451ac7dc57fc0";
+      checksum = "8758c3792adb413af2b822e54d3e8f5e8d3f55db";
       racketDeps = [self."sew-doc" self."sew-lib"];
       cyclicDeps = [];
     };
@@ -15915,7 +16342,7 @@
     "exact-decimal-lang" = mkRacketPackage {
       name = "exact-decimal-lang";
       src = sources."git://github.com/AlexKnauth/exact-decimal-lang";
-      checksum = "434723f8675944bc3884c6a19327ce5ff68d5f70";
+      checksum = "5bc4ff9c68bd9594cec1984766e491ac44f66e9d";
       racketDeps = [self."scribble-lib" self."racket-doc" self."rackunit"];
       cyclicDeps = [];
     };
@@ -15936,7 +16363,7 @@
     "scribble-text-lib" = mkRacketPackage {
       name = "scribble-text-lib";
       src = "${sources."git://github.com/racket/scribble/"}/scribble-text-lib";
-      checksum = "faf92fa8638acfb193f0a14953b9779a31f2cdcd";
+      checksum = "b899cc74df03b0d8567f67160be2b307cdf3bc9a";
       racketDeps = [self."scheme-lib" self."at-exp-lib"];
       cyclicDeps = [];
     };
@@ -15958,8 +16385,8 @@
     "git://github.com/AlexKnauth/exact-decimal-lang" = fetchFromGitHub {
       owner = "AlexKnauth";
       repo = "exact-decimal-lang";
-      rev = "434723f8675944bc3884c6a19327ce5ff68d5f70";
-      sha256 = "sha256-7igUWvh2Ss8X18UYLnms6wy7MCVoUgsJYaRCisMAFgM=";
+      rev = "5bc4ff9c68bd9594cec1984766e491ac44f66e9d";
+      sha256 = "sha256-6fstGOBgkDwOD1pzAzBOCh59JGBg8b0rYRkjvyZ607s=";
     };
     "https://github.com/stamourv/plaitypus.git" = fetchFromGitHub {
       owner = "stamourv";
@@ -16022,8 +16449,8 @@
     "https://github.com/racket/rhombus-prototype.git" = fetchFromGitHub {
       owner = "racket";
       repo = "rhombus-prototype";
-      rev = "4835965cf8d765a1fcc4b0acb48f5121aa27c8e6";
-      sha256 = "sha256-TuupN4b6KseGKNUkZ3HzUJCNMkYrt8FFR20nkUfW+JM=";
+      rev = "3a4afc519892f480a5d74348ed4b18ce743bdfa9";
+      sha256 = "sha256-5QyMaIThnjYGSTE2F7YLBt9fDoMPsiJatoDMUB+TUXY=";
     };
     "https://pivot.cs.unb.ca/git/plai-dynamic.git" = throw "TODO";
     "https://github.com/smitchell556/get-pass.git" = fetchFromGitHub {
@@ -16053,8 +16480,8 @@
     "https://github.com/wargrey/lambda-shell.git" = fetchFromGitHub {
       owner = "wargrey";
       repo = "lambda-shell";
-      rev = "ce1feb24abb102dc74f98154ec2a92a3cd02a17e";
-      sha256 = "sha256-j4Igh+CbHjWGRjKa2q/P26YiI2gpESrNKdHLkymMoA0=";
+      rev = "6d1c93045887e5fb950f2c64996b1f540d271cf0";
+      sha256 = "sha256-BhGdtJ355Pih9OILXrw/g1TAZpU6AApVsy6ZfGMntbY=";
     };
     "https://racket.defn.io/libsass-x86_64-win32-3.6.5.2.tar.gz" = fetchzip {
       url = "https://racket.defn.io/libsass-x86_64-win32-3.6.5.2.tar.gz";
@@ -16137,6 +16564,12 @@
       url = "https://pkg-sources.racket-lang.org/pkgs/cb3c93643b0ef279786be956cb1fd4ac6a2776e1/draw-win32-x86_64-3.zip";
       hash = "sha256-PDQF9Vfc7CKigbNCMhCVmVKu3Tc+CQmLv3nr2yvMkUs=";
     };
+    "https://github.com/dergemkr/racket-lmdb.git" = fetchFromGitHub {
+      owner = "dergemkr";
+      repo = "racket-lmdb";
+      rev = "397e3e9f7ee84ef7ca4e46108e59b6f96d3bc3f5";
+      sha256 = "sha256-rQKMQWEPpmx7/x70Wu4RONC5cp8hvOt5eZx4Otf0fFc=";
+    };
     "https://github.com/mromyers/infix-syntax.git" = fetchFromGitHub {
       owner = "mromyers";
       repo = "infix-syntax";
@@ -16200,8 +16633,8 @@
     "https://github.com/zzkt/moonrat.git" = fetchFromGitHub {
       owner = "zzkt";
       repo = "moonrat";
-      rev = "c42602d646e08c3779eaf80ae0475c3a8e8a76fc";
-      sha256 = "sha256-BWuLAPY3/raWe04SEmjejKnUG8mJmf7y3HuAobniB1U=";
+      rev = "44fbf0c8c5bacc4237bba6f06ad91d352d52fd68";
+      sha256 = "sha256-C8E64Gt9zAqN61zRV5ulRPnW+oALt1lumtfETSCOl1c=";
     };
     "git://github.com/ntoronto/pict3d" = fetchFromGitHub {
       owner = "ntoronto";
@@ -16224,8 +16657,8 @@
     "https://github.com/Lonero-Team/Racket-Package.git" = fetchFromGitHub {
       owner = "Lonero-Team";
       repo = "Racket-Package";
-      rev = "2f12c9a4b0b8c6e4170464bc9feb02b0b732cf4b";
-      sha256 = "sha256-aSb/GnkO+mHzO1F+H+iZUCZ6gvtG/SQ5y/kqkwvHIbQ=";
+      rev = "98589825a4e4ea75f1b895955072f19d9989400f";
+      sha256 = "sha256-oYGUT6nv4mB/7sjXfbMUge8u0YQ9W5ci1dzV/9ykXWk=";
     };
     "git://github.com/florence/plot-bestfit" = fetchFromGitHub {
       owner = "florence";
@@ -16268,12 +16701,6 @@
       rev = "28b9389ea83984306dd50b634cb795c3bd86ca41";
       sha256 = "sha256-vx/7PqU2M+YOIRbraVybQbIgGOiui9kntvRm7kHC8zM=";
     };
-    "https://github.com/jackfirth/chess.git" = fetchFromGitHub {
-      owner = "jackfirth";
-      repo = "chess";
-      rev = "cd7aaa015ddaa87026b11dfe8dbe6778409b5286";
-      sha256 = "sha256-LKPJ/VI/po50EwsZa/s7Zi35TTvcc3UfCH+2kaFAXdk=";
-    };
     "https://github.com/dstorrs/rx-tx-async-channel.git" = fetchFromGitHub {
       owner = "dstorrs";
       repo = "rx-tx-async-channel";
@@ -16297,6 +16724,18 @@
       repo = "racket-sdl";
       rev = "8b31e76b77b24afe76683d4d5630c771a0329683";
       sha256 = "sha256-vHQ/wcHeBkLzpeRZP7SrZuDJCWt2XdZjFhbx42AD+xg=";
+    };
+    "https://github.com/jackfirth/chess.git" = fetchFromGitHub {
+      owner = "jackfirth";
+      repo = "chess";
+      rev = "cd7aaa015ddaa87026b11dfe8dbe6778409b5286";
+      sha256 = "sha256-LKPJ/VI/po50EwsZa/s7Zi35TTvcc3UfCH+2kaFAXdk=";
+    };
+    "https://github.com/priime0/logman.git" = fetchFromGitHub {
+      owner = "priime0";
+      repo = "logman";
+      rev = "53887e2093af1b621dd36481cd9c4ca574961e3b";
+      sha256 = "sha256-XsG6jfmYK6L5kevDFhaBzfitrJ8raAKBwFq+vi2j3iM=";
     };
     "https://github.com/jsmaniac/xlist.git" = fetchFromGitHub {
       owner = "jsmaniac";
@@ -16323,8 +16762,8 @@
     "https://github.com/Metaxal/quickscript.git" = fetchFromGitHub {
       owner = "Metaxal";
       repo = "quickscript";
-      rev = "31f731a5bc360e734f143fb3db23dab20f5669c0";
-      sha256 = "sha256-b29bAS1Xf5cz8xH5IGbQNKy55Ujb0xa1iYOifaxU21A=";
+      rev = "570bc284e29e5b904c58d746ea8646105a81b552";
+      sha256 = "sha256-K+FcwV1O22K3F5kghjl16xMOX+wXWOxG61E9mNOyH6o=";
     };
     "https://www.cs.toronto.edu/~gfb/racket-pkgs/tightlight.zip" = fetchzip {
       url = "https://www.cs.toronto.edu/~gfb/racket-pkgs/tightlight.zip";
@@ -16352,12 +16791,6 @@
       rev = "32a8e88e8547227d473013d8f90f41f6b5665b69";
       sha256 = "sha256-xcAK4Rx+DNocdX4dTXslp8dw4Vw9fX9VjKG5ptySRiE=";
     };
-    "github://github.com/jeapostrophe/matrix/master" = fetchFromGitHub {
-      owner = "jeapostrophe";
-      repo = "matrix";
-      rev = "15e1c74f8763abbdfb4348702c98ca6043e52a1c";
-      sha256 = "sha256-Mps1YnYif/x5PYeu/b/1uJZXi2DNDe6RoR3waSHH+YY=";
-    };
     "github://github.com/samth/disassemble/master" = fetchFromGitHub {
       owner = "samth";
       repo = "disassemble";
@@ -16370,11 +16803,21 @@
       rev = "a6c3611fcddb8d8a67531694c9b8c2c4f89bbb0f";
       sha256 = "sha256-/l5lt0ndKawmKpIhLKrV5Uiqb8++tIvclp/V/mm2MOY=";
     };
+    "github://github.com/jeapostrophe/matrix/master" = fetchFromGitHub {
+      owner = "jeapostrophe";
+      repo = "matrix";
+      rev = "15e1c74f8763abbdfb4348702c98ca6043e52a1c";
+      sha256 = "sha256-Mps1YnYif/x5PYeu/b/1uJZXi2DNDe6RoR3waSHH+YY=";
+    };
+    "https://racket.defn.io/libzstd-i386-win32-1.5.5.tar.gz" = fetchzip {
+      url = "https://racket.defn.io/libzstd-i386-win32-1.5.5.tar.gz";
+      hash = "sha256-zQAbvzNBZF5PZKQUcoiOQ+EJMQNccHpIWzqzeEas62U=";
+    };
     "https://github.com/jbclements/portaudio-x86_64-linux.git" = fetchFromGitHub {
       owner = "jbclements";
       repo = "portaudio-x86_64-linux";
-      rev = "d0426385b94c2392f78bdeaa9ce50b3439cc2542";
-      sha256 = "sha256-JxvOmNVDVkOi7zJvIbObfWrI6lWbchF68lEO7YnZgJ0=";
+      rev = "2398dea77735fd5feddf2ea22cee283ceef5904b";
+      sha256 = "sha256-TJJxrhjiWrA6kFYFyGr2QKTBhVLPNqsig5Tx3BDVmN4=";
     };
     "https://github.com/AlexKnauth/try-catch-finally.git" = fetchFromGitHub {
       owner = "AlexKnauth";
@@ -16474,6 +16917,12 @@
       repo = "ec";
       rev = "81d6fbe1852d3b20cffa651e6062dd1aca146018";
       sha256 = "sha256-ZW/QUgLF11hW+sftQuRVbBC3MJYAMEXujLOLE5Tf2CA=";
+    };
+    "https://github.com/damien-mattei/Scheme-PLUS-for-Racket.git" = fetchFromGitHub {
+      owner = "damien-mattei";
+      repo = "Scheme-PLUS-for-Racket";
+      rev = "20c16f2af98bf9e0b46a21721d22b2d55951a043";
+      sha256 = "sha256-c3rAm83PWQmSPdzqtDcP6HXtNK8SE5sUQwu09m8oFbM=";
     };
     "git://github.com/samth/persistent-union-find" = fetchFromGitHub {
       owner = "samth";
@@ -16576,7 +17025,7 @@
     };
     "https://racket.defn.io/libzstd-aarch64-macosx-1.5.5.tar.gz" = fetchzip {
       url = "https://racket.defn.io/libzstd-aarch64-macosx-1.5.5.tar.gz";
-      hash = "sha256-F+OkIV00RmiHd/WSzMVAB9jENQRK+FU1PYpYd7wkWfQ=";
+      hash = "sha256-2WW9FGDFtjEffFQoEX3ZsqIRYOMv6TRu9l7AjvMsD54=";
     };
     "https://www.neilvandyke.org/racket/overeasy.zip" = fetchzip {
       url = "https://www.neilvandyke.org/racket/overeasy.zip";
@@ -16615,8 +17064,8 @@
     "https://github.com/soegaard/sci.git" = fetchFromGitHub {
       owner = "soegaard";
       repo = "sci";
-      rev = "5d6298d8aca23eedc77ee78b00c22dc46309cf1c";
-      sha256 = "sha256-ztBiZb9/hNNU9b+MDRSJe/AqJ9n2D5NmZsjATQsvI8M=";
+      rev = "3635df4f63c4815870ea307f2cbfe5d77657b971";
+      sha256 = "sha256-qvK0tknX8JXIzm7+AVkyBrAcvyISR86z2ev4Lq6yWYc=";
     };
     "git://github.com/jbclements/glpk" = fetchFromGitHub {
       owner = "jbclements";
@@ -16645,8 +17094,8 @@
     "git://github.com/Kalimehtar/binary-class" = fetchFromGitHub {
       owner = "Kalimehtar";
       repo = "binary-class";
-      rev = "69705ed306be38c9e4dd67d9075ec160ecdb82a4";
-      sha256 = "sha256-01d68qjT0GdKJ2euQ86eWdfXknJRoDxpJGqOk2JSfUA=";
+      rev = "6eaf37b5de716d377c3c6ab4658addc5ae70bd45";
+      sha256 = "sha256-clx1qYxXy+XzOVP167fKlUZINjTcwS1jt3P9HYHVMhA=";
     };
     "https://github.com/nadeemabdulhamid/piecrust.git" = fetchFromGitHub {
       owner = "nadeemabdulhamid";
@@ -16715,8 +17164,8 @@
     "https://github.com/FPBench/FPBench.git" = fetchFromGitHub {
       owner = "FPBench";
       repo = "FPBench";
-      rev = "6feb1dd753e465ac8bce7bd19f837749982ffee8";
-      sha256 = "sha256-V4O/e9z4s1FU6411heLNX8mfCt+m09w2Cn/AwOGmlRE=";
+      rev = "ea121ec349a0b2c8bc5349eba1a8e279683c0569";
+      sha256 = "sha256-WPfAGUMy/wcMD/GlbNzErh7YpLG2BRqrMrkTOEcMKgc=";
     };
     "github://github.com/mflatt/profj/master" = fetchFromGitHub {
       owner = "mflatt";
@@ -16733,8 +17182,8 @@
     "git://github.com/emina/rosette" = fetchFromGitHub {
       owner = "emina";
       repo = "rosette";
-      rev = "5dd348906d8bafacef6354c2e5e75a67be0bec66";
-      sha256 = "sha256-A9OFcTP1CIB0Jq0FBFOH4BIgo5W4ijO/G9P+EKKUqN4=";
+      rev = "edf682df5e70420fcb31f71a5791c17875655bd2";
+      sha256 = "sha256-hEJbuDWUKsbrUI5+eW4Xz74fdQiMhBzlCYs8eN4gP0o=";
     };
     "https://github.com/derkachdaniil/racket-c-plus-plus.git" = fetchFromGitHub {
       owner = "derkachdaniil";
@@ -16745,8 +17194,8 @@
     "https://github.com/prozion/odysseus.git" = fetchFromGitHub {
       owner = "prozion";
       repo = "odysseus";
-      rev = "2afc96ba60fd8b50d54ce94eb27dd7ce92525360";
-      sha256 = "sha256-P2Nxh+zpYCUsoDNmxflEorHVSvTrloKIGFf98kPXnd4=";
+      rev = "7323ad088e1b937da060e811de50e15ee28d195e";
+      sha256 = "sha256-D28FXdCyWYlZyPjG4yAfARZpG3wE6POty2RSdfZ+Ekg=";
     };
     "https://github.com/yanyingwang/scribble-rainbow-delimiters.git" = fetchFromGitHub {
       owner = "yanyingwang";
@@ -16783,6 +17232,12 @@
       repo = "colors";
       rev = "103aa2aa71310b0c7a83b33714593f01ce24beab";
       sha256 = "sha256-oqa79h9d1O9sz68Ow76MOuVG44yXIgqmzOWgLn4oNFA=";
+    };
+    "https://github.com/michaelballantyne/syntax-spec.git" = fetchFromGitHub {
+      owner = "michaelballantyne";
+      repo = "syntax-spec";
+      rev = "6a0e30e621cf3d9cc9c09f43edca419104edfbef";
+      sha256 = "sha256-p5DRa7gtWBLEtQgQv9McK8j1wwGcfaJT42JLSxIRVuw=";
     };
     "https://github.com/alex-hhh/colormaps.git" = fetchFromGitHub {
       owner = "alex-hhh";
@@ -16900,8 +17355,8 @@
     "https://github.com/wargrey/clang.git" = fetchFromGitHub {
       owner = "wargrey";
       repo = "clang";
-      rev = "ad4ac0ffd16ce65f90e4f1bcfa5f9816892109d8";
-      sha256 = "sha256-3oyNS1TaZL6AFacZrrn9EXgaQHPX6fcWom5dypeMtnw=";
+      rev = "0b9729845378ae6f318234835eb249d8eeae65e3";
+      sha256 = "sha256-6f++IxfXD9jIyqIgeSbVdB7TKBpQXPY09soGSjTpO1A=";
     };
     "https://gitlab.com/HiPhish/neovim.rkt.git" = fetchFromGitLab {
       owner = "HiPhish";
@@ -16949,8 +17404,8 @@
     "https://github.com/bennn/agile.git" = fetchFromGitHub {
       owner = "bennn";
       repo = "agile";
-      rev = "18c2c50e96ead195190c26dab8b79f7fecbc72ea";
-      sha256 = "sha256-qfxUMDI97fLiWtjiy08Lh2K3pr6JtJZDIr+MiJvo3uA=";
+      rev = "4c9dba023f506f9eaccc97c525525a3ae67c300d";
+      sha256 = "sha256-icLK4GTkluXjgc97yHDyy8qCuy++W98/1CqH692b+X4=";
     };
     "git://github.com/lexi-lambda/racket-irc-client" = fetchFromGitHub {
       owner = "lexi-lambda";
@@ -17021,20 +17476,20 @@
     "https://github.com/dannypsnl/sauron.git" = fetchFromGitHub {
       owner = "dannypsnl";
       repo = "sauron";
-      rev = "73bfde806617a643ffe7801804239f0d82e696bf";
-      sha256 = "sha256-6cGsfAHAFcFnQ0YVSUVrllb4odqnM5AGJDMKlOShn9o=";
+      rev = "9a2692e5e788e7457e55bf186fa9c185ec4eae96";
+      sha256 = "sha256-iTk8axUf1oqV3VmHJ/6ao6RVews6v6wkGdl/crpraZo=";
     };
     "https://github.com/wargrey/w3s.git" = fetchFromGitHub {
       owner = "wargrey";
       repo = "w3s";
-      rev = "e5622ad2ca6ec675fa324d22dd61b7242767fb53";
-      sha256 = "sha256-zBn74WipGIvQqoDENJnTMOe9mSn4kCHuR7V+lUlHBzs=";
+      rev = "abd97a6d09167be4faab2845bd03d057ac570458";
+      sha256 = "sha256-kdG/GNphq1F10NcaCM4ho71lUSTa2cRnae7DuZxOImg=";
     };
     "git://github.com/wargrey/graphics" = fetchFromGitHub {
       owner = "wargrey";
       repo = "graphics";
-      rev = "ba858504ff361f7beba221455304eadf7c01edf0";
-      sha256 = "sha256-DkxKnOA9YWwke9nqL3LWt9VSeuBkGX8UgV+ly/k6A10=";
+      rev = "d60f65d9819fa1309395f8f62575d46e979d4a79";
+      sha256 = "sha256-8ZxFrwu4NtRMLKZmysJdfjZ03lMvGRv0uBaJaSo7aTU=";
     };
     "https://github.com/v-nys/positional-tree-utils.git" = fetchFromGitHub {
       owner = "v-nys";
@@ -17073,8 +17528,8 @@
     "https://github.com/Bogdanp/racket-review.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-review";
-      rev = "bc7b614e3b6ab11a9f569d254aaba7f2d2074354";
-      sha256 = "sha256-GsRCKRHnOToBcQu1+0iaUzFGG284jmdwziHHmTrF1Z8=";
+      rev = "ff455cb9cc2c9e880f56ed19255e44bbcbf0c923";
+      sha256 = "sha256-9PWKPE5uPkXHIPmtIU8YDpHWplvnwXFRATnEgkwR2Bw=";
     };
     "git://github.com/Kalimehtar/finalizer" = fetchFromGitHub {
       owner = "Kalimehtar";
@@ -17125,6 +17580,12 @@
       sha256 = "sha256-hUJv/o6KRhRu9v+kyrYkMIVOc62utadwcDY+wsLN+yY=";
     };
     "https://git.matthewbutterick.com/mbutterick/css-tools.git" = throw "TODO";
+    "https://github.com/logiccomp/lsl.git" = fetchFromGitHub {
+      owner = "logiccomp";
+      repo = "lsl";
+      rev = "9190a1dff7267e9d86a80e52a2393b2d98afbfe9";
+      sha256 = "sha256-NJF9P2VGpEGmsJ9hCaall/x+T9q+Dcr3BkINEWYyKfE=";
+    };
     "https://github.com/david-christiansen/todo-list.git" = fetchFromGitHub {
       owner = "david-christiansen";
       repo = "todo-list";
@@ -17208,7 +17669,7 @@
       owner = "jbclements";
       repo = "margrave";
       rev = "09780169700c463def0d6c66192f3b07048671d8";
-      sha256 = "sha256-Iu4R9o0NZifnmDF07yPzl/P4mh02dI1nkjqI3OGVOkE=";
+      sha256 = "sha256-OFEPTq9B+kqYFYEnf3Klh8Uq5qyfvGnwmatBO2Gzcmk=";
     };
     "https://github.com/jackfirth/racket-net2.git" = fetchFromGitHub {
       owner = "jackfirth";
@@ -17271,8 +17732,8 @@
     "github://github.com/jbclements/RSound/master/" = fetchFromGitHub {
       owner = "jbclements";
       repo = "RSound";
-      rev = "7ae726778e9501a17bd01a46cc02f33c43c69439";
-      sha256 = "sha256-3qZU52xWgC8iaWTCMHxfgzAo2WfOM1GqqjGUyFZ2VpQ=";
+      rev = "ec9bbcf9120aa4678b36126fba119ae8433d78c3";
+      sha256 = "sha256-TNnO3pwHRNNoFBMf1Cr3NBFH/c1vtuPlF40pZW88Unw=";
     };
     "github://github.com/jeapostrophe/ring-buffer/master" = fetchFromGitHub {
       owner = "jeapostrophe";
@@ -17283,8 +17744,8 @@
     "https://github.com/ocapn/syrup.git" = fetchFromGitHub {
       owner = "ocapn";
       repo = "syrup";
-      rev = "89c7a1d43a9962a81f2a23f6dc6798958adb472a";
-      sha256 = "sha256-2Dp0t2xHM6JQ+Fi8xyx+FxH96Sd6zofZCY2+CsUPEQI=";
+      rev = "2214cbb7c0ee081699fdef64edbc2444af2bb1d2";
+      sha256 = "sha256-FP3M6E2rwGlL9HHToWr9S3r1ALAimfOseDdIfZ09JPI=";
     };
     "git://github.com/thinkmoore/signature" = fetchFromGitHub {
       owner = "thinkmoore";
@@ -17361,8 +17822,8 @@
     "https://github.com/shawnw/racket-soup-lib.git" = fetchFromGitHub {
       owner = "shawnw";
       repo = "racket-soup-lib";
-      rev = "8eed3da8094d168e66490abd07b5ddd8358f5169";
-      sha256 = "sha256-1LIvvmaZ7y0H2wvvMhfTFfYbwM6KhL3CHgK0fea+Al0=";
+      rev = "73838a67079283bec090b89592b105f29a75470c";
+      sha256 = "sha256-PBqghUAej4kIG7q1Ant1/kRCm0XcY+YhLJEOOpj0MTI=";
     };
     "github://github.com/jbclements/sxml/master" = fetchFromGitHub {
       owner = "jbclements";
@@ -17373,8 +17834,8 @@
     "https://github.com/racket/srfi.git" = fetchFromGitHub {
       owner = "racket";
       repo = "srfi";
-      rev = "25eb1c0e1ab8a1fa227750aa7f0689a2c531f8c8";
-      sha256 = "sha256-PZwVUqfyYCiKQyHRx46vfd5870kPGxX6mhHtEG0ifWc=";
+      rev = "cab009da67adf40737ae7ff02cd7c8bd6316d61d";
+      sha256 = "sha256-kH05ehhKB3vsT6+qgF74rpB+hcbf/lUxWczU9DVk83w=";
     };
     "https://github.com/jagen31/drracket-red.git" = fetchFromGitHub {
       owner = "jagen31";
@@ -17392,8 +17853,8 @@
     "https://github.com/Grafcube/racket-string-interpolation.git" = fetchFromGitHub {
       owner = "Grafcube";
       repo = "racket-string-interpolation";
-      rev = "a361c36048dddea6b9a510f586c4494e5fb387c5";
-      sha256 = "sha256-J+QGNUdTJmah7UIGVtbRphDUcqfoif14qRYRDWzlm6Q=";
+      rev = "0e2e46b4d6df5a19fb725fa2a80c4991697cec24";
+      sha256 = "sha256-4C3MfCSodSQz5O5j2zxJ3Y7oDC7uRrZ2qA0B6ov/InE=";
     };
     "git://github.com/eeide/racr" = fetchFromGitHub {
       owner = "eeide";
@@ -17433,8 +17894,8 @@
     "https://github.com/themetaschemer/malt.git" = fetchFromGitHub {
       owner = "themetaschemer";
       repo = "malt";
-      rev = "e1cf64db8122db0fcd8b9509c306dab98c0f60f9";
-      sha256 = "sha256-4KtwnAjLHDpH2Xwq5qlIB9pQaP03dOp+dBGnVrq7cvU=";
+      rev = "4fee9a6b70146058bf253dbadaae1eff3681ccbe";
+      sha256 = "sha256-kUJl00g2kqo2dOPN9bVaQ0hapGWfW64/qx8VbX98XGE=";
     };
     "git://github.com/david-christiansen/dan-scheme" = fetchFromGitHub {
       owner = "david-christiansen";
@@ -17497,8 +17958,8 @@
     "https://github.com/massung/tabular-asa.git" = fetchFromGitHub {
       owner = "massung";
       repo = "tabular-asa";
-      rev = "90365df6b81f827a1d5663627e136dc835ff61fc";
-      sha256 = "sha256-SE7H1A/s6d9hbv187H03VnoNlfvNeWk4tE+VnqbgMUo=";
+      rev = "4cefe17a3f0cd16e719d2cdf2de63b255070c91f";
+      sha256 = "sha256-5OkpJNjb1P0Pm3xeBxv+hDOQrSobaSoSXTQtuzSPrro=";
     };
     "github://github.com/tonyg/racket-scrypt/master/" = fetchFromGitHub {
       owner = "tonyg";
@@ -17518,9 +17979,9 @@
       rev = "164ec431a98689b111495bad638313b219e3b0b2";
       sha256 = "sha256-8b/VBHYLKy2UncBgGooGBOa1dRV/osQDktcntLjfW3U=";
     };
-    "https://racket.defn.io/libsqlite3-aarch64-macosx-3.39.2.tar.gz" = fetchzip {
-      url = "https://racket.defn.io/libsqlite3-aarch64-macosx-3.39.2.tar.gz";
-      hash = "sha256-3PUcFJuJB5AQTUCijuV7gg6DB1OQyJpNWtAbTIvOPoc=";
+    "https://racket.defn.io/libsqlite3-aarch64-macosx-3.45.3.tar.gz" = fetchzip {
+      url = "https://racket.defn.io/libsqlite3-aarch64-macosx-3.45.3.tar.gz";
+      hash = "sha256-PS0NeZ8gTeEZ1+07yO29c9G8GY+t45bzv9z6oDszbAU=";
     };
     "https://github.com/philnguyen/impl-excl.git" = fetchFromGitHub {
       owner = "philnguyen";
@@ -17550,7 +18011,6 @@
       rev = "f114a142f08bee5ca26b17d37ed698ebc7e63176";
       sha256 = "sha256-FPlhgJ833RJEvCVbTpbKCmcLW7v51e8BQzF+ZJUJZ0M=";
     };
-    "https://pivot.cs.unb.ca/git/unb-cs4613.git" = throw "TODO";
     "https://github.com/rfindler/simple-obfuscation.git" = fetchFromGitHub {
       owner = "rfindler";
       repo = "simple-obfuscation";
@@ -17560,8 +18020,8 @@
     "https://github.com/soegaard/metapict.git" = fetchFromGitHub {
       owner = "soegaard";
       repo = "metapict";
-      rev = "d29c45cf32872f8607fca3c58272749c28fb8751";
-      sha256 = "sha256-C0GU7H96CWDGjWc29pxpklkSBo2AkErEQguyLp6MGoE=";
+      rev = "119b2b37c52c1a6718304c6e8fc309ff9df94db5";
+      sha256 = "sha256-gI5Gkzz9rfxZU2LW6HoQbmSn8xxNUlQ1ABzItwQMHmA=";
     };
     "https://github.com/jackfirth/euclid.git" = fetchFromGitHub {
       owner = "jackfirth";
@@ -17590,8 +18050,8 @@
     "https://github.com/simmone/racket-simple-xml.git" = fetchFromGitHub {
       owner = "simmone";
       repo = "racket-simple-xml";
-      rev = "3387afdc54271bbfacfc90ddca01a704342fa0bb";
-      sha256 = "sha256-UReETarfFcKSmSHvVP0GfDjC21s91y6RyGrq8DW1eK0=";
+      rev = "8b3b8b4ad70687d8c4e8db24872512369a0d5f40";
+      sha256 = "sha256-eEc6DD2eQRH64bcvpeu4KvJR6u1vKO2Vwz3zImY5Kdw=";
     };
     "https://github.com/zyrolasting/fuzzy-search.git" = fetchFromGitHub {
       owner = "zyrolasting";
@@ -17643,6 +18103,12 @@
       rev = "70af100b2035ee9383c63c0d969194659af233f2";
       sha256 = "sha256-qFtTrU1BOaA7m07RSS2By262Nep5eG8ouLe7EgIXJl8=";
     };
+    "https://github.com/johnstonskj/racket-langtag.git" = fetchFromGitHub {
+      owner = "johnstonskj";
+      repo = "racket-langtag";
+      rev = "c592a39243b3966fc74ceecd052e1db0578b5728";
+      sha256 = "sha256-pS7KmJ1qVayr9iNW1Jg3EwSqap3BcROGMd50bQU79QI=";
+    };
     "https://github.com/sorawee/mixfix.git" = fetchFromGitHub {
       owner = "sorawee";
       repo = "mixfix";
@@ -17664,8 +18130,8 @@
     "git://github.com/bennn/require-typed-check" = fetchFromGitHub {
       owner = "bennn";
       repo = "require-typed-check";
-      rev = "5a22965f395d61b3b58b0181e1929e8e25f4f5d1";
-      sha256 = "sha256-n41rh+HxMSfDvcVaP5r+DqJ5FMLEs+wIiXDp53oyix4=";
+      rev = "ca92eca4d09cc8b9919de13438059faee70d76f0";
+      sha256 = "sha256-VddrlxUGu0PzP1rgttciV+wBqccGunsxs4fwh09r678=";
     };
     "https://github.com/eutro/advent-of-code-racket.git" = fetchFromGitHub {
       owner = "eutro";
@@ -17693,8 +18159,8 @@
     "https://github.com/alex-hhh/plot-container.git" = fetchFromGitHub {
       owner = "alex-hhh";
       repo = "plot-container";
-      rev = "affdbaeec086a0b639a952368fa85c3b90d05c2d";
-      sha256 = "sha256-mdIxyOVoAJ2AvRJw5cogJAY9lWjBHu+14u7ULgO72sQ=";
+      rev = "331645ebe66ac5d20cb9b817403eeb727a808c6d";
+      sha256 = "sha256-hl2vpCL6OfEsrebTjBMhDCmhLivNT49RALjqZ+SaOOQ=";
     };
     "git://github.com/jbclements/postmark" = fetchFromGitHub {
       owner = "jbclements";
@@ -17723,8 +18189,8 @@
     "https://github.com/jackfirth/yaragg.git" = fetchFromGitHub {
       owner = "jackfirth";
       repo = "yaragg";
-      rev = "8f2fdbf4c3faabec576b54ce6b08100be3fc2da2";
-      sha256 = "sha256-eFiJrRquh9ybMDuJkS1ucJePR/C0+lcb55L2PHcCG+0=";
+      rev = "937d86c9c52b38381cbb72521dfa50cee00ebbf9";
+      sha256 = "sha256-kYrDvOSzQF4iT+drHiJX6LwTfAb91mikXSZ/4ZA9TaU=";
     };
     "git+https://git.sr.ht/~sschwarzer/sudoku-solver" = throw "TODO";
     "https://github.com/willghatch/racket-udelim.git" = fetchFromGitHub {
@@ -17759,6 +18225,10 @@
       rev = "a01b4ee787e7889b9f226d954d932f9770c0ba1d";
       sha256 = "sha256-fzxDhypqH3m7w9MDO6nOVgKWdjrmV9U1iFWm1BrFf1g=";
     };
+    "https://racket.defn.io/libzstd-aarch64-linux-1.5.5.tar.gz" = fetchzip {
+      url = "https://racket.defn.io/libzstd-aarch64-linux-1.5.5.tar.gz";
+      hash = "sha256-yiZNL02T4p/RUXCvhR5+fRFqz4zjI0z3JZVghaRlDvo=";
+    };
     "https://www.neilvandyke.org/racket/gdbdump.zip" = fetchzip {
       url = "https://www.neilvandyke.org/racket/gdbdump.zip";
       hash = "sha256-yiCR0DmJXBVClSS2YMDZEJroqv7LbBQJZ4hJP/JCR9E=";
@@ -17778,8 +18248,8 @@
     "https://github.com/jeapostrophe/racket-langserver.git" = fetchFromGitHub {
       owner = "jeapostrophe";
       repo = "racket-langserver";
-      rev = "3447fe6b5091c78f9807bcaf6ee7640c862a9484";
-      sha256 = "sha256-OlyPoE8/zK1fsC7vItWiZTkWOVT8sGN3/KZ5CQifPBE=";
+      rev = "140d94e7d64dd861bb2bfccc989d91382c4c8d8e";
+      sha256 = "sha256-QhyJmIgFsuT6MAVuockV3bcd3Td1b5KPzz/Zm73yvu0=";
     };
     "https://github.com/fmind/onlog.git" = fetchFromGitHub {
       owner = "fmind";
@@ -17802,8 +18272,8 @@
     "github://github.com/takikawa/racket-rsvg/master" = fetchFromGitHub {
       owner = "takikawa";
       repo = "racket-rsvg";
-      rev = "e9714609126782b17d46eec489e7783fd8045963";
-      sha256 = "sha256-bg4zUZbXUC+jUfhzZUsOpB/HkBr5y0QGE2N+zC4Qw5M=";
+      rev = "0945d7ae08880996a3409e2e7143273b06345c93";
+      sha256 = "sha256-BmdA2cK+9JxkPSo2SQSNxa5uThvFfvL9+ckdkjnj66s=";
     };
     "git://github.com/cwearl/fulmar.git" = fetchFromGitHub {
       owner = "cwearl";
@@ -17841,9 +18311,9 @@
       rev = "4d7f7e7491dd596b7725c4e3e5ab822763a26ee0";
       sha256 = "sha256-QLX2wt97ORO6/AVsIK6oQJxaxY1ch64o2g7dzY30mHc=";
     };
-    "https://racket.defn.io/libsqlite3-aarch64-linux-3.39.2.tar.gz" = fetchzip {
-      url = "https://racket.defn.io/libsqlite3-aarch64-linux-3.39.2.tar.gz";
-      hash = "sha256-tSuVOrLkpLGM3ZOgVLhAP3Ydb9GigWLocwvjeXM4zWI=";
+    "https://racket.defn.io/libsqlite3-aarch64-linux-3.45.3.tar.gz" = fetchzip {
+      url = "https://racket.defn.io/libsqlite3-aarch64-linux-3.45.3.tar.gz";
+      hash = "sha256-iTiRoNZKNMN2FBgo7/26vVSEVRalkkPpwRCRDTTwIIw=";
     };
     "git://github.com/jeapostrophe/mm" = fetchFromGitHub {
       owner = "jeapostrophe";
@@ -17854,8 +18324,8 @@
     "git://github.com/greghendershott/http" = fetchFromGitHub {
       owner = "greghendershott";
       repo = "http";
-      rev = "a9b9c6aef1a26c70680c35c84a7ab4583ea089cf";
-      sha256 = "sha256-yB/qF5VrlYdgYpLKo0qzYbsNLPZyDsMWzOGURaP4zUg=";
+      rev = "afa88e1add9b668781d8f8b3c699cf14e1c83e34";
+      sha256 = "sha256-+buBCZSWnjyeEXPCDWNh8E8QZ3hzz+dsHcCqU4WCpbQ=";
     };
     "git://github.com/AlexKnauth/hash-lambda" = fetchFromGitHub {
       owner = "AlexKnauth";
@@ -17890,14 +18360,14 @@
     "github://github.com/plt/handin/master" = fetchFromGitHub {
       owner = "plt";
       repo = "handin";
-      rev = "d5a3defd20243f81eeec17103742810584049eca";
-      sha256 = "sha256-/Cmia5FgzfO2xf4Z2j9cNk0AfNuvy3acXT1iswSRmbg=";
+      rev = "5caa19c3352bd4b9b2fc784ba442b8f605ac1648";
+      sha256 = "sha256-m/6MOGo/fn8+twihT4/SM60xXVHM1cB1i8to5Oy3k5E=";
     };
     "https://github.com/REA1/karp.git" = fetchFromGitHub {
       owner = "REA1";
       repo = "karp";
-      rev = "37d5afaaf550c1419f03054c9415285727b6ffb5";
-      sha256 = "sha256-4ECEUi5BNrBIAy5NiV3G3GqgAW4Pm3ZhSZkvKPnu9ok=";
+      rev = "cd8ff66ab6b7c5fd45a968cfbec70ac3a5ac4021";
+      sha256 = "sha256-c49RpDHbZjUHictgrJv42Ui9eBOjwvTAfFW2cuMBKQk=";
     };
     "https://github.com/jpathy/hidapi.git" = fetchFromGitHub {
       owner = "jpathy";
@@ -17968,8 +18438,8 @@
     "https://github.com/petterpripp/gsl-integration.git" = fetchFromGitHub {
       owner = "petterpripp";
       repo = "gsl-integration";
-      rev = "09a045e3bb451c82a52b3a155a07d112fcb6b688";
-      sha256 = "sha256-8YdUPHQg+gq95Ye6laHUrFWKQnhdmVWitItTz4sScR4=";
+      rev = "53a68b178f8dba1c90b76b174e9f110e886db3ae";
+      sha256 = "sha256-uRAepO0LqWzCjiJpgDHT+IO3Fcr5r2O8B8lvc5bpM9E=";
     };
     "https://gitlab.com/RayRacine/pipe.git" = fetchFromGitLab {
       owner = "RayRacine";
@@ -17986,14 +18456,14 @@
     "https://github.com/tnelson/forge.git" = fetchFromGitHub {
       owner = "tnelson";
       repo = "forge";
-      rev = "aa2e8a67a8ff38db145dcb1a1aa5c02d0b851235";
-      sha256 = "sha256-ME7oLcp/ywuI6EtLxHCiJ0iUzNSLSzVZhyxSPu5pZ9E=";
+      rev = "37e1f4dcf447e8e3e877d2d2cec7bb9908e925dd";
+      sha256 = "sha256-Zw2Mwj6+ydPnOug16A8VsGeS+LicDUNWjNScH9i/HMQ=";
     };
     "https://github.com/tnelson/Forge.git" = fetchFromGitHub {
       owner = "tnelson";
       repo = "Forge";
-      rev = "aa2e8a67a8ff38db145dcb1a1aa5c02d0b851235";
-      sha256 = "sha256-ME7oLcp/ywuI6EtLxHCiJ0iUzNSLSzVZhyxSPu5pZ9E=";
+      rev = "37e1f4dcf447e8e3e877d2d2cec7bb9908e925dd";
+      sha256 = "sha256-Zw2Mwj6+ydPnOug16A8VsGeS+LicDUNWjNScH9i/HMQ=";
     };
     "https://pkg-sources.racket-lang.org/pkgs/6419b953293b927172c923bee63478f513457555/gui-win32-arm64.zip" = fetchzip {
       url = "https://pkg-sources.racket-lang.org/pkgs/6419b953293b927172c923bee63478f513457555/gui-win32-arm64.zip";
@@ -18033,9 +18503,9 @@
       rev = "2420aeb2ce8c7fb3e14d0ee1d560c33e16aa1b80";
       sha256 = "sha256-/EECv5zKiyiuq1JXJhNsXmpwOAzzJJASsJfkkKrdzuY=";
     };
-    "https://racket.defn.io/libsqlite3-i386-win32-3.39.2.tar.gz" = fetchzip {
-      url = "https://racket.defn.io/libsqlite3-i386-win32-3.39.2.tar.gz";
-      hash = "sha256-5dGvxlGHHGQmfaLv7ysgEVCScJHAgwSejjr/0fhkDRs=";
+    "https://racket.defn.io/libsqlite3-i386-win32-3.45.3.tar.gz" = fetchzip {
+      url = "https://racket.defn.io/libsqlite3-i386-win32-3.45.3.tar.gz";
+      hash = "sha256-QYEGlTSVRQbnYjrvJT3rRiYoq3/dxJVTspTe8JcmLaI=";
     };
     "https://github.com/BourgondAries/nested-hash.git" = fetchFromGitHub {
       owner = "BourgondAries";
@@ -18091,13 +18561,19 @@
     };
     "https://pl.barzilay.org/pl.zip" = fetchzip {
       url = "https://pl.barzilay.org/pl.zip";
-      hash = "sha256-Q6OBuiX8mIf17UZtrwDrbV0kopvAzLk+OrIpfsLhnHM=";
+      hash = "sha256-iSu/JnI9V9zvhKyJwFolSHkMqbRKhuEO7PDCTVSRilE=";
+    };
+    "https://github.com/eutro/yaml-exp.git" = fetchFromGitHub {
+      owner = "eutro";
+      repo = "yaml-exp";
+      rev = "3f4d7bc1c3fb6c674d5be219223e4cab96879cf5";
+      sha256 = "sha256-pxEHq8Rt7+V8EqK0JOFq+Xdf8i2NBQpP2bOtbEBzK+w=";
     };
     "https://github.com/jbclements/portaudio-x86_64-win32.git" = fetchFromGitHub {
       owner = "jbclements";
       repo = "portaudio-x86_64-win32";
-      rev = "8db0fd218e72b583ca6657c6bb6e2512128b2485";
-      sha256 = "sha256-ZY5CdOqHIbp2bnGiL6JQIfKqbQ6MtYpVqFngqCMI3KA=";
+      rev = "9c30ff74dd26275b9e99776d1fcda09cc714c123";
+      sha256 = "sha256-PYJ/1J1/RjGQEkM42OSPwlcw07xA3xLJvy5hgNNKPT8=";
     };
     "git://github.com/racket/unstable-debug-lib" = fetchFromGitHub {
       owner = "racket";
@@ -18110,6 +18586,12 @@
       repo = "noise";
       rev = "ad2f2e043f992fb5f4a96df6e32dbea8234b315f";
       sha256 = "sha256-fHjXfbwO1QdxxsiCQdexbeYQEZIwKasyTojFMvKyzVQ=";
+    };
+    "https://github.com/johnstonskj/racket-rx.git" = fetchFromGitHub {
+      owner = "johnstonskj";
+      repo = "racket-rx";
+      rev = "470f6ad02d717bf2abf3a68d385b17331d9bb1d2";
+      sha256 = "sha256-qNN+wBvsfqdjwUD/fOsfBVeZoMAY7DQxjQdnd+AJSOg=";
     };
     "git://github.com/ntoronto/drbayes" = fetchFromGitHub {
       owner = "ntoronto";
@@ -18129,6 +18611,18 @@
       rev = "f39127f1c23c479390d32a8e32502a0dc14b8f7d";
       sha256 = "sha256-JjuQVhtH3+W32KnPg/bp8Z4C9jB1bYitoiND0rFPqOg=";
     };
+    "https://github.com/priime0/hash-star.git" = fetchFromGitHub {
+      owner = "priime0";
+      repo = "hash-star";
+      rev = "fbc634f2a546eddf4a09df0f3bd59ef55448c79e";
+      sha256 = "sha256-4hTV/yxELjH3edbw3HWrnGxaxUJOzzk2brUFmZmVfHw=";
+    };
+    "https://github.com/johnstonskj/racket-rdf.git" = fetchFromGitHub {
+      owner = "johnstonskj";
+      repo = "racket-rdf";
+      rev = "972eb0785718a7a47a0e092121b609fb0d06bcc6";
+      sha256 = "sha256-wWa08GeiwFCL2nB1a5bP0Tr9bXnOPg4HbwGvJkZBci4=";
+    };
     "https://gitlab.com/hashimmm/tablesci.git" = fetchFromGitLab {
       owner = "hashimmm";
       repo = "tablesci";
@@ -18138,8 +18632,8 @@
     "git://github.com/lwhjp/racket-xmlns" = fetchFromGitHub {
       owner = "lwhjp";
       repo = "racket-xmlns";
-      rev = "b11d0010ceac1dac55b22d5eab51e24025593638";
-      sha256 = "sha256-Acothtij6+dFVBb1aWQHrek8kMX9FCyYHVRkb220Yt4=";
+      rev = "5bc17896898c7116c0581c1aaddcb4c68a563154";
+      sha256 = "sha256-60mHCKU2H8ImEFKjCFZr7jjnVqOn6vZSaMsVaWm8TQo=";
     };
     "https://github.com/istefanis/lti-freq-domain-toolbox.git" = fetchFromGitHub {
       owner = "istefanis";
@@ -18223,12 +18717,6 @@
       rev = "83544737512709bfbdf5d65a956ee12c4cc7e822";
       sha256 = "sha256-mKyNSoimIZe6WtIjqgfZRGy1SkSHFfq0CJcKogq+a3k=";
     };
-    "git://github.com/nuprl/cs2500-client" = fetchFromGitHub {
-      owner = "nuprl";
-      repo = "cs2500-client";
-      rev = "d48c433d69d75ea03c029ec0207faa928796e757";
-      sha256 = "sha256-sSHFkRTjF0xWOypsYyRFa2Qb66ZhFOAfC4LkPYqoirE=";
-    };
     "github://github.com/tonyg/rmacs/master" = fetchFromGitHub {
       owner = "tonyg";
       repo = "rmacs";
@@ -18253,11 +18741,17 @@
       rev = "c1ac766a345a335438165ab0d13a4d8f6aec6162";
       sha256 = "sha256-9McOq49d2QwJCEKQNB8bpGlhuQery304akGRhFGytSw=";
     };
+    "git://github.com/nuprl/cs2500-client" = fetchFromGitHub {
+      owner = "nuprl";
+      repo = "cs2500-client";
+      rev = "d48c433d69d75ea03c029ec0207faa928796e757";
+      sha256 = "sha256-sSHFkRTjF0xWOypsYyRFa2Qb66ZhFOAfC4LkPYqoirE=";
+    };
     "github://github.com/jbclements/osc/master" = fetchFromGitHub {
       owner = "jbclements";
       repo = "osc";
-      rev = "18caebb14eefe3482976e738654aee2f18c5f88d";
-      sha256 = "sha256-dEekbXOvzH9FKzKDU10qwnRgD0eUJkP2H0nu2JcsKXg=";
+      rev = "ec8293cf0f98d459710d74ecb88c11a6f70f44ef";
+      sha256 = "sha256-4gpPovhJZ/vvyLqUCbDf5ZMvMu8ILip/fSDSvzbZmpM=";
     };
     "git+https://git.sr.ht/~sschwarzer/todo-txt" = throw "TODO";
     "git://github.com/tonyg/racket-dbus" = fetchFromGitHub {
@@ -18337,13 +18831,13 @@
     "https://github.com/Bogdanp/rackcheck.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "rackcheck";
-      rev = "21dcda3edf86c28d9594887e92c5d7bef589897c";
-      sha256 = "sha256-2Ob/q/gFoYdCp794djdJXZBp7RUOFu4HSnMlv9Lemnw=";
+      rev = "ffbddb7a9edef6ce1d9e0930adae1bd7033f1db7";
+      sha256 = "sha256-uNuJqht8ZeyMzVnZypyq3wgd+T59zMHlZf5mPBl45O8=";
     };
-    "https://github.com/uwplse/herbie/releases/download/v1.6/egg-herbie-macOS.zip" = fetchFromGitHub {
+    "https://github.com/uwplse/herbie/releases/download/v2.0.2/egg-herbie-macOS.zip" = fetchFromGitHub {
       owner = "uwplse";
       repo = "herbie";
-      rev = "2e95b7c2548a8b07daff875a71dce264ccf8b573";
+      rev = "ebd0217c3bba02be5ddfe158f09bb29202eaf51e";
       sha256 = "";
     };
     "github://github.com/mordae/racket-kernel/master" = fetchFromGitHub {
@@ -18419,8 +18913,8 @@
     "git://github.com/lexi-lambda/racket-alexis.git" = fetchFromGitHub {
       owner = "lexi-lambda";
       repo = "racket-alexis";
-      rev = "0268afb688231e0d6d76ded3291538dd5d3db37c";
-      sha256 = "sha256-1A5WYSmWlG+4Gz7mDHvXvrKXxKm+mWUlJyG17sy7yxw=";
+      rev = "0c4c03bf089a15347079d29e7910877a6b585f18";
+      sha256 = "sha256-jOTjv9Je9BquIpa+icUIKFTafiA1lxqnvUbs3AJlJtc=";
     };
     "https://github.com/priime0/ralgo.git" = fetchFromGitHub {
       owner = "priime0";
@@ -18432,11 +18926,11 @@
       url = "https://pkg-sources.racket-lang.org/pkgs/3b5184640aa5e4b0a1457e11c1fe9f6ee9e123d5/gui-win32-i386.zip";
       hash = "sha256-AEcxwv1Wg2GeYJJeNUzzakD/UrsJdjhqHAdwQiLBNNw=";
     };
-    "https://github.com/simmone/racket-simple-xlsx.git" = fetchFromGitHub {
+    "git+https://github.com/simmone/racket-simple-xlsx" = fetchFromGitHub {
       owner = "simmone";
       repo = "racket-simple-xlsx";
-      rev = "6edc584a6889783fbbe98761eecc6a99b5b2b223";
-      sha256 = "sha256-WqWi1jIOgMmpZwM+Ac6eFCkQaj4dh+3yCTyXsVBcO3A=";
+      rev = "ec6791f7f5c89686e31893838ba00896db68fcab";
+      sha256 = "sha256-qlLA1azZPOVm+Rk7VbG4xYgRQKHWPAgaHDfnuOOgV4M=";
     };
     "git://github.com/mordae/racket-libserialport" = fetchFromGitHub {
       owner = "mordae";
@@ -18580,8 +19074,8 @@
     "https://github.com/Bogdanp/racket-protocol-buffers.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-protocol-buffers";
-      rev = "f3d6b2d015bdbdb1f3312510f7f030e71adff3b0";
-      sha256 = "sha256-bPZe38uqjEJ/5nxgogEAf8BEI0cDPcUE4xfKXL55NH4=";
+      rev = "c4cec28f29b05c7d9875c944429033d29d3fd555";
+      sha256 = "sha256-uDaTWFHC9BvZQWw59vEzCu9jwWLMXJu9zDu4pAh6zHE=";
     };
     "git://github.com/jackfirth/type-conventions" = fetchFromGitHub {
       owner = "jackfirth";
@@ -18592,8 +19086,8 @@
     "https://github.com/codereport/racket-algorithms.git" = fetchFromGitHub {
       owner = "codereport";
       repo = "racket-algorithms";
-      rev = "4d2de1bd73a409b25c503b9fb27271f0c9325105";
-      sha256 = "sha256-q/zily3h/IqFwh2ynRDIbvaEDlqewIfhPO6wiQ9EMvo=";
+      rev = "198512b58a25b145451e8ba84d476a5c14e8940b";
+      sha256 = "sha256-jbxQLqeoQfY2n0oeM7BaIgLX379cvxz5M44yaU98ouE=";
     };
     "git://github.com/themetaschemer/wn" = fetchFromGitHub {
       owner = "themetaschemer";
@@ -18653,8 +19147,8 @@
     "https://github.com/tov/dssl2.git" = fetchFromGitHub {
       owner = "tov";
       repo = "dssl2";
-      rev = "e2d03ea0fff61c5e515ecd4bff88608e0439e32a";
-      sha256 = "sha256-HXPloCDpCXxl4AttUok+QwUTnCE7fxV1lhusQQFus2I=";
+      rev = "0385bf241e9a65423c965ee5586296eec73cc93e";
+      sha256 = "sha256-QtyKnaoy0S8ln30Nr0AaCJhQkkbgZHbZAx1u7Zmdq2g=";
     };
     "https://www.neilvandyke.org/racket/sxml-intro.zip" = fetchzip {
       url = "https://www.neilvandyke.org/racket/sxml-intro.zip";
@@ -18669,14 +19163,14 @@
     "https://github.com/racket/string-constants.git" = fetchFromGitHub {
       owner = "racket";
       repo = "string-constants";
-      rev = "0eba894bc607edcdfb45e97568e66ce0a2faf1a7";
-      sha256 = "sha256-MDZARAH/3JOR7CfxMkVVbEY5aw6mRyqhosXk0EOCq8s=";
+      rev = "fe3c2b4252cc6d6b8b2fc3ebeafe4a4a62beeeff";
+      sha256 = "sha256-exEfUoxVkyjy/m/jkLen68/erT62SfkcSPQA3Kfmols=";
     };
     "https://github.com/shawnw/racket-slib-format.git" = fetchFromGitHub {
       owner = "shawnw";
       repo = "racket-slib-format";
-      rev = "13a5f7b337bfb54e7895d14891044c86e0966702";
-      sha256 = "sha256-cvqcoteORq/mZpHzSV0WOIM5VK5ODbbnoAqymzGjlX4=";
+      rev = "021c8fd24baa4c2f09c5d726cf820f2acf927fae";
+      sha256 = "sha256-6Q8ZzrLYObFWvZ/j81zo3Q9dVtOQPEEZA3ncjUzwls0=";
     };
     "https://github.com/LiberalArtist/_-exp.git" = fetchFromGitHub {
       owner = "LiberalArtist";
@@ -18735,8 +19229,8 @@
     "https://github.com/rvs314/array.git" = fetchFromGitHub {
       owner = "rvs314";
       repo = "array";
-      rev = "ea2c8c01a595a42075eecbd4d24fa412fc152467";
-      sha256 = "sha256-I/wC2zbOPy51snEydQ3QPctjFpwZUjcYPrY3PmEk5/Y=";
+      rev = "c671a08ba55093a4cf6a869aa0365521637d3e50";
+      sha256 = "sha256-wEBGV4aT0fHDGX6Wrm7yFh6uxp2H9qZoxqu1KzBwER0=";
     };
     "https://github.com/nixpulvis/parser-combinator.git" = fetchFromGitHub {
       owner = "nixpulvis";
@@ -18765,8 +19259,8 @@
     "https://github.com/samdphillips/raco-run.git" = fetchFromGitHub {
       owner = "samdphillips";
       repo = "raco-run";
-      rev = "10d3fe4977a9f835265b5c2d9d08a9ee4cfdd42a";
-      sha256 = "sha256-XZcSmN0fMDlnpXd8riDbynNbNezmKUCsv1YZe15Ami0=";
+      rev = "266a3280328b420b6e2081ef080146675d050243";
+      sha256 = "sha256-pXj4htxNkJzrMwb85IeFOvAZAorJNI9l/NksssZA6YE=";
     };
     "https://github.com/v-nys/list-utils.git" = fetchFromGitHub {
       owner = "v-nys";
@@ -18871,8 +19365,8 @@
     "git://github.com/racket/eopl" = fetchFromGitHub {
       owner = "racket";
       repo = "eopl";
-      rev = "2e7d541a61b9c3f8111ad809e5c0535962f07f42";
-      sha256 = "sha256-QrqfkjiQCa2f/e6KtHQEQXni0PuhWPKguMvc9+D+FNk=";
+      rev = "d313612cd68709eb43b753941b550a2d4b18b516";
+      sha256 = "sha256-JfDhGvLqcPTT9Xv4/P6bp/hfazVcO6MXPFg4fptUMGI=";
     };
     "https://github.com/shawnw/racket-priority-queue.git" = fetchFromGitHub {
       owner = "shawnw";
@@ -18926,8 +19420,8 @@
     "https://github.com/Bogdanp/koyo-sentry.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "koyo-sentry";
-      rev = "0c589eb238ecf990f1896e6111339950987800cf";
-      sha256 = "sha256-FRlHZGcgRFX4GnBMIH2Sw5Y9kLb6HZuMYqQPTOojRBA=";
+      rev = "9eba1b94c07440b5fcca8f4c5ab25c7c4f2518c6";
+      sha256 = "sha256-aeXySlJDsVtg4IKMbIFrVdkEJOCGOXAayPmZU0eJDEk=";
     };
     "https://github.com/sorawee/helpful.git" = fetchFromGitHub {
       owner = "sorawee";
@@ -19041,8 +19535,8 @@
     "https://github.com/LuKC1024/stacker.git" = fetchFromGitHub {
       owner = "LuKC1024";
       repo = "stacker";
-      rev = "36cc457194d29e75ce8be0750301c20d500c7a1f";
-      sha256 = "sha256-h2+OkwWMezYsjwhtNKApPWrpOrtl26y1/Kslzw2O1pM=";
+      rev = "c7451b54ed95f6f3da88baa0800e2c7b630d747d";
+      sha256 = "sha256-7+h1fFr4FtIdjf9jA0a4WkP9KorDzOW2u20+qf4eLt0=";
     };
     "https://github.com/sleibrock/ez-csv.git" = fetchFromGitHub {
       owner = "sleibrock";
@@ -19078,6 +19572,12 @@
       rev = "919a52ef1897db51eb2c0c1307d7149db40ccfd6";
       sha256 = "sha256-KZFi24aoK8yZOMlzEKPxgrr/1R/+XzUWy3ox2LMO66o=";
     };
+    "https://gitlab.com/xgqt/xgqt-lang-lib-simplelog4all.git" = fetchFromGitLab {
+      owner = "xgqt";
+      repo = "xgqt-lang-lib-simplelog4all";
+      rev = "98fc9ed36461e86bc7a543b4ae5824a41361361e";
+      sha256 = "sha256-c/oumQ+27IXBbDClkb+GbTR1mK6T7AUNX0aZX58ZusI=";
+    };
     "git://github.com/racket/mzscheme/" = fetchFromGitHub {
       owner = "racket";
       repo = "mzscheme";
@@ -19111,8 +19611,8 @@
     "https://github.com/DavidThien/softposit-rkt.git" = fetchFromGitHub {
       owner = "DavidThien";
       repo = "softposit-rkt";
-      rev = "364469d5a219e61b29ed0d2d5048ed1ba29c66ba";
-      sha256 = "sha256-A2AJuBRRHWLiSOngwp3CbzLZfiThUOSUJrLT10YuIMk=";
+      rev = "0bb608b83306899abb145d64106fe7beca1c733c";
+      sha256 = "sha256-Ug0RtGFHd8QS89tzx8IDIAPUcPBjx1uItNbfHPNU18c=";
     };
     "https://github.com/countvajhula/require-latency.git" = fetchFromGitHub {
       owner = "countvajhula";
@@ -19151,14 +19651,14 @@
     "github://github.com/soegaard/racket-poppler/master" = fetchFromGitHub {
       owner = "soegaard";
       repo = "racket-poppler";
-      rev = "12fe23e6f8072766e5e7926ebef8eaf6097cd26e";
-      sha256 = "sha256-/sPoRRklATJaOVVk22ZqGKxJCiqhOzzSLBE3aKuNhsI=";
+      rev = "2baf47614f081362504f589a8c8496f1041924dc";
+      sha256 = "sha256-M98WA8MJb0EJ13eVibSKgKVA1piDw0uGL3aJLRxSzAs=";
     };
     "https://github.com/sorawee/pretty-expressive.git" = fetchFromGitHub {
       owner = "sorawee";
       repo = "pretty-expressive";
-      rev = "dca2c7042550a1bf437d5e43fabe5326296da5b1";
-      sha256 = "sha256-yOYExtkwgZhPt4ugUK3GOL53BtvQME5TG9K6TbL8OrI=";
+      rev = "0984931c6f8ff32921dd477c875127de7600dfd5";
+      sha256 = "sha256-5WokTHS90pYo5ltJEWX5MIMyUWr2AlRU/W2bznLQ74U=";
     };
     "https://github.com/thoughtstem/comm-panel.git" = fetchFromGitHub {
       owner = "thoughtstem";
@@ -19169,8 +19669,8 @@
     "https://github.com/AlexKnauth/scribble-code-examples.git" = fetchFromGitHub {
       owner = "AlexKnauth";
       repo = "scribble-code-examples";
-      rev = "56f3ce6752fdec6240130fb37bda29288b9091aa";
-      sha256 = "sha256-+cxL+UPgBwsKZ6XXLzq4NVMEyTgGehHHYb4DqMArYIE=";
+      rev = "b2c128b0f60230ba0e539d3790faf70ba2c1f5fa";
+      sha256 = "sha256-rjU/O4z2CRefWByNs0bNY3VT1RuAjiAvGpDNc8C0Y10=";
     };
     "git://github.com/stamourv/acmsmall-scribble" = fetchFromGitHub {
       owner = "stamourv";
@@ -19193,12 +19693,12 @@
     "https://github.com/winny-/tinybasic.rkt.git" = fetchFromGitHub {
       owner = "winny-";
       repo = "tinybasic.rkt";
-      rev = "65ab18b420fb76c7858806fe6618a99292212f10";
-      sha256 = "sha256-uNYVhM9QFMvmJuairFxUa/g+6Bf2B4iYt2hyXjSHV7A=";
+      rev = "bc8967bb2758eb464dd858de80ac6708d6a57805";
+      sha256 = "sha256-z6e043L7xBkIhVF9Jjw0VNs34f8OuLPseYac4/KSUD4=";
     };
-    "https://racket.defn.io/libsqlite3-x86_64-linux-3.39.2.tar.gz" = fetchzip {
-      url = "https://racket.defn.io/libsqlite3-x86_64-linux-3.39.2.tar.gz";
-      hash = "sha256-0ZXO3ayVJEmr4A0pBjnFjy2CB+Fbf4+9jButyD/1/J0=";
+    "https://racket.defn.io/libsqlite3-x86_64-linux-3.45.3.tar.gz" = fetchzip {
+      url = "https://racket.defn.io/libsqlite3-x86_64-linux-3.45.3.tar.gz";
+      hash = "sha256-jP4PEoTKmDIs4qZKg8MBlzrO23VpBurF6C9uSeul8yQ=";
     };
     "git://github.com/pnwamk/datatype" = fetchFromGitHub {
       owner = "pnwamk";
@@ -19209,8 +19709,8 @@
     "https://github.com/countvajhula/lazytree.git" = fetchFromGitHub {
       owner = "countvajhula";
       repo = "lazytree";
-      rev = "96fde82bd59b60f8c1e006669efdb733168da7e4";
-      sha256 = "sha256-jAG3UuLOS/gEQVbk0e7BBc7QRxiFphmGVTuhHiKvZqs=";
+      rev = "44663f087064b34900ee8d8e4c66c32288923e0c";
+      sha256 = "sha256-7Ps+VDP/r2nX2R6SDuq+3a/MRu98x9cRwmioZaxGz0E=";
     };
     "https://github.com/dodgez/termconfig.git" = fetchFromGitHub {
       owner = "dodgez";
@@ -19284,6 +19784,12 @@
       rev = "45b406f2957d516fd05a386f2a9e3553cad6c7f2";
       sha256 = "sha256-x16EhxGMi3JSbayjT15kjlwobEXrqq6LZU+/aiagQtM=";
     };
+    "https://github.com/lexi-lambda/racket-mvar.git" = fetchFromGitHub {
+      owner = "lexi-lambda";
+      repo = "racket-mvar";
+      rev = "aac2876805fd79257b4076b750f5b8a16667f595";
+      sha256 = "sha256-XlEDuBX5Ix7HDnVa29HZzI4sA3PAzVACqa62rBXAjSg=";
+    };
     "git://github.com/bennn/ipoe" = fetchFromGitHub {
       owner = "bennn";
       repo = "ipoe";
@@ -19299,8 +19805,8 @@
     "https://gitlab.com/spritely/goblins.git" = fetchFromGitLab {
       owner = "spritely";
       repo = "goblins";
-      rev = "0d322f267a15e74f0421332a8516dca18921d6f6";
-      sha256 = "sha256-BEz3J+cyFyYB7DLdzSZjSAE/gzySBcdwkFgKZaxa0/g=";
+      rev = "d578c94401f8bf6b816798b24935a9bfd71f4b37";
+      sha256 = "sha256-LPb0D7cCaftgtWrsYWLNdFmTcI3VS7ZTfwv/CzOagHQ=";
     };
     "https://derend@bitbucket.org/derend/continued-fractions.git" = throw "TODO";
     "git://github.com/lexi-lambda/racket-collections" = fetchFromGitHub {
@@ -19342,8 +19848,8 @@
     "https://github.com/benknoble/tmux-vim-demo.git" = fetchFromGitHub {
       owner = "benknoble";
       repo = "tmux-vim-demo";
-      rev = "fafa5d0cb02154159f0565a338fe69c99f1013cd";
-      sha256 = "sha256-uJU+S1AIyKNQGrtlDgtfvlAtiOFS5w02XFm0s7XfkP0=";
+      rev = "b0fb15b5284ef0129138acd61ee15818950313da";
+      sha256 = "sha256-Qbfc2hqhC6bm6WJtgdBVIm8grvzn+qEg8BSPhI3ZQAs=";
     };
     "https://github.com/samth/object-backtrace.git" = fetchFromGitHub {
       owner = "samth";
@@ -19372,8 +19878,8 @@
     "https://github.com/willghatch/the-unicoder.git" = fetchFromGitHub {
       owner = "willghatch";
       repo = "the-unicoder";
-      rev = "5803dbaaa455b400d881e2409d642f956cc139c1";
-      sha256 = "sha256-uTH0ZReAb2yUk3PjGEdMt4hRMK8R2AF2TRVw7HIZDjQ=";
+      rev = "42ef149ab3daf0e6219d37c07499f1db9309c15c";
+      sha256 = "sha256-TZbpVMiZYgtVIGxeRg/+cBiktQ0mlCnkHRhArEIM2AY=";
     };
     "github://github.com/jeapostrophe/dbm/master" = fetchFromGitHub {
       owner = "jeapostrophe";
@@ -19406,8 +19912,8 @@
     "https://github.com/tonyg/racket-xe.git" = fetchFromGitHub {
       owner = "tonyg";
       repo = "racket-xe";
-      rev = "84e5cf72c34e6b3778c9353c22a3ebb0bb943d20";
-      sha256 = "sha256-FK1Q7YkpfYQ/8Y2iOBy4DN9f4w4+mglp5mXDqz7fD88=";
+      rev = "ce113def8ce67651d0c6135afd5e0b506aeaca8e";
+      sha256 = "sha256-UuRyWizfP50xsJRue08/avTNuetC3XXEOMCR1nSnWms=";
     };
     "https://pkg-sources.racket-lang.org/pkgs/36e4cf36cddb195bc5fe56603bf2f3b4c7877c49/draw-ppc-macosx-3.zip" = fetchzip {
       url = "https://pkg-sources.racket-lang.org/pkgs/36e4cf36cddb195bc5fe56603bf2f3b4c7877c49/draw-ppc-macosx-3.zip";
@@ -19522,8 +20028,8 @@
     "https://github.com/dstorrs/racket-queue.git" = fetchFromGitHub {
       owner = "dstorrs";
       repo = "racket-queue";
-      rev = "98ebd99a4d3d849aef90c31ed9e874126aedde84";
-      sha256 = "sha256-/7VSS/mPhVXtL4GgsFbsaXz7W+x4q0/EGJIddEF/S6g=";
+      rev = "cb8926bcaec6f6c9daf4450a27184df2f82f599e";
+      sha256 = "sha256-WLyQvKdThwq/MLgKI4BMq7gnqXsIa6SgPWYA08Msbcc=";
     };
     "git://github.com/samth/github.rkt" = fetchFromGitHub {
       owner = "samth";
@@ -19565,8 +20071,8 @@
     "https://github.com/Bogdanp/racket-messagepack.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-messagepack";
-      rev = "a0b317e8c1f6c1764ad4bdf86968c4d52cddfb9b";
-      sha256 = "sha256-7ZFDhTanV/YkwDNPiMVj0MuQdGF3HudGDZu+PYVOyas=";
+      rev = "53074c338fa99102ac9c036311fba5c04f7e9049";
+      sha256 = "sha256-6WzBEJDGU1qugfZNlSVnMwleuE1NygMj+X6vFnmgl8E=";
     };
     "https://github.com/lexi-lambda/racket-r7rs.git" = fetchFromGitHub {
       owner = "lexi-lambda";
@@ -19602,12 +20108,6 @@
       rev = "f88e1fef14ebf82a2225a517cd05bf74d21de557";
       sha256 = "sha256-9BT4Q+oWugYCG5lwCtX2Xsm10mMWzxqFRfNMwUJhV3I=";
     };
-    "https://github.com/massung/r-cade.git" = fetchFromGitHub {
-      owner = "massung";
-      repo = "r-cade";
-      rev = "0cce22885aad28234d3f6e1d88568cdc16daf3e6";
-      sha256 = "sha256-ErAw58kYuIvTl68zpu2DENc3YEOVitVyB6Etggey8RU=";
-    };
     "https://github.com/dzoep/futures-sort.git" = fetchFromGitHub {
       owner = "dzoep";
       repo = "futures-sort";
@@ -19632,6 +20132,18 @@
       rev = "cdbbb2c6530ad4dd9346dba247c41235727b7ecb";
       sha256 = "sha256-oPrLtec07xCXNgZ+M1MG5MVmag2iam05ESLBoinR7ns=";
     };
+    "https://github.com/symbolistics-com/mathoak.git" = fetchFromGitHub {
+      owner = "symbolistics-com";
+      repo = "mathoak";
+      rev = "b51b1d43a24383e8f95650ddf10e8b7f8ab4b8bc";
+      sha256 = "sha256-k3HjRaxa1BfxOvbiW1duvARp2+KQbPDpzIquZWeH2xk=";
+    };
+    "https://github.com/massung/r-cade.git" = fetchFromGitHub {
+      owner = "massung";
+      repo = "r-cade";
+      rev = "0cce22885aad28234d3f6e1d88568cdc16daf3e6";
+      sha256 = "sha256-ErAw58kYuIvTl68zpu2DENc3YEOVitVyB6Etggey8RU=";
+    };
     "https://git.matthewbutterick.com/mbutterick/aoc-racket.git" = throw "TODO";
     "https://github.com/GriffinMB/glc.git" = fetchFromGitHub {
       owner = "GriffinMB";
@@ -19639,17 +20151,11 @@
       rev = "22fd96aa0a11b092cd8aaaeb049e03bea05764d3";
       sha256 = "sha256-3jqof1qVvo6uu74QMGqZuWy8641+nI+83/SF1xhNndg=";
     };
-    "https://github.com/jeapostrophe/non-det.git" = fetchFromGitHub {
-      owner = "jeapostrophe";
-      repo = "non-det";
-      rev = "4b6d4aec79680b362efcc32a0589e85e97d868c9";
-      sha256 = "sha256-3yEMpYae4uPG5pQYWHPAGMhCRhZBIGL4fkj1LI43U9I=";
-    };
     "github://github.com/Kalimehtar/gls/master" = fetchFromGitHub {
       owner = "Kalimehtar";
       repo = "gls";
-      rev = "82f2f504a3ccf534126020baedb406f813863143";
-      sha256 = "sha256-fZz/pW4MFcTLbHaHThm47yUhqbDPz3jJX15DtMjDjJw=";
+      rev = "a27e5b3044dd12bbbab05793df76d3c83d7777bd";
+      sha256 = "sha256-0EPCdnkEmKwnnrzjtNZuBz3Uil3vG8dmE9RxOxUx1rU=";
     };
     "https://github.com/Junker/response-ext.git" = fetchFromGitHub {
       owner = "Junker";
@@ -19666,8 +20172,20 @@
     "https://gitlab.com/bhrgunatha/elapsed-nanoseconds.git" = fetchFromGitLab {
       owner = "bhrgunatha";
       repo = "elapsed-nanoseconds";
-      rev = "362e733892499490e7b80ce729a7565c2858af7f";
+      rev = "27a5ed5bee3cab57a17fc98f5da9d3a6f1e2e3d9";
       sha256 = "sha256-LH4Z+80KPN9nvRzlSNCR9inb8/T48XBteb/ubf4+v6Y=";
+    };
+    "https://github.com/jeapostrophe/non-det.git" = fetchFromGitHub {
+      owner = "jeapostrophe";
+      repo = "non-det";
+      rev = "4b6d4aec79680b362efcc32a0589e85e97d868c9";
+      sha256 = "sha256-3yEMpYae4uPG5pQYWHPAGMhCRhZBIGL4fkj1LI43U9I=";
+    };
+    "https://github.com/matteo-daddio/double-linked-ring.git" = fetchFromGitHub {
+      owner = "matteo-daddio";
+      repo = "double-linked-ring";
+      rev = "8f5b7a21c761c0c6ef331165feeb7771ae536a82";
+      sha256 = "sha256-QqgkecWNt1Q1NlmG4ROyLQEQfDne96u5uNrPOYa642Y=";
     };
     "github://github.com/jeapostrophe/openmpi/master" = fetchFromGitHub {
       owner = "jeapostrophe";
@@ -19688,8 +20206,8 @@
     "https://github.com/dstorrs/struct-plus-plus.git" = fetchFromGitHub {
       owner = "dstorrs";
       repo = "struct-plus-plus";
-      rev = "42e4272ab7b8fc31a53a8fc8d7b6988f5542d4f7";
-      sha256 = "sha256-CbyDO1xLfjOm6oBe3pKGHUrY4RqNvMt+hqvqDBN7cEE=";
+      rev = "d39cb339186efe4578e034c9db7482860048d8e4";
+      sha256 = "sha256-heKuUImL+tsDWpCzaAa6Lp5TuU9H2Ju8868hP6ykdS8=";
     };
     "https://github.com/dedbox/racket-event.git" = fetchFromGitHub {
       owner = "dedbox";
@@ -19722,8 +20240,8 @@
     "https://github.com/tgbugs/orthauth.git" = fetchFromGitHub {
       owner = "tgbugs";
       repo = "orthauth";
-      rev = "0062461e29850b818807c75e2c2a88dbcdb756a6";
-      sha256 = "sha256-YxZNBicdy+0EmhPPMPwfxcN5Favq0PF0BSrvLcoFST0=";
+      rev = "53b4729f294f7b40ecedd747a4dfc20138a4ef2b";
+      sha256 = "sha256-xjixk/30SldcOUVEQO6HqORZT7NYC36Sf36+51Z3OHw=";
     };
     "https://github.com/jsmaniac/anaphoric.git" = fetchFromGitHub {
       owner = "jsmaniac";
@@ -19740,8 +20258,8 @@
     "https://github.com/alex-hhh/data-frame.git" = fetchFromGitHub {
       owner = "alex-hhh";
       repo = "data-frame";
-      rev = "3c77217501d6943111e4696c5e35c2f72b7267ba";
-      sha256 = "sha256-IEDYI9vrfgMjYBvquG0mJKHA8wKTZNz56xMCQKOC7mw=";
+      rev = "aff4bbc301323d159f4af580a947e7d38200b367";
+      sha256 = "sha256-HZtLSckgULYkpFjkpu+Nbvrpgl8HQXR1S5BvXg4tkbM=";
     };
     "git://github.com/rfindler/popl-2012-ryr-talk" = fetchFromGitHub {
       owner = "rfindler";
@@ -19797,12 +20315,6 @@
       rev = "c06dd00e1aad61f3b7a4b0a5c6693e329f95b8b4";
       sha256 = "sha256-jxopuqTh6Tc4LRHt8XgkaKkCuF+QQq5Yf21oTyicHEM=";
     };
-    "https://github.com/bommysk/RacketFrames.git" = fetchFromGitHub {
-      owner = "bommysk";
-      repo = "RacketFrames";
-      rev = "7ba9ef5051a1c9fd1aa2d8a5672ae0c78e974773";
-      sha256 = "sha256-KKASkZbflHHeFUrCwwPHQLDjvYYIlOxbiCSD4L4yTd8=";
-    };
     "https://www.neilvandyke.org/racket/vlc.zip" = fetchzip {
       url = "https://www.neilvandyke.org/racket/vlc.zip";
       hash = "sha256-ZklA28kcOAqd9JYU6U2JuzFLYc/SCb63/1b1Roi5tCc=";
@@ -19843,6 +20355,12 @@
       rev = "7878c9ed33da27810a55d8bdd603f56dd4c89fb7";
       sha256 = "sha256-KsK9Yq4kJS8TgQ9qUOq0HchOLG+dF5tVgyYdWRSFERw=";
     };
+    "https://github.com/jackfirth/namecaser.git" = fetchFromGitHub {
+      owner = "jackfirth";
+      repo = "namecaser";
+      rev = "8e46fa624f3ee9d9607159a9a4becd3067fec4ec";
+      sha256 = "sha256-X0BAv6VGakCj3Glntf5ThvJace6Fwl5S9CDMcBrz4pI=";
+    };
     "git://github.com/soegaard/infix" = fetchFromGitHub {
       owner = "soegaard";
       repo = "infix";
@@ -19873,6 +20391,12 @@
       rev = "327c2de5e09f885b682f80524ff3c12ef6c47543";
       sha256 = "sha256-/L9u7gs1iOSx72kR6JBRbrcSwcjSCcRWiY+DQaHHcm8=";
     };
+    "https://github.com/uwplse/herbie.git" = fetchFromGitHub {
+      owner = "uwplse";
+      repo = "herbie";
+      rev = "4fb7f3e0fb78c49170187b9d865b935bf274cad9";
+      sha256 = "sha256-nVYsn05mDT/fcGb5vEUT0XUjkxUnUJjzS72+sLtAnds=";
+    };
     "git://github.com/jbclements/wavelet-transform-haar-1d" = fetchFromGitHub {
       owner = "jbclements";
       repo = "wavelet-transform-haar-1d";
@@ -19894,8 +20418,8 @@
     "https://github.com/racket/rackunit.git" = fetchFromGitHub {
       owner = "racket";
       repo = "rackunit";
-      rev = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
-      sha256 = "sha256-LD7ze0WMuCS0h4kkFkdAb0kNAG7K8ogVK8aN+fD2YQ8=";
+      rev = "41c64557f209c6a440c6595f29c1d6e7a7958917";
+      sha256 = "sha256-/yUoeJ0jKRuR+IRXAt0gBjtHWfulqe9uRNC6hSgZx8A=";
     };
     "https://www.neilvandyke.org/racket/hostname.zip" = fetchzip {
       url = "https://www.neilvandyke.org/racket/hostname.zip";
@@ -19917,8 +20441,8 @@
     "https://gitlab.com/xgqt/racket-req.git" = fetchFromGitLab {
       owner = "xgqt";
       repo = "racket-req";
-      rev = "67289afb31e06a0a611b60f18c6ac9ee32789268";
-      sha256 = "sha256-G4eiii3FHutinmXGBeol+mafEkmOoTzrTDkCMOTZivE=";
+      rev = "4826c86164a2713be161a7e9a8e952c042ef5f75";
+      sha256 = "sha256-n2Rsvfv7sLsMdBWAI2pY6GlqyPgXPnuU/QPYnR7F7Lk=";
     };
     "git://github.com/racket/macro-debugger/" = fetchFromGitHub {
       owner = "racket";
@@ -19941,8 +20465,8 @@
     "https://github.com/racketscript/racketscript.git" = fetchFromGitHub {
       owner = "racketscript";
       repo = "racketscript";
-      rev = "cb1a83e2205cb0e4942ae909d80047014073c473";
-      sha256 = "sha256-IqmB+ya/8UU4ZGvabs5GHBUqNxPUcyVai4XreEiMiOg=";
+      rev = "bff853c802b0073d08043f850108a57981d9f826";
+      sha256 = "sha256-PclfzcdHKEFe7LaKf/VJ5oo+eV3DxbSaDH80lfRlpzI=";
     };
     "https://bitbucket.org/digitalricoeur/ricoeur-kernel.git" = throw "TODO";
     "git://github.com/racket/pict-snip/" = fetchFromGitHub {
@@ -19964,8 +20488,8 @@
     "https://github.com/jbclements/parse-qif.git" = fetchFromGitHub {
       owner = "jbclements";
       repo = "parse-qif";
-      rev = "c6646b6f8c4577412189a912b10d40c1222a24d1";
-      sha256 = "sha256-8+agxdITLGXDcMCh+qw0afEWqD/1HjGJ1pNeyr8E2uw=";
+      rev = "ddb371e5aca548a3f6dfee136bf7acd644c923bd";
+      sha256 = "sha256-JcWCYMuzfvpvF92ZwxUGgobQvI38hYnwRims5plPKJc=";
     };
     "https://github.com/otherjoel/wavenet-api.git" = fetchFromGitHub {
       owner = "otherjoel";
@@ -19979,15 +20503,15 @@
       rev = "ab37d6fceaf665de0881ca5d2b5d64de2018489d";
       sha256 = "sha256-vrDqh6YuB4AKObEP+gYFV22MvfRnCqY2ELYfdus0A8A=";
     };
-    "https://racket.defn.io/libsqlite3-x86_64-win32-3.39.2.tar.gz" = fetchzip {
-      url = "https://racket.defn.io/libsqlite3-x86_64-win32-3.39.2.tar.gz";
-      hash = "sha256-bzT/t3M4ZBrTvQWI4gSHn7N2KgPI8wyUbq1tqzN0edQ=";
+    "https://racket.defn.io/libsqlite3-x86_64-win32-3.45.3.tar.gz" = fetchzip {
+      url = "https://racket.defn.io/libsqlite3-x86_64-win32-3.45.3.tar.gz";
+      hash = "sha256-XGT98BcwiATyVYHXIwhSKFWxWR/NTSKQYAJMgio6q0k=";
     };
     "https://github.com/mflatt/uu-cs3520.git" = fetchFromGitHub {
       owner = "mflatt";
       repo = "uu-cs3520";
-      rev = "e14721a922894c22cbec199d46d87ec852f96142";
-      sha256 = "sha256-Rnv4poKrPT91jDB49ZMw/A0mbtu9sVttWdKjuvoneYA=";
+      rev = "9c7899c2de0e59f77d8a5489bc0608c6d1004729";
+      sha256 = "sha256-9Yg4CfJdl2fqXut30KBYD5+poQeSq0KRyGtSEbjf9hQ=";
     };
     "https://github.com/lassik/racket-scrapyard.git" = fetchFromGitHub {
       owner = "lassik";
@@ -20001,12 +20525,6 @@
       repo = "racket-to";
       rev = "c76caf3721c09d68c5871a64481b15be72293259";
       sha256 = "sha256-jUbWHycyYsG+t3fVJepvrEySQeEx2Q7w0LM7J+xLVls=";
-    };
-    "https://github.com/syntacticlosure/sexp-enforest.git" = fetchFromGitHub {
-      owner = "syntacticlosure";
-      repo = "sexp-enforest";
-      rev = "00888fd0bba81472c5dc775bcb966612fdf4d5e8";
-      sha256 = "sha256-Y5amczJWAWNuVwo8b7q9eJntyIYmRwoAumu7CSK9fsI=";
     };
     "git://github.com/jeapostrophe/automata" = fetchFromGitHub {
       owner = "jeapostrophe";
@@ -20029,8 +20547,8 @@
     "github://github.com/greghendershott/aws/master" = fetchFromGitHub {
       owner = "greghendershott";
       repo = "aws";
-      rev = "ddeee9c2152f6aabaa55753fe8f4872088db060d";
-      sha256 = "sha256-uBP4l8iqwbvH5IKLLg2CNAKv6QOryVwcn8klG3KuxVQ=";
+      rev = "99c2831efd87858633748f8dc3c4e7b96e428579";
+      sha256 = "sha256-LhgAUwpvfqdo2M3RyazMRatec79HlIjljOuwPZoeyyA=";
     };
     "github://github.com/mordae/racket-tandem/master" = fetchFromGitHub {
       owner = "mordae";
@@ -20075,8 +20593,8 @@
     "git://github.com/lexi-lambda/threading" = fetchFromGitHub {
       owner = "lexi-lambda";
       repo = "threading";
-      rev = "1f3b630d3ed78edc6d883f9d99305158d6b67623";
-      sha256 = "sha256-KH60J/MQawwNBTOpdeD12EFbgiVV4BZavdUoVaFOQdE=";
+      rev = "aedb198261cf73b3f9b282566e7e7dd9b9be63a6";
+      sha256 = "sha256-Eohc9D50dGBXSHoMizexVqluchyMdwjppXYrjIFlLCw=";
     };
     "git://github.com/pnwamk/dset.git" = fetchFromGitHub {
       owner = "pnwamk";
@@ -20117,8 +20635,8 @@
     "https://github.com/utahplt/gtp-benchmarks.git" = fetchFromGitHub {
       owner = "utahplt";
       repo = "gtp-benchmarks";
-      rev = "81a8ef8c5e9cb407adbea17cadc693242eccd213";
-      sha256 = "sha256-DOTMh1FQNrnMV6TSPtPsafxttnbgGzsKnCeuWB5Cytc=";
+      rev = "9b451b60b59208e8c46969705f4e5bda238b620e";
+      sha256 = "sha256-nQUHj+VFHTOeG9GLoG7wno1qMBGfD3EFslqkYWdUakE=";
     };
     "git://github.com/LeifAndersen/racket-r-lexer" = fetchFromGitHub {
       owner = "LeifAndersen";
@@ -20273,8 +20791,8 @@
     "git://github.com/racket/scribble" = fetchFromGitHub {
       owner = "racket";
       repo = "scribble";
-      rev = "faf92fa8638acfb193f0a14953b9779a31f2cdcd";
-      sha256 = "sha256-pHNbFLtcQ/hvEIFKXXDuQhW1nKDhR17Th8HkzEZcIIQ=";
+      rev = "b899cc74df03b0d8567f67160be2b307cdf3bc9a";
+      sha256 = "sha256-m5877c1ItNz6xoqaGTSvyxVAhmvjszoM6XxqeIZhIeU=";
     };
     "git://github.com/AlexKnauth/kw-make-struct" = fetchFromGitHub {
       owner = "AlexKnauth";
@@ -20285,20 +20803,14 @@
     "https://github.com/Bogdanp/racket-libargon2.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-libargon2";
-      rev = "a4bd607e5835ff4a6d304d9a6d4adc58f66eddb5";
-      sha256 = "sha256-BRcSAc6Ed6IF4WQ4QCbuA8HSBgOG+YYVN+I1omoh3js=";
-    };
-    "https://github.com/countvajhula/seq.git" = fetchFromGitHub {
-      owner = "countvajhula";
-      repo = "seq";
-      rev = "0ff053ae869cbeebc13c6573fda28d4e9242b134";
-      sha256 = "sha256-XI/TpnIKBIQ2st8ULEQWE0vm1ZiLXZLTmadII7Jd6nE=";
+      rev = "51dd41b7ee3fd33a66e025e71378cdd56df54125";
+      sha256 = "sha256-3wBkib9XFXFQDeHCGyp+A+2IV0TNs5EMpZGs4DX7wO0=";
     };
     "https://github.com/jackfirth/resyntax.git" = fetchFromGitHub {
       owner = "jackfirth";
       repo = "resyntax";
-      rev = "e3b6b6a51cc3c01640fc5aaf40090f2466d00722";
-      sha256 = "sha256-2HaUDFm2/Kq18YVPIRo/l/Fv9tb2vIgDJ1by+FlV8PA=";
+      rev = "76949ae1d5422bc0ce9390b775a8bdab54cb1852";
+      sha256 = "sha256-Nun/c8VzIOG0Z4SoGvQUEPEIdUxxzFMqVFwB6LWg7U0=";
     };
     "https://github.com/LiberalArtist/recaptcha.git" = fetchFromGitHub {
       owner = "LiberalArtist";
@@ -20311,6 +20823,18 @@
       repo = "regraph";
       rev = "53177afac7697c1e46e16b145bb7a8793573e7c2";
       sha256 = "sha256-hEs/eC1zuOnE3dnHSg6sfx2FQHNYsJf9XC0tiDWFo+8=";
+    };
+    "https://github.com/micahcantor/fig.git" = fetchFromGitHub {
+      owner = "micahcantor";
+      repo = "fig";
+      rev = "46f85ffeb9ee5b295fd08f64a543967e81a99d01";
+      sha256 = "sha256-CbccR1jdeyx/y8EFCOHTH1/U9r17y/vgUG4kSvtqlIs=";
+    };
+    "https://github.com/countvajhula/seq.git" = fetchFromGitHub {
+      owner = "countvajhula";
+      repo = "seq";
+      rev = "46f35570e9194caa89152ea5f3811ae1f66602df";
+      sha256 = "sha256-XiOctEYFrD6xnlNtL+ayWSmMphMPlnv/jD2lq7W2MSM=";
     };
     "https://github.com/Bogdanp/racket-sameday.git" = fetchFromGitHub {
       owner = "Bogdanp";
@@ -20392,12 +20916,6 @@
       rev = "d13c66b19438060fc42773ed2db526d1a71e8129";
       sha256 = "sha256-vhEpnVGoCo/8pjV6UYpIbdtVbxJScE4MU4iMzj/WLBI=";
     };
-    "https://github.com/Bogdanp/racket-buid.git" = fetchFromGitHub {
-      owner = "Bogdanp";
-      repo = "racket-buid";
-      rev = "2349931cd105fc40212ed63bc34d7e451f4ad7c1";
-      sha256 = "sha256-sLUeena8jx8gD5Pr6onwtP/o6f576q6tBejP25lBUHQ=";
-    };
     "github://github.com/mordae/racket-avl/master" = fetchFromGitHub {
       owner = "mordae";
       repo = "racket-avl";
@@ -20425,8 +20943,8 @@
     "https://github.com/countvajhula/generator-util.git" = fetchFromGitHub {
       owner = "countvajhula";
       repo = "generator-util";
-      rev = "2de885130984bd6880a5e1017d0b3783e64b3877";
-      sha256 = "sha256-tMQASmyP2Nqd31n06WCyJE7O3yE0VVqHTJMzyp5h3aw=";
+      rev = "f332f07f540575ec39f8664480ba8d4f80e73fbe";
+      sha256 = "sha256-KIf/is0HgnzEF1UO4ZocStkJkd5KH2kO/BR3+RBuHxs=";
     };
     "https://github.com/sorawee/license-audit.git" = fetchFromGitHub {
       owner = "sorawee";
@@ -20494,12 +21012,6 @@
       rev = "d010a60ad227a540f40b4707cd570d101d5530b3";
       sha256 = "sha256-E5FjZ8amw1MfFNBIq1Hkm3emnlF5mgmWSzt6bfhgq+U=";
     };
-    "https://github.com/Bogdanp/racket-avro.git" = fetchFromGitHub {
-      owner = "Bogdanp";
-      repo = "racket-avro";
-      rev = "f67bbce0949e0cfed17b4d60d89b9c6cbb419f44";
-      sha256 = "sha256-Gz9AHjpX4KjcR3Mph2VFLnTvY2Sm5BMD6DuLXiX9Z8o=";
-    };
     "https://github.com/zyrolasting/syntax-highlighting.git" = fetchFromGitHub {
       owner = "zyrolasting";
       repo = "syntax-highlighting";
@@ -20509,8 +21021,26 @@
     "git://github.com/soegaard/urlang" = fetchFromGitHub {
       owner = "soegaard";
       repo = "urlang";
-      rev = "f7ac3390d73d7991bfb956d480042a2efdd68607";
-      sha256 = "sha256-wnWDPotYMBS8M6xsMVAH3gzTEzjNID1R86TOY09uyyM=";
+      rev = "e9f83509d6f1a7cdc91ba1ad5a0ecaa76e573996";
+      sha256 = "sha256-PbkChtevg5c53wgfUvjrp2ZIuhNPhOGLswOlmz2FCAY=";
+    };
+    "https://github.com/Bogdanp/Noise.git" = fetchFromGitHub {
+      owner = "Bogdanp";
+      repo = "Noise";
+      rev = "35d57a7f13baad8c26819fc21e058198735394f7";
+      sha256 = "sha256-4NK4LRZHbPx5P49/HZl8iHrjrWf3Fe73giNo/G/e/zM=";
+    };
+    "https://github.com/lives-group/peg-parser.git" = fetchFromGitHub {
+      owner = "lives-group";
+      repo = "peg-parser";
+      rev = "50ab2c656f8d102d3c701ee4dba9201a7f5f7a0c";
+      sha256 = "sha256-QOBKnIa/QqvXlLvYqRD1OlPvkteVAf+PYEkOl87PTcg=";
+    };
+    "https://github.com/Bogdanp/racket-avro.git" = fetchFromGitHub {
+      owner = "Bogdanp";
+      repo = "racket-avro";
+      rev = "755babe40c8593c9880a74178e48198af9962bb7";
+      sha256 = "sha256-yEG5QqmU3aLiX+3W+35IhaB5wQf8h0q65gxEZOiHlPA=";
     };
     "https://github.com/florence/cover.git" = fetchFromGitHub {
       owner = "florence";
@@ -20521,12 +21051,6 @@
     "https://pkg-sources.racket-lang.org/pkgs/77f7fe4e7bf1d9c63906e29aa0e511617d6bd700/math-x86_64-linux-natipkg.zip" = fetchzip {
       url = "https://pkg-sources.racket-lang.org/pkgs/77f7fe4e7bf1d9c63906e29aa0e511617d6bd700/math-x86_64-linux-natipkg.zip";
       hash = "sha256-0CHEP6NTQPYp+DraD+Abjx1lRhjqUHFUUkZxp0JXKMU=";
-    };
-    "https://github.com/KDr2/kittle-buffer.git" = fetchFromGitHub {
-      owner = "KDr2";
-      repo = "kittle-buffer";
-      rev = "7ab19798d07fde81f3d378867b5ae794821d49aa";
-      sha256 = "sha256-r3xPbOC2UvEgimyJlsAM6s+GSYKQCQyi+EWoOD2Vddk=";
     };
     "https://gitlab.com/dustyweb/magenc.git" = fetchFromGitLab {
       owner = "dustyweb";
@@ -20582,8 +21106,8 @@
     "git://github.com/greghendershott/markdown" = fetchFromGitHub {
       owner = "greghendershott";
       repo = "markdown";
-      rev = "34ada7458fad51d3a5e0516352f8bd399c517140";
-      sha256 = "sha256-4kT2+XIz2snbcNeogg+qi21tXnHTks3RFfhenDPZItE=";
+      rev = "599743722c47e1e28af1636e9e676f71ec0277d4";
+      sha256 = "sha256-Jzw2wV34Wzgj8PHAMiyEGN48KKbuuJkpS3jx0kFa84c=";
     };
     "git://github.com/DarrenN/identikon.git" = fetchFromGitHub {
       owner = "DarrenN";
@@ -20594,8 +21118,8 @@
     "https://github.com/Bogdanp/koyo-sessions-redis.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "koyo-sessions-redis";
-      rev = "4fcd1fba181e177ea2958df619e0810bac70d79a";
-      sha256 = "sha256-T9AEPAjDeLMTd1T5zlOdvcu9ov49EJE4S5s+ViR5gr4=";
+      rev = "ca2cc2aed6e2465275509e57bc086170e2ee4e12";
+      sha256 = "sha256-XdWvvNTW7GOVQjFi0TBNO0Wy5VNpnNM87kvijwEIYhY=";
     };
     "https://www.cs.toronto.edu/~gfb/racket-pkgs/csc104.zip" = fetchzip {
       url = "https://www.cs.toronto.edu/~gfb/racket-pkgs/csc104.zip";
@@ -20626,8 +21150,8 @@
     "https://github.com/Bogdanp/racket-dbg.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-dbg";
-      rev = "9352ee7884d28312022a8af79889334d12c87541";
-      sha256 = "sha256-1kJH8EqaxyHJ3LQuZJiyDKqULblIoSwQWRMRYg96P2c=";
+      rev = "a265f4eeaf0b38fe2cb3196013fa698eb9f7a172";
+      sha256 = "sha256-rnWgqyc6CZf5MwVFFZjQShu+CLmE3De0x7BGTBmE0QA=";
     };
     "https://github.com/ldhandley/codespells-live.git" = fetchFromGitHub {
       owner = "ldhandley";
@@ -20639,11 +21163,27 @@
       url = "https://pkg-sources.racket-lang.org/pkgs/83d776ae86fe808972058111a74071078ddc6559/racket-win32-i386.zip";
       hash = "sha256-nH8+tde/BoU3WutUGib7u/5hfRlJIOTnco+T5sG52oA=";
     };
+    "https://github.com/wilbowma/llm-lang.git" = fetchFromGitHub {
+      owner = "wilbowma";
+      repo = "llm-lang";
+      rev = "8f946304375bfd30da8f226ea0d61266a1d1e93d";
+      sha256 = "sha256-ZbG3KuKaeZXDLO6NPuig/cg92QAKgQA1Onja96OhKgs=";
+    };
     "https://github.com/thoughtstem/define-assets-from.git" = fetchFromGitHub {
       owner = "thoughtstem";
       repo = "define-assets-from";
       rev = "f41954f7d955fdabbd697976d73344a5aa733d31";
       sha256 = "sha256-PCsTRsYhJfvt/kjTzVPt/hTLXxb/+m8knSEyxqIBvPg=";
+    };
+    "https://github.com/johnstonskj/racket-rdf-dc.git" = fetchFromGitHub {
+      owner = "johnstonskj";
+      repo = "racket-rdf-dc";
+      rev = "1329ead2a4a072be843f681f4f68480987444e5e";
+      sha256 = "sha256-1WAFDJXTiBRtQSFdDw/gZtQtyRdyfxoVVv/BzYG83mU=";
+    };
+    "https://racket.defn.io/libzstd-x86_64-win32-1.5.5.tar.gz" = fetchzip {
+      url = "https://racket.defn.io/libzstd-x86_64-win32-1.5.5.tar.gz";
+      hash = "sha256-LhnIGXdWeJlLx8Hg06c5Jj5zpwMaZW7P/lJRy97Pd1k=";
     };
     "http://inst.eecs.berkeley.edu/~cs61as/library/berkeley.zip" = fetchzip {
       url = "http://inst.eecs.berkeley.edu/~cs61as/library/berkeley.zip";
@@ -20718,14 +21258,14 @@
     "git://github.com/racket/math/" = fetchFromGitHub {
       owner = "racket";
       repo = "math";
-      rev = "b7455f468c63300ccae2e123646504a651bb79db";
-      sha256 = "sha256-iUKxHmdVFlCCL0m9IW0LWOj3QSJ2jm20WODLtW4nGdA=";
+      rev = "86c2a97edbca22ac182f69c4ed45088733d7b906";
+      sha256 = "sha256-lcHvLeRpG9S29PN3/Td5KTMf/MBFMsRvsYgrYv+TjVo=";
     };
     "https://github.com/jackfirth/rebellion.git" = fetchFromGitHub {
       owner = "jackfirth";
       repo = "rebellion";
-      rev = "69dce215e231e62889389bc40be11f5b4387b304";
-      sha256 = "sha256-isVLCHiLszBek7OaBC8cHdHXf8CDaYpEFsEbCQzVJpA=";
+      rev = "2404d739fa3e24210c1312109784015b4bb5c55d";
+      sha256 = "sha256-5Jh6xmhlLHrWWTxj3lWbZ1IUDfWH57khUwsdHEKpQuI=";
     };
     "https://github.com/themetaschemer/net-pem.git" = fetchFromGitHub {
       owner = "themetaschemer";
@@ -20760,8 +21300,8 @@
     "https://github.com/rfindler/esterel.git" = fetchFromGitHub {
       owner = "rfindler";
       repo = "esterel";
-      rev = "9ac0749726c3486a2702e9f6ec405256dce178c9";
-      sha256 = "sha256-zcHrCuWp2K1Cw0T02vwBEfTKHktwqi3vRjNZvXycvFY=";
+      rev = "ba50fd54dbb24c2ade605b57632520a056a311e9";
+      sha256 = "sha256-DnD3NU26EJKdmqZImJFEL7oCdYcd3DUqpCOYAzyIvOM=";
     };
     "git://github.com/AlexKnauth/racket-immutable" = fetchFromGitHub {
       owner = "AlexKnauth";
@@ -20784,8 +21324,8 @@
     "https://github.com/greghendershott/frog.git" = fetchFromGitHub {
       owner = "greghendershott";
       repo = "frog";
-      rev = "8fc8fc7ae323bdfc3208669c526703c8a0b3e000";
-      sha256 = "sha256-NVpRDtXvzkjtyfR7nbvB0NZIzunFIrNLq0p7CFEdVQo=";
+      rev = "525c2298f54ffa9fd3b9c44e3a23d4df6aab9278";
+      sha256 = "sha256-NrWb7j2Hcd+jpIE1DiZPRixTsvKoF8bdEgozzfcpljs=";
     };
     "github://github.com/takikawa/taglib-racket/master" = fetchFromGitHub {
       owner = "takikawa";
@@ -20826,8 +21366,8 @@
     "https://github.com/Bogdanp/deta.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "deta";
-      rev = "39a10bacf3f25ca607c72053aa75a487cb02543e";
-      sha256 = "sha256-Zme5QWCa/o+0a2zpYKOD7s65KBWwdG22jNr7JjrPmMI=";
+      rev = "df9ddc886df098537fa18f1ec775ec591d9a630b";
+      sha256 = "sha256-AK6uir/eclpsAz/fJg2tjVxuJosBl7G2CoDJ78it9wE=";
     };
     "https://gitlab.com/xgqt/racket-bumpv.git" = fetchFromGitLab {
       owner = "xgqt";
@@ -20844,8 +21384,14 @@
     "https://github.com/Bogdanp/racket-kafka.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-kafka";
-      rev = "f9f0e6e16fe6c9a7efed0c547100db37fccc2ff3";
-      sha256 = "sha256-8WRvKTpQFkfK65EsSwVfPRCJuaf6xRw05EIZqcksOiU=";
+      rev = "1ac07163404b7ff2dbdc69a545a88dbb0bbd09ea";
+      sha256 = "sha256-2Kx5sGbLkap8zVP88miq/ytewrJIuu8AlBy0R1QQJyQ=";
+    };
+    "https://github.com/johnstonskj/racket-media-type.git" = fetchFromGitHub {
+      owner = "johnstonskj";
+      repo = "racket-media-type";
+      rev = "b75883f819a310696d78896fe13d7540db2b2905";
+      sha256 = "sha256-0HYzBl2NjFtGcXmM3eLsJboAn0eAWjoWUqRPMLivXbM=";
     };
     "git://github.com/abencz/racket-socketcan" = fetchFromGitHub {
       owner = "abencz";
@@ -20940,8 +21486,8 @@
     "git://github.com/arclanguage/anarki" = fetchFromGitHub {
       owner = "arclanguage";
       repo = "anarki";
-      rev = "e49b1bfe1f7bf0e682d360eb677947264000de82";
-      sha256 = "sha256-VmmcEmnSI5RixcSIrZRBLJkoSNTJ5FrLnkt75OZ9sys=";
+      rev = "50c87166388f3227078c77a403d70a528f80f23d";
+      sha256 = "sha256-EPI0DVsWO1Yoq6nAGoViA+YG2QPaAxMzK9TdJqVsYZ8=";
     };
     "https://gitlab.com/spritely/crystal.git" = fetchFromGitLab {
       owner = "spritely";
@@ -20958,8 +21504,8 @@
     "git://github.com/racket/deinprogramm" = fetchFromGitHub {
       owner = "racket";
       repo = "deinprogramm";
-      rev = "fecdee4ba12a0f425d3ef9e0c316747f33378e81";
-      sha256 = "sha256-I7EAybb7HEAyzF8yrYlhpqeqsnzfdhwNVqZwrUkJCSE=";
+      rev = "edf22598881aac7c6acc0d86d521731111e38f8a";
+      sha256 = "sha256-6+8x4yzIvm/UAY2a/sO0RNBPUPQHO6KhPJuwGuAghhY=";
     };
     "https://github.com/simmone/racket-reed-solomon.git" = fetchFromGitHub {
       owner = "simmone";
@@ -20970,14 +21516,14 @@
     "https://github.com/lockie/racket-sdl2.git" = fetchFromGitHub {
       owner = "lockie";
       repo = "racket-sdl2";
-      rev = "52ce746829fe9130db64e52208c10830650a5ca5";
-      sha256 = "sha256-25eQxOEICYtDC/z7xya04T+ht67In+PNvOnYCw0Sko8=";
+      rev = "2ebce85d89be781056af7fc99a61805507a56155";
+      sha256 = "sha256-Avux/sM9xgFt6zlX7nMxtzXF5fTINvap7+RHwThmfPA=";
     };
     "https://github.com/Bogdanp/marionette.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "marionette";
-      rev = "daac17634775dc516611de6ea1e4c43776d64405";
-      sha256 = "sha256-OuyPgVhWtPmwvFegefoHxJIN7W8znO8EcEP8tIdymwA=";
+      rev = "c4a42965205c91a273259353a7f9fd6d4def1107";
+      sha256 = "sha256-VhQYollWMpXSPiG7Q3lkOa+C4HYKmoefZwDK42nIGkM=";
     };
     "git://github.com/samth/raco-bug" = fetchFromGitHub {
       owner = "samth";
@@ -21024,14 +21570,14 @@
     "git+https://github.com/6cdh/racket-fixw" = fetchFromGitHub {
       owner = "6cdh";
       repo = "racket-fixw";
-      rev = "2c7b2bd1e973491b6d0021264185aac8440fe3a8";
-      sha256 = "sha256-9xoHlrgR1xADU2oQd3CrKTj2a1TcG+ZLPHpL3iYsvOQ=";
+      rev = "4a3d437619dec69a6d6c59d382f4997f07d0edfa";
+      sha256 = "sha256-KjT/6odhLL9bGSX6bnIBvUPAB0ykhkenKRZV8rlJ3GY=";
     };
     "https://github.com/nikhilm/gossip-glommers.git" = fetchFromGitHub {
       owner = "nikhilm";
       repo = "gossip-glommers";
-      rev = "922970c34e1bd3ba696909d9fc269847049b7c87";
-      sha256 = "sha256-xFQ6rbHAWsEWQuw9XFtvWvYURAWC2HVwh1ET4Ib71Rg=";
+      rev = "150c33901ca1f0b123911508a24c3ed091f8f9e5";
+      sha256 = "sha256-tGrafPgTNHWVCm2KuzpV5gEEBI6iDwsmTdzzkmoxuek=";
     };
     "git://github.com/lexi-lambda/namespaced-transformer" = fetchFromGitHub {
       owner = "lexi-lambda";
@@ -21061,8 +21607,8 @@
     "git://github.com/racket/parser-tools/" = fetchFromGitHub {
       owner = "racket";
       repo = "parser-tools";
-      rev = "b08f6137a3c067720c4b4723dd726652af288e97";
-      sha256 = "sha256-o/O7waIEdY8uJIslsaGerxukU9hxCCIQWGRhBjDqoYY=";
+      rev = "1fe9d2d3f30302a744914d14f33683d9f8fd41bc";
+      sha256 = "sha256-6wLZS6y8xIzDC48W6g3ou7c+zMLA0VwPHQCbGc8VAkU=";
     };
     "https://www.neilvandyke.org/racket/postnet.zip" = fetchzip {
       url = "https://www.neilvandyke.org/racket/postnet.zip";
@@ -21113,6 +21659,12 @@
       repo = "simply-scheme";
       rev = "8b8ba2b50d8688c0db30a772c5eac7bb2f6400a7";
       sha256 = "sha256-DpFnriHaC1gGb4qm0ghlXNr1MaaMR8DEcT6AIZGooX4=";
+    };
+    "https://github.com/dbian/monadicrkt.git" = fetchFromGitHub {
+      owner = "dbian";
+      repo = "monadicrkt";
+      rev = "676cf8c1c3a818fada498bf084a23aa28e90d9a8";
+      sha256 = "sha256-CIUsa0navSkDsqIKD/Rd47D8oGsHFuEcU87qr4ic5bw=";
     };
     "https://github.com/jackfirth/glass.git" = fetchFromGitHub {
       owner = "jackfirth";
@@ -21175,15 +21727,15 @@
     "https://github.com/Bogdanp/racket-libsqlite3.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-libsqlite3";
-      rev = "4ec6a35752c96c5e392288359b6005a00f00c046";
-      sha256 = "sha256-0Fuj8mcRy8vCi0jNuiyj93JxH1pOuY96cajG0ZRIMjI=";
+      rev = "1d65c5c47e0816ec397b9624b7b9ad28e1978a72";
+      sha256 = "sha256-1lyWbC0RjPV73YDrDnnM+OrJVjsCUK6s26g9FGhsRjo=";
     };
     "https://bitbucket.org/jbclements/derp-3.git" = throw "TODO";
     "https://gitlab.com/bengreenman/pict-abbrevs.git" = fetchFromGitLab {
       owner = "bengreenman";
       repo = "pict-abbrevs";
-      rev = "24300ec9ebd20de3213d9442911bcd0a7f264645";
-      sha256 = "sha256-7U/gpKYDa0dUQL6jDo4BF1AMzq/tx3HmWbvUNKVu+ZQ=";
+      rev = "484729a93684a0210f73c6439ecf93629df2cf79";
+      sha256 = "sha256-0MhU+Ephf4MmlAPtvzW7WEY6j3/9HXJCkjcSoXSt99Y=";
     };
     "git://github.com/stamourv/feature-profile" = fetchFromGitHub {
       owner = "stamourv";
@@ -21297,6 +21849,12 @@
       rev = "ab3a35a3044cda0e981bdf4c501c87f568bc7b21";
       sha256 = "sha256-Q6OXtUM4YqzU+Mbq1/CvcChpHhvhPc6nZJZ0SOuJAw8=";
     };
+    "https://gitlab.com/racketeer/vlibench.git" = fetchFromGitLab {
+      owner = "racketeer";
+      repo = "vlibench";
+      rev = "8b05b0ec451192abef88ae6a8dee13428a41775e";
+      sha256 = "sha256-YlkRd40dG/afzJKnSloVhG8WQXfxbOf6DlXzQLHqPiQ=";
+    };
     "https://github.com/eutro/scheme2d.git" = fetchFromGitHub {
       owner = "eutro";
       repo = "scheme2d";
@@ -21394,8 +21952,8 @@
     "https://github.com/bksaiki/generic-flonum.git" = fetchFromGitHub {
       owner = "bksaiki";
       repo = "generic-flonum";
-      rev = "490cd103437876ff98413f34f2b8c845f89fa2ea";
-      sha256 = "sha256-J7JAkwBe92f1oarR2CHrYRVvvnHmIsrsMojY1jsAwsg=";
+      rev = "903b2492a84b0596e2ef067f07b17567c65b048b";
+      sha256 = "sha256-gNerSZqhI2hssUaCC76lPVW1fxSVR63G3mwdaVCKJms=";
     };
     "https://github.com/mythical-linux/rktfetch.git" = fetchFromGitHub {
       owner = "mythical-linux";
@@ -21430,14 +21988,14 @@
     "https://github.com/Syntacticlosure/racket-spider.git" = fetchFromGitHub {
       owner = "Syntacticlosure";
       repo = "racket-spider";
-      rev = "1ed8e8996d296021a1adf7acb30190db301055f7";
-      sha256 = "sha256-4t+csrKbJsqbiv/cRHvvAHgQub6Z7bmwfRWYhbZttRA=";
+      rev = "791c99a666bf8e7204dc6a7c96604cc6b82930aa";
+      sha256 = "sha256-w2XMc9MJc+a1Jh4K9SaKOiDaF4SpZosjODhRD/xWQzM=";
     };
     "https://github.com/michaelballantyne/ee-lib.git" = fetchFromGitHub {
       owner = "michaelballantyne";
       repo = "ee-lib";
-      rev = "104af4c1daf5e61ac79593d76c9df6ea80b34ebe";
-      sha256 = "sha256-CIpN3LWJgGahfWJnI+++sT3pDKkMhs3wwHmcX0+Al28=";
+      rev = "eca597bc5792ebe2343a8e71568da9c5e6ec02c7";
+      sha256 = "sha256-DbjSygYplNHJhhBDDwhYVujSVSPDM60SN22EfBoTk5E=";
     };
     "https://github.com/zyrolasting/denxi.git" = fetchFromGitHub {
       owner = "zyrolasting";
@@ -21484,8 +22042,8 @@
     "https://github.com/Bogdanp/racket-json-lexer.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-json-lexer";
-      rev = "8ea11955549259ea76c62177e9e2bce836acc7fb";
-      sha256 = "sha256-+zzKZX9F1kXWyBV7po8Rbm3FVRJi2CC4Yc8zy+oMKGY=";
+      rev = "d3b61463971d495d3b7ae834f2c3256faf2ed593";
+      sha256 = "sha256-At9M+HXAQCzWZw8uweOJLFL9zfJ4o2jJK11uPUwSVic=";
     };
     "https://github.com/johnnyodonnell/commatize-number.git" = fetchFromGitHub {
       owner = "johnnyodonnell";
@@ -21521,8 +22079,8 @@
     "https://github.com/alex-hhh/map-widget.git" = fetchFromGitHub {
       owner = "alex-hhh";
       repo = "map-widget";
-      rev = "6bf0345a9b9418021c17efaba27cb8651e636836";
-      sha256 = "sha256-1cId4BaFiloIogtmu68ePgAcqKIuiNT0K3uVOobAfzg=";
+      rev = "2a0846244bb1450c029fdb853678f9b77794a184";
+      sha256 = "sha256-A/DT9Tusp+HXzdJZtUY6tpKC9MKMqBgtFQGVkI2QvWc=";
     };
     "https://gitlab.com/car.margiotta/google-spreadsheet-api.git" = fetchFromGitLab {
       owner = "car.margiotta";
@@ -21557,8 +22115,8 @@
     "git://github.com/racket/redex/" = fetchFromGitHub {
       owner = "racket";
       repo = "redex";
-      rev = "8df08b313cff72d56d3c67366065c19ec0c3f7d0";
-      sha256 = "sha256-INTgFOmMthYmAXC+hEWiex1aMLLtX5JVSyoFOOQF9QI=";
+      rev = "a2bbb6edf2374bfddfd516ca75e0e173e662fb40";
+      sha256 = "sha256-PgJPmtwcil9/wit/QUP0sv6kZsEV40zePvPAI254yko=";
     };
     "git://github.com/pnwamk/typeset-rewriter" = fetchFromGitHub {
       owner = "pnwamk";
@@ -21578,11 +22136,17 @@
       rev = "5b6a361adeb1f079b9fabc80055ce592152a9d9a";
       sha256 = "sha256-49PEiDZ/kqolBXmDWKkhm8c8zWzBemCBr7ZVmGim5gA=";
     };
+    "https://github.com/jagen31/art3.git" = fetchFromGitHub {
+      owner = "jagen31";
+      repo = "art3";
+      rev = "b362dc67e37526e15233411adba77fe4f59bc002";
+      sha256 = "sha256-3QDkv1DKXGmgR6EcrBnk7urOdYirhVk2N1GFXbljKyU=";
+    };
     "git://github.com/takikawa/racket-libnotify" = fetchFromGitHub {
       owner = "takikawa";
       repo = "racket-libnotify";
-      rev = "c1112e8095f53dde26da994c5d2025871cec9d12";
-      sha256 = "sha256-J7cc8aFkpNd5YrcprXd6d/X175W0MPqWv8ON9s2Xz8s=";
+      rev = "ce8e66c20206f6949488e95e5faf50c4c0fce1c6";
+      sha256 = "sha256-X8V1/UWcL9u8KAmM8AV255V5tb15WDRo26UNxuY60w0=";
     };
     "https://github.com/johnnyodonnell/racket-lambda-runtime.git" = fetchFromGitHub {
       owner = "johnnyodonnell";
@@ -21626,6 +22190,12 @@
       rev = "c38049acd1bde962453977d2469cf2ae8b99acb7";
       sha256 = "sha256-LBRYMZg1jLIqZERDn3TiG60KNznbYoOMMbANnAWRI3E=";
     };
+    "https://github.com/johnstonskj/racket-rdf-io.git" = fetchFromGitHub {
+      owner = "johnstonskj";
+      repo = "racket-rdf-io";
+      rev = "051c3a0ef6b3c9a8df18be24fe10b959e2da1c31";
+      sha256 = "sha256-ZkGGR5GXB+0SPEzK1Ubp0aq8jpt3gU8/Od6PIm4oncQ=";
+    };
     "https://gitlab.com/RayRacine/word.git" = fetchFromGitLab {
       owner = "RayRacine";
       repo = "word";
@@ -21635,8 +22205,8 @@
     "git://github.com/racket/data/" = fetchFromGitHub {
       owner = "racket";
       repo = "data";
-      rev = "0b23dd66639ffd1d62cf690c26cbd58b508da609";
-      sha256 = "sha256-0MpMpCE5PrcF1OonaE01aYNTU4L6pmIWjsru98dDtN4=";
+      rev = "0f85d3ced88a1e39c08153ffae5951f32b43cd81";
+      sha256 = "sha256-irSfBU6+gRoqZviGeeXa2T8ipSoE2G4YXSsvABMzUYU=";
     };
     "https://github.com/connor2059/expr-in-racket.git" = fetchFromGitHub {
       owner = "connor2059";
@@ -21663,8 +22233,8 @@
     "https://github.com/shawnw/racket-extra-srfi-libs.git" = fetchFromGitHub {
       owner = "shawnw";
       repo = "racket-extra-srfi-libs";
-      rev = "a3198b7ed35d88a0a144f18c6d981541f9b7e54a";
-      sha256 = "sha256-O0I7N1HiW3OinPJj7nH0Z8aT2D4ygzY9kLm+5SAzpxA=";
+      rev = "13eeee6756fa2690f75e963c34b7e30fd249ee3c";
+      sha256 = "sha256-xqLwyfI94ycW3FpFUj0YXsXP+P0vL3V90hPQOnlwu+s=";
     };
     "git://github.com/racket/preprocessor" = fetchFromGitHub {
       owner = "racket";
@@ -21693,8 +22263,8 @@
     "https://github.com/prozion/tabtree-racket.git" = fetchFromGitHub {
       owner = "prozion";
       repo = "tabtree-racket";
-      rev = "9ba5cea1923704da15f8452e2a2d1046487a3a3d";
-      sha256 = "sha256-3ceLXlFqRyJzH9PE0aU0Xa4ELrHLJqLYMiKiaVRc2XU=";
+      rev = "5e0b58532c16cabb8a6b8270f79dd06d384efabe";
+      sha256 = "sha256-UBYwSzMoyYkIq/djrlfUyAeisO/FSWhi5BenagkD+aA=";
     };
     "https://github.com/nuty/rapider.git" = fetchFromGitHub {
       owner = "nuty";
@@ -21711,14 +22281,14 @@
     "https://github.com/herbie-fp/egg-herbie.git" = fetchFromGitHub {
       owner = "herbie-fp";
       repo = "egg-herbie";
-      rev = "6f0730c6a12571f04d5087d4011426cdad132543";
-      sha256 = "sha256-fCz561HZoAmQRKvXJtxSAcxf3i5toyW7Q0/TqL0jkaA=";
+      rev = "76608424055c5664e6b11d0f8d55be4337b73964";
+      sha256 = "sha256-/lTr6uwZNPavH0r/zqNL0xLu1lsmiytLs+FImmy2Cuo=";
     };
     "https://github.com/Bogdanp/racket-forms.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-forms";
-      rev = "8fca1d8533cd2d36978bdb411e7d9843c681b5c5";
-      sha256 = "sha256-wN9HHPUZxBGKKCn0Ch1C17IclUGkB4mo726o7Hsj9C4=";
+      rev = "e6ba9fa4a4e17d744760193dc7b8a4b399e9db71";
+      sha256 = "sha256-lNKI4GGUXZN8LyUCYIoUGq1nwKAChgaP+BT/m6Zsr8M=";
     };
     "https://github.com/kurinoku/sxml-extra-utils.git" = fetchFromGitHub {
       owner = "kurinoku";
@@ -21945,14 +22515,14 @@
     "git://github.com/racket/compatibility/" = fetchFromGitHub {
       owner = "racket";
       repo = "compatibility";
-      rev = "5b2509e30e3b93ca9d6c9d6d8286af93c662d9a8";
-      sha256 = "sha256-tVXc/vCO8ruT+VXlhEkp8QTQL8Ol/kNZH+Dhm6lKvXk=";
+      rev = "8d0b435cf0cc46476b7bafe2a507817c26058d0f";
+      sha256 = "sha256-l76jKAbxzjvPbDsCD0iiPQA4n0WkPVvImrZGaL7Vmrs=";
     };
     "git://github.com/soegaard/poppler-libs" = fetchFromGitHub {
       owner = "soegaard";
       repo = "poppler-libs";
-      rev = "f39e31f2b561b457fdbda50117f6bc4802ef14b6";
-      sha256 = "sha256-xInp+/s/Y/uAEA+oWuidlQ5yffJJ+/hCLmHMHRtuva4=";
+      rev = "029c07225d55593ee38c1bc3fcce2a8a1dd6cdc6";
+      sha256 = "sha256-T8e6C9mYWZqhpxmr2PWA5890XJeQ/Fc81ejJaoLHI/U=";
     };
     "git://github.com/jarcane/heresy" = fetchFromGitHub {
       owner = "jarcane";
@@ -21981,14 +22551,14 @@
     "https://github.com/Bogdanp/koyo-north.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "koyo-north";
-      rev = "713c4c4068e9a5a8d5e56cb6b419f348d08a5e2d";
-      sha256 = "sha256-P+0UXw43bjshv23B7pD0NZnxolywyL+4wpnIlxcW62k=";
+      rev = "ec92ebc0b7cf35045ff0c43090cd73f0db78d9f9";
+      sha256 = "sha256-XTzD9NxYm3XM/aQ1NCkYSZPiYS5ol41azoY4tfklajo=";
     };
     "git://github.com/racket/scribble/" = fetchFromGitHub {
       owner = "racket";
       repo = "scribble";
-      rev = "faf92fa8638acfb193f0a14953b9779a31f2cdcd";
-      sha256 = "sha256-pHNbFLtcQ/hvEIFKXXDuQhW1nKDhR17Th8HkzEZcIIQ=";
+      rev = "b899cc74df03b0d8567f67160be2b307cdf3bc9a";
+      sha256 = "sha256-m5877c1ItNz6xoqaGTSvyxVAhmvjszoM6XxqeIZhIeU=";
     };
     "https://github.com/euhmeuh/command-tree.git" = fetchFromGitHub {
       owner = "euhmeuh";
@@ -22021,18 +22591,12 @@
     "https://github.com/pleiad/play.git" = fetchFromGitHub {
       owner = "pleiad";
       repo = "play";
-      rev = "34a145ffb815110bec33a48004e8897e48d11f51";
-      sha256 = "sha256-aycDLbE7+fwSzJMCRWI7a7fLOe4S6snMqut8aCQUXgs=";
+      rev = "4ab35fa8ffbeb3a074af3c59e4accba9b762234f";
+      sha256 = "sha256-k2UNK++49rKjKaq6kleux2xfy00swbpz+77kANhdATA=";
     };
-    "https://github.com/Bogdanp/racket-binfmt.git" = fetchFromGitHub {
-      owner = "Bogdanp";
-      repo = "racket-binfmt";
-      rev = "76e6da2d6d1fe98cdf2b8fd12abf8529956fdacb";
-      sha256 = "sha256-8izDwj2tE9qvRl6eyaJYr3zOAwY6rf4sUTWzXzCM4Lg=";
-    };
-    "https://racket.defn.io/libsqlite3-x86_64-macosx-3.39.2.tar.gz" = fetchzip {
-      url = "https://racket.defn.io/libsqlite3-x86_64-macosx-3.39.2.tar.gz";
-      hash = "sha256-1KfRyAJKN9Q8HCRvahJEIFPBhBvemKs2n2BRybxnsic=";
+    "https://racket.defn.io/libsqlite3-x86_64-macosx-3.45.3.tar.gz" = fetchzip {
+      url = "https://racket.defn.io/libsqlite3-x86_64-macosx-3.45.3.tar.gz";
+      hash = "sha256-e8tO82rQnlnqTU/LGRvueYjV6qr7Bewswt+OqsNtLH0=";
     };
     "https://github.com/florence/diagrama.git" = fetchFromGitHub {
       owner = "florence";
@@ -22061,15 +22625,15 @@
     "https://github.com/herbie-fp/softposit-herbie.git" = fetchFromGitHub {
       owner = "herbie-fp";
       repo = "softposit-herbie";
-      rev = "20ef612dbd9e3413302d156d6325e1956ea0788d";
-      sha256 = "sha256-tDFGFpyELDJYZakcZt75r0ffagv279JzdC3pdRJBuP8=";
+      rev = "ba5c0286aa33ce5a16e8867859faeac25c1ddf43";
+      sha256 = "sha256-GBjcpUlHVEb/PEnxlnw4GFSQbgU3i252K5p/8tXMhyA=";
     };
     "git+https://git.sr.ht/~williewillus/racket-rfc8949" = throw "TODO";
     "git://github.com/amkhlv/amkhlv/" = fetchFromGitHub {
       owner = "amkhlv";
       repo = "amkhlv";
-      rev = "5ccf6a608a5b12130b9f4f940d816ec2ec087cc5";
-      sha256 = "sha256-QlD+EFJQPk3UcA+08leqc7JRl4ZCFbpXRWJpBup3ONs=";
+      rev = "abb34198c161f433326285c6d46355427f9e84f2";
+      sha256 = "sha256-Kr1OSvyv22MxmQ3PnpsENmPRis7IhG/w5ObD6Ly6Lq8=";
     };
     "https://github.com/johnstonskj/racket-parquet.git" = fetchFromGitHub {
       owner = "johnstonskj";
@@ -22080,8 +22644,8 @@
     "https://github.com/Metaxal/quickscript-test.git" = fetchFromGitHub {
       owner = "Metaxal";
       repo = "quickscript-test";
-      rev = "075f28781ba05f493950728cb2b9c24e093295e7";
-      sha256 = "sha256-W1oReHWadxGI+sK6lf+MYEm+2Dvoex00P8J83vhwRMM=";
+      rev = "8f7f982b77791232274671d0c63c157628e57a31";
+      sha256 = "sha256-yqAx7qNzCeja9YOQ7fkLJc62KehRGFby6aU39k7FzPU=";
     };
     "git://github.com/lwhjp/port-match" = fetchFromGitHub {
       owner = "lwhjp";
@@ -22104,8 +22668,8 @@
     "git://github.com/tonyg/racket-rfc6455" = fetchFromGitHub {
       owner = "tonyg";
       repo = "racket-rfc6455";
-      rev = "abdf0099c6930986a4ea9f352b9fb34ba73afea5";
-      sha256 = "sha256-dZTvIx8aNxPXQds1ZSKuEVFs+qOG3TPHwfyHbut+pnE=";
+      rev = "e3a87e914e25841a6e1bb996aa001aeb178284bf";
+      sha256 = "sha256-KZjnYFj8PWZ02EbDh11Hkdz/tlCcqEceLiIU5j/xAVU=";
     };
     "https://github.com/thoughtstem/rokit-racket.git" = fetchFromGitHub {
       owner = "thoughtstem";
@@ -22163,8 +22727,8 @@
     "https://github.com/anishathalye/knox.git" = fetchFromGitHub {
       owner = "anishathalye";
       repo = "knox";
-      rev = "304cebcc4a7dbf33268136e6417cb3feb00b6751";
-      sha256 = "sha256-dCMSPzJiVcX8qKZtoRBVPqMO8In8mVUddgh02vGZUtg=";
+      rev = "4dd42b5c083f8dc6f2facaa47ba69ff922879dcb";
+      sha256 = "sha256-L7TEZ7Bjp2gXmMXmbvQEX4fiPpMXJRljZUpox9UjrJU=";
     };
     "https://github.com/Kalimehtar/client-cookies.git" = fetchFromGitHub {
       owner = "Kalimehtar";
@@ -22187,14 +22751,14 @@
     "https://github.com/usaoc/gref.git" = fetchFromGitHub {
       owner = "usaoc";
       repo = "gref";
-      rev = "15e78c4506a43a6702f87915eb94262a8e761b6b";
-      sha256 = "sha256-1KWI+YUFFvfLNpriNN/w5gIlwCiLdkaNGvoZ/VfMt4A=";
+      rev = "4520bf033c74b40c830400b65ac0cbb1d6b8623c";
+      sha256 = "sha256-lrTz4kjVDQryx+8MuknZhxg95/qk/9c5BZFNHeFsMqc=";
     };
     "git://github.com/tonyg/racket-struct-defaults" = fetchFromGitHub {
       owner = "tonyg";
       repo = "racket-struct-defaults";
-      rev = "1b98e4b0384b16c1ff91cad4b04587652e35f436";
-      sha256 = "sha256-UKxSFCpuf5z2i0cGSl+StnjU00DM/jpnaTk5MAaheSU=";
+      rev = "04c5caf0b90b430d378ad9be296e03975f449add";
+      sha256 = "sha256-rnmEtRzpyzA8kVwKVFkcTYkGMBiWjQKVj4j3dhu1erY=";
     };
     "git://github.com/pnwamk/fme" = fetchFromGitHub {
       owner = "pnwamk";
@@ -22205,8 +22769,8 @@
     "https://github.com/a11ce/scribble-cheatsheet.git" = fetchFromGitHub {
       owner = "a11ce";
       repo = "scribble-cheatsheet";
-      rev = "e525a6f2856a891223e75fd5ceecbaa3964a34f7";
-      sha256 = "sha256-OJRVYmVmMKZvnysYkG2Z0yWIseiVVz77zcVgJhzMQXo=";
+      rev = "18365623aad404b13421c2f653f4223a70fccde0";
+      sha256 = "sha256-ldQCWAE8i0EMLQlIpeTU47HoM5h8+kH9OeJaTmTQ810=";
     };
     "https://github.com/Bogdanp/racket-component.git" = fetchFromGitHub {
       owner = "Bogdanp";
@@ -22217,8 +22781,8 @@
     "https://github.com/stchang/graph.git" = fetchFromGitHub {
       owner = "stchang";
       repo = "graph";
-      rev = "f06848871ed7b4b488341fdd73e9f640b4788733";
-      sha256 = "sha256-sz+e89a1mwNnASyrSVXHXr/Zijm4x3nFkCH1nu1ot2o=";
+      rev = "9d77ab184e26f4f3c917c7bd49eda2e980a24fae";
+      sha256 = "sha256-9EK8jwAIyOQbu1p0r+RljY6pFstEXvd0kJUtrYUOLUc=";
     };
     "github://github.com/jbclements/python-tokenizer/master/" = fetchFromGitHub {
       owner = "jbclements";
@@ -22244,6 +22808,12 @@
       rev = "1e6f6ab3a45cf38dcef8161929a4d4ab44fde2e3";
       sha256 = "sha256-evWeyLvlP46Gc+bvkTIorUI1S4ypBYRXWbTYMjTMwtg=";
     };
+    "https://github.com/juliojimenez/taino.git" = fetchFromGitHub {
+      owner = "juliojimenez";
+      repo = "taino";
+      rev = "7405c32aa3a63c56500d64168b76f5ada87c8d2d";
+      sha256 = "sha256-KgCc6j5zmkaDBwOL3roaB0NVAWVjDosQlZQ8rKG+HzY=";
+    };
     "https://github.com/thoughtstem/py-fizz.git" = fetchFromGitHub {
       owner = "thoughtstem";
       repo = "py-fizz";
@@ -22259,15 +22829,15 @@
     "https://github.com/sorawee/fmt.git" = fetchFromGitHub {
       owner = "sorawee";
       repo = "fmt";
-      rev = "840dc17e77945221c4317b9f2c193f66569dd02c";
-      sha256 = "sha256-K6scdlojEpaBFVsvIYq9ng0GZERnO5abRNg5frwJFM4=";
+      rev = "7d0a3dfff3a6cacfb59972a56d476556f89a0b1b";
+      sha256 = "sha256-7pPS+vjEd0kUhcAkiX4QDWmCvpyVoe2vdk1RzUZq/eg=";
     };
     "https://git.matthewbutterick.com/mbutterick/typesetting.git" = throw "TODO";
     "https://github.com/toml-racket/toml-racket.git" = fetchFromGitHub {
       owner = "toml-racket";
       repo = "toml-racket";
-      rev = "fd7420779c050b8bbd8b4c49076ef321795afa40";
-      sha256 = "sha256-rS+iqq3GpwDvZl3+NjgYOu2iOwqjdrTANliLgtmMTiY=";
+      rev = "fe46aa2c75939997dc21a2faaa79ea51304c4d15";
+      sha256 = "sha256-SeiTDUE/FF82XI5yE9sZYVJM8dzjJfu82Smc/SoZekU=";
     };
     "https://www.neilvandyke.org/racket/numspell.zip" = fetchzip {
       url = "https://www.neilvandyke.org/racket/numspell.zip";
@@ -22291,15 +22861,15 @@
       rev = "47bf042c8b02f1fe945d0755f1a8eba9ca22701a";
       sha256 = "sha256-mUmsZ+fM/vuJgYDoZzlNeZdPjTyTMALGfciQ/FoaHV0=";
     };
-    "https://pkg-sources.racket-lang.org/pkgs/ecefad1c885031d9b0ef4fff9efa5db1ae7fca60/math-aarch64-macosx.zip" = fetchzip {
-      url = "https://pkg-sources.racket-lang.org/pkgs/ecefad1c885031d9b0ef4fff9efa5db1ae7fca60/math-aarch64-macosx.zip";
-      hash = "sha256-2itcmC2J1MD8eK8H6UATJ+ao6xceiHUOu4nD+vY3e/o=";
+    "https://pkg-sources.racket-lang.org/pkgs/30990a7d356654f8ddc849a6662b6aa937e47f3a/math-aarch64-macosx.zip" = fetchzip {
+      url = "https://pkg-sources.racket-lang.org/pkgs/30990a7d356654f8ddc849a6662b6aa937e47f3a/math-aarch64-macosx.zip";
+      hash = "sha256-t1d4u2KEHgskGy2cSR5Dy+V4x4biU025tS0mGZOUN+c=";
     };
     "git://github.com/wargrey/digimon.git" = fetchFromGitHub {
       owner = "wargrey";
       repo = "digimon";
-      rev = "f2d9be583b2f31cd00b9b84ad88b14600f3d8f3b";
-      sha256 = "sha256-LJnhJyLtx6zMgBCQrCAjIPO2gHLT2fL++Racqwbf09Y=";
+      rev = "6977be22927a0cd46a46bcd1961e38e99bfab7e0";
+      sha256 = "sha256-v0w6cfVL+jFOXEG3BtpgHMqtm7dpl2fLYp4ADbqMK10=";
     };
     "git://github.com/racket/mysterx" = fetchFromGitHub {
       owner = "racket";
@@ -22368,6 +22938,12 @@
       repo = "frtime";
       rev = "a3c93aeae3e3d2a421afb7269ff282c573507cd0";
       sha256 = "sha256-pbkLZxdtO+1zQnEQ0ow3KgwHumdcU57X+WbvjawXv3k=";
+    };
+    "https://github.com/InAnYan/infix-prefix.git" = fetchFromGitHub {
+      owner = "InAnYan";
+      repo = "infix-prefix";
+      rev = "f0dea3dd5d03f202f3b937b8b01afb8f84607cc7";
+      sha256 = "sha256-vmeQc78D1UgC7wQMgHpZwOokzrkGKZHChpslW0/2zpU=";
     };
     "https://github.com/dannypsnl/mathler.git" = fetchFromGitHub {
       owner = "dannypsnl";
@@ -22448,8 +23024,8 @@
     "https://github.com/winny-/4chdl.git" = fetchFromGitHub {
       owner = "winny-";
       repo = "4chdl";
-      rev = "9b0fe3b0e3ac69755cac70d583e80ffb19b1ff2f";
-      sha256 = "sha256-sngLroicnRNJVffaqdEKSFo7IpaiVDJi6yvQ7JhOIQI=";
+      rev = "dea347b50609b0458debe01504012a9c2eb6d39d";
+      sha256 = "sha256-ICYzzaREDq9YsFSofKH4e/8r4EfOpvBRm1KSb3Zdtn4=";
     };
     "git://github.com/lexi-lambda/alexis-collection-lens.git" = fetchFromGitHub {
       owner = "lexi-lambda";
@@ -22460,8 +23036,8 @@
     "https://github.com/willghatch/rackterm.git" = fetchFromGitHub {
       owner = "willghatch";
       repo = "rackterm";
-      rev = "1c784f1b6958f479bc5913c632b3f2d5fa6a5204";
-      sha256 = "sha256-VgK+Xsp2ldrMEx0G9Cmg07VzvCzDgKhy1aN+HpKY+x4=";
+      rev = "32d04212d09c31d780e16bd1528325ba04920a47";
+      sha256 = "sha256-Z9WNyvbwg9YQyylxw94qhbU4pe0cXHZOxglwKkZnB1k=";
     };
     "https://github.com/dstorrs/in-out-logged.git" = fetchFromGitHub {
       owner = "dstorrs";
@@ -22542,8 +23118,8 @@
     "git://github.com/racket/pict/" = fetchFromGitHub {
       owner = "racket";
       repo = "pict";
-      rev = "29e89754c2d6a59fe56027772e7b5113e8560cef";
-      sha256 = "sha256-bCK5sjpntQ2TZB8RJSh0EjiWtQUI/E+d0pofE3JIVu8=";
+      rev = "8f49787727aeb1a93ffcf333d92ab2bad579d5bc";
+      sha256 = "sha256-w90AyUto7ZZnb8E+z/CxL3TolgOxhBLCTF8v62Dklus=";
     };
     "https://github.com/a11ce/actual-real-racket.git" = fetchFromGitHub {
       owner = "a11ce";
@@ -22598,8 +23174,8 @@
     "https://github.com/camoy/redex-etc.git" = fetchFromGitHub {
       owner = "camoy";
       repo = "redex-etc";
-      rev = "d2b5d89d2dc64757e73fff9ed4a10285ea57f8a0";
-      sha256 = "sha256-096D/FFT7D2RMVunqp4p8d/UgGAaC7Dy8TRAIBJDDoI=";
+      rev = "d2d9363ff9b0a77133552a5066dd008deddbdeef";
+      sha256 = "sha256-ybS3USOOiASO9JYw3QnKCLx0VfiVw3OzbTzh8hNkDPk=";
     };
     "git://github.com/lexi-lambda/racket-2htdp-typed" = fetchFromGitHub {
       owner = "lexi-lambda";
@@ -22616,8 +23192,8 @@
     "https://github.com/simmone/racket-simple-svg.git" = fetchFromGitHub {
       owner = "simmone";
       repo = "racket-simple-svg";
-      rev = "12f9da58ad5a64d70ce910ac4bce39f957ea7d33";
-      sha256 = "sha256-9huPjw1EjN8AwDWNY388yrnmppXwOpxP7VaZKEcdeeg=";
+      rev = "8fd07a7ac091b95e3c7161043a9ebcdeed5dd516";
+      sha256 = "sha256-tGqhLlpS/jo5AS1GlKvSuVAo20tMd/3DB4/Vv99qO9A=";
     };
     "git://github.com/tonyg/racket-bitsyntax" = fetchFromGitHub {
       owner = "tonyg";
@@ -22638,8 +23214,8 @@
     "https://github.com/yanyingwang/ming.git" = fetchFromGitHub {
       owner = "yanyingwang";
       repo = "ming";
-      rev = "5eacd5db31e6c5981749484bdaf9559e431b06be";
-      sha256 = "sha256-SgwNpCVVwp7AHk09nAPEMe+4J3VD28gvAOlYPqDwzs8=";
+      rev = "99e6c6bfecd84b84f62b4c4c0421d11faf1cee0b";
+      sha256 = "sha256-GynBQXUTHXMQfPK7Z4/p7RZCm0eZoN+4MPuaYMEnHww=";
     };
     "git://github.com/97jaz/cldr-localenames-modern" = fetchFromGitHub {
       owner = "97jaz";
@@ -22658,6 +23234,12 @@
       repo = "planet";
       rev = "350f5da48d98303fe6ee510892c958ed46766154";
       sha256 = "sha256-iRekAXe3sgyrADrUgcroLP9Z2KcQmklC9lK2mn/GXmQ=";
+    };
+    "https://github.com/HouptLab/circular-layout.git" = fetchFromGitHub {
+      owner = "HouptLab";
+      repo = "circular-layout";
+      rev = "5776fa13358f9f9bde35aa407767b57247015487";
+      sha256 = "sha256-OvgsF4XaAdDDYyqS0WLxFj34MZLhgqu/8adNpZANSkQ=";
     };
     "git://github.com/thinkmoore/ffi-utils" = fetchFromGitHub {
       owner = "thinkmoore";
@@ -22768,8 +23350,8 @@
     "https://github.com/Bogdanp/koyo.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "koyo";
-      rev = "a4dc1455fb1e62984e5d52635176a1464b8753d8";
-      sha256 = "sha256-0ZhQWz3PwBIuixNTkw1zHkLB/ahosu8tydDLTdGJN5M=";
+      rev = "78ada818d9e86869aed126759e7d945a91084771";
+      sha256 = "sha256-D9HLneGtuuOn7Nw2+YVywD44fzljU9HYoHZwp3meRNE=";
     };
     "git+https://git.sr.ht/~sschwarzer/racket-glossary" = throw "TODO";
     "https://github.com/massung/racket-canvas-list.git" = fetchFromGitHub {
@@ -22777,6 +23359,12 @@
       repo = "racket-canvas-list";
       rev = "8d101e6ede48be4c77673dddc32442f55a42f5c2";
       sha256 = "sha256-mvHqdqJ/5nifaaQaUzHOGXe/D3fcxFdFNtB9YWlq1mA=";
+    };
+    "https://github.com/Bogdanp/racket-buid.git" = fetchFromGitHub {
+      owner = "Bogdanp";
+      repo = "racket-buid";
+      rev = "9a82a3e5e31e393fbf5a010f4016153a651f0c22";
+      sha256 = "sha256-CdzTo8LX5jr54MrtbWuadHhutbGa7CfYPElA8Ke9bRw=";
     };
     "git://github.com/mordae/racket-pex" = fetchFromGitHub {
       owner = "mordae";
@@ -22805,8 +23393,8 @@
     "git://github.com/bldl/magnolisp" = fetchFromGitHub {
       owner = "bldl";
       repo = "magnolisp";
-      rev = "191d529486e688e5dda2be677ad8fe3b654e0d4f";
-      sha256 = "sha256-CLlWfazIRqtuX2qO7Gpe4MlhcIzcFk6qzSB+jAskASU=";
+      rev = "2a3487cf743d61b7f5c6bcb8656a312e70c1b6dc";
+      sha256 = "sha256-s5bCXgA5FBy5J3Rllk7ZUc+NkGdhVopvI4mxCuXPyUA=";
     };
     "https://github.com/pnwamk/prefab-predicate-compat.git" = fetchFromGitHub {
       owner = "pnwamk";
@@ -22835,14 +23423,14 @@
     "https://github.com/Bogdanp/racket-sentry.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-sentry";
-      rev = "8cc862858376ed2e80c70e8c25ae88d3f3953906";
-      sha256 = "sha256-ZvfrhcpPFZI99Nt6hfqwqj/V988LuvTuud4cBjK6Mjw=";
+      rev = "720daa812297328cd8d50852865b514143dad12d";
+      sha256 = "sha256-qbsGDLoE85Ew0xY0VEif3qebvKv3YwrIcO/02ZNR6nY=";
     };
     "https://github.com/countvajhula/relation.git" = fetchFromGitHub {
       owner = "countvajhula";
       repo = "relation";
-      rev = "5022738f69387c5722318717db5c866c9839614e";
-      sha256 = "sha256-Yd5ia1h2QHwoaA7YO2mgDPi6E2id/vLSVftVB5JpWME=";
+      rev = "eac44044137131349e8139500fd15428baf17527";
+      sha256 = "sha256-FU2LdF1qeSwBL/pgRDDhOYG1u9+pyAxReyyIr+8Nu30=";
     };
     "git://github.com/apg/statsd-rkt" = fetchFromGitHub {
       owner = "apg";
@@ -22938,8 +23526,8 @@
     "git://github.com/RenaissanceBug/racket-cookies" = fetchFromGitHub {
       owner = "RenaissanceBug";
       repo = "racket-cookies";
-      rev = "c4ce9abc8f9de9270bd2655aafaa711b992dbe0e";
-      sha256 = "sha256-vpiI3RkIZSh0rk8s7ofYUVx6feORxIWmOJh9bROtlhY=";
+      rev = "01bad8ad41f212bebc0d2019b3fc383faaaf7bef";
+      sha256 = "sha256-HCydwFQF/qTmYfLy/gBjAebQWuv829GbXwGgwk84dLk=";
     };
     "https://github.com/dvanhorn/redex-aam-tutorial.git" = fetchFromGitHub {
       owner = "dvanhorn";
@@ -22956,8 +23544,8 @@
     "https://github.com/bennn/racket-mutt.git" = fetchFromGitHub {
       owner = "bennn";
       repo = "racket-mutt";
-      rev = "1ad8e7c45f93f51f7778efaf3b487f19dd18588c";
-      sha256 = "sha256-UeStniTAmnDGpP8R4xFrZIdnNm8z1DWngIHKJS2Or5w=";
+      rev = "d758476c3e2aeb22e9131dd295cbfcc752c02bf0";
+      sha256 = "sha256-dpdx1n0RS3u+z8IqPFclsSTkxWhFMpKScVPAmKOTpO0=";
     };
     "git://github.com/stamourv/java-lexer" = fetchFromGitHub {
       owner = "stamourv";
@@ -22986,6 +23574,12 @@
       repo = "scratchy";
       rev = "aef8883759fc962828bf977811697fccf06ef8b0";
       sha256 = "sha256-THRL0872BC6Vm3p879ya12UsUJ/8bJ0IAXBw6M8lRyw=";
+    };
+    "https://github.com/Antigen-1/chat.git" = fetchFromGitHub {
+      owner = "Antigen-1";
+      repo = "chat";
+      rev = "41895f56a51b4afbbab5cda894407530c805500a";
+      sha256 = "sha256-q7JOFGCDdvp+B6J66iy2w6v70bb6hY+rFplNfNdnvhc=";
     };
     "https://github.com/rogerkeays/racket-dollar.git" = fetchFromGitHub {
       owner = "rogerkeays";
@@ -23083,14 +23677,20 @@
     "https://gitlab.com/oquijano/sse.git" = fetchFromGitLab {
       owner = "oquijano";
       repo = "sse";
-      rev = "a6858b7ca41a6ab482c170e6223dc8ac4c7f4eb2";
-      sha256 = "sha256-SaxlMR0CNt64AobbSorpbypb6rtGtM+BG6aoCxKY9N4=";
+      rev = "bd73412619dcfab18b5abacf1a7e8749fe864bbd";
+      sha256 = "sha256-D6AtmcqbDxcd2Q3Fvwh/HmubJJCzmfZKJb5l0TaJmyY=";
     };
     "git://github.com/lwhjp/racket-jlang" = fetchFromGitHub {
       owner = "lwhjp";
       repo = "racket-jlang";
       rev = "021c40382f95d1a6dc0b329a152a171465b9bc75";
       sha256 = "sha256-4BVvc9XzrZNJlRD9heCuKraexctrXc2V4EelAFTFYyY=";
+    };
+    "https://github.com/Bogdanp/racket-binfmt.git" = fetchFromGitHub {
+      owner = "Bogdanp";
+      repo = "racket-binfmt";
+      rev = "dbd7bbe72ad734687bd72241e4528d934ae3f4aa";
+      sha256 = "sha256-g09NkdoqGYelLW0AuphRAMN9UJ4WvPL/RSa3fMfzGUw=";
     };
     "git://github.com/LeifAndersen/racket-compiler-goodies" = fetchFromGitHub {
       owner = "LeifAndersen";
@@ -23101,8 +23701,8 @@
     "https://github.com/herbie-fp/rival.git" = fetchFromGitHub {
       owner = "herbie-fp";
       repo = "rival";
-      rev = "b7eb8579492350e0f4442f14993a325f8e92d0c8";
-      sha256 = "sha256-GMO/E/lwybXn41SpFLZHHVQ4JFtF0cc3SnoGdQr7KFk=";
+      rev = "381a258efd40fadd2db919105e7a4d42f6a655ab";
+      sha256 = "sha256-RUzGVdjo8bW8b9wKSO6O3YfCqgMWIsGtK1o9Znn9sR0=";
     };
     "github://github.com/mflatt/slideshow-repl/master" = fetchFromGitHub {
       owner = "mflatt";
@@ -23149,8 +23749,8 @@
     "https://github.com/chrdimo/nsf-scribble.git" = fetchFromGitHub {
       owner = "chrdimo";
       repo = "nsf-scribble";
-      rev = "423b71207609359634345971f3760f4a3c8222da";
-      sha256 = "sha256-FlRSWkOkvRwy9l8i55xYgcICyNw5+HR54zB1phpS9Bc=";
+      rev = "0552f396375894cd9df7be7fb1f314df70be4462";
+      sha256 = "sha256-Xh4Xhd9BKa+g0MM1izWU+lzaxliGsatLey8SyFm21L4=";
     };
     "https://github.com/adzai/datadef.git" = fetchFromGitHub {
       owner = "adzai";
@@ -23179,8 +23779,8 @@
     "https://github.com/yanyingwang/scribble-frog-helper.git" = fetchFromGitHub {
       owner = "yanyingwang";
       repo = "scribble-frog-helper";
-      rev = "bc9f6579c6cdbd02e9bf6561bf7839df8124097b";
-      sha256 = "sha256-nfyFIBRbJahuN5oie7f9UFdml/Sva9fOHpZ+uszxmBo=";
+      rev = "b3594c373f50e8640381b479a79b474efab28966";
+      sha256 = "sha256-XsDhVdhxPdPVyHGzNIyaSvveBsluGbfd5pUmGyVwlWc=";
     };
     "git://github.com/jackfirth/racket-fixture" = fetchFromGitHub {
       owner = "jackfirth";
@@ -23191,8 +23791,8 @@
     "https://github.com/jessealama/laramie.git" = fetchFromGitHub {
       owner = "jessealama";
       repo = "laramie";
-      rev = "d8caea23136ad4112bdde663f38da830a3264838";
-      sha256 = "sha256-1NInYBvJcaC0hMTewvqCtDDU1T5DB9D+jvhG4qCG5Z8=";
+      rev = "f9c9150e9afe8aadfa9251972ecc915f867657f3";
+      sha256 = "sha256-DwCeM/uYsA+EkylX5xDK2T3jO2sLBsbz3QT/JhnueF0=";
     };
     "git://github.com/racket/distributed-places/" = fetchFromGitHub {
       owner = "racket";
@@ -23203,8 +23803,8 @@
     "https://github.com/Bogdanp/racket-redis.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-redis";
-      rev = "df397e05f6e65e3d12c2f1040bd716089644302c";
-      sha256 = "sha256-Q10MxUYgyAEVahuPenWZOd5adGTKm97UXu95lFNkQEY=";
+      rev = "f1203d9213de9f10968b229350a9b35e27de84b9";
+      sha256 = "sha256-J2hUA2zUykhJLDuY0FckHyoqn2NFT9WhVQtSHZ44JS4=";
     };
     "git://github.com/APOS80/Quaternion" = fetchFromGitHub {
       owner = "APOS80";
@@ -23242,8 +23842,8 @@
     "https://github.com/samth/gradual-typing-bib.git" = fetchFromGitHub {
       owner = "samth";
       repo = "gradual-typing-bib";
-      rev = "044828e011c1e5efaf6ba74ee1541a978393ad24";
-      sha256 = "sha256-l4mwktlPiHlSdslu4NZTgLiVZFVNbObbR7DHUMPvHGE=";
+      rev = "aededbfc9a51ab33448deb73d7ee225f50b4ce00";
+      sha256 = "sha256-+kajjonJ7GuXqAMJUIRFEgcDCwBW06CeMV30UVdk9mE=";
     };
     "https://github.com/samth/fltest.git" = fetchFromGitHub {
       owner = "samth";
@@ -23251,11 +23851,17 @@
       rev = "0550ef11664f106002e2cf75fa22e5eb636364f1";
       sha256 = "sha256-0AaiZw9X0/qRcu/IKNqTcAoob/x0fykWdYqkycMYwBo=";
     };
+    "https://github.com/camoy/effect-racket.git" = fetchFromGitHub {
+      owner = "camoy";
+      repo = "effect-racket";
+      rev = "e8b8247c2339a89da8c0d8dad58bf13eda21eed2";
+      sha256 = "sha256-0Mn8uHnyfYxS3tWIY2jw5iHPC22zf+fJCLtsjCdVwNc=";
+    };
     "https://github.com/wargrey/mox.git" = fetchFromGitHub {
       owner = "wargrey";
       repo = "mox";
-      rev = "6612630c618ad2992fea6adb76bddb727d7c02ab";
-      sha256 = "sha256-f+h3BCwrPcxF16C3AQxYSw6CAzjxRMeMzZ2nsUKxNTY=";
+      rev = "1f5543592f4cd65809e00c52bad8592f8ad20201";
+      sha256 = "sha256-bLUVY2p7xLWgDkhx9Z/JFaMIpxENJKLBVcbGW8fN1Ew=";
     };
     "github://github.com/dyoo/data-red-black/master/" = fetchFromGitHub {
       owner = "dyoo";
@@ -23266,8 +23872,8 @@
     "https://github.com/camoy/contract-etc.git" = fetchFromGitHub {
       owner = "camoy";
       repo = "contract-etc";
-      rev = "507495a8d3f1251efb7f09f4e930451a14d4212a";
-      sha256 = "sha256-3+PDMjXKLFNvVNSd9joAXhNSOHDzrvMxoJCedOWx0Zg=";
+      rev = "ece7eb2c7341b011a43739b08229a53664be6241";
+      sha256 = "sha256-oxspuXl1UvmWy+2xfJtrgX2utTXHXUuRHo62V/bXz80=";
     };
     "https://www.neilvandyke.org/racket/canonicalize-path.zip" = fetchzip {
       url = "https://www.neilvandyke.org/racket/canonicalize-path.zip";
@@ -23279,17 +23885,17 @@
       rev = "c72c6c7678e44257bde7a8a4973196b064a9237f";
       sha256 = "sha256-HQxHyi0Y+S/JBT6mcNZPcLrDuzq5rw/m+scn7jlSAJk=";
     };
-    "https://github.com/uwplse/herbie/releases/download/v1.6/egg-herbie-windows.zip" = fetchFromGitHub {
+    "https://github.com/uwplse/herbie/releases/download/v2.0.2/egg-herbie-windows.zip" = fetchFromGitHub {
       owner = "uwplse";
       repo = "herbie";
-      rev = "c3f81247708978db7114223eb617d35fec8c61fc";
+      rev = "bbf0f6cdc817eddfab62d4f7da35ffd549b27c8c";
       sha256 = "";
     };
     "https://github.com/otherjoel/splitflap.git" = fetchFromGitHub {
       owner = "otherjoel";
       repo = "splitflap";
-      rev = "3256498f963b5b697185efbc920f1c28723d49fb";
-      sha256 = "sha256-J6rAesThIR3GRXvaZEYNMulhHMXRuqJ9lGGBcqNrG3U=";
+      rev = "d184fedce6c50c8f1a059929e304c63d0df1b47b";
+      sha256 = "sha256-O2qfceKBwtVyPPaLu+C9BpEph8OJv5IdtIG4tH3+dqI=";
     };
     "https://github.com/silver-ag/peony.git" = fetchFromGitHub {
       owner = "silver-ag";
@@ -23324,20 +23930,20 @@
     "https://github.com/Bogdanp/racket-libzstd.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-libzstd";
-      rev = "0a767be1883b8c54d9250cb725a73608ad7ffc2d";
-      sha256 = "sha256-iIII2RHkEEM5VGmXw3uPY+vUM+T3iuVTaps5ZOwg8cI=";
+      rev = "070bfc717aa71ca4b35d3636e9680cbff8133a68";
+      sha256 = "sha256-sUU2Es5ZVt/Q5T+2e1aJblJbAb6MHNjshMVlyA9LA6o=";
     };
     "git://github.com/racket/draw/" = fetchFromGitHub {
       owner = "racket";
       repo = "draw";
-      rev = "76a1acc368f585b0f77f0b5377dcf66f835371e5";
-      sha256 = "sha256-UYp1EuutcgqAL+bVy/sOUZHaf/sSkP6Afp8EaC4ExG0=";
+      rev = "57b2e050a287e4f0c7e26662d4850c6ac62935c3";
+      sha256 = "sha256-lNlK82UvYVMSDVQiO4h9YBCrWXBTgjxkfUx65NVk9cA=";
     };
     "git://github.com/racket/rackunit/" = fetchFromGitHub {
       owner = "racket";
       repo = "rackunit";
-      rev = "8c5f0b42295805d763aea2b09b7ee4eb66912c1b";
-      sha256 = "sha256-LD7ze0WMuCS0h4kkFkdAb0kNAG7K8ogVK8aN+fD2YQ8=";
+      rev = "41c64557f209c6a440c6595f29c1d6e7a7958917";
+      sha256 = "sha256-/yUoeJ0jKRuR+IRXAt0gBjtHWfulqe9uRNC6hSgZx8A=";
     };
     "git://github.com/rmculpepper/sql" = fetchFromGitHub {
       owner = "rmculpepper";
@@ -23366,8 +23972,8 @@
     "git://github.com/racket/gui/" = fetchFromGitHub {
       owner = "racket";
       repo = "gui";
-      rev = "d01d166149787e2d94176d3046764b35c7c0a876";
-      sha256 = "sha256-ZuywvFiLEPzY8USYiJ2uYBaW7leBwG1RqK6JbeBtPqk=";
+      rev = "3a800c8f36f082300009500cf8aac204aa6afd19";
+      sha256 = "sha256-WOq2HhP+A2z8X478tO1qUx1zHEWgSOeaRhUaV7kv/0M=";
     };
     "git://github.com/lexi-lambda/megaparsack" = fetchFromGitHub {
       owner = "lexi-lambda";
@@ -23432,8 +24038,8 @@
     "https://github.com/alex-hhh/tzgeolookup.git" = fetchFromGitHub {
       owner = "alex-hhh";
       repo = "tzgeolookup";
-      rev = "add21f8d3446fec46d1355edb13c00458891f2c3";
-      sha256 = "sha256-tAQiIW6yJZnnx0y6aXbhYEH5AcLuVrnSvfzj5lwjjds=";
+      rev = "d10c7d86a072ed7cb46b950361151753a0ae9d11";
+      sha256 = "sha256-IKj15d9iAsYzm+zvWcrmisYS7twR3F2rUPFBzoOUVsQ=";
     };
     "git://github.com/racket/class-iop" = fetchFromGitHub {
       owner = "racket";
@@ -23462,8 +24068,8 @@
     "https://github.com/tonyg/fixcopyright.git" = fetchFromGitHub {
       owner = "tonyg";
       repo = "fixcopyright";
-      rev = "2791267ab57826b6cbcd7e9af3fcb8925e652e75";
-      sha256 = "sha256-lq0ooNKyWGc2gy61DR73J4w3sncHP0xDcjoSPPFSh7Y=";
+      rev = "b1d690ef590cee820e6b20b6633ba1c8731597b8";
+      sha256 = "sha256-LjXsg7lIY+xoCZ4bldqweOzafqrGy2giP9LRg4srNL0=";
     };
     "https://github.com/tov/dssl.git" = fetchFromGitHub {
       owner = "tov";
@@ -23534,8 +24140,8 @@
     "https://github.com/samth/pict-utils.git" = fetchFromGitHub {
       owner = "samth";
       repo = "pict-utils";
-      rev = "e621d145b5c0e270f208fec30f7f69ada6888bf0";
-      sha256 = "sha256-F4JrztcF6TuTnBaQMQn8LKRCVC6yo3MKGX9O9XclQp8=";
+      rev = "fd71fd9aa0a9266ae4f1340b10f5183ef4ecad35";
+      sha256 = "sha256-32l1tYRSrvhUo5ad8RNIoaHiATGNaFlSyN6LZ3SOp9s=";
     };
     "git://github.com/racket/html/" = fetchFromGitHub {
       owner = "racket";
@@ -23546,8 +24152,8 @@
     "https://github.com/johnstonskj/rml-knn.git" = fetchFromGitHub {
       owner = "johnstonskj";
       repo = "rml-knn";
-      rev = "55a55d0e55d8363afafea7dd59b6dda37e77d4b0";
-      sha256 = "sha256-I4wI8pKcCWDxH5A+4PvUtJAPBIcKcXz9QUIjT1bBIPY=";
+      rev = "f141107bd733d6c1a6dc163ca44e86c1378fc361";
+      sha256 = "sha256-gekXOVK081tjgAURNzZheio4gKth14D477DZgDTsHJU=";
     };
     "https://github.com/ots22/rackpropagator.git" = fetchFromGitHub {
       owner = "ots22";
@@ -23579,17 +24185,17 @@
       rev = "be7075c78baf122dc05beaf71faf941159aaad64";
       sha256 = "sha256-hAK1NsKWRYG6EIeo32gPbFtv+NlfZJYHg9SISdeBcVg=";
     };
-    "git://github.com/AlexKnauth/typed-racket-stream" = fetchFromGitHub {
+    "https://github.com/AlexKnauth/typed-racket-stream.git" = fetchFromGitHub {
       owner = "AlexKnauth";
       repo = "typed-racket-stream";
-      rev = "ab5481df26289a47545101aeb1b74a0e7f02887f";
-      sha256 = "sha256-XYEETCaWpiBhfyWvSWEP/PMO4MoPAeX/UauN7dENvUU=";
+      rev = "6aa63a3a1580236a7ae1c8df2256a3df7abc37dc";
+      sha256 = "sha256-KskC+tnglOZjv8qWROathUkBFlzA/yZknTNYeg1WXMY=";
     };
     "https://github.com/shawnw/racket-unicode-breaks.git" = fetchFromGitHub {
       owner = "shawnw";
       repo = "racket-unicode-breaks";
-      rev = "e4367e6608d6f138081d1230374e6ba334604540";
-      sha256 = "sha256-N0jZpijW29bXmrvez69eQ+xg9CgeQzxdQVRpcal7UQM=";
+      rev = "20c30a4a0d8991c9af078e92856590e09af190e0";
+      sha256 = "sha256-p8wtsCgCKBiKp9hXU8ATNV/QbWSmftwKdpHtfDYxfY4=";
     };
     "https://github.com/euhmeuh/web-galaxy.git" = fetchFromGitHub {
       owner = "euhmeuh";
@@ -23612,8 +24218,8 @@
     "git://github.com/racket/distro-build/" = fetchFromGitHub {
       owner = "racket";
       repo = "distro-build";
-      rev = "70b8f8e89bed429fe70e43952bc02aaf6c08b388";
-      sha256 = "sha256-pb0nOtwR+oySglF15y4uqLOfTvM0KNUCuS2/oKeXhXE=";
+      rev = "11190e45761a7933c19cf1b1170c7efeebe2c517";
+      sha256 = "sha256-xf7dh46FhrUMpyXtE38j3S3imDWEBTmYTELRE0zwDfg=";
     };
     "git://github.com/tautologico/drracket-zenburn" = fetchFromGitHub {
       owner = "tautologico";
@@ -23622,6 +24228,12 @@
       sha256 = "sha256-v2PDyOd8bPat7yLt0uyu+J2AZPiLXLHhCLF5fdU3IQk=";
     };
     "https://gitlab.flux.utah.edu/xsmith/xsmith.git" = throw "TODO";
+    "https://github.com/joergen7/libpaho-mqtt3-x86_64-linux-natipkg.git" = fetchFromGitHub {
+      owner = "joergen7";
+      repo = "libpaho-mqtt3-x86_64-linux-natipkg";
+      rev = "200ef60a9ce1e0aae49f8b365b12f0a5cb8dccd2";
+      sha256 = "sha256-IgsIuRgwD31aEsX1uCWgbaGIg7/LXlh/qK1V9UKdA84=";
+    };
     "https://github.com/samth/get-primitive.git" = fetchFromGitHub {
       owner = "samth";
       repo = "get-primitive";
@@ -23719,8 +24331,8 @@
     "https://github.com/Bogdanp/racket-country.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-country";
-      rev = "e433bcdb710718f3b46470fc2cf6f210c98998e1";
-      sha256 = "sha256-84R3zeYrRAk2PpNZ2rDbbOXl7ShlwQyJtXD5p+za9hM=";
+      rev = "9420c2b7e32acbdf125e7adbe1870668484bb493";
+      sha256 = "sha256-kfE2c22U+F9bZwYT7w4gFq4qPpcB4swwV0U2ww9POko=";
     };
     "https://github.com/Bogdanp/racket-iso-printf.git" = fetchFromGitHub {
       owner = "Bogdanp";
@@ -23749,8 +24361,8 @@
     "https://github.com/Kalimehtar/russian-lang.git" = fetchFromGitHub {
       owner = "Kalimehtar";
       repo = "russian-lang";
-      rev = "02d06c63eede00c314147b91f1643a24a023c964";
-      sha256 = "sha256-ZRQMFic1kvQD2rGeodazALjpmhYhnFSd1UUIhVWv/8Y=";
+      rev = "c3b7166fe617a7ba7af2e1e49f33addb38351376";
+      sha256 = "sha256-fz0fw3BnBPrcZnNIO/hyUAIItL8OIiWJT4FEx7dYP9o=";
     };
     "git://github.com/mflatt/pkg-dep-draw" = fetchFromGitHub {
       owner = "mflatt";
@@ -23767,8 +24379,8 @@
     "https://github.com/willghatch/racket-rash.git" = fetchFromGitHub {
       owner = "willghatch";
       repo = "racket-rash";
-      rev = "42460a283ce2d7296257b068505cd4649052f67c";
-      sha256 = "sha256-NLr+HpZDYIkqshVB/UAG0sPeIamhRTclhDpVAwjLoA8=";
+      rev = "feb3ad16deb0b372a05f5d522f71e1746a3f96fd";
+      sha256 = "sha256-3lsj5WwDCJukWrBQlKiu2XfO5uoNAxi3iV6lmO3mFaU=";
     };
     "https://github.com/dannypsnl/formatted-string.git" = fetchFromGitHub {
       owner = "dannypsnl";
@@ -23797,14 +24409,14 @@
     "git://github.com/racket/typed-racket/" = fetchFromGitHub {
       owner = "racket";
       repo = "typed-racket";
-      rev = "f3e42b3aba6ef84b01fc25d0a9ef48cd9d16a554";
-      sha256 = "sha256-3G6e8CcEnESESOzp77tWmtt/CG3XDlEl2WriIaLVzW4=";
+      rev = "c3702d6ee849182ab4cf7fd9d2a8f6135fd7aaa0";
+      sha256 = "sha256-VUX/ZpEh+BSoWlewHHbrjSxiF4y9RhlHBNrj+eXJQ6g=";
     };
     "https://github.com/Antigen-1/slide-easy.git" = fetchFromGitHub {
       owner = "Antigen-1";
       repo = "slide-easy";
-      rev = "aee8d974a75eb4eee43587cbc8ae916146e7cdd1";
-      sha256 = "sha256-iOulBYdg7YMigAbltgFnd1w7DGh0kPXdyqSCX197xFU=";
+      rev = "d87bb9150033c7061fb83968c785b7896f51c70d";
+      sha256 = "sha256-0uRfNkl4nqSxdDCRy8l6D3EHCwRT0z+x+EijSyhz1qA=";
     };
     "https://gitlab.com/gentoo-racket/racket-collector2.git" = fetchFromGitLab {
       owner = "gentoo-racket";
@@ -23897,14 +24509,20 @@
     "https://github.com/Bogdanp/racket-gui-easy.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-gui-easy";
-      rev = "ddba619ff590f5f1ef981d56ea745506dec56a53";
-      sha256 = "sha256-UCGw84v/wlOGXdMoCE75vluo7niQmPj/YkmZpqmoTCY=";
+      rev = "d0c760f74ca6bc5bd027ec1b6749fa81ef84e02e";
+      sha256 = "sha256-AbmntQNIxrnuXa0GGDqLRhUYiNNeaAbMp+sNUR3WWdw=";
     };
     "github://github.com/stephanh42/RacketGL/master" = fetchFromGitHub {
       owner = "stephanh42";
       repo = "RacketGL";
       rev = "1aaf2b2836680f807fbec5234ed475585b41b4ab";
       sha256 = "sha256-RnaOrpEu7j8zfwKrIsV748bvhqb/LsGCMzY2z6EshbU=";
+    };
+    "https://github.com/soegaard/poppler-libs.git" = fetchFromGitHub {
+      owner = "soegaard";
+      repo = "poppler-libs";
+      rev = "029c07225d55593ee38c1bc3fcce2a8a1dd6cdc6";
+      sha256 = "sha256-T8e6C9mYWZqhpxmr2PWA5890XJeQ/Fc81ejJaoLHI/U=";
     };
     "git://github.com/justinpombrio/RacketSchool" = fetchFromGitHub {
       owner = "justinpombrio";
@@ -23933,14 +24551,14 @@
     "https://github.com/deepmind/levintreesearch_cm.git" = fetchFromGitHub {
       owner = "deepmind";
       repo = "levintreesearch_cm";
-      rev = "78b4f1519cb1d2bf7d679c8dca1797ca3cda7e15";
-      sha256 = "sha256-Ixj8Ssoev1/Uo9oG2wmlzu30VaCmBCA603tm5IiAnFk=";
+      rev = "82c8b4ed63bde1978b153a060095cddf000dd217";
+      sha256 = "sha256-R4uTYV92jOmKWCOKTX6uV6pXR91cL45j+RwlPADYsn8=";
     };
     "https://github.com/simmone/racket-simple-qr.git" = fetchFromGitHub {
       owner = "simmone";
       repo = "racket-simple-qr";
-      rev = "62f253a33334ccf9333792309336d451da479c84";
-      sha256 = "sha256-Welepc7GdFVXK0i5GfMmakNri2G1KadjRbLCx4VkP5I=";
+      rev = "7837f5a9a6115915a816c5eef4b10cd8111fec13";
+      sha256 = "sha256-KOuCNZrC+5cV8hXJ1QUVz/EC3vI6P+U3uLeGRamPwSE=";
     };
     "git://github.com/AlexKnauth/dotmethod" = fetchFromGitHub {
       owner = "AlexKnauth";
@@ -23957,8 +24575,8 @@
     "https://github.com/shhyou/mintexpp.git" = fetchFromGitHub {
       owner = "shhyou";
       repo = "mintexpp";
-      rev = "4bce044d57b58fb390df1eacdf5787ebdb52ffa6";
-      sha256 = "sha256-w6r0NgnQ7bOTkPEzKw+SVuf/WXqlKG9kpAI4N+LEji8=";
+      rev = "2d457fa70581b45871833405182a84f7de236b47";
+      sha256 = "sha256-yxSTJmGqyEIqybPlZbjCT5tlGd99c6vcfp/ctH0FeMs=";
     };
     "https://github.com/yjqww6/for-helpers.git" = fetchFromGitHub {
       owner = "yjqww6";
@@ -23975,14 +24593,14 @@
     "https://gitlab.com/dustyweb/terminal-phase.git" = fetchFromGitLab {
       owner = "dustyweb";
       repo = "terminal-phase";
-      rev = "3a67e738793c6db951ee919e15ac6397c63d0791";
-      sha256 = "sha256-hsrz821tHplDQjsFzr6ziw2YAI5NNGKtTpF9PzMhn5Y=";
+      rev = "4faff186c5bfbfbb50d6ee554068d9d4861bbe6f";
+      sha256 = "sha256-+RQWv8UJFerzVQF4WB4xIYv33lqNE24LIh8XnLF2gPc=";
     };
     "https://github.com/Bogdanp/racket-lua.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-lua";
-      rev = "00ff5a503dd8fc1031b0929d91a9e07186e29437";
-      sha256 = "sha256-ucIagjlFki6l+5mvYYEJvtOAWkoqD6el8+w20+1TiYQ=";
+      rev = "7551d2efbc1187ab91afb61ef6b291b382e1edce";
+      sha256 = "sha256-qiQA0+Pq2bodvnyLeKH7Z8aOAI5yd3vPtPxwMo1ZMxc=";
     };
     "https://github.com/libgit2-racket/libgit2.git" = fetchFromGitHub {
       owner = "libgit2-racket";
@@ -23993,8 +24611,8 @@
     "git://github.com/racket/plt-service-monitor" = fetchFromGitHub {
       owner = "racket";
       repo = "plt-service-monitor";
-      rev = "7a5bceb4aa223e75c9a6a4cc55ff913b9b70b584";
-      sha256 = "sha256-GofxLJRc+rExszeDMnlWkVlC/ue5fCgtroPQyltq6jw=";
+      rev = "2c4714b35e408d80ea3ffa3d27b20df5f3763ea3";
+      sha256 = "sha256-yW8kw0v4+6AcSArMe+1JJrZmQ8uVc2tBfIzWq5LpL8k=";
     };
     "https://github.com/dstorrs/majordomo2.git" = fetchFromGitHub {
       owner = "dstorrs";
@@ -24029,14 +24647,14 @@
     "https://github.com/jbclements/memoize.git" = fetchFromGitHub {
       owner = "jbclements";
       repo = "memoize";
-      rev = "911a0d3abe44fca1203425f6ff5767a9796f0c1f";
-      sha256 = "sha256-Eun9HfbHXe5FfufsHSkoGZDzzRDQ8ftm0vGuL1yFB60=";
+      rev = "f373706824145ce2a8247edb76278d6df139333c";
+      sha256 = "sha256-87a5nSpOZaal1/t5GMk5yFHX1daukabYQ/1J4L5LN4o=";
     };
     "git://github.com/racket/string-constants/" = fetchFromGitHub {
       owner = "racket";
       repo = "string-constants";
-      rev = "0eba894bc607edcdfb45e97568e66ce0a2faf1a7";
-      sha256 = "sha256-MDZARAH/3JOR7CfxMkVVbEY5aw6mRyqhosXk0EOCq8s=";
+      rev = "fe3c2b4252cc6d6b8b2fc3ebeafe4a4a62beeeff";
+      sha256 = "sha256-exEfUoxVkyjy/m/jkLen68/erT62SfkcSPQA3Kfmols=";
     };
     "https://gitlab.com/RayRacine/try.git" = fetchFromGitLab {
       owner = "RayRacine";
@@ -24056,11 +24674,17 @@
       rev = "e6777c9259ab3dc687d3614d783316a2490438f2";
       sha256 = "sha256-OMfIohIZZB2tFaQfMkwGX+y6mMCyS6Y6KLCpYs8CG7g=";
     };
+    "https://gitlab.com/oquijano/wsync.git" = fetchFromGitLab {
+      owner = "oquijano";
+      repo = "wsync";
+      rev = "75f31d734365a332bcf959c174396f68b336618e";
+      sha256 = "sha256-3A/SG7I5peZvxfABGQghHOKkKehIRL8KrHt/6EAcdi0=";
+    };
     "https://github.com/sanchom/pollen-citations-mcgill.git" = fetchFromGitHub {
       owner = "sanchom";
       repo = "pollen-citations-mcgill";
-      rev = "4d510c4098e00e97257b50b6a9189d7e660c3c8c";
-      sha256 = "sha256-XPvJVjRUyIdsjqeg0H7wy6LSlXvbuyOndFAuGV8wY1w=";
+      rev = "63bcef990cf549d5863a7d6117a1c3475ab53286";
+      sha256 = "sha256-XZdB0lTlKJ9F+0TksLr8s1BD/0T8mkiyzcpFI1c4jjQ=";
     };
     "git://github.com/AlexKnauth/postfix-dot-notation" = fetchFromGitHub {
       owner = "AlexKnauth";
@@ -24089,8 +24713,8 @@
     "git://github.com/racket/plot/" = fetchFromGitHub {
       owner = "racket";
       repo = "plot";
-      rev = "b0da52632c0369058887439345eb90cbf8e99dae";
-      sha256 = "sha256-2LgFHK7VdLTf2jS+Nq+rUf5Yf7uMiXuv+WdN3njuEtw=";
+      rev = "a14222e19736f75bdb9c660ca9c3b78c6e2ee9b3";
+      sha256 = "sha256-Qs7ARwALTU/NlHGI5kZr6VA1+W5DPDu6H7B2aUmOdWo=";
     };
     "https://github.com/ralsei/graphite.git" = fetchFromGitHub {
       owner = "ralsei";
@@ -24126,8 +24750,8 @@
     "https://github.com/shawnw/racket-string-searchers.git" = fetchFromGitHub {
       owner = "shawnw";
       repo = "racket-string-searchers";
-      rev = "46e466009ff2c5b83980c5dc2f78542f9aeb6775";
-      sha256 = "sha256-9uw56l/DURlrGU9ENaSSQEWeGJoKm2qrX9Tzfsfw6Vg=";
+      rev = "6e7a5f030621ced7f84addd49169a2b22016c6aa";
+      sha256 = "sha256-aATuyp73b6emwe76eMX6yHc62RdJilyysMcfz9yGO1w=";
     };
     "https://github.com/catppuccin/drracket-catppuccin.git" = fetchFromGitHub {
       owner = "catppuccin";
@@ -24163,8 +24787,8 @@
     "https://github.com/bennn/trivial.git" = fetchFromGitHub {
       owner = "bennn";
       repo = "trivial";
-      rev = "c8fb9dcc377d1bf40ca167e34072bec90d2651e1";
-      sha256 = "sha256-76krjBRd38N/ajrcH9SQLALnyyD59jzIksy6bndRd3Y=";
+      rev = "6da6a2edea1912c7b28d0bcaca5ffe09bf247ca5";
+      sha256 = "sha256-ocm7vJL02BMIBjR5ZSQaqEac8NzG6gDqJ5+muu4XoCM=";
     };
     "https://github.com/cmargiotta/dice-parser.git" = fetchFromGitHub {
       owner = "cmargiotta";
@@ -24187,8 +24811,8 @@
     "https://github.com/rocketnia/fexpress.git" = fetchFromGitHub {
       owner = "rocketnia";
       repo = "fexpress";
-      rev = "1fa067d6b943c1217c0061dfed8d4457fc454d6f";
-      sha256 = "sha256-YhajCyGDGcIvKtSwweVbGeygTxz5hRf3QJCz9XJMVng=";
+      rev = "b5c951fddebc3e4d3463cdf78dc9d417de97d50f";
+      sha256 = "sha256-sjAEFIv83eR/iMB+x1ONJv5JlowR/JWEFQsJqvF+0KQ=";
     };
     "https://github.com/racket-tw/k.git" = fetchFromGitHub {
       owner = "racket-tw";
@@ -24235,8 +24859,8 @@
     "git://github.com/racket/snip/" = fetchFromGitHub {
       owner = "racket";
       repo = "snip";
-      rev = "863b13662b5e6ae6271c33a41969cac4f57a4ef6";
-      sha256 = "sha256-Tcgqxsq6aH2jlMu7CA46c7XDRt166Arv+tpbGjFjIK0=";
+      rev = "8209ef8e50fdb81788253846b259a72f06d16019";
+      sha256 = "sha256-1Yllh1N9UO5vGsVQI0O3J8eO6heVqS4DcrvtPmv8M6o=";
     };
     "https://github.com/Bogdanp/racket-crontab.git" = fetchFromGitHub {
       owner = "Bogdanp";
@@ -24250,11 +24874,11 @@
       rev = "df3c8096d91e11ba6c7ec40f0bab628680223682";
       sha256 = "sha256-poqOj+kZx5vhk/Ja1TUUAGr/hkIlRZpuJXBScFWxayg=";
     };
-    "git://github.com/racket/option-contract" = fetchFromGitHub {
-      owner = "racket";
-      repo = "option-contract";
-      rev = "42d22d5d01b7717911af1bde4baaa570ae3df516";
-      sha256 = "sha256-nAtpN4JBSaz+W6aKKIg/mA/UNyn75zNTqKyEeNNjlh0=";
+    "https://github.com/johnstonskj/racket-rdf-core.git" = fetchFromGitHub {
+      owner = "johnstonskj";
+      repo = "racket-rdf-core";
+      rev = "78c5c2182727830233abe758808b783758b57bad";
+      sha256 = "sha256-dhvofCiZWxW2ILThoEKJ5Fk/4jMtJarGsbsWPQYyxgY=";
     };
     "https://github.com/AlexKnauth/txexpr-stxparse.git" = fetchFromGitHub {
       owner = "AlexKnauth";
@@ -24265,14 +24889,32 @@
     "git://github.com/racket/web-server/" = fetchFromGitHub {
       owner = "racket";
       repo = "web-server";
-      rev = "e321f8425e539d22412d4f7763532b3f3a65c95e";
-      sha256 = "sha256-bgtvSWfdL30YW69qb5JF79r4L5fNvhqovOAw08UUyoA=";
+      rev = "87a1e58a9b92c621f7d96c76de1da39587f04140";
+      sha256 = "sha256-LYkXanHbcQ5ro0+nC//pXqfEUGQ8v6srTLQa0CTfxWc=";
     };
     "https://github.com/sorawee/drracket-cmdline-args.git" = fetchFromGitHub {
       owner = "sorawee";
       repo = "drracket-cmdline-args";
       rev = "ec94df27fa2936e55eee0f2b2544365962c4d61a";
       sha256 = "sha256-Tw5POfXmCzLaI6qPxt1soOLqruQWRDZQRBDUJbU3n+c=";
+    };
+    "https://github.com/maueroats/presentation-big-bang.git" = fetchFromGitHub {
+      owner = "maueroats";
+      repo = "presentation-big-bang";
+      rev = "2490a76a04db30d41d87588b0fc7b6dbc71d17b2";
+      sha256 = "sha256-sxecKcNB1D/K6IYLdetdtpCZUap4z3nuXazernBc50Y=";
+    };
+    "git://github.com/racket/option-contract" = fetchFromGitHub {
+      owner = "racket";
+      repo = "option-contract";
+      rev = "50d72f706ef944689e21b65a6c94b3c819989c59";
+      sha256 = "sha256-6kLvaQdvTYerirwWtFpH3PMJJE21fXvZePdj4ztrJKQ=";
+    };
+    "https://github.com/hrvoje064/math-quiz-jasna.git" = fetchFromGitHub {
+      owner = "hrvoje064";
+      repo = "math-quiz-jasna";
+      rev = "4391026db5614a621f75c18d6b7f61a7f487e27b";
+      sha256 = "sha256-/x+IIyNpbpcNfx45XXqOrqmyIR9Xbw2fBwgXV8rmXSU=";
     };
     "https://github.com/vicampo/riposte.git" = fetchFromGitHub {
       owner = "vicampo";
@@ -24305,8 +24947,8 @@
     "git+https://github.com/mflatt/sirmail" = fetchFromGitHub {
       owner = "mflatt";
       repo = "sirmail";
-      rev = "30c9bd6c6993ddd432d50a7ab705afa22ec34891";
-      sha256 = "sha256-i9aFtBJxWDP0Aii7h2NBpzoJSVK0jEdNjNuCmWp6XX0=";
+      rev = "b1b9bc9b40aec1a8cf62cd2374b28550af04371a";
+      sha256 = "sha256-gt4tAvJfY8cAXgd23VM3i30C/g2caS0UtgEuPtIET4Q=";
     };
     "https://github.com/a11ce/dispatch.git" = fetchFromGitHub {
       owner = "a11ce";
@@ -24403,11 +25045,17 @@
       rev = "e577dc0f834123abeb14e82db868ce3769fe84cc";
       sha256 = "sha256-Yv5r46LVzuwQIkX9LrDcTKwyy9YaqYHKTnHpvk7McQY=";
     };
+    "https://github.com/joergen7/mqtt-client.git" = fetchFromGitHub {
+      owner = "joergen7";
+      repo = "mqtt-client";
+      rev = "fe1d72c3eb7b6901c82db84048001534a7bf4df3";
+      sha256 = "sha256-r3rlXOy+B+aTHfFn81wro7GUA4RPyYFMR8//kJI78v8=";
+    };
     "https://github.com/Bogdanp/racket-http-easy.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-http-easy";
-      rev = "4a037d5430ae892249d01567d1b8623bcb421cc5";
-      sha256 = "sha256-gMj0hUbdsW7jki6kO8EHMoa4LDN2+81tVkFhE9EG5t0=";
+      rev = "1f79be1e420b111f17fac2b27573d2411c7445a2";
+      sha256 = "sha256-DTzOf+SyWcK57scp3Hjrfy0pZ8KKeFqWOmAuiFOJyIM=";
     };
     "https://github.com/wilbowma/cur.git" = fetchFromGitHub {
       owner = "wilbowma";
@@ -24418,19 +25066,13 @@
     "https://github.com/racket/expeditor.git" = fetchFromGitHub {
       owner = "racket";
       repo = "expeditor";
-      rev = "9b2d54a97a4f17a75d3198630a978b3eb2b4d1af";
-      sha256 = "sha256-eF2HxRrtTLlTidsie+JeWG9yWTMsOWOl5Rt3CwwLBIE=";
+      rev = "189a3ddf312cfc9ab0b93f54e096fdd2267cc113";
+      sha256 = "sha256-UVTOaXF2Afynfa4Rpa8IQByqip+A2gfMXjeRxzRRL1U=";
     };
-    "https://github.com/stamourv/sexp-diff.git" = fetchFromGitHub {
-      owner = "stamourv";
-      repo = "sexp-diff";
-      rev = "5791264cb7031308b81c8c91df457cd51888210f";
-      sha256 = "sha256-G9SmJjj6nghp0ZFgtNVTLQnSQd4i/FZeOA9Wlf18Mv4=";
-    };
-    "https://github.com/uwplse/herbie/releases/download/v1.6/egg-herbie-ubuntu.zip" = fetchFromGitHub {
+    "https://github.com/uwplse/herbie/releases/download/v2.0.2/egg-herbie-ubuntu.zip" = fetchFromGitHub {
       owner = "uwplse";
       repo = "herbie";
-      rev = "e917135b76109f01b4ba07485256eed1b319e935";
+      rev = "ab437f0661f9c78346a95b2ba3f63171f609351a";
       sha256 = "";
     };
     "github://github.com/pleiad/cc4101-handin-client/master" = fetchFromGitHub {
@@ -24450,6 +25092,18 @@
       repo = "plait";
       rev = "e046da124aa9ee681e07a9b0db2f7158adf48b6c";
       sha256 = "sha256-jLZZEyGHEzS3AxWl6nEYqqIYt82OdyOjG92WwFuO0w0=";
+    };
+    "https://github.com/stamourv/sexp-diff.git" = fetchFromGitHub {
+      owner = "stamourv";
+      repo = "sexp-diff";
+      rev = "5791264cb7031308b81c8c91df457cd51888210f";
+      sha256 = "sha256-G9SmJjj6nghp0ZFgtNVTLQnSQd4i/FZeOA9Wlf18Mv4=";
+    };
+    "https://github.com/alpha-beta-eta/SMathML.git" = fetchFromGitHub {
+      owner = "alpha-beta-eta";
+      repo = "SMathML";
+      rev = "84b9c98b1cd009f604f0f791f405683d426405fb";
+      sha256 = "sha256-37EIhqdT9wJE+SdsyokU7+w+m1KTLTLASWoJzmBoLJI=";
     };
     "https://github.com/stchang/macrotypes.git" = fetchFromGitHub {
       owner = "stchang";
@@ -24577,8 +25231,8 @@
     "https://github.com/jkominek/nlopt.git" = fetchFromGitHub {
       owner = "jkominek";
       repo = "nlopt";
-      rev = "164381c8c94066e5b2a2b57a81f2a96694d6bca2";
-      sha256 = "sha256-t/6x1JM5eh9f4f6foW1ojqXJBIPXAe1l3kbudIxfXm0=";
+      rev = "05e4c0333c405cc64757930965b320220ee3a62c";
+      sha256 = "sha256-L4PIEDWBi4U3nEq18iGJcgCaGfDZ0Qz1YWEBneoXE08=";
     };
     "https://github.com/jackrosenthal/sdraw-racket.git" = fetchFromGitHub {
       owner = "jackrosenthal";
@@ -24640,32 +25294,32 @@
     "https://github.com/jackfirth/htdf.git" = fetchFromGitHub {
       owner = "jackfirth";
       repo = "htdf";
-      rev = "fc3b082c439e7d073c9656e6a878513a057845c6";
-      sha256 = "sha256-AawaTqq/lgBDnrddq+7ARkuZclHrj4iN1//wLWNqD+w=";
+      rev = "a65a9ff49685dc2183e6334cba8d6acfdb644d2f";
+      sha256 = "sha256-XsGv50xSaBbhy8NUSfI2/TA2yhzIZvYzLW0SANN5gWQ=";
     };
     "git://github.com/racket/racket-lang-org" = fetchFromGitHub {
       owner = "racket";
       repo = "racket-lang-org";
-      rev = "eb201ef8746dbb5467b9dcd8dacf3ae6219244aa";
-      sha256 = "sha256-LErygt5kdhpSywW6l7Wa9IhPnpocIFaWZqqe9CnkVjI=";
+      rev = "c190cb1131d9ddc7c8cf7b6f637ef4e60ecc698a";
+      sha256 = "sha256-mm93GpHkrMIv8pc8mAul9P0hDYK7BC9kEV/xn9zV7Co=";
     };
     "https://github.com/dbp/htdp-examplar.git" = fetchFromGitHub {
       owner = "dbp";
       repo = "htdp-examplar";
-      rev = "395ee0dea6dde8721b6b3bcbe476121bfde5ce57";
-      sha256 = "sha256-CHlGb03XsK+lGalPN8iHNqtkzpvD3X29hWKz+4z1IKY=";
+      rev = "f180ef537e3401c064e54e99e1551d92428cc725";
+      sha256 = "sha256-GCi2c+3fff5g+mDtGIAjRExrGVD5GmkoTPo9oIFy0Qc=";
     };
     "https://github.com/drym-org/qi.git" = fetchFromGitHub {
       owner = "drym-org";
       repo = "qi";
-      rev = "c3cec5a9fd98ca19bbc336ee7371be5a2c1f34c6";
-      sha256 = "sha256-qMm01tCJJl2nxhNZWbdPhuAG/k0tDRrD670pv482VEk=";
+      rev = "070ffc5e0d2e3a581a1bc11acd391e980dbdd328";
+      sha256 = "sha256-Vz6QtPRpRQYT1a9n8HpuxwITzA4wkT2+oCfpT0LQ0Q4=";
     };
     "https://github.com/samdphillips/racket-keyring.git" = fetchFromGitHub {
       owner = "samdphillips";
       repo = "racket-keyring";
-      rev = "97c77e9f57b6c334e3ee512953c70c5261e0041f";
-      sha256 = "sha256-G/WThkW9heXcvMz2PYRBQaxDhajbtY7NQ4oCc8OxrLc=";
+      rev = "5233dface521aa8dfa341466f67d791dd20a352a";
+      sha256 = "sha256-jZl2RXAdLrZQT7Jrl6EVHI8gkXyN2lLG/amNIoKdemM=";
     };
     "github://github.com/stamourv/optimization-coach/master" = fetchFromGitHub {
       owner = "stamourv";
@@ -24706,8 +25360,8 @@
     "git://github.com/racket/racket/" = fetchFromGitHub {
       owner = "racket";
       repo = "racket";
-      rev = "06f10d51d11ded84df9805578245bfd80391b96a";
-      sha256 = "sha256-8+SRP5qWej7G6p094eK9rlyJdSufMKKFemFyZgJbSlQ=";
+      rev = "297988494b89aa452d5dea278fc7afbf1f218d29";
+      sha256 = "sha256-96/qVntP2FJ9QmnCMxaS6nnVq034dopF0A2wYuhilLA=";
     };
     "git+https://github.com/NoahStoryM/amb" = fetchFromGitHub {
       owner = "NoahStoryM";
@@ -24752,8 +25406,8 @@
     "https://github.com/mflatt/shplait.git" = fetchFromGitHub {
       owner = "mflatt";
       repo = "shplait";
-      rev = "489e471c287360c5892858de2d31686d07f2c296";
-      sha256 = "sha256-APfKL1Ivj/PO1DEKkDDGUafsAbNFiUVaYtdWZTuJ6r0=";
+      rev = "61e4ad78e5c34e53d9f626a51089a1740d481b4b";
+      sha256 = "sha256-khIZgWsvImSWaQ0eQ+TkfoNphVRzQV4IktjAMJhS4Ys=";
     };
     "https://github.com/samdphillips/raco-pkg-env.git" = fetchFromGitHub {
       owner = "samdphillips";
@@ -24772,6 +25426,12 @@
       repo = "portaudio-x86_64-macosx";
       rev = "34efbd93f70d19a0b9e2deeb21caca124effe927";
       sha256 = "sha256-8IKwM2LBK4woDDAd1Pb/LEp8JJv7lVbZ+W5q8PQ98BE=";
+    };
+    "https://github.com/InAnYan/amb-parser.git" = fetchFromGitHub {
+      owner = "InAnYan";
+      repo = "amb-parser";
+      rev = "59f3197125e1ec0d1fa62632be75dc260bacf341";
+      sha256 = "sha256-mHQzuRBjQLNNUEZb/6ksCQ+HuK65cjV0PLHEaZiNOfo=";
     };
     "https://github.com/wesleybits/xfunctions.git" = fetchFromGitHub {
       owner = "wesleybits";
@@ -24800,8 +25460,8 @@
     "https://gitlab.com/preserves/preserves.git" = fetchFromGitLab {
       owner = "preserves";
       repo = "preserves";
-      rev = "930964ca055f84d3cd1b520204a296f53b611907";
-      sha256 = "sha256-pU1EZwe+VOA5QC8iVQhMYi+XHWnmHd02WD1JRJtFuHY=";
+      rev = "685302f5478b0cde01b8d827341ed9ee56c5d39e";
+      sha256 = "sha256-LiuzDfgV1HDNSjvYEHaFaAJ1jzLf25JE7wPoCmRg78A=";
     };
     "https://github.com/Metaxal/rascas.git" = fetchFromGitHub {
       owner = "Metaxal";
@@ -24827,6 +25487,12 @@
       rev = "70cc90538c5dffb722e17cabb769aeadfef32ec4";
       sha256 = "sha256-ZflaWmyH9JocCU8xm5fSSEQLJNeNM78xnXaI0xAhKco=";
     };
+    "https://github.com/Bogdanp/racket-http-proxy.git" = fetchFromGitHub {
+      owner = "Bogdanp";
+      repo = "racket-http-proxy";
+      rev = "94db8bcccd06da5b072b78bc8a553c6ddb9993eb";
+      sha256 = "sha256-TvCsFuFFYFn1jekqtUgD0qxO8JOCZV9H4qPPGpefGYI=";
+    };
     "https://github.com/nuty/vela.git" = fetchFromGitHub {
       owner = "nuty";
       repo = "vela";
@@ -24836,8 +25502,8 @@
     "git://github.com/racket/xrepl/" = fetchFromGitHub {
       owner = "racket";
       repo = "xrepl";
-      rev = "b1399e0fcfd8e0af1e4c6528dd6d513b20fc1698";
-      sha256 = "sha256-cznbjigcJyAGga7gL8As8+uixr8Rz1gaXaYY7SR4W6c=";
+      rev = "3240161a25073e204cb7618deac5a632f6477aa5";
+      sha256 = "sha256-NMJZhv1q0HUoAqUVacPz0mmAoyOqFZjrZLijtn8YhWs=";
     };
     "https://github.com/yanyingwang/http-client.git" = fetchFromGitHub {
       owner = "yanyingwang";
@@ -24848,8 +25514,8 @@
     "https://github.com/97jaz/gregor.git" = fetchFromGitHub {
       owner = "97jaz";
       repo = "gregor";
-      rev = "2d20192e8795e01a1671869dddaf1984f0cbafee";
-      sha256 = "sha256-Ljnoi9x/j3VJpBtfvCBYL4gnlhBpq+o1o7/vioC2T10=";
+      rev = "f56215db229ef2e33670f55d08c0330d8f85de23";
+      sha256 = "sha256-4TIeinXk7ak7sbT2lwfWYdwIwFD9S7whBrR2KEajW30=";
     };
     "https://github.com/macrotypefunctors/macrotypes-nonstx.git" = fetchFromGitHub {
       owner = "macrotypefunctors";
@@ -24864,8 +25530,8 @@
     "git://github.com/racket/racket" = fetchFromGitHub {
       owner = "racket";
       repo = "racket";
-      rev = "06f10d51d11ded84df9805578245bfd80391b96a";
-      sha256 = "sha256-8+SRP5qWej7G6p094eK9rlyJdSufMKKFemFyZgJbSlQ=";
+      rev = "297988494b89aa452d5dea278fc7afbf1f218d29";
+      sha256 = "sha256-96/qVntP2FJ9QmnCMxaS6nnVq034dopF0A2wYuhilLA=";
     };
     "https://github.com/capfredf/pkg-backward-comp-check.git" = fetchFromGitHub {
       owner = "capfredf";
@@ -24906,14 +25572,14 @@
     "https://github.com/Bogdanp/racket-resource-pool.git" = fetchFromGitHub {
       owner = "Bogdanp";
       repo = "racket-resource-pool";
-      rev = "e5063198cd4c293d8e99c1f445f8acda2d8d7f4f";
-      sha256 = "sha256-RWczUSqRUSRXNiAFwQvrXdCAcpmRR+Oz5l2t1AhvyX0=";
+      rev = "019ee1c17e5596d2e2e8cd1387811440da2dc95a";
+      sha256 = "sha256-X3JOS9ZqsVmeuO1psquwM56BzcL5BIw6IiPicDYUV1w=";
     };
     "https://github.com/racket/racket.git" = fetchFromGitHub {
       owner = "racket";
       repo = "racket";
-      rev = "06f10d51d11ded84df9805578245bfd80391b96a";
-      sha256 = "sha256-8+SRP5qWej7G6p094eK9rlyJdSufMKKFemFyZgJbSlQ=";
+      rev = "297988494b89aa452d5dea278fc7afbf1f218d29";
+      sha256 = "sha256-96/qVntP2FJ9QmnCMxaS6nnVq034dopF0A2wYuhilLA=";
     };
     "https://github.com/rmculpepper/crypto.git" = fetchFromGitHub {
       owner = "rmculpepper";
@@ -24936,8 +25602,8 @@
     "git://github.com/racket/plai" = fetchFromGitHub {
       owner = "racket";
       repo = "plai";
-      rev = "ae42bcb581ab02dcb9ddaea98d5ecded589c8d47";
-      sha256 = "sha256-eP0MwzuND6FeQTs5sjgxQseuEwbMC1uTo1ZRIm8Yf6I=";
+      rev = "96c8807a2acde9249f124498e46650223a47e24a";
+      sha256 = "sha256-WDXMJtxS7BzgaWy3MW1pBqUcE7ZAOVKBBZmL+XOll+0=";
     };
     "https://github.com/spdegabrielle/coroutines.git" = fetchFromGitHub {
       owner = "spdegabrielle";
@@ -24954,8 +25620,8 @@
     "https://github.com/racket-templates/new.git" = fetchFromGitHub {
       owner = "racket-templates";
       repo = "new";
-      rev = "d5338b95c9d6ed73847e16317cf4f67375e3cd40";
-      sha256 = "sha256-YiFsDfq25SQu0DApfiPqRCP4rmN4LnXEtAYakpq1CFc=";
+      rev = "b350356803f0f5dfbd5f651da8de607b37c0758b";
+      sha256 = "sha256-96TQb262F6ClNQJDSdQIG3wetU81qCvVtIIbTkaH2Bk=";
     };
     "git://github.com/tonyg/racket-logbook" = fetchFromGitHub {
       owner = "tonyg";
@@ -24972,8 +25638,8 @@
     "git://github.com/racket/htdp/" = fetchFromGitHub {
       owner = "racket";
       repo = "htdp";
-      rev = "73ec2b90055f3ab66d30e54dc3463506b25e50b4";
-      sha256 = "sha256-ftKgCIKV5CkmZ5lf3UG/GKeBu8VL8XAXx4iJUVog+K8=";
+      rev = "8037f1cc620ed91fe68362ce5ad3d887269eb725";
+      sha256 = "sha256-pjnFnWVy9Z2O0e5R+6aHE6YE9pbr1pYS3KD3yKdWqHw=";
     };
     "https://github.com/thoughtstem/happy-names.git" = fetchFromGitHub {
       owner = "thoughtstem";
@@ -24990,8 +25656,8 @@
     "https://gitlab.com/gentoo-racket/racket-ebuild.git" = fetchFromGitLab {
       owner = "gentoo-racket";
       repo = "racket-ebuild";
-      rev = "6d23de624c9087e03f9407379160821e5e00c4f0";
-      sha256 = "sha256-Z8m7rO4HjPDlmsjCAFRdnUeVkqHNPcyjoWqVrIFt5V0=";
+      rev = "f546f1c86a834a04520d0817407141d376572c86";
+      sha256 = "sha256-MR8OeFQRzxj9Qk2MtuQJhXv2M9hz1R6GHGZObF6Og+w=";
     };
     "git://github.com/jbclements/molis-hai/" = fetchFromGitHub {
       owner = "jbclements";
@@ -25018,8 +25684,8 @@
     "https://github.com/simmone/racket-simple-barcode.git" = fetchFromGitHub {
       owner = "simmone";
       repo = "racket-simple-barcode";
-      rev = "34e82eda9b3235d31e9e88abaa823330bc62f9d7";
-      sha256 = "sha256-DGXh9yv4sW3mvLaknU1ZcLFsMrGEeiGL/zkUkk71Fkk=";
+      rev = "455ca5c7cdf7747eb42d7c8e90ddff48fa4ec2c7";
+      sha256 = "sha256-1XH7LimcOSnoRJO7+mO+6DdNrL7PgezfmjorndmaGMU=";
     };
     "git://github.com/sorpaas/taskibble" = fetchFromGitHub {
       owner = "sorpaas";
@@ -25054,8 +25720,8 @@
     "https://github.com/lathe/sew-for-racket.git" = fetchFromGitHub {
       owner = "lathe";
       repo = "sew-for-racket";
-      rev = "9daf6ccc1188fe6ef92a5caab83451ac7dc57fc0";
-      sha256 = "sha256-uxSQX21gpjpbxoMsQYCbJe4VdYLyRwA1YyEXkG+WR7w=";
+      rev = "8758c3792adb413af2b822e54d3e8f5e8d3f55db";
+      sha256 = "sha256-C9j5uJMz/RVwiG4e1PHtcMFcwt+KkWZACpYIswaRFmk=";
     };
     "git://github.com/mordae/racket-esc-vp21" = fetchFromGitHub {
       owner = "mordae";
@@ -25094,8 +25760,8 @@
     "git://github.com/AlexKnauth/scribble-code-examples" = fetchFromGitHub {
       owner = "AlexKnauth";
       repo = "scribble-code-examples";
-      rev = "56f3ce6752fdec6240130fb37bda29288b9091aa";
-      sha256 = "sha256-+cxL+UPgBwsKZ6XXLzq4NVMEyTgGehHHYb4DqMArYIE=";
+      rev = "b2c128b0f60230ba0e539d3790faf70ba2c1f5fa";
+      sha256 = "sha256-rjU/O4z2CRefWByNs0bNY3VT1RuAjiAvGpDNc8C0Y10=";
     };
     "github://github.com/jeapostrophe/opencl/master" = fetchFromGitHub {
       owner = "jeapostrophe";
@@ -25167,11 +25833,17 @@
       rev = "af864c8f711114a20f3fde23c48d581248e27e05";
       sha256 = "sha256-qcVMKNmiL7ozE2cil84unsUsm3XwCFKSmz1gGGzRp7I=";
     };
+    "https://github.com/Jython1415/let-expander.git" = fetchFromGitHub {
+      owner = "Jython1415";
+      repo = "let-expander";
+      rev = "5e4f4446731af772c97b0c27c546e8c053a519ce";
+      sha256 = "sha256-4qzV5iL1wQX/Aw5tU+Mm655Rn05e9Et8GCP2WWIQVWw=";
+    };
     "https://github.com/lathe/lathe-comforts-for-racket.git" = fetchFromGitHub {
       owner = "lathe";
       repo = "lathe-comforts-for-racket";
-      rev = "43829a1613140d6b12ee1d078ea1d08f9f0c1827";
-      sha256 = "sha256-NzqyTFLadq/90ukcKaH9Tz438KTezGqnZV95aQstfTI=";
+      rev = "3ad28a38f202603a33b67a7a74a6f8d2e80f7ba5";
+      sha256 = "sha256-XQar2LRw5V5AF+3P4pPqxCxcHs3wWJW2Y8B5J1y44HQ=";
     };
     "https://github.com/HeladoDeBrownie/jen.git" = fetchFromGitHub {
       owner = "HeladoDeBrownie";
@@ -25194,8 +25866,8 @@
     "git://github.com/racket/drracket/" = fetchFromGitHub {
       owner = "racket";
       repo = "drracket";
-      rev = "2657eafdcfb5e4ccef19405492244f679b9234ef";
-      sha256 = "sha256-n3kKy2YGU+9rKseT8ooQ92FM7svV9v+aNylw1eM6qS4=";
+      rev = "7899052c860f3549b54b753144cd2c2519562012";
+      sha256 = "sha256-9ttOAb1vcoOsUg3MHo8odzAVOPlgfIDKXrM8Kd76uJQ=";
     };
     "https://github.com/jacobwhall/racket-mf2.git" = fetchFromGitHub {
       owner = "jacobwhall";
@@ -25218,8 +25890,8 @@
     "git://github.com/racket/srfi/" = fetchFromGitHub {
       owner = "racket";
       repo = "srfi";
-      rev = "25eb1c0e1ab8a1fa227750aa7f0689a2c531f8c8";
-      sha256 = "sha256-PZwVUqfyYCiKQyHRx46vfd5870kPGxX6mhHtEG0ifWc=";
+      rev = "cab009da67adf40737ae7ff02cd7c8bd6316d61d";
+      sha256 = "sha256-kH05ehhKB3vsT6+qgF74rpB+hcbf/lUxWczU9DVk83w=";
     };
     "https://github.com/Bogdanp/racket-snappy.git" = fetchFromGitHub {
       owner = "Bogdanp";
@@ -25252,8 +25924,8 @@
     "https://github.com/lives-group/pegwfgen.git" = fetchFromGitHub {
       owner = "lives-group";
       repo = "pegwfgen";
-      rev = "a27f3189af880e463b0dbb2bab2b1786fcd62dcc";
-      sha256 = "sha256-PiB5T+JVku39fYanw2y7+WOTy2jgmwuq3wJ7iKKCc14=";
+      rev = "347d393e5ebf554bf8a022414388a32e301b4a65";
+      sha256 = "sha256-Q1uk75Gyx/sVHQJ0TpeWEJDvYq1GQSqkY5vIIB1Eb/E=";
     };
   };
 in

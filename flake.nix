@@ -21,47 +21,30 @@
           pkgs' = self.packages.${system};
         });
   in {
-    packages = perSystem ({pkgs, ...}: rec {
-      # TOOD: Very impure. Very bad.
-      #       Should only be used for bootstrapping when a catalog isn't already present.
-      #       No, actually it shouldn't even be used for that,
-      #       but I don't have a better idea at the moment other than vendoring
-      #       which I don't feel like doing.
+    packages = perSystem ({pkgs, ...}: {
       bootstrap = with pkgs; let
-        racket-with-deps =
-          runCommand "racket-nix-bootstrap" {
-            buildInputs = [racket];
-          } ''
-            mkdir -p "$out/etc/racket"
-            racket -- "${src/generate-config.rkt}" \
-              --allow-user \
-              --extra-lib-paths ${lib.makeLibraryPath racket.buildInputs} \
-              --default-catalog \
-              "${racket}/etc/racket/config.rktd" \
-              "$out" > "$out/etc/racket/config.rktd"
-            racket -G "$out/etc/racket" -l- \
-              raco setup \
-              --trust-zos \
-              --no-user \
-              -j $NIX_BUILD_CORES
-            "$out/bin/raco" pkg install \
-              --installation \
+        catalog = fetchurl {
+          url = "https://pkgs.racket-lang.org/pkgs-all?version=${racket.version}";
+          hash = "sha256-dJ5E9wCr5RZcJyDJBQEmvgDKjTR20c1XapDNoPQKxAM=";
+        };
+      in
+        runCommand "racket-pkgs" {
+          nativeBuildInputs = [racket cacert nix];
+          outputHash = "sha256-XpbQ6xJIlaE7wGQfahSVwHci2dlMFPeCWVzBdI0rOA8=";
+          outputHashMode = "recursive";
+        } ''
+          echo Setting up racket
+          export HOME=$(mktemp -d)
+          # raco pkg install --auto graph threading
+          raco pkg install \
+              --user \
               --copy \
               --batch \
               --no-cache \
               -j $NIX_BUILD_CORES \
               --deps search-auto \
               -D graph threading
-          '';
-        catalog = assert racket.version == "8.9";
-          fetchurl {
-            url = "https://pkgs.racket-lang.org/pkgs-all?version=${racket.version}";
-            hash = "sha256-DGaVno9FaaLw26jSdLRYIKeTtRpMTjOC7hIn+qKG2RY=";
-          };
-      in
-        runCommand "racket-pkgs" {
-          nativeBuildInputs = [racket-with-deps];
-        } ''
+          echo Generating Racket package catalog
           racket -- "${src/generate-pkgs.rkt}" \
             -o "$out" \
             ${catalog}
@@ -75,7 +58,11 @@
       ...
     }: {
       default = pkgs.mkShell {
-        packages = [pkgs.racket];
+        packages = [
+          (pkgs'.racket.newLayer {
+            withRacketPackages = ps: with ps; [graph-lib threading-lib];
+          })
+        ];
       };
     });
 
